@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2017/10/28/Data-Desensitization/</loc>
+    
+    <lastmod>2018-01-21T16:11:57.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/01/09/lombok/</loc>
+    
+    <lastmod>2018-01-21T13:10:23.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2018/01/04/Kafka/</loc>
     
     <lastmod>2018-01-21T11:38:16.000Z</lastmod>
@@ -254,13 +268,6 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2018/01/09/lombok/</loc>
-    
-    <lastmod>2018-01-21T11:19:06.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://yoursite.com/2017/09/15/linux-lua-lfs-install/</loc>
     
     <lastmod>2018-01-21T11:18:42.000Z</lastmod>
@@ -425,13 +432,6 @@
     <loc>http://yoursite.com/2017/11/26/Docker-harbor/</loc>
     
     <lastmod>2018-01-21T11:08:08.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/11/03/Data-Desensitization/</loc>
-    
-    <lastmod>2018-01-21T11:06:36.000Z</lastmod>
     
   </url>
   
