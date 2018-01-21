@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2018/01/04/Kafka/</loc>
+    
+    <lastmod>2018-01-21T11:38:16.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2017/05/12/poetry/</loc>
     
     <lastmod>2018-01-21T11:32:17.000Z</lastmod>
@@ -257,13 +264,6 @@
     <loc>http://yoursite.com/2017/09/15/linux-lua-lfs-install/</loc>
     
     <lastmod>2018-01-21T11:18:42.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2018/01/05/Kafka/</loc>
-    
-    <lastmod>2018-01-21T11:18:25.000Z</lastmod>
     
   </url>
   
