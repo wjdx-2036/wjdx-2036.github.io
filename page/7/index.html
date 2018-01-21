@@ -184,19 +184,19 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-Spring MVC + Hibernate JPA + Bootstrap 搭建的博客系统" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-RestTemplate" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/21/Spring MVC + Hibernate JPA + Bootstrap 搭建的博客系统/">Spring MVC + Hibernate JPA + Bootstrap 搭建的博客系统 Demo</a>
+      <a class="article-title" href="/2018/01/21/RestTemplate/">RestTemplate 详解</a>
     </h1>
   
 
         
-        <a href="/2018/01/21/Spring MVC + Hibernate JPA + Bootstrap 搭建的博客系统/" class="archive-article-date">
+        <a href="/2018/01/21/RestTemplate/" class="archive-article-date">
   	<time datetime="2018-01-21T10:29:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-21</time>
 </a>
         
@@ -209,14 +209,10 @@ var _hmt = _hmt || [];
 
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="相关阅读："><a href="#相关阅读：" class="headerlink" title="相关阅读："></a>相关阅读：</h4><p>1、<a href="http://blog.csdn.net/tzs_1041218129/article/details/53791765" target="_blank" rel="noopener">Spring MVC+Hibernate JPA+ Bootstrap 搭建的博客系统项目中所遇到的坑</a></p>
-<p>由于整个系统不是很难，这里就不详细介绍了，我相信看源码的话，应该能够看得懂。</p>
-<h3 id="源码地址：https-github-com-zhisheng17-springmvc"><a href="#源码地址：https-github-com-zhisheng17-springmvc" class="headerlink" title="源码地址：https://github.com/zhisheng17/springmvc"></a>源码地址：<a href="https://github.com/zhisheng17/springmvc" target="_blank" rel="noopener">https://github.com/zhisheng17/springmvc</a></h3><p><strong>数据库</strong>：<a href="https://github.com/zhisheng17/springmvc/tree/master/sql/springdemo.sql" target="_blank" rel="noopener">springdemo.sql</a></p>
-<p>下面给出下整个系统的截图吧，觉得不错，可以给个 star ，哈哈！后续继续在这个项目中加入新的项目。</p>
-<h4 id="截图："><a href="#截图：" class="headerlink" title="截图："></a>截图：</h4><p><strong>首页</strong></p>
-<p><img src="https://github.com/zhisheng17/springmvc/blob/master/pic/index.jpg?raw=true" alt=""></p>
+        <p><img src="http://ohfk1r827.bkt.clouddn.com/p3.jpeg-1" alt=""></p>
+<h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>这段时间自己做的项目中需要调用服务提供者的服务（接口），具体就是：我这边需要将页面所输入的 Groovy 脚本代码传给别人提供的服务接口，然后那边返回脚本编译的结果给我，我需要将编译结果展示在页面，用的就是 RestTemplate 了，那 RestTemplate 是什么呢？简单说就是：简化了发起 HTTP 请求以及处理响应的过程，并且支持 REST 。下文就稍微总结下。<br>
         
-          <a class="article-more-a" href="/2018/01/21/Spring MVC + Hibernate JPA + Bootstrap 搭建的博客系统/#more">more >></a>
+          <a class="article-more-a" href="/2018/01/21/RestTemplate/#more">more >></a>
         
       
 
@@ -230,27 +226,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Bootstrap</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySQL</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Spring</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Spring MVC</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Hibernate JPA</a>
         		</li>
       		
 		</ul>
@@ -260,7 +236,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/01/21/Spring MVC + Hibernate JPA + Bootstrap 搭建的博客系统/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/01/21/RestTemplate/">展开全文 >></a>
         </p>
       
 
@@ -444,6 +420,76 @@ var _hmt = _hmt || [];
 
 
   
+    <article id="post-Spring-MVC02" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/21/Spring-MVC02/">看透 Spring MVC 源代码分析与实践 ——  俯视 Spring MVC</a>
+    </h1>
+  
+
+        
+        <a href="/2018/01/21/Spring-MVC02/" class="archive-article-date">
+  	<time datetime="2018-01-21T10:29:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-21</time>
+</a>
+        
+      </header>
+    
+
+    <!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Spring MVC</p>
+<p><img src="http://ohfk1r827.bkt.clouddn.com/spring-mvc.png" alt="spring-mvc"><br>
+        
+          <a class="article-more-a" href="/2018/01/21/Spring-MVC02/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Spring MVC</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/01/21/Spring-MVC02/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-Spring-MVC03" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -498,76 +544,6 @@ var _hmt = _hmt || [];
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/01/21/Spring-MVC03/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-Spring-MVC02" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/21/Spring-MVC02/">看透 Spring MVC 源代码分析与实践 ——  俯视 Spring MVC</a>
-    </h1>
-  
-
-        
-        <a href="/2018/01/21/Spring-MVC02/" class="archive-article-date">
-  	<time datetime="2018-01-21T10:29:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-21</time>
-</a>
-        
-      </header>
-    
-
-    <!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Spring MVC</p>
-<p><img src="http://ohfk1r827.bkt.clouddn.com/spring-mvc.png" alt="spring-mvc"><br>
-        
-          <a class="article-more-a" href="/2018/01/21/Spring-MVC02/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Spring MVC</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/01/21/Spring-MVC02/">展开全文 >></a>
         </p>
       
 
@@ -809,15 +785,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -837,19 +813,19 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JSON</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Oracle</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
+                <a href="javascript:void(0)" class="js-tag color5">JSON</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Kafka</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -941,11 +917,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">lombok</a>
+                <a href="javascript:void(0)" class="js-tag color3">励志</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">励志</a>
+                <a href="javascript:void(0)" class="js-tag color2">lombok</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -961,10 +937,6 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">字符串</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
               </li>
              
@@ -973,11 +945,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">表达式</a>
+                <a href="javascript:void(0)" class="js-tag color4">字符串</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">旋转词</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">表达式</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -997,11 +973,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">finally</a>
+                <a href="javascript:void(0)" class="js-tag color3">IO</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">IO</a>
+                <a href="javascript:void(0)" class="js-tag color3">finally</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1013,11 +989,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
+                <a href="javascript:void(0)" class="js-tag color1">类加载机制</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">类加载机制</a>
+                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
               </li>
             
             <div class="clearfix"></div>
