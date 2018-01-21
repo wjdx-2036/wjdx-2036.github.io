@@ -184,19 +184,19 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-SpringBoot-Kafka" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Java-Thread" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/21/SpringBoot-Kafka/">SpringBoot Kafka 整合使用</a>
+      <a class="article-title" href="/2018/01/21/Java-Thread/">《Java 多线程编程核心技术》学习笔记及总结</a>
     </h1>
   
 
         
-        <a href="/2018/01/21/SpringBoot-Kafka/" class="archive-article-date">
+        <a href="/2018/01/21/Java-Thread/" class="archive-article-date">
   	<time datetime="2018-01-21T10:29:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-21</time>
 </a>
         
@@ -209,10 +209,19 @@ var _hmt = _hmt || [];
 
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="http://ohfk1r827.bkt.clouddn.com/blog/180105/DKcBEKHimB.jpg-1" alt="mark"></p>
-<h3 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h3><p>假设你了解过 SpringBoot 和 Kafka。<br>
+        <h2 id="第一章-——-Java-多线程技能"><a href="#第一章-——-Java-多线程技能" class="headerlink" title="第一章 —— Java 多线程技能"></a>第一章 —— Java 多线程技能</h2><p>线程技术点：</p>
+<ul>
+<li>线程的启动</li>
+<li>如何使线程暂停</li>
+<li>如何使线程停止</li>
+<li>线程的优先级</li>
+<li>线程安全相关问题</li>
+</ul>
+<h3 id="进程和线程的概念及多线程的优点"><a href="#进程和线程的概念及多线程的优点" class="headerlink" title="进程和线程的概念及多线程的优点"></a>进程和线程的概念及多线程的优点</h3><p>进程：比如我们电脑运行的 QQ.exe 程序，是操作系统管理的基本运行单元</p>
+<p>线程：在进程中独立运行的子任务，比如 QQ.exe 进程中就有很多线程在运行，下载文件线程、发送消息线程、语音线程、视频线程等。</p>
+<p>多线程优点：我们电脑可以同时操作不同的软件，边听着歌，敲着代码，查看 pdf 文档，浏览网页等，CPU 在这些任务之间不停的切换，切换非常快，所以我们就觉得他们是在同时运行的。<br>
         
-          <a class="article-more-a" href="/2018/01/21/SpringBoot-Kafka/#more">more >></a>
+          <a class="article-more-a" href="/2018/01/21/Java-Thread/#more">more >></a>
         
       
 
@@ -226,11 +235,11 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Kafka</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">SpringBoot</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">多线程</a>
         		</li>
       		
 		</ul>
@@ -240,7 +249,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/01/21/SpringBoot-Kafka/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/01/21/Java-Thread/">展开全文 >></a>
         </p>
       
 
@@ -258,19 +267,19 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-Java-16-lession" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-java-var" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/21/Java-16-lession/">《疯狂 Java 突破程序员基本功的 16 课》读书笔记</a>
+      <a class="article-title" href="/2018/01/21/java-var/">从对象深入分析 Java 中实例变量和类变量的区别</a>
     </h1>
   
 
         
-        <a href="/2018/01/21/Java-16-lession/" class="archive-article-date">
+        <a href="/2018/01/21/java-var/" class="archive-article-date">
   	<time datetime="2018-01-21T10:29:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-21</time>
 </a>
         
@@ -283,14 +292,15 @@ var _hmt = _hmt || [];
 
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="第-1-课-——-数组与内存控制"><a href="#第-1-课-——-数组与内存控制" class="headerlink" title="第 1 课 —— 数组与内存控制"></a>第 1 课 —— 数组与内存控制</h2><h3 id="数组初始化"><a href="#数组初始化" class="headerlink" title="数组初始化"></a>数组初始化</h3><p>数组初始化之后，该数组的长度是不可变的（可通过数组的 length 属性访问数组的长度）。Java 中的数组必须经过初始化（为数组对象的元素分配内存空间，并为每个数组元素指定初始值）才可使用。</p>
-<p>数组初始化的形式：</p>
+        <h3 id="实例变量-和-类变量"><a href="#实例变量-和-类变量" class="headerlink" title="实例变量 和 类变量"></a>实例变量 和 类变量</h3><h4 id="局部变量"><a href="#局部变量" class="headerlink" title="局部变量"></a>局部变量</h4><p>特点：作用时间短，存储在方法的栈内存中</p>
+<p>种类：</p>
 <ul>
-<li>静态初始化：初始化时由程序员显示的指定每个数组的初始值，系统决定数组长度。</li>
-<li>动态初始化：初始化时程序员只指定数组的长度，系统为数组元素分配初始值。</li>
+<li>形参：方法签名中定义的局部变量，由方法调用者负责为其赋值，随方法结束而消亡</li>
+<li>方法内的局部变量：方法内定义的局部变量，必须在方法内对其进行显示初始化，从初始化后开始生效，随方法结束而消亡</li>
+<li>代码块内的局部变量：在代码块中定义的局部变量，必须在代码块中进行显示初始化，从初始化后开始生效，随代码块结束而消亡</li>
 </ul>
         
-          <a class="article-more-a" href="/2018/01/21/Java-16-lession/#more">more >></a>
+          <a class="article-more-a" href="/2018/01/21/java-var/#more">more >></a>
         
       
 
@@ -314,7 +324,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/01/21/Java-16-lession/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/01/21/java-var/">展开全文 >></a>
         </p>
       
 
@@ -332,19 +342,19 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-yaxin" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Nginx" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/21/yaxin/">秋招第一站 —— 亚信科技</a>
+      <a class="article-title" href="/2018/01/21/Nginx/">Nginx 基本知识快速入门</a>
     </h1>
   
 
         
-        <a href="/2018/01/21/yaxin/" class="archive-article-date">
+        <a href="/2018/01/21/Nginx/" class="archive-article-date">
   	<time datetime="2018-01-21T10:29:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-21</time>
 </a>
         
@@ -357,10 +367,16 @@ var _hmt = _hmt || [];
 
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="第-1-站、亚信科技-Java-开发"><a href="#第-1-站、亚信科技-Java-开发" class="headerlink" title="第 1 站、亚信科技    Java 开发"></a>第 1 站、亚信科技    Java 开发</h3><p>1）自我介绍（说到一个亮点：长期坚持写博客，面试官觉得这个习惯很好，算加分项吧）</p>
-<p>2）看到简历项目中用到 Solr，详细的问了下 Solr（自己介绍了下 Solr 的使用场景和建立索引等东西）<br>
+        <h2 id="什么是-Nginx？"><a href="#什么是-Nginx？" class="headerlink" title="什么是 Nginx？"></a>什么是 Nginx？</h2><p>Nginx 是一个高性能的 HTTP 和反向代理服务器，以高稳定性、丰富的功能集、示例配置文件和低系统资源的消耗而闻名。</p>
+<h2 id="Nginx-特点"><a href="#Nginx-特点" class="headerlink" title="Nginx 特点"></a>Nginx 特点</h2><ul>
+<li>处理静态文件，索引文件以及自动索引；打开文件描述符缓冲．</li>
+<li>无缓存的反向代理加速，简单的负载均衡和容错．</li>
+<li>FastCGI，简单的负载均衡和容错．</li>
+<li>模块化的结构。包括 gzipping, byte ranges, chunked responses,以及 SSI-filter 等 filter。如果由 FastCGI 或其它代理服务器处理单页中存在的多个 SSI，则这项处理可以并行运行，而不需要相互等待。</li>
+<li>支持 SSL 和 TLSSNI．</li>
+</ul>
         
-          <a class="article-more-a" href="/2018/01/21/yaxin/#more">more >></a>
+          <a class="article-more-a" href="/2018/01/21/Nginx/#more">more >></a>
         
       
 
@@ -374,7 +390,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">面经</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Nginx</a>
         		</li>
       		
 		</ul>
@@ -384,7 +400,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/01/21/yaxin/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/01/21/Nginx/">展开全文 >></a>
         </p>
       
 
@@ -402,19 +418,19 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-wx-01" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Java-performance-tuning" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/21/wx-01/">实习圈群里提问小记</a>
+      <a class="article-title" href="/2018/01/21/Java-performance-tuning/">Java 性能调优需要格外注意的细节</a>
     </h1>
   
 
         
-        <a href="/2018/01/21/wx-01/" class="archive-article-date">
+        <a href="/2018/01/21/Java-performance-tuning/" class="archive-article-date">
   	<time datetime="2018-01-21T10:29:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-21</time>
 </a>
         
@@ -427,9 +443,14 @@ var _hmt = _hmt || [];
 
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="http://ohfk1r827.bkt.clouddn.com/p2.jpeg-1" alt=""></p>
+        <p>昨天写了篇文章 <a href="http://www.54tianzhisheng.cn/2017/04/29/MySQL-select-good/" target="_blank" rel="noopener">《MySQL 处理海量数据时的一些优化查询速度方法》</a> ，其实开发中不止数据库要优化，还有我们本身的开发代码也需要优化，这样我们开发的产品才能够得到极致的体验。也许有些人认为这些细小的地方没有啥好修改的，改与不改对运行效率没啥大的影响？首先在我们本地一个人测试下效率是不怎么明显，但是如果到发布上线后，你的用户有几百万，甚至上千万，这些用户同时访问你的网站，那么你的网站是否经得住考验呢，效率那高不高呢，如果效率不高，那么需要多出很多买服务器的经费呢，所以想想还是很有必要注意这些小的细节。今天就讲讲一些 Java 性能调优需要格外注意的一些细节。</p>
+<p>代码优化的目标：</p>
+<ul>
+<li>减少代码的体积</li>
+<li>提高代码的运行效率</li>
+</ul>
         
-          <a class="article-more-a" href="/2018/01/21/wx-01/#more">more >></a>
+          <a class="article-more-a" href="/2018/01/21/Java-performance-tuning/#more">more >></a>
         
       
 
@@ -443,7 +464,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">实习圈</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
         		</li>
       		
 		</ul>
@@ -453,7 +474,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/01/21/wx-01/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/01/21/Java-performance-tuning/">展开全文 >></a>
         </p>
       
 
@@ -471,19 +492,19 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-weixin" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Java-error1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/21/weixin/">为什么要重新运营以前的公众号呢？</a>
+      <a class="article-title" href="/2018/01/21/Java-error1/">java.sql.SQLException Field &#39;id&#39; doesn&#39;t have a default value</a>
     </h1>
   
 
         
-        <a href="/2018/01/21/weixin/" class="archive-article-date">
+        <a href="/2018/01/21/Java-error1/" class="archive-article-date">
   	<time datetime="2018-01-21T10:29:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-21</time>
 </a>
         
@@ -496,10 +517,84 @@ var _hmt = _hmt || [];
 
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="http://ohfk1r827.bkt.clouddn.com/blog/180103/mL5G5acdd4.png-1" alt="mark"></p>
-<h3 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h3><p>老读者可能会发现现在我的公众号已经改名了。（由 “猿blog”  变成  “zhisheng” 了，细心的童鞋会发现不仅名字变了， ID 也变了，但是图片还没改，暂时还没想到好的 logo 图片），下面说说为啥吧！<br>
+        <p>1、错误描述</p>
+<p>在做一个电商网站项目时，使用 Mybatis + MySQL 时出现问题 <code>Caused by: java.sql.SQLException: Field &#39;id&#39; doesn&#39;t have a default value</code> ，网上很多人说是 <a href="https://my.oschina.net/boonya/blog/692232" target="_blank" rel="noopener">MyBatis 插入数据行 ID 没生成自增</a>。但是我尝试好久，没解决该问题。</p>
+<p>2、错误原因</p>
+<p>后来才发现是因为创建数据库时的建表语句中的 id 是主键的，但是在插入的过程中，没有给予数值，并且没有让 id 自增。</p>
+<p>3、解决办法</p>
+<p>修改数据库表中的id，让其自增（在插入的过程中，不插入id数据时）。</p>
+<p>（我是直接将整个数据库都导出来，然后在每个表的 id 后面加上一个 <code>auto_increment</code>）, 如下 ：<br>
         
-          <a class="article-more-a" href="/2018/01/21/weixin/#more">more >></a>
+          <a class="article-more-a" href="/2018/01/21/Java-error1/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/01/21/Java-error1/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-poetry" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/21/poetry/">最近很火的鸡汤，分享给大家</a>
+    </h1>
+  
+
+        
+        <a href="/2018/01/21/poetry/" class="archive-article-date">
+  	<time datetime="2018-01-21T10:29:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-21</time>
+</a>
+        
+      </header>
+    
+
+    <!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="lt-最近很火的一首小诗，分享给大家-gt"><a href="#lt-最近很火的一首小诗，分享给大家-gt" class="headerlink" title="&lt;最近很火的一首小诗，分享给大家&gt;"></a>&lt;最近很火的一首小诗，分享给大家&gt;</h4><p><img src="http://ohfk1r827.bkt.clouddn.com/owl-2287017_960_720.jpg" alt=""><br>
+        
+          <a class="article-more-a" href="/2018/01/21/poetry/#more">more >></a>
         
       
 
@@ -523,77 +618,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/01/21/weixin/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-Docker-harbor" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/21/Docker-harbor/">基于 Harbor 搭建 Docker 私有镜像仓库</a>
-    </h1>
-  
-
-        
-        <a href="/2018/01/21/Docker-harbor/" class="archive-article-date">
-  	<time datetime="2018-01-21T10:29:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-21</time>
-</a>
-        
-      </header>
-    
-
-    <!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="http://ohfk1r827.bkt.clouddn.com/blog/171126/j9de1Jf6m0.png-1" alt="mark"></p>
-<h3 id="什么是-Harbor？"><a href="#什么是-Harbor？" class="headerlink" title="什么是 Harbor？"></a>什么是 Harbor？</h3><p>第一次使用这个的时候是刚进公司处理的第一个任务的时候，发现 Harbor 就是一个用于存储和分发 Docker 镜像的企业级Registry 服务器。<br>
-        
-          <a class="article-more-a" href="/2018/01/21/Docker-harbor/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Docker</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/01/21/Docker-harbor/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/01/21/poetry/">展开全文 >></a>
         </p>
       
 
@@ -970,6 +995,10 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Netty</a>
               </li>
             
             <div class="clearfix"></div>
