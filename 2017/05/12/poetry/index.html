@@ -15,20 +15,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>java.sql.SQLException Field &#39;id&#39; doesn&#39;t have a default value | zhisheng的博客</title>
+  <title>最近很火的鸡汤，分享给大家 | zhisheng的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1、错误描述 在做一个电商网站项目时，使用 Mybatis + MySQL 时出现问题 Caused by: java.sql.SQLException: Field &amp;#39;id&amp;#39; doesn&amp;#39;t have a default value ，网上很多人说是 MyBatis 插入数据行 ID 没生成自增。但是我尝试好久，没解决该问题。 2、错误原因 后来才发现是因为创建数据库时的">
-<meta name="keywords" content="Java">
+  <meta name="description" content="&amp;lt;最近很火的一首小诗，分享给大家&amp;gt;">
+<meta name="keywords" content="随笔">
 <meta property="og:type" content="article">
-<meta property="og:title" content="java.sql.SQLException Field &#39;id&#39; doesn&#39;t have a default value">
-<meta property="og:url" content="http://yoursite.com/2018/01/21/Java-error1/index.html">
+<meta property="og:title" content="最近很火的鸡汤，分享给大家">
+<meta property="og:url" content="http://yoursite.com/2017/05/12/poetry/index.html">
 <meta property="og:site_name" content="zhisheng的博客">
-<meta property="og:description" content="1、错误描述 在做一个电商网站项目时，使用 Mybatis + MySQL 时出现问题 Caused by: java.sql.SQLException: Field &amp;#39;id&amp;#39; doesn&amp;#39;t have a default value ，网上很多人说是 MyBatis 插入数据行 ID 没生成自增。但是我尝试好久，没解决该问题。 2、错误原因 后来才发现是因为创建数据库时的">
+<meta property="og:description" content="&amp;lt;最近很火的一首小诗，分享给大家&amp;gt;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-21T10:29:55.000Z">
+<meta property="og:image" content="http://ohfk1r827.bkt.clouddn.com/owl-2287017_960_720.jpg">
+<meta property="og:updated_time" content="2018-01-21T11:32:17.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="java.sql.SQLException Field &#39;id&#39; doesn&#39;t have a default value">
-<meta name="twitter:description" content="1、错误描述 在做一个电商网站项目时，使用 Mybatis + MySQL 时出现问题 Caused by: java.sql.SQLException: Field &amp;#39;id&amp;#39; doesn&amp;#39;t have a default value ，网上很多人说是 MyBatis 插入数据行 ID 没生成自增。但是我尝试好久，没解决该问题。 2、错误原因 后来才发现是因为创建数据库时的">
+<meta name="twitter:title" content="最近很火的鸡汤，分享给大家">
+<meta name="twitter:description" content="&amp;lt;最近很火的一首小诗，分享给大家&amp;gt;">
+<meta name="twitter:image" content="http://ohfk1r827.bkt.clouddn.com/owl-2287017_960_720.jpg">
   
     <link rel="alternative" href="/atom.xml" title="zhisheng的博客" type="application/atom+xml">
   
@@ -187,20 +189,20 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Java-error1" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-poetry" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      java.sql.SQLException Field &#39;id&#39; doesn&#39;t have a default value
+      最近很火的鸡汤，分享给大家
     </h1>
   
 
         
-        <a href="/2018/01/21/Java-error1/" class="archive-article-date">
-  	<time datetime="2018-01-21T10:29:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-21</time>
+        <a href="/2017/05/12/poetry/" class="archive-article-date">
+  	<time datetime="2017-05-11T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-12</time>
 </a>
         
       </header>
@@ -212,13 +214,55 @@ var _hmt = _hmt || [];
 
     <div class="article-entry" itemprop="articleBody">
       
-        <p>1、错误描述</p>
-<p>在做一个电商网站项目时，使用 Mybatis + MySQL 时出现问题 <code>Caused by: java.sql.SQLException: Field &#39;id&#39; doesn&#39;t have a default value</code> ，网上很多人说是 <a href="https://my.oschina.net/boonya/blog/692232" target="_blank" rel="noopener">MyBatis 插入数据行 ID 没生成自增</a>。但是我尝试好久，没解决该问题。</p>
-<p>2、错误原因</p>
-<p>后来才发现是因为创建数据库时的建表语句中的 id 是主键的，但是在插入的过程中，没有给予数值，并且没有让 id 自增。</p>
-<p>3、解决办法</p>
-<p>修改数据库表中的id，让其自增（在插入的过程中，不插入id数据时）。</p>
-<p>（我是直接将整个数据库都导出来，然后在每个表的 id 后面加上一个 <code>auto_increment</code>）, 如下 ：<br><a id="more"></a><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`d_user`</span> (</span><br><span class="line">  <span class="string">`id`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> auto_increment,</span><br><span class="line">  <span class="string">`name`</span> <span class="built_in">varchar</span>(<span class="number">45</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`password`</span> <span class="built_in">varchar</span>(<span class="number">45</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`zip`</span> <span class="built_in">varchar</span>(<span class="number">45</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`address`</span> <span class="built_in">varchar</span>(<span class="number">45</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`phone`</span> <span class="built_in">varchar</span>(<span class="number">45</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`email`</span> <span class="built_in">varchar</span>(<span class="number">45</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  PRIMARY <span class="keyword">KEY</span> (<span class="string">`id`</span>)</span><br><span class="line">)</span><br></pre></td></tr></table></figure></p>
+        <h4 id="lt-最近很火的一首小诗，分享给大家-gt"><a href="#lt-最近很火的一首小诗，分享给大家-gt" class="headerlink" title="&lt;最近很火的一首小诗，分享给大家&gt;"></a>&lt;最近很火的一首小诗，分享给大家&gt;</h4><p><img src="http://ohfk1r827.bkt.clouddn.com/owl-2287017_960_720.jpg" alt=""><br><a id="more"></a></p>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=415792881&auto=1&height=66"></iframe>
+
+<p>纽约时间比加州时间早三个小时，</p>
+<p> New York is 3 hours ahead of California,</p>
+<p> 但加州时间并没有变慢。</p>
+<p> but it does not make California slow.</p>
+<p> 有人22岁就毕业了，</p>
+<p> Someone graduated at the age of 22,</p>
+<p> 但等了五年才找到好的工作！</p>
+<p> but waited 5 years before securing a good job!</p>
+<p> 有人25岁就当上CEO，</p>
+<p> Someone became a CEO at 25,</p>
+<p> 却在50岁去世。</p>
+<p> and died at 50.</p>
+<p> 也有人迟到50岁才当上CEO，</p>
+<p> While another became a CEO at 50,</p>
+<p> 然后活到90岁。</p>
+<p> and lived to 90 years.</p>
+<p> 有人依然单身，</p>
+<p> Someone is still single,</p>
+<p> 同时也有人已婚。</p>
+<p> while someone else got married.</p>
+<p> 奥巴马55岁就退休，</p>
+<p> Obama retires at 55,</p>
+<p> 川普70岁才开始当总统。</p>
+<p> but Trump starts at 70.</p>
+<p> 世上每个人本来就有自己的发展时区。</p>
+<p> Absolutely everyone in this world works based on their Time Zone.</p>
+<p> 身边有些人看似走在你前面，</p>
+<p> People around you might seem to go ahead of you,</p>
+<p> 也有人看似走在你后面。</p>
+<p> some might seem to be behind you.</p>
+<p> 但其实每个人在自己的时区有自己的步程。</p>
+<p> But everyone is running their own RACE, in their own TIME.</p>
+<p> 不用嫉妒或嘲笑他们。</p>
+<p> Don’t envy them or mock them.</p>
+<p> 他们都在自己的时区里，你也是！</p>
+<p> They are in their TIME ZONE, and you are in yours!</p>
+<p> 生命就是等待正确的行动时机。</p>
+<p> Life is about waiting for the right moment to act.</p>
+<p> 所以，放轻松。</p>
+<p> So, RELAX.</p>
+<p> 你没有落后。</p>
+<p> You’re not LATE.</p>
+<p> 你没有领先。</p>
+<p> You’re not EARLY.</p>
+<p> 在命运为你安排的属于自己的时区里，一切都准时。</p>
+<p> You are very much ON TIME, and in your TIME ZONE Destiny set up for you.</p>
 
       
 
@@ -263,7 +307,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
         		</li>
       		
 		</ul>
@@ -319,7 +363,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2018/01/21/Java-error1/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/05/12/poetry/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -333,18 +377,18 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/2018/01/21/Java-performance-tuning/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/06/02/poetry2/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Java 性能调优需要格外注意的细节
+           六月 —— 愿你做最美好的自己！
         
       </div>
     </a>
   
   
-    <a href="/2018/01/21/poetry/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">最近很火的鸡汤，分享给大家</div>
+    <a href="/2017/04/13/Hexo-yilia-changyan/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Github pages + Hexo 博客 yilia 主题使用畅言评论系统</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -363,7 +407,7 @@ var _hmt = _hmt || [];
 
   <section id="comments">
 <!--高速版，加载速度快，使用前需测试页面的兼容性-->
-<div id="SOHUCS" sid="java.sql.SQLException Field &#39;id&#39; doesn&#39;t have a default value"  style="padding: 0px 30px 0px 46px;"></div>
+<div id="SOHUCS" sid="最近很火的鸡汤，分享给大家"  style="padding: 0px 30px 0px 46px;"></div>
 <script>
   (function(){
     var appid = 'cysWCg9Ij',
