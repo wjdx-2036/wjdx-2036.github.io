@@ -184,6 +184,78 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-程序访问文件的几种方式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/13/程序访问文件的几种方式/">程序访问文件的几种方式</a>
+    </h1>
+  
+
+        
+        <a href="/2017/06/13/程序访问文件的几种方式/" class="archive-article-date">
+  	<time datetime="2017-06-12T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-13</time>
+</a>
+        
+      </header>
+    
+
+    <!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="IO"><a href="#IO" class="headerlink" title="IO"></a>IO</h2><h3 id="程序访问文件的几种方式"><a href="#程序访问文件的几种方式" class="headerlink" title="程序访问文件的几种方式"></a>程序访问文件的几种方式</h3><blockquote>
+<p>读取和写入文件 I/O 操作都调用操作系统提供的接口。因为磁盘设备是由操作系统管理的，应用程序要访问物理设备只能通过系统调用的方式来工作。读和写分别对应 read() 和 write() 两个系统调用。而只要是系统调用就可能存在内核空间地址和用户空间地址切换的问题，这也是为什么操作系统为了保护系统本身的运行安全而将内核程序运行使用的内存空间和用户程序运行的内存空间进行隔离造成的。虽然这样可以保证内核程序运行的安全性，但是也存在数据可能需要从内核空间向用户空间复制的问题。</p>
+<p>如果遇到非常耗时的操作，如磁盘 I/O， 数据从磁盘复制到内核空间，然后又从内核空间复制到用户空间，将会非常缓慢。这时操作系统为了加速 I/O 访问，在内核空间使用缓存机制，也就是将从磁盘读取的文件按照一定的组织方式进行缓存，如果用户程序访问的是同一段磁盘地址的空间数据，那么操作系统将从内核缓存中直接取出返回给用户程序，这样就可以减小 I/O 的响应时间。</p>
+</blockquote>
+        
+          <a class="article-more-a" href="/2017/06/13/程序访问文件的几种方式/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">IO</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/06/13/程序访问文件的几种方式/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-解决jdk1.8中发送邮件失败（handshake_failure）问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -243,6 +315,80 @@ var _hmt = _hmt || [];
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/06/13/解决jdk1.8中发送邮件失败（handshake_failure）问题/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-深度探究Java 中 finally 语句块" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/13/深度探究Java 中 finally 语句块/">深度探究Java 中 finally 语句块</a>
+    </h1>
+  
+
+        
+        <a href="/2017/06/13/深度探究Java 中 finally 语句块/" class="archive-article-date">
+  	<time datetime="2017-06-12T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-13</time>
+</a>
+        
+      </header>
+    
+
+    <!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>乍看这个题目，是不是有人会问，这个谁不知道啊，大凡熟悉 Java 编程的人都知道 finally 语句块的作用和用法。有什么可深度辨析的呢？事实并非如此，我发现即使写了很多年 Java 程序的人，也不一定能够透彻的理解 finally 语句块。本篇将以生动形象的案例来带您由浅入深的来分析一下这个小小的 finally，希望这篇文章能够让您真正的理解 finally 语句块的本质，至少阅读完本篇文章后，没有觉得浪费了时间。</p>
+<p>可不能小看这个简单的 finally，看似简单的问题背后，却隐藏了无数的玄机。接下来我就带您一步一步的揭开这个 finally 的神秘面纱。</p>
+        
+          <a class="article-more-a" href="/2017/06/13/深度探究Java 中 finally 语句块/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">finally</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/06/13/深度探究Java 中 finally 语句块/">展开全文 >></a>
         </p>
       
 
@@ -418,19 +564,19 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-通过项目逐步深入了解Mybatis(二)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-java读取文件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/13/通过项目逐步深入了解Mybatis(二)/">通过项目逐步深入了解Mybatis（二）</a>
+      <a class="article-title" href="/2017/06/13/java读取文件/">Java读取文件</a>
     </h1>
   
 
         
-        <a href="/2017/06/13/通过项目逐步深入了解Mybatis(二)/" class="archive-article-date">
+        <a href="/2017/06/13/java读取文件/" class="archive-article-date">
   	<time datetime="2017-06-12T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-13</time>
 </a>
         
@@ -443,100 +589,14 @@ var _hmt = _hmt || [];
 
     <div class="article-entry" itemprop="articleBody">
       
-        <p>转载请务必注明出处，原创不易！</p>
-<p> 相关文章：<a href="http://blog.csdn.net/tzs_1041218129/article/details/53404326" target="_blank" rel="noopener"><strong>通过项目逐步深入了解Mybatis&lt;一&gt;</strong></a><br>本项目全部代码地址：<a href="https://github.com/zhisheng17/mybatis" target="_blank" rel="noopener"><strong>Github-Mybatis</strong></a></p>
-<h3 id="Mybatis-解决-jdbc-编程的问题"><a href="#Mybatis-解决-jdbc-编程的问题" class="headerlink" title="Mybatis 解决 jdbc 编程的问题"></a>Mybatis 解决 jdbc 编程的问题</h3><p>1、  数据库链接创建、释放频繁造成系统资源浪费从而影响系统性能，如果使用数据库链接池可解决此问题。</p>
-<p>解决：在SqlMapConfig.xml中配置数据链接池，使用连接池管理数据库链接。</p>
-<p>2、  Sql语句写在代码中造成代码不易维护，实际应用sql变化的可能较大，sql变动需要改变java代码。</p>
-<p>解决：将Sql语句配置在XXXXmapper.xml文件中与java代码分离。</p>
-<p>3、  向sql语句传参数麻烦，因为sql语句的where条件不一定，可能多也可能少，占位符需要和参数一一对应。</p>
-<p>解决：Mybatis自动将java对象映射至sql语句，通过statement中的parameterType定义输入参数的类型。</p>
-<p>4、  对结果集解析麻烦，sql变化导致解析代码变化，且解析前需要遍历，如果能将数据库记录封装成pojo对象解析比较方便。</p>
-<p>解决：Mybatis自动将sql执行结果映射至java对象，通过statement中的resultType定义输出结果的类型。</p>
-        
-          <a class="article-more-a" href="/2017/06/13/通过项目逐步深入了解Mybatis(二)/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Mybatis</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">SpringMVC</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/13/通过项目逐步深入了解Mybatis(二)/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-Java NIO 系列教程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/13/Java NIO 系列教程/">Java NIO 系列教程</a>
-    </h1>
-  
-
-        
-        <a href="/2017/06/13/Java NIO 系列教程/" class="archive-article-date">
-  	<time datetime="2017-06-12T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-13</time>
-</a>
-        
-      </header>
-    
-
-    <!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Java NIO（New IO）是从Java 1.4版本开始引入的一个新的IO API，可以替代标准的Java IO API。</p>
-<p>Java NIO提供了与标准IO不同的IO工作方式：</p>
-<ul>
-<li><p><strong>Channels and Buffers（通道和缓冲区）</strong>：标准的IO基于字节流和字符流进行操作的，而NIO是基于通道（Channel）和缓冲区（Buffer）进行操作，数据总是从通道读取到缓冲区中，或者从缓冲区写入到通道中。</p>
-</li>
-<li><p><strong>Asynchronous IO（异步IO）</strong>：Java NIO可以让你异步的使用IO，例如：当线程从通道读取数据到缓冲区时，线程还是可以进行其他事情。当数据被写入到缓冲区时，线程可以继续处理它。从缓冲区写入通道也类似。</p>
-</li>
-<li><p><strong>Selectors（选择器）</strong>：Java NIO引入了选择器的概念，选择器用于监听多个通道的事件（比如：连接打开，数据到达）。因此，单个的线程可以监听多个数据通道。</p>
-</li>
+        <ul>
+<li>以字节为单位读取文件</li>
+<li>以字符为单位读取文件</li>
+<li>以行为单位读取文件</li>
+<li>随机读取文件内容</li>
 </ul>
         
-          <a class="article-more-a" href="/2017/06/13/Java NIO 系列教程/#more">more >></a>
+          <a class="article-more-a" href="/2017/06/13/java读取文件/#more">more >></a>
         
       
 
@@ -554,7 +614,7 @@ var _hmt = _hmt || [];
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">NIO</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">文件</a>
         		</li>
       		
 		</ul>
@@ -564,77 +624,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/13/Java NIO 系列教程/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-Hexo-yilia-toc" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/13/Hexo-yilia-toc/">Hexo + yilia 主题实现文章目录</a>
-    </h1>
-  
-
-        
-        <a href="/2017/06/13/Hexo-yilia-toc/" class="archive-article-date">
-  	<time datetime="2017-06-12T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-13</time>
-</a>
-        
-      </header>
-    
-
-    <!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h3><p>为了方便查看每篇文章的目录结构，可以定位到想看的地方，特地找了下如何实现这个功能。</p>
-<h3 id="添加-CSS-样式"><a href="#添加-CSS-样式" class="headerlink" title="添加 CSS 样式"></a>添加 CSS 样式</h3><p>打开 <code>themes\yilia\source</code> 下的 <code>main.234bc0.css</code> 文件，直接在后面添加如下代码：<br>
-        
-          <a class="article-more-a" href="/2017/06/13/Hexo-yilia-toc/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/13/Hexo-yilia-toc/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/06/13/java读取文件/">展开全文 >></a>
         </p>
       
 
@@ -766,11 +756,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+                <a href="javascript:void(0)" class="js-tag color2">Docker</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Docker</a>
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -790,11 +780,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color1">Guava</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Guava</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -834,15 +824,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JSON</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Kafka</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">多线程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">投资理财</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">JSON</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -850,7 +840,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">投资理财</a>
+                <a href="javascript:void(0)" class="js-tag color1">Kafka</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -862,11 +856,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
+                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
+                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -879,10 +873,6 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Pyspider</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -926,15 +916,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">lua</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">文件</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">励志</a>
+                <a href="javascript:void(0)" class="js-tag color4">Mac</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">lua</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -942,7 +932,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">书籍</a>
+                <a href="javascript:void(0)" class="js-tag color3">励志</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Netty</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -950,7 +944,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">书籍</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">实习圈</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">字符串</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -959,10 +961,6 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">字符串</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -994,11 +992,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">finally</a>
+                <a href="javascript:void(0)" class="js-tag color5">邮件发送</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">邮件发送</a>
+                <a href="javascript:void(0)" class="js-tag color3">finally</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1006,19 +1004,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">类加载机制</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Netty</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Mac</a>
+                <a href="javascript:void(0)" class="js-tag color1">类加载机制</a>
               </li>
             
             <div class="clearfix"></div>

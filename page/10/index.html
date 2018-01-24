@@ -184,6 +184,83 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-详细深入分析 Java ClassLoader 工作机制" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/17/详细深入分析 Java ClassLoader 工作机制/">详细深入分析 Java ClassLoader 工作机制</a>
+    </h1>
+  
+
+        
+        <a href="/2017/06/17/详细深入分析 Java ClassLoader 工作机制/" class="archive-article-date">
+  	<time datetime="2017-06-16T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-17</time>
+</a>
+        
+      </header>
+    
+
+    <!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="什么是-ClassLoader-？"><a href="#什么是-ClassLoader-？" class="headerlink" title="什么是 ClassLoader ？"></a>什么是 ClassLoader ？</h3><p>大家都知道，当我们写好一个 Java 程序之后，不是管是 C/S 还是 B/S 应用，都是由若干个 .class 文件组织而成的一个完整的 Java 应用程序，当程序在运行时，即会调用该程序的一个入口函数来调用系统的相关功能，而这些功能都被封装在不同的 class 文件当中，所以经常要从这个 class 文件中要调用另外一个 class 文件中的方法，如果另外一个文件不存在的，则会引发系统异常。而程序在启动的时候，并不会一次性加载程序所要用的所有class文件，而是根据程序的需要，通过Java的类加载机制（ClassLoader）来动态加载某个 class 文件到内存当中的，从而只有 class 文件被载入到了内存之后，才能被其它 class 所引用。所以 ClassLoader 就是用来动态加载 class 文件到内存当中用的。</p>
+        
+          <a class="article-more-a" href="/2017/06/17/详细深入分析 Java ClassLoader 工作机制/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JVM</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">类加载机制</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/06/17/详细深入分析 Java ClassLoader 工作机制/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-通过项目逐步深入了解Spring MVC（一）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -420,19 +497,19 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-java读取文件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-HashMap-Hashtable" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/13/java读取文件/">Java读取文件</a>
+      <a class="article-title" href="/2017/06/13/HashMap-Hashtable/">HashMap、Hashtable、HashSet 和 ConcurrentHashMap 的比较</a>
     </h1>
   
 
         
-        <a href="/2017/06/13/java读取文件/" class="archive-article-date">
+        <a href="/2017/06/13/HashMap-Hashtable/" class="archive-article-date">
   	<time datetime="2017-06-12T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-13</time>
 </a>
         
@@ -445,14 +522,9 @@ var _hmt = _hmt || [];
 
     <div class="article-entry" itemprop="articleBody">
       
-        <ul>
-<li>以字节为单位读取文件</li>
-<li>以字符为单位读取文件</li>
-<li>以行为单位读取文件</li>
-<li>随机读取文件内容</li>
-</ul>
+        <p>HashMap 和 Hashtable 的比较是 Java 面试中的常见问题，用来考验程序员是否能够正确使用集合类以及是否可以随机应变使用多种思路解决问题。HashMap 的工作原理、ArrayList 与 Vector 的比较以及这个问题是有关 Java 集合框架的最经典的问题。Hashtable 是个过时的集合类，存在于 Java API 中很久了。在 Java 4 中被重写了，实现了 Map 接口，所以自此以后也成了 Java 集合框架中的一部分。Hashtable 和 HashMap 在 Java 面试中相当容易被问到，甚至成为了集合框架面试题中最常被考的问题，所以在参加任何 Java 面试之前，都不要忘了准备这一题。<br>
         
-          <a class="article-more-a" href="/2017/06/13/java读取文件/#more">more >></a>
+          <a class="article-more-a" href="/2017/06/13/HashMap-Hashtable/#more">more >></a>
         
       
 
@@ -468,10 +540,6 @@ var _hmt = _hmt || [];
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
         		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">文件</a>
-        		</li>
       		
 		</ul>
 	</div>
@@ -480,99 +548,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/13/java读取文件/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-Spring MVC+Hibernate JPA搭建的博客系统项目中所遇到的坑" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/13/Spring MVC+Hibernate JPA搭建的博客系统项目中所遇到的坑/">Spring MVC+Hibernate JPA搭建的博客系统项目中所遇到的坑</a>
-    </h1>
-  
-
-        
-        <a href="/2017/06/13/Spring MVC+Hibernate JPA搭建的博客系统项目中所遇到的坑/" class="archive-article-date">
-  	<time datetime="2017-06-12T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-13</time>
-</a>
-        
-      </header>
-    
-
-    <!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="项目代码地址：https-github-com-zhisheng17-springmvc"><a href="#项目代码地址：https-github-com-zhisheng17-springmvc" class="headerlink" title="项目代码地址：https://github.com/zhisheng17/springmvc"></a>项目代码地址：<a href="https://github.com/zhisheng17/springmvc" target="_blank" rel="noopener">https://github.com/zhisheng17/springmvc</a></h3><p>最近在学习 Spring MVC ，其中在做一个简单的博客系统demo，是使用 SpringMVC 集成</p>
-<p>Spring Data JPA（由 Hibernate JPA 提供），来进行强大的数据库访问。结果其中遇到的坑不</p>
-<p>是一点点啊，我差点崩溃了，其中最大的原因就是由于 Hibernate JPA 中的bug了，反正一开始</p>
-<p>还不知道是这个问题，导致折腾了快一天的时间。想想都可怕啊。</p>
-        
-          <a class="article-more-a" href="/2017/06/13/Spring MVC+Hibernate JPA搭建的博客系统项目中所遇到的坑/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Bootstrap</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySQL</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Spring</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Spring MVC</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Hibernate JPA</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/13/Spring MVC+Hibernate JPA搭建的博客系统项目中所遇到的坑/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/06/13/HashMap-Hashtable/">展开全文 >></a>
         </p>
       
 
@@ -783,11 +759,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+                <a href="javascript:void(0)" class="js-tag color2">Docker</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Docker</a>
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -807,11 +783,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color1">Guava</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Guava</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -851,15 +827,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JSON</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Kafka</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">多线程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">投资理财</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">JSON</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -867,7 +843,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">投资理财</a>
+                <a href="javascript:void(0)" class="js-tag color1">Kafka</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -879,11 +859,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
+                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
+                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -896,10 +876,6 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Pyspider</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -943,15 +919,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">lua</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">文件</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">励志</a>
+                <a href="javascript:void(0)" class="js-tag color4">Mac</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">lua</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -959,7 +935,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">书籍</a>
+                <a href="javascript:void(0)" class="js-tag color3">励志</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Netty</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -967,7 +947,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">书籍</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">实习圈</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">字符串</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -976,10 +964,6 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">字符串</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1011,11 +995,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">finally</a>
+                <a href="javascript:void(0)" class="js-tag color5">邮件发送</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">邮件发送</a>
+                <a href="javascript:void(0)" class="js-tag color3">finally</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1023,19 +1007,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">类加载机制</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Netty</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Mac</a>
+                <a href="javascript:void(0)" class="js-tag color1">类加载机制</a>
               </li>
             
             <div class="clearfix"></div>
