@@ -18,7 +18,7 @@
   <title>SpringBoot RabbitMQ 整合进阶版 | zhisheng的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="消息中间件RabbitMQ 是消息中间件的一种, 消息中间件即分布式系统中完成消息的发送和接收的基础软件. 这些软件有很多, 包括 ActiveMQ ( apache 公司的), RocketMQ (阿里巴巴公司的, 现已经转让给 apache), 还有性能极高的 Kafka。">
-<meta name="keywords" content="SpringBoot,RabbitMQ">
+<meta name="keywords" content="RabbitMQ,SpringBoot">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SpringBoot RabbitMQ 整合进阶版">
 <meta property="og:url" content="http://yoursite.com/2018/01/28/RabbitMQ/index.html">
@@ -26,14 +26,14 @@
 <meta property="og:description" content="消息中间件RabbitMQ 是消息中间件的一种, 消息中间件即分布式系统中完成消息的发送和接收的基础软件. 这些软件有很多, 包括 ActiveMQ ( apache 公司的), RocketMQ (阿里巴巴公司的, 现已经转让给 apache), 还有性能极高的 Kafka。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79ly1fnu3cojj9rj31hc0u079o.jpg">
-<meta property="og:image" content="https://images2015.cnblogs.com/blog/972319/201703/972319-20170311160512014-1914425149.png">
-<meta property="og:image" content="https://images2015.cnblogs.com/blog/972319/201703/972319-20170311161512951-1006030113.png">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79ly1fnuk4o5optj30pz07xdg7.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79ly1fnuk4ohjbmj30dd08zjrw.jpg">
 <meta property="og:image" content="http://ohfk1r827.bkt.clouddn.com/blog/180103/C6LG3mGa12.jpg">
 <meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79ly1fnu3cn8zwjj31kw0y9kfi.jpg">
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNc79ly1fnu3co30lkj31hy1bun4z.jpg">
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNc79ly1fnu3cmf22dj31kw0zoh6u.jpg">
 <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79ly1fnu3clys6lj31kw1ajjy9.jpg">
-<meta property="og:updated_time" content="2018-01-26T15:33:31.000Z">
+<meta property="og:updated_time" content="2018-01-26T18:11:42.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SpringBoot RabbitMQ 整合进阶版">
 <meta name="twitter:description" content="消息中间件RabbitMQ 是消息中间件的一种, 消息中间件即分布式系统中完成消息的发送和接收的基础软件. 这些软件有很多, 包括 ActiveMQ ( apache 公司的), RocketMQ (阿里巴巴公司的, 现已经转让给 apache), 还有性能极高的 Kafka。">
@@ -249,10 +249,10 @@ var _hmt = _hmt || [];
 <h3 id="消息中间件"><a href="#消息中间件" class="headerlink" title="消息中间件"></a>消息中间件</h3><p>RabbitMQ 是消息中间件的一种, 消息中间件即分布式系统中完成消息的发送和接收的基础软件. 这些软件有很多, 包括 ActiveMQ ( apache 公司的), RocketMQ (阿里巴巴公司的, 现已经转让给 apache), 还有性能极高的 Kafka。</p>
 <a id="more"></a>
 <p>消息中间件的工作过程可以用<strong>生产者消费者模型</strong>来表示. 即生产者不断的向消息队列发送信息, 而消费者从消息队列中消费信息. 具体过程如下:</p>
-<p><img src="https://images2015.cnblogs.com/blog/972319/201703/972319-20170311160512014-1914425149.png" alt=""></p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNc79ly1fnuk4o5optj30pz07xdg7.jpg" alt="972319-20170311160512014-1914425149"></p>
 <p>从上图可看出, 对于消息队列来说, 生产者,消息队列,消费者 是最重要的三个概念。生产者发消息到消息队列中去,  消费者监听指定的消息队列, 并且当消息队列收到消息之后, 接收消息队列传来的消息, 并且给予相应的处理. 消息队列常用于分布式系统之间互相信息的传递.</p>
 <h3 id="RabbitMQ-工作原理"><a href="#RabbitMQ-工作原理" class="headerlink" title="RabbitMQ 工作原理"></a>RabbitMQ 工作原理</h3><p>对于 RabbitMQ 来说, 除了这三个基本模块以外, 还添加了一个模块, 即交换机(Exchange). 它使得生产者和消息队列之间产生了隔离, 生产者将消息发送给交换机,而交换机则根据调度策略把相应的消息转发给对应的消息队列. 那么 RabitMQ 的工作流程如下所示:</p>
-<p><img src="https://images2015.cnblogs.com/blog/972319/201703/972319-20170311161512951-1006030113.png" alt=""></p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNc79ly1fnuk4ohjbmj30dd08zjrw.jpg" alt="972319-20170311161512951-1006030113"></p>
 <p>说一下交换机: 交换机的主要作用是接收相应的消息并且绑定到指定的队列. 交换机有四种类型, 分别为Direct, topic, headers, Fanout.</p>
 <p>Direct 是 RabbitMQ 默认的交换机模式,也是最简单的模式.即创建消息队列的时候,指定一个 BindingKey. 当发送者发送消息的时候, 指定对应的 Key. 当 Key 和消息队列的 BindingKey 一致的时候,消息将会被发送到该消息队列中.</p>
 <p>topic 转发信息主要是依据通配符, 队列和交换机的绑定主要是依据一种模式(通配符+字符串), 而当发送消息的时候, 只有指定的 Key 和该模式相匹配的时候, 消息才会被发送到该消息队列中.</p>
@@ -352,11 +352,11 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">SpringBoot</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">RabbitMQ</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">RabbitMQ</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">SpringBoot</a>
         		</li>
       		
 		</ul>
@@ -572,11 +572,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+                <a href="javascript:void(0)" class="js-tag color2">Docker</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Docker</a>
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -644,10 +644,6 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Kafka</a>
               </li>
              
@@ -664,11 +660,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
+                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -684,6 +684,14 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Spring</a>
               </li>
              
@@ -696,15 +704,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ActiveMQ</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -736,11 +736,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">文件</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">lombok</a>
+                <a href="javascript:void(0)" class="js-tag color3">IO</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -748,7 +744,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Netty</a>
+                <a href="javascript:void(0)" class="js-tag color3">文件</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">lombok</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -760,15 +760,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Servlet</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">实习圈</a>
+                <a href="javascript:void(0)" class="js-tag color1">Netty</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">书籍</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Servlet</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -785,6 +785,10 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">旋转词</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">实习圈</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -808,19 +812,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">邮件发送</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">IO</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">finally</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
+                <a href="javascript:void(0)" class="js-tag color5">邮件发送</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">类加载机制</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -828,7 +828,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">类加载机制</a>
+                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
               </li>
             
             <div class="clearfix"></div>
