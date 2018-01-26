@@ -184,20 +184,20 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-HashMap-Hashtable" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-通过项目逐步深入了解Mybatis(四)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/13/HashMap-Hashtable/">HashMap、Hashtable、HashSet 和 ConcurrentHashMap 的比较</a>
+      <a class="article-title" href="/2017/06/15/通过项目逐步深入了解Mybatis(四)/">通过项目逐步深入了解Mybatis（四）</a>
     </h1>
   
 
         
-        <a href="/2017/06/13/HashMap-Hashtable/" class="archive-article-date">
-  	<time datetime="2017-06-12T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-13</time>
+        <a href="/2017/06/15/通过项目逐步深入了解Mybatis(四)/" class="archive-article-date">
+  	<time datetime="2017-06-14T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-15</time>
 </a>
         
       </header>
@@ -209,9 +209,15 @@ var _hmt = _hmt || [];
 
     <div class="article-entry" itemprop="articleBody">
       
-        <p>HashMap 和 Hashtable 的比较是 Java 面试中的常见问题，用来考验程序员是否能够正确使用集合类以及是否可以随机应变使用多种思路解决问题。HashMap 的工作原理、ArrayList 与 Vector 的比较以及这个问题是有关 Java 集合框架的最经典的问题。Hashtable 是个过时的集合类，存在于 Java API 中很久了。在 Java 4 中被重写了，实现了 Map 接口，所以自此以后也成了 Java 集合框架中的一部分。Hashtable 和 HashMap 在 Java 面试中相当容易被问到，甚至成为了集合框架面试题中最常被考的问题，所以在参加任何 Java 面试之前，都不要忘了准备这一题。<br>
+        <p>相关阅读：</p>
+<p>1、<a href="http://blog.csdn.net/tzs_1041218129/article/details/53404326" target="_blank" rel="noopener">通过项目逐步深入了解Mybatis&lt;一&gt;</a></p>
+<p>2、<a href="http://blog.csdn.net/tzs_1041218129/article/details/53449052" target="_blank" rel="noopener">通过项目逐步深入了解Mybatis&lt;二&gt;</a></p>
+<p>3、<a href="http://blog.csdn.net/tzs_1041218129/article/details/53456677" target="_blank" rel="noopener">通过项目逐步深入了解Mybatis&lt;三&gt;</a></p>
+<p>本项目所有代码及文档都托管在 Github地址：<a href="https://github.com/zhisheng17/mybatis" target="_blank" rel="noopener">https://github.com/zhisheng17/mybatis</a></p>
+<h3 id="延迟加载"><a href="#延迟加载" class="headerlink" title="延迟加载"></a>延迟加载</h3><h3 id="什么是延迟加载？"><a href="#什么是延迟加载？" class="headerlink" title="什么是延迟加载？"></a>什么是延迟加载？</h3><p>resultMap可以实现高级映射（使用association、collection实现一对一及一对多映射），association、collection具备延迟加载功能。<br>需求：<br>如果查询订单并且关联查询用户信息。如果先查询订单信息即可满足要求，当我们需要查询用户信息时再查询用户信息。把对用户信息的按需去查询就是延迟加载。</p>
+<p>延迟加载：先从单表查询、需要时再从关联表去关联查询，大大提高 数据库性能，因为查询单表要比关联查询多张表速度要快。<br>
         
-          <a class="article-more-a" href="/2017/06/13/HashMap-Hashtable/#more">more >></a>
+          <a class="article-more-a" href="/2017/06/15/通过项目逐步深入了解Mybatis(四)/#more">more >></a>
         
       
 
@@ -225,7 +231,11 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Mybatis</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">SpringMVC</a>
         		</li>
       		
 		</ul>
@@ -235,7 +245,83 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/13/HashMap-Hashtable/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/06/15/通过项目逐步深入了解Mybatis(四)/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-通过项目逐步深入了解Mybatis(三)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/14/通过项目逐步深入了解Mybatis(三)/">通过项目逐步深入了解Mybatis（三）</a>
+    </h1>
+  
+
+        
+        <a href="/2017/06/14/通过项目逐步深入了解Mybatis(三)/" class="archive-article-date">
+  	<time datetime="2017-06-13T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-14</time>
+</a>
+        
+      </header>
+    
+
+    <!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>相关阅读：<br>1、<a href="http://blog.csdn.net/tzs_1041218129/article/details/53404326" target="_blank" rel="noopener">通过项目逐步深入了解Mybatis&lt;一&gt;</a></p>
+<p>2、<a href="http://blog.csdn.net/tzs_1041218129/article/details/53449052" target="_blank" rel="noopener"> 通过项目逐步深入了解Mybatis&lt;二&gt;</a></p>
+<p>本项目所有代码及文档都托管在 Github地址：<a href="https://github.com/zhisheng17/mybatis" target="_blank" rel="noopener">https://github.com/zhisheng17/mybatis</a></p>
+<h2 id="Mybatis-高级知识"><a href="#Mybatis-高级知识" class="headerlink" title="Mybatis 高级知识"></a>Mybatis 高级知识</h2><p>安排：对订单商品数据模型进行分析</p>
+        
+          <a class="article-more-a" href="/2017/06/14/通过项目逐步深入了解Mybatis(三)/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Mybatis</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">SpringMVC</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/06/14/通过项目逐步深入了解Mybatis(三)/">展开全文 >></a>
         </p>
       
 
@@ -424,89 +510,6 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-Java-Thread" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/13/Java-Thread/">《Java 多线程编程核心技术》学习笔记及总结</a>
-    </h1>
-  
-
-        
-        <a href="/2017/06/13/Java-Thread/" class="archive-article-date">
-  	<time datetime="2017-06-12T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-13</time>
-</a>
-        
-      </header>
-    
-
-    <!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="第一章-——-Java-多线程技能"><a href="#第一章-——-Java-多线程技能" class="headerlink" title="第一章 —— Java 多线程技能"></a>第一章 —— Java 多线程技能</h2><p>线程技术点：</p>
-<ul>
-<li>线程的启动</li>
-<li>如何使线程暂停</li>
-<li>如何使线程停止</li>
-<li>线程的优先级</li>
-<li>线程安全相关问题</li>
-</ul>
-<h3 id="进程和线程的概念及多线程的优点"><a href="#进程和线程的概念及多线程的优点" class="headerlink" title="进程和线程的概念及多线程的优点"></a>进程和线程的概念及多线程的优点</h3><p>进程：比如我们电脑运行的 QQ.exe 程序，是操作系统管理的基本运行单元</p>
-<p>线程：在进程中独立运行的子任务，比如 QQ.exe 进程中就有很多线程在运行，下载文件线程、发送消息线程、语音线程、视频线程等。</p>
-<p>多线程优点：我们电脑可以同时操作不同的软件，边听着歌，敲着代码，查看 pdf 文档，浏览网页等，CPU 在这些任务之间不停的切换，切换非常快，所以我们就觉得他们是在同时运行的。<br>
-        
-          <a class="article-more-a" href="/2017/06/13/Java-Thread/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">多线程</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/13/Java-Thread/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
     <article id="post-String-new" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -583,19 +586,19 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-Java NIO 系列教程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Java-Thread" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/13/Java NIO 系列教程/">Java NIO 系列教程</a>
+      <a class="article-title" href="/2017/06/13/Java-Thread/">《Java 多线程编程核心技术》学习笔记及总结</a>
     </h1>
   
 
         
-        <a href="/2017/06/13/Java NIO 系列教程/" class="archive-article-date">
+        <a href="/2017/06/13/Java-Thread/" class="archive-article-date">
   	<time datetime="2017-06-12T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-13</time>
 </a>
         
@@ -608,18 +611,19 @@ var _hmt = _hmt || [];
 
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Java NIO（New IO）是从Java 1.4版本开始引入的一个新的IO API，可以替代标准的Java IO API。</p>
-<p>Java NIO提供了与标准IO不同的IO工作方式：</p>
+        <h2 id="第一章-——-Java-多线程技能"><a href="#第一章-——-Java-多线程技能" class="headerlink" title="第一章 —— Java 多线程技能"></a>第一章 —— Java 多线程技能</h2><p>线程技术点：</p>
 <ul>
-<li><p><strong>Channels and Buffers（通道和缓冲区）</strong>：标准的IO基于字节流和字符流进行操作的，而NIO是基于通道（Channel）和缓冲区（Buffer）进行操作，数据总是从通道读取到缓冲区中，或者从缓冲区写入到通道中。</p>
-</li>
-<li><p><strong>Asynchronous IO（异步IO）</strong>：Java NIO可以让你异步的使用IO，例如：当线程从通道读取数据到缓冲区时，线程还是可以进行其他事情。当数据被写入到缓冲区时，线程可以继续处理它。从缓冲区写入通道也类似。</p>
-</li>
-<li><p><strong>Selectors（选择器）</strong>：Java NIO引入了选择器的概念，选择器用于监听多个通道的事件（比如：连接打开，数据到达）。因此，单个的线程可以监听多个数据通道。</p>
-</li>
+<li>线程的启动</li>
+<li>如何使线程暂停</li>
+<li>如何使线程停止</li>
+<li>线程的优先级</li>
+<li>线程安全相关问题</li>
 </ul>
+<h3 id="进程和线程的概念及多线程的优点"><a href="#进程和线程的概念及多线程的优点" class="headerlink" title="进程和线程的概念及多线程的优点"></a>进程和线程的概念及多线程的优点</h3><p>进程：比如我们电脑运行的 QQ.exe 程序，是操作系统管理的基本运行单元</p>
+<p>线程：在进程中独立运行的子任务，比如 QQ.exe 进程中就有很多线程在运行，下载文件线程、发送消息线程、语音线程、视频线程等。</p>
+<p>多线程优点：我们电脑可以同时操作不同的软件，边听着歌，敲着代码，查看 pdf 文档，浏览网页等，CPU 在这些任务之间不停的切换，切换非常快，所以我们就觉得他们是在同时运行的。<br>
         
-          <a class="article-more-a" href="/2017/06/13/Java NIO 系列教程/#more">more >></a>
+          <a class="article-more-a" href="/2017/06/13/Java-Thread/#more">more >></a>
         
       
 
@@ -637,7 +641,7 @@ var _hmt = _hmt || [];
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">NIO</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">多线程</a>
         		</li>
       		
 		</ul>
@@ -647,7 +651,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/13/Java NIO 系列教程/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/06/13/Java-Thread/">展开全文 >></a>
         </p>
       
 
