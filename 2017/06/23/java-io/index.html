@@ -17,22 +17,22 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Java IO流学习超详细总结（图文并茂） | zhisheng的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Java流操作有关的类或接口： Java流类图结构：   流的概念和作用流是一组有顺序的，有起点和终点的字节集合，是对数据传输的总称或抽象。即数据在两设备间的传输称为流，流的本质是数据传输，根据数据传输特性将流抽象为各种类，方便更直观的进行数据操作。  IO流的分类 根据处理数据类型的不同分为：字符流和字节流 根据数据流向不同分为：输入流和输出流  字符流和字节流字符流的由来： 因为数据编码的不同">
+  <meta name="description" content="Java流操作有关的类或接口：">
 <meta name="keywords" content="Java,IO">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java IO流学习超详细总结（图文并茂）">
 <meta property="og:url" content="http://yoursite.com/2017/06/23/java-io/index.html">
 <meta property="og:site_name" content="zhisheng的博客">
-<meta property="og:description" content="Java流操作有关的类或接口： Java流类图结构：   流的概念和作用流是一组有顺序的，有起点和终点的字节集合，是对数据传输的总称或抽象。即数据在两设备间的传输称为流，流的本质是数据传输，根据数据传输特性将流抽象为各种类，方便更直观的进行数据操作。  IO流的分类 根据处理数据类型的不同分为：字符流和字节流 根据数据流向不同分为：输入流和输出流  字符流和字节流字符流的由来： 因为数据编码的不同">
+<meta property="og:description" content="Java流操作有关的类或接口：">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNc79ly1fnuf0zovznj30c1058mxj.jpg">
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNc79ly1fnuf1131bzj30j30l7gnh.jpg">
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNc79ly1fnuf101drnj30c80bggmq.jpg">
 <meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79ly1fnuf10gta7j30by0digms.jpg">
-<meta property="og:updated_time" content="2018-01-26T15:39:06.000Z">
+<meta property="og:updated_time" content="2018-01-27T13:04:28.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java IO流学习超详细总结（图文并茂）">
-<meta name="twitter:description" content="Java流操作有关的类或接口： Java流类图结构：   流的概念和作用流是一组有顺序的，有起点和终点的字节集合，是对数据传输的总称或抽象。即数据在两设备间的传输称为流，流的本质是数据传输，根据数据传输特性将流抽象为各种类，方便更直观的进行数据操作。  IO流的分类 根据处理数据类型的不同分为：字符流和字节流 根据数据流向不同分为：输入流和输出流  字符流和字节流字符流的由来： 因为数据编码的不同">
+<meta name="twitter:description" content="Java流操作有关的类或接口：">
 <meta name="twitter:image" content="https://ws1.sinaimg.cn/large/006tNc79ly1fnuf0zovznj30c1058mxj.jpg">
   
     <link rel="alternative" href="/atom.xml" title="zhisheng的博客" type="application/atom+xml">
@@ -241,11 +241,10 @@ var _hmt = _hmt || [];
 
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="Java流操作有关的类或接口："><a href="#Java流操作有关的类或接口：" class="headerlink" title="Java流操作有关的类或接口："></a>Java流操作有关的类或接口：</h3><p><img src="https://ws1.sinaimg.cn/large/006tNc79ly1fnuf0zovznj30c1058mxj.jpg" alt="0659b2ee5661173439cc0a92f3390c89"></p>
-<p><strong>Java流类图结构：</strong></p>
+        <h3 id="Java流操作有关的类或接口："><a href="#Java流操作有关的类或接口：" class="headerlink" title="Java流操作有关的类或接口："></a>Java流操作有关的类或接口：</h3><p><img src="https://ws1.sinaimg.cn/large/006tNc79ly1fnuf0zovznj30c1058mxj.jpg" alt="0659b2ee5661173439cc0a92f3390c89"><br><a id="more"></a><br><strong>Java流类图结构：</strong></p>
 <p><img src="https://ws1.sinaimg.cn/large/006tNc79ly1fnuf1131bzj30j30l7gnh.jpg" alt="3485420f3e11863872c2072de4a49cba"></p>
 <hr>
-<h2 id="流的概念和作用"><a href="#流的概念和作用" class="headerlink" title="流的概念和作用"></a>流的概念和作用</h2><p>流是一组有顺序的，有起点和终点的字节集合，是对数据传输的总称或抽象。即数据在两设备间的传输称为流，<strong>流的本质是数据传输，根据数据传输特性将流抽象为各种类，方便更直观的进行数据操作</strong>。 </p>
+<h2 id="流的概念和作用"><a href="#流的概念和作用" class="headerlink" title="流的概念和作用"></a>流的概念和作用</h2><p>流是一组有顺序的，有起点和终点的字节集合，是对数据传输的总称或抽象。即数据在两设备间的传输称为流，<strong>流的本质是数据传输，根据数据传输特性将流抽象为各种类，方便更直观的进行数据操作</strong>。</p>
 <h2 id="IO流的分类"><a href="#IO流的分类" class="headerlink" title="IO流的分类"></a>IO流的分类</h2><ul>
 <li>根据处理数据类型的不同分为：字符流和字节流</li>
 <li>根据数据流向不同分为：输入流和输出流</li>
@@ -256,7 +255,7 @@ var _hmt = _hmt || [];
 <li>处理对象不同：字节流能处理所有类型的数据（如图片、avi等），而字符流只能处理字符类型的数据。</li>
 </ul>
 <p>结论：只要是处理纯文本数据，就优先考虑使用字符流。 除此之外都使用字节流。</p>
-<h3 id="输入流和输出流"><a href="#输入流和输出流" class="headerlink" title="输入流和输出流"></a>输入流和输出流</h3><p>对输入流只能进行读操作，对输出流只能进行写操作，程序中需要根据待传输数据的不同特性而使用不同的流。 </p>
+<h3 id="输入流和输出流"><a href="#输入流和输出流" class="headerlink" title="输入流和输出流"></a>输入流和输出流</h3><p>对输入流只能进行读操作，对输出流只能进行写操作，程序中需要根据待传输数据的不同特性而使用不同的流。</p>
 <hr>
 <h2 id="Java-IO流对象"><a href="#Java-IO流对象" class="headerlink" title="Java IO流对象"></a>Java IO流对象</h2><h3 id="1-输入字节流InputStream"><a href="#1-输入字节流InputStream" class="headerlink" title="1.输入字节流InputStream"></a>1.输入字节流InputStream</h3><p>IO 中输入字节流的继承图可见上图，可以看出：</p>
 <ul>
