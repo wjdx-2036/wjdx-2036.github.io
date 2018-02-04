@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2018/02/05/RocketMQ/</loc>
+    
+    <lastmod>2018-02-04T16:18:57.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2017/06/23/java-io/</loc>
     
     <lastmod>2018-01-27T13:04:28.000Z</lastmod>
