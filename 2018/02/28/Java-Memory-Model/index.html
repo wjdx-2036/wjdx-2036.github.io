@@ -51,7 +51,7 @@
 <meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1fow7l8rgjej30ys0r6n05.jpg">
 <meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1fow7lb5c5kj310y0z4q7w.jpg">
 <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1fow7lgmupij311m0sqtcg.jpg">
-<meta property="og:updated_time" content="2018-03-01T02:30:55.000Z">
+<meta property="og:updated_time" content="2018-03-01T02:36:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《深入理解 Java 内存模型》读书笔记">
 <meta name="twitter:description" content="前提《深入理解 Java 内存模型》程晓明著，该书在以前看过一遍，现在学的东西越多，感觉那块越重要，于是又再细看一遍，于是便有了下面的读书笔记总结。全书页数虽不多，内容讲得挺深的。细看的话，也是挺花时间的，看完收获绝对挺大的。也建议 Java 开发者都去看看。里面主要有 Java 内存模型的基础、重排序、顺序一致性、Volatile 关键字、锁、final。本文参考书中内容。">
@@ -266,7 +266,7 @@ var _hmt = _hmt || [];
         <p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fow7l5mj64j31hc0zbh9n.jpg" alt="fairyland-canyon-1632749_1920"></p>
 <h3 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h3><p>《深入理解 Java 内存模型》程晓明著，该书在以前看过一遍，现在学的东西越多，感觉那块越重要，于是又再细看一遍，于是便有了下面的读书笔记总结。全书页数虽不多，内容讲得挺深的。细看的话，也是挺花时间的，看完收获绝对挺大的。也建议 Java 开发者都去看看。里面主要有 Java 内存模型的基础、重排序、顺序一致性、Volatile 关键字、锁、final。本文参考书中内容。</p>
 <a id="more"></a>
-<h3 id="关注我"><a href="#关注我" class="headerlink" title="关注我"></a>关注我</h3><p>如果你想查看这本书可以关注我的公众号，然后里面回复关键字 <strong>JMM</strong> 可以查看我分享的百度云链接。</p>
+<h3 id="关注我"><a href="#关注我" class="headerlink" title="关注我"></a>关注我</h3><p>如果你想查看这本书可以关注我的公众号: <strong>zhisheng</strong> ，然后里面回复关键字 <strong>JMM</strong> 可以查看我分享的百度云链接。</p>
 <p><img src="http://ohfk1r827.bkt.clouddn.com/blog/180103/C6LG3mGa12.jpg" alt="mark"></p>
 <p>转载请务必注明原创地址为：<a href="http://www.54tianzhisheng.cn/2018/02/28/Java-Memory-Model/" target="_blank" rel="noopener">http://www.54tianzhisheng.cn/2018/02/28/Java-Memory-Model/</a></p>
 <h3 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h3><h4 id="并发编程的模型分类"><a href="#并发编程的模型分类" class="headerlink" title="并发编程的模型分类"></a>并发编程的模型分类</h4><p>在并发编程需要处理的两个关键问题是：<strong>线程之间如何通信</strong> 和 <strong>线程之间如何同步</strong>。</p>
