@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2018/03/04/springcloud-vedio/</loc>
+    
+    <lastmod>2018-03-04T07:39:56.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/03/04/springboot-vedio/</loc>
+    
+    <lastmod>2018-03-04T07:39:21.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2018/02/28/Java-Memory-Model/</loc>
     
-    <lastmod>2018-03-01T02:36:58.000Z</lastmod>
+    <lastmod>2018-03-01T15:28:11.000Z</lastmod>
     
   </url>
   

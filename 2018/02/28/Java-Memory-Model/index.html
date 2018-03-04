@@ -51,7 +51,7 @@
 <meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1fow7l8rgjej30ys0r6n05.jpg">
 <meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1fow7lb5c5kj310y0z4q7w.jpg">
 <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1fow7lgmupij311m0sqtcg.jpg">
-<meta property="og:updated_time" content="2018-03-01T02:36:58.000Z">
+<meta property="og:updated_time" content="2018-03-01T15:28:11.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《深入理解 Java 内存模型》读书笔记">
 <meta name="twitter:description" content="前提《深入理解 Java 内存模型》程晓明著，该书在以前看过一遍，现在学的东西越多，感觉那块越重要，于是又再细看一遍，于是便有了下面的读书笔记总结。全书页数虽不多，内容讲得挺深的。细看的话，也是挺花时间的，看完收获绝对挺大的。也建议 Java 开发者都去看看。里面主要有 Java 内存模型的基础、重排序、顺序一致性、Volatile 关键字、锁、final。本文参考书中内容。">
@@ -340,10 +340,10 @@ var _hmt = _hmt || [];
 <h4 id="happens-before"><a href="#happens-before" class="headerlink" title="happens-before"></a>happens-before</h4><p>JSR-133 内存模型使用 happens-before 的概念来阐述操作之间的内存可见性。在 JMM 中，如果<strong>一个操作执行的结果需要对另一个操作可见</strong>，那么这两个操作之间必须要存在 happens-before 关系。这里提到的两个操作既可以是在一个线程之内，也可以是在不同线程之间。</p>
 <p>与程序员密切相关的 happens-before 规则如下：</p>
 <ul>
-<li> 程序顺序规则：一个线程中的每个操作，happens-before 于该线程中的任意后续操作。</li>
-<li> 监视器锁规则：对一个监视器的解锁，happens-before 于随后对这个监视器的加锁。</li>
-<li> volatile 变量规则：对一个 volatile 域的写，happens-before 于任意后续对这个 volatile 域的读。</li>
-<li> 传递性：如果  A happens-before B，且 B happens-before C，那么 A happens-before C。</li>
+<li>程序顺序规则：一个线程中的每个操作，happens-before 于该线程中的任意后续操作。</li>
+<li>监视器锁规则：对一个监视器的解锁，happens-before 于随后对这个监视器的加锁。</li>
+<li>volatile 变量规则：对一个 volatile 域的写，happens-before 于任意后续对这个 volatile 域的读。</li>
+<li>传递性：如果  A happens-before B，且 B happens-before C，那么 A happens-before C。</li>
 </ul>
 <p>注意，两个操作之间具有 happens-before 关系，并不意味着前一个操作必须要在后一个操作之前执行！happens-before 仅仅要求前一个操作（执行的结果）对后一个操作可见，且前一个操作按顺序排在第二个操作之前（the first is visible to and ordered before the second）。</p>
 <p>happens-before 与 JMM 的关系如下图所示：</p>
@@ -622,9 +622,18 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
+    <a href="/2018/03/04/springboot-vedio/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          小马哥 《Java 微服务实践 - Spring Boot 系列》强烈推荐
+        
+      </div>
+    </a>
   
-    <a href="/2018/02/07/SpringBoot-RocketMQ/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">SpringBoot RocketMQ 整合使用和监控</div>
+  
+    <a href="/2018/02/07/rocketmq-example/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">RocketMQ 简单的消息示例</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -1033,6 +1042,14 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">微服务</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">SpringCloud</a>
               </li>
             
             <div class="clearfix"></div>
