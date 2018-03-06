@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2018/03/06/SpringBoot2-Migration-Guide/</loc>
+    
+    <lastmod>2018-03-06T14:34:57.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/03/06/SpringBoot2-new-features/</loc>
+    
+    <lastmod>2018-03-06T14:31:48.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2018/03/04/springcloud-vedio/</loc>
     
     <lastmod>2018-03-04T07:39:56.000Z</lastmod>
