@@ -26,7 +26,8 @@
 <meta property="og:description" content="项目代码地址：https://github.com/zhisheng17/springmvc最近在学习 Spring MVC ，其中在做一个简单的博客系统demo，是使用 SpringMVC 集成 Spring Data JPA（由 Hibernate JPA 提供），来进行强大的数据库访问。结果其中遇到的坑不 是一点点啊，我差点崩溃了，其中最大的原因就是由于 Hibernate JPA 中的bu">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://img.blog.csdn.net/20161221212949653?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdHpzXzEwNDEyMTgxMjk=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:updated_time" content="2018-01-21T11:24:01.000Z">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79gy1fp3jkmizmpj30o00didgn.jpg">
+<meta property="og:updated_time" content="2018-03-06T16:19:23.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spring MVC+Hibernate JPA搭建的博客系统项目中所遇到的坑">
 <meta name="twitter:description" content="项目代码地址：https://github.com/zhisheng17/springmvc最近在学习 Spring MVC ，其中在做一个简单的博客系统demo，是使用 SpringMVC 集成 Spring Data JPA（由 Hibernate JPA 提供），来进行强大的数据库访问。结果其中遇到的坑不 是一点点啊，我差点崩溃了，其中最大的原因就是由于 Hibernate JPA 中的bu">
@@ -295,6 +296,7 @@ var _hmt = _hmt || [];
 <p>因为JAVAEE6.0中的  javax.persistence.jar与 hibernate4.3.8中的hibernate-jpa-2.1-api-1.0.0.Final.jar冲突 ，我们在pom文件下添加依赖后，竟然没发现在 springmvc（项目名称）\target\springmvc（项目名称）\WEB-INF\lib    下看到  javax.persistence.jar 文件，结果竟然在 springmvc\lib下找到他了。</p>
 <p>解决办法就是在 pom文件和 mvc-dispatcher-servlet.xml 都配置好的情况下，将 springmvc\lib下的 javax.persistence.jar 删除。</p>
 <p>最后再说一句：<strong>Though the error drove almost crazy, hold on,  you wil get smile ！ Fighting</strong></p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fp3jkmizmpj30o00didgn.jpg" alt=""></p>
 
       
 
@@ -429,11 +431,11 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/2017/06/13/【字符串】字符串逆序/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/06/13/Java-16-lession/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          字符串
+          《疯狂 Java 突破程序员基本功的 16 课》读书笔记
         
       </div>
     </a>
@@ -616,10 +618,6 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
@@ -628,7 +626,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">面经</a>
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -640,11 +638,23 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">面经</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">NIO</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JMM</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Oracle</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -656,15 +666,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">NIO</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Maven</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -708,11 +710,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">RocketMQ</a>
+                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+                <a href="javascript:void(0)" class="js-tag color4">RocketMQ</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -740,11 +742,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Consul</a>
+                <a href="javascript:void(0)" class="js-tag color3">Android</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android</a>
+                <a href="javascript:void(0)" class="js-tag color2">Consul</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -784,6 +786,10 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">书籍</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Servlet</a>
               </li>
              
@@ -796,15 +802,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">书籍</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">实习圈</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">字符串</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -816,11 +814,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">表达式</a>
+                <a href="javascript:void(0)" class="js-tag color4">字符串</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">旋转词</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">表达式</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -840,11 +842,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">邮件发送</a>
+                <a href="javascript:void(0)" class="js-tag color3">finally</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">finally</a>
+                <a href="javascript:void(0)" class="js-tag color5">邮件发送</a>
               </li>
              
               <li class="article-tag-list-item">

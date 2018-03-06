@@ -34,7 +34,8 @@
 <meta property="og:image" content="http://ohfk1r827.bkt.clouddn.com/blog/171208/gkCi51aAg2.png-1">
 <meta property="og:image" content="http://ohfk1r827.bkt.clouddn.com/blog/171208/D0liIHeAFa.png-1">
 <meta property="og:image" content="http://ohfk1r827.bkt.clouddn.com/blog/171208/GhmkD1K8Kd.png-1">
-<meta property="og:updated_time" content="2018-01-21T11:21:15.000Z">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79gy1fp3jkmizmpj30o00didgn.jpg">
+<meta property="og:updated_time" content="2018-03-06T16:16:42.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Netty 源码阅读之初始环境搭建">
 <meta name="twitter:description" content="Netty 简介Netty 是由 JBOSS 提供的一个开源的 java 网络编程框架，主要是对 java 的 nio 包进行了再次封装。Netty 比 java 原生的nio 包提供了更加强大、稳定的功能和易于使用的 api。 netty 的作者是 Trustin Lee，这是一个韩国人，他还开发了另外一个著名的网络编程框架，mina。二者在很多方面都十分相似，它们的线程模型也是基本一致 。不">
@@ -288,6 +289,7 @@ var _hmt = _hmt || [];
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    <span class="keyword">long</span> count = Files.walk(Paths.get(<span class="string">"C:\\JetBrains\\IDEAProject\\netty\\transport-udt"</span>))    <span class="comment">// 递归获得项目目录下的所有文件</span></span><br><span class="line">            .filter(file -&gt; !Files.isDirectory(file))   <span class="comment">// 筛选出文件</span></span><br><span class="line">            .filter(file -&gt; file.toString().endsWith(<span class="string">".java"</span>))  <span class="comment">// 筛选出 java 文件</span></span><br><span class="line">            .flatMap(Try.of(file -&gt; Files.lines(file), Stream.empty()))     <span class="comment">// 将会抛出受检异常的 Lambda 包装为 抛出非受检异常的 Lambda</span></span><br><span class="line">            .filter(line -&gt; !line.trim().isEmpty())         <span class="comment">// 过滤掉空行</span></span><br><span class="line">            .filter(line -&gt; !line.trim().startsWith(<span class="string">"//"</span>))  <span class="comment">//过滤掉 //之类的注释</span></span><br><span class="line">            .filter(line -&gt; !(line.trim().startsWith(<span class="string">"/*"</span>) &amp;&amp; line.trim().endsWith(<span class="string">"*/"</span>)))  <span class="comment">//过滤掉/* */之类的注释</span></span><br><span class="line">            .filter(line -&gt; !(line.trim().startsWith(<span class="string">"/*"</span>) &amp;&amp; !line.trim().endsWith(<span class="string">"*/"</span>)))     <span class="comment">//过滤掉以 /* 开头的注释（去除空格后的开头）</span></span><br><span class="line">            .filter(line -&gt; !(!line.trim().startsWith(<span class="string">"/*"</span>) &amp;&amp; line.trim().endsWith(<span class="string">"*/"</span>)))     <span class="comment">//过滤掉已 */ 结尾的注释</span></span><br><span class="line">            .filter(line -&gt; !line.trim().startsWith(<span class="string">"*"</span>))   <span class="comment">//过滤掉 javadoc 中的文字注释</span></span><br><span class="line">            .filter(line -&gt; !line.trim().startsWith(<span class="string">"@Override"</span>))   <span class="comment">//过滤掉方法上含 @Override 的</span></span><br><span class="line">            .count();</span><br><span class="line">    System.out.println(<span class="string">"代码行数："</span> + count);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>后面我会把我阅读源码的中文注释及解析之类的更新到我的 GitHub 去（欢迎关注、我是来骗 star 的），<a href="https://github.com/zhisheng17/netty" target="_blank" rel="noopener">https://github.com/zhisheng17/netty</a>    ，如果你不想去自己设置上面所说的这些（偷懒），那就直接 fork 我的这份吧！</p>
 <h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>环境搭建就写到这里了，转载请注明地址：<a href="http://www.54tianzhisheng.cn/2017/12/08/netty-01-env/" target="_blank" rel="noopener">http://www.54tianzhisheng.cn/2017/12/08/netty-01-env/</a></p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fp3jkmizmpj30o00didgn.jpg" alt=""></p>
 
       
 
@@ -593,10 +595,6 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
@@ -605,7 +603,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">面经</a>
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -617,11 +615,23 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">面经</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">NIO</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JMM</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Oracle</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -633,15 +643,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">NIO</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Maven</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -685,11 +687,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">RocketMQ</a>
+                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+                <a href="javascript:void(0)" class="js-tag color4">RocketMQ</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -717,11 +719,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Consul</a>
+                <a href="javascript:void(0)" class="js-tag color3">Android</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android</a>
+                <a href="javascript:void(0)" class="js-tag color2">Consul</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -761,6 +763,10 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">书籍</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Servlet</a>
               </li>
              
@@ -773,15 +779,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">书籍</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">实习圈</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">字符串</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -793,11 +791,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">表达式</a>
+                <a href="javascript:void(0)" class="js-tag color4">字符串</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">旋转词</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">表达式</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -817,11 +819,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">邮件发送</a>
+                <a href="javascript:void(0)" class="js-tag color3">finally</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">finally</a>
+                <a href="javascript:void(0)" class="js-tag color5">邮件发送</a>
               </li>
              
               <li class="article-tag-list-item">

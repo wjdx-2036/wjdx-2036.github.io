@@ -36,7 +36,8 @@
 <meta property="og:image" content="https://www.ibm.com/developerworks/cn/java/j-lo-chinesecoding/image029.gif">
 <meta property="og:image" content="https://www.ibm.com/developerworks/cn/java/j-lo-chinesecoding/image031.gif">
 <meta property="og:image" content="https://www.ibm.com/developerworks/cn/java/j-lo-chinesecoding/image033.gif">
-<meta property="og:updated_time" content="2018-01-21T11:01:14.000Z">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79gy1fp3jkmizmpj30o00didgn.jpg">
+<meta property="og:updated_time" content="2018-03-06T16:06:07.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深入分析 Java Web 中的中文编码问题">
 <meta name="twitter:description" content="背景：  编码问题一直困扰着程序开发人员，尤其是在 Java 中更加明显，因为 Java 是跨平台的语言，在不同平台的编码之间的切换较多。接下来将介绍 Java 编码问题出现的根本原因；在 Java 中经常遇到的几种编码格式的区别；在 Java 中经常需要编码的场景；出现中文问题的原因分析；在开发 Java Web 中可能存在编码的几个地方；一个 HTTP 请求怎么控制编码格式；如何避免出现中文编">
@@ -369,6 +370,7 @@ var _hmt = _hmt || [];
 <p>综上所述，要解决中文问题，首先要搞清楚哪些地方会引起字符到字节的编码以及字节到字符的解码，最常见的地方就是读取会存储数据到磁盘，或者数据要经过网络传输。然后针对这些地方搞清楚操作这些数据的框架的或系统是如何控制编码的，正确设置编码格式，避免使用软件默认的或者是操作系统平台默认的编码格式。</p>
 <hr>
 <p>注明：文章大部分参考书籍《深入 Java Web 技术内幕》第三章，自己有删减，二次转载请也务必注明此出处。</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fp3jkmizmpj30o00didgn.jpg" alt=""></p>
 
       
 
@@ -487,18 +489,18 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/2017/06/13/程序访问文件的几种方式/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/06/13/java读取文件/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          程序访问文件的几种方式
+          Java读取文件
         
       </div>
     </a>
   
   
-    <a href="/2017/06/13/解决jdk1.8中发送邮件失败（handshake_failure）问题/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">解决jdk1.8中发送邮件失败（handshake_failure）问题</div>
+    <a href="/2017/06/13/程序访问文件的几种方式/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">程序访问文件的几种方式</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -674,10 +676,6 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
@@ -686,7 +684,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">面经</a>
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -698,11 +696,23 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">面经</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">NIO</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JMM</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Oracle</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -714,15 +724,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">NIO</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Maven</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -766,11 +768,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">RocketMQ</a>
+                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+                <a href="javascript:void(0)" class="js-tag color4">RocketMQ</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -798,11 +800,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Consul</a>
+                <a href="javascript:void(0)" class="js-tag color3">Android</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android</a>
+                <a href="javascript:void(0)" class="js-tag color2">Consul</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -842,6 +844,10 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">书籍</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Servlet</a>
               </li>
              
@@ -854,15 +860,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">书籍</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">实习圈</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">字符串</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -874,11 +872,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">表达式</a>
+                <a href="javascript:void(0)" class="js-tag color4">字符串</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">旋转词</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">表达式</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -898,11 +900,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">邮件发送</a>
+                <a href="javascript:void(0)" class="js-tag color3">finally</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">finally</a>
+                <a href="javascript:void(0)" class="js-tag color5">邮件发送</a>
               </li>
              
               <li class="article-tag-list-item">

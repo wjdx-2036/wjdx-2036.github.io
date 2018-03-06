@@ -26,7 +26,8 @@
 <meta property="og:description" content="真乃神器也，再复杂的 Json 都能给你解析出来，非常方便的获取 JSON 的内容，很强大！">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://ohfk1r827.bkt.clouddn.com/cb3.jpeg-1">
-<meta property="og:updated_time" content="2018-01-21T11:17:43.000Z">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79gy1fp3jkmizmpj30o00didgn.jpg">
+<meta property="og:updated_time" content="2018-03-06T16:14:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JsonPath —— JSON 解析神器">
 <meta name="twitter:description" content="真乃神器也，再复杂的 Json 都能给你解析出来，非常方便的获取 JSON 的内容，很强大！">
@@ -277,6 +278,7 @@ var _hmt = _hmt || [];
 <p>解析代码：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//输出book[0]的author值</span></span><br><span class="line">String author = JsonPath.read(json, <span class="string">"$.store.book[0].author"</span>);</span><br><span class="line">System.out.println(<span class="string">"author\t"</span>+author);</span><br><span class="line"><span class="comment">//输出全部author的值，使用Iterator迭代</span></span><br><span class="line">List&lt;String&gt; authors = JsonPath.read(json, <span class="string">"$.store.book[*].author"</span>);</span><br><span class="line">System.out.println(<span class="string">"authors\t"</span>+authors);</span><br><span class="line"></span><br><span class="line"><span class="comment">//输出book[*]中category == 'reference'的book</span></span><br><span class="line">List&lt;Object&gt; books = JsonPath.read(json, <span class="string">"$.store.book[?(@.category == 'reference')]"</span>);</span><br><span class="line">System.out.println(<span class="string">"books\t"</span>+books);</span><br><span class="line"><span class="comment">//输出book[*]中category == 'reference'的book或者</span></span><br><span class="line">List&lt;Object&gt; books2 = JsonPath.read(json, <span class="string">"$.store.book[?(@.category == 'reference' || @.price&gt;10)]"</span>);</span><br><span class="line">System.out.println(<span class="string">"books2\t"</span>+books2);</span><br><span class="line"></span><br><span class="line"><span class="comment">//输出book[*]中category == 'reference'的book的author</span></span><br><span class="line">List&lt;Object&gt; books1 = JsonPath.read(json, <span class="string">"$.store.book[?(@.category == 'reference')].author"</span>);</span><br><span class="line">System.out.println(<span class="string">"books1\t"</span>+books1);</span><br><span class="line"></span><br><span class="line"><span class="comment">//输出book[*]中price&gt;10的book</span></span><br><span class="line">List&lt;Object&gt; b1 = JsonPath.read(json, <span class="string">"$.store.book[?(@.price&gt;10)]"</span>);</span><br><span class="line">System.out.println(<span class="string">"b1"</span>+b1);</span><br><span class="line"></span><br><span class="line"><span class="comment">//输出book[*]中含有isbn元素的book</span></span><br><span class="line">List&lt;Object&gt; b2 = JsonPath.read(json, <span class="string">"$.store.book[?(@.isbn)]"</span>);</span><br><span class="line">System.out.println(<span class="string">"b2"</span>+b2);</span><br><span class="line"></span><br><span class="line"><span class="comment">//输出该json中所有price的值</span></span><br><span class="line">List&lt;Double&gt; prices = JsonPath.read(json, <span class="string">"$..price"</span>);</span><br><span class="line">System.out.println(<span class="string">"prices"</span>+prices);</span><br><span class="line"></span><br><span class="line"><span class="comment">//输出该json中所有title的值</span></span><br><span class="line">List&lt;Double&gt; title = JsonPath.read(json, <span class="string">"$..title"</span>);</span><br><span class="line">System.out.println(<span class="string">"title"</span>+title);</span><br><span class="line"><span class="comment">//输出该json中book 0,1的值</span></span><br><span class="line">List&lt;Double&gt; book01 = JsonPath.read(json, <span class="string">"$..book[0,1]"</span>);</span><br><span class="line">System.out.println(<span class="string">"book01"</span>+book01);</span><br><span class="line"><span class="comment">/* //输出该json中book 0,1的值</span></span><br><span class="line"><span class="comment">List&lt;Double&gt; book012 = JsonPath.read(json, "$..book[-2:]");</span></span><br><span class="line"><span class="comment">System.out.println("book012"+book012);*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//可以提前编辑一个路径，并多次使用它</span></span><br><span class="line">JsonPath path = JsonPath.compile(<span class="string">"$.store.book[*]"</span>);</span><br><span class="line">List&lt;Object&gt; b3 = path.read(json);</span><br><span class="line">System.out.println(<span class="string">"path\t"</span>+path+<span class="string">"\n"</span>+b3);</span><br></pre></td></tr></table></figure>
 <p>用法比较简单，多使用几次就会使用了！文章主要参考网上！原谅很多天不跟博的我现在竟然这样水了这么一篇文章，哈哈！实在是忙！</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fp3jkmizmpj30o00didgn.jpg" alt=""></p>
 
       
 
@@ -578,10 +580,6 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
@@ -590,7 +588,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">面经</a>
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -602,11 +600,23 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">面经</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">NIO</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JMM</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Oracle</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -618,15 +628,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">NIO</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Maven</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -670,11 +672,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">RocketMQ</a>
+                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+                <a href="javascript:void(0)" class="js-tag color4">RocketMQ</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -702,11 +704,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Consul</a>
+                <a href="javascript:void(0)" class="js-tag color3">Android</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android</a>
+                <a href="javascript:void(0)" class="js-tag color2">Consul</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -746,6 +748,10 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">书籍</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Servlet</a>
               </li>
              
@@ -758,15 +764,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">书籍</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">实习圈</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">字符串</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -778,11 +776,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">表达式</a>
+                <a href="javascript:void(0)" class="js-tag color4">字符串</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">旋转词</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">表达式</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -802,11 +804,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">邮件发送</a>
+                <a href="javascript:void(0)" class="js-tag color3">finally</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">finally</a>
+                <a href="javascript:void(0)" class="js-tag color5">邮件发送</a>
               </li>
              
               <li class="article-tag-list-item">

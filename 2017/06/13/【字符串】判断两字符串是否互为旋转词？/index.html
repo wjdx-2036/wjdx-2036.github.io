@@ -18,17 +18,19 @@
   <title>【字符串】判断两字符串是否互为旋转词？ | zhisheng的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="相关阅读：字符串逆序问题的解决方法题目： 如果对于一个字符串A，将A的前面任意一部分挪到后边去形成的字符串称为A的旋转词。 比如A=”12345”,A的旋转词有”12345”,”23451”,”34512”,”45123”和”51234”。 对于两个字符串A和B，请判断A和B是否互为旋转词。 给定两个字符串A和B及他们的长度lena，lenb，请返回一个bool值，代表他们是否互为旋转词。">
-<meta name="keywords" content="字符串,数据结构,算法,旋转词">
+<meta name="keywords" content="数据结构,算法,字符串,旋转词">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【字符串】判断两字符串是否互为旋转词？">
 <meta property="og:url" content="http://yoursite.com/2017/06/13/【字符串】判断两字符串是否互为旋转词？/index.html">
 <meta property="og:site_name" content="zhisheng的博客">
 <meta property="og:description" content="相关阅读：字符串逆序问题的解决方法题目： 如果对于一个字符串A，将A的前面任意一部分挪到后边去形成的字符串称为A的旋转词。 比如A=”12345”,A的旋转词有”12345”,”23451”,”34512”,”45123”和”51234”。 对于两个字符串A和B，请判断A和B是否互为旋转词。 给定两个字符串A和B及他们的长度lena，lenb，请返回一个bool值，代表他们是否互为旋转词。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-21T10:59:46.000Z">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79gy1fp3jkmizmpj30o00didgn.jpg">
+<meta property="og:updated_time" content="2018-03-06T16:05:02.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【字符串】判断两字符串是否互为旋转词？">
 <meta name="twitter:description" content="相关阅读：字符串逆序问题的解决方法题目： 如果对于一个字符串A，将A的前面任意一部分挪到后边去形成的字符串称为A的旋转词。 比如A=”12345”,A的旋转词有”12345”,”23451”,”34512”,”45123”和”51234”。 对于两个字符串A和B，请判断A和B是否互为旋转词。 给定两个字符串A和B及他们的长度lena，lenb，请返回一个bool值，代表他们是否互为旋转词。">
+<meta name="twitter:image" content="https://ws3.sinaimg.cn/large/006tNc79gy1fp3jkmizmpj30o00didgn.jpg">
   
     <link rel="alternative" href="/atom.xml" title="zhisheng的博客" type="application/atom+xml">
   
@@ -273,6 +275,7 @@ var _hmt = _hmt || [];
 <p>哈哈，发现他又调用了 <code>indexOf</code> 的方法，这次终于我们可以看到最后的 <strong>查找算法</strong> 如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Code shared by String and StringBuffer to do searches. The</span><br><span class="line"> * source is the character array being searched, and the target</span><br><span class="line"> * is the string being searched for.</span><br><span class="line"> *</span><br><span class="line"> * @param   source       the characters being searched.</span><br><span class="line"> * @param   sourceOffset offset of the source string.</span><br><span class="line"> * @param   sourceCount  count of the source string.</span><br><span class="line"> * @param   target       the characters being searched for.</span><br><span class="line"> * @param   targetOffset offset of the target string.</span><br><span class="line"> * @param   targetCount  count of the target string.</span><br><span class="line"> * @param   fromIndex    the index to begin searching from.</span><br><span class="line"> */</span><br><span class="line">static int indexOf(char[] source, int sourceOffset, int sourceCount,</span><br><span class="line">        char[] target, int targetOffset, int targetCount,</span><br><span class="line">        int fromIndex) &#123;</span><br><span class="line">    if (fromIndex &gt;= sourceCount) &#123;</span><br><span class="line">        return (targetCount == 0 ? sourceCount : -1);</span><br><span class="line">    &#125;</span><br><span class="line">    if (fromIndex &lt; 0) &#123;</span><br><span class="line">        fromIndex = 0;</span><br><span class="line">    &#125;</span><br><span class="line">    if (targetCount == 0) &#123;</span><br><span class="line">        return fromIndex;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    char first = target[targetOffset];</span><br><span class="line">    int max = sourceOffset + (sourceCount - targetCount);</span><br><span class="line"></span><br><span class="line">    for (int i = sourceOffset + fromIndex; i &lt;= max; i++) &#123;</span><br><span class="line">        /* Look for first character. */</span><br><span class="line">        if (source[i] != first) &#123;</span><br><span class="line">            while (++i &lt;= max &amp;&amp; source[i] != first);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        /* Found first character, now look at the rest of v2 */</span><br><span class="line">        if (i &lt;= max) &#123;</span><br><span class="line">            int j = i + 1;</span><br><span class="line">            int end = j + targetCount - 1;</span><br><span class="line">            for (int k = targetOffset + 1; j &lt; end &amp;&amp; source[j]</span><br><span class="line">                    == target[k]; j++, k++);</span><br><span class="line"></span><br><span class="line">            if (j == end) &#123;</span><br><span class="line">                /* Found whole string. */</span><br><span class="line">                return i - sourceOffset;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return -1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h3><p><strong>遇到这种问题多查看源码，想深入就得从底层做起！</strong></p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fp3jkmizmpj30o00didgn.jpg" alt=""></p>
 
       
 
@@ -317,15 +320,15 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">字符串</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">字符串</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
@@ -399,18 +402,18 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/2017/06/13/Spring MVC + Hibernate JPA + Bootstrap 搭建的博客系统/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/06/13/Hexo-yilia-toc/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Spring MVC + Hibernate JPA + Bootstrap 搭建的博客系统 Demo
+          Hexo + yilia 主题实现文章目录
         
       </div>
     </a>
   
   
-    <a href="/2017/06/13/利用Github Page 搭建个人博客网站/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">利用Github Page 搭建个人博客网站</div>
+    <a href="/2017/06/13/【字符串】字符串逆序/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">字符串</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -586,10 +589,6 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
@@ -598,7 +597,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">面经</a>
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -610,11 +609,23 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">面经</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">NIO</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JMM</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Oracle</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -626,15 +637,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">NIO</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Maven</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -678,11 +681,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">RocketMQ</a>
+                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+                <a href="javascript:void(0)" class="js-tag color4">RocketMQ</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -710,11 +713,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Consul</a>
+                <a href="javascript:void(0)" class="js-tag color3">Android</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android</a>
+                <a href="javascript:void(0)" class="js-tag color2">Consul</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -754,6 +757,10 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">书籍</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Servlet</a>
               </li>
              
@@ -766,15 +773,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">书籍</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">实习圈</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">字符串</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -786,11 +785,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">表达式</a>
+                <a href="javascript:void(0)" class="js-tag color4">字符串</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">旋转词</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">表达式</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -810,11 +813,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">邮件发送</a>
+                <a href="javascript:void(0)" class="js-tag color3">finally</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">finally</a>
+                <a href="javascript:void(0)" class="js-tag color5">邮件发送</a>
               </li>
              
               <li class="article-tag-list-item">

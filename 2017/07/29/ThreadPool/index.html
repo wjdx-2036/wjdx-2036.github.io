@@ -35,7 +35,8 @@
 <meta property="og:image" content="http://ohfk1r827.bkt.clouddn.com/newSingleThreadExecutor.jpg">
 <meta property="og:image" content="http://ohfk1r827.bkt.clouddn.com/newCachedThreadPool.jpg">
 <meta property="og:image" content="http://ohfk1r827.bkt.clouddn.com/newScheduledThreadPool.jpg">
-<meta property="og:updated_time" content="2018-01-21T11:26:01.000Z">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79gy1fp3jkmizmpj30o00didgn.jpg">
+<meta property="og:updated_time" content="2018-03-06T16:21:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java 线程池艺术探索">
 <meta name="twitter:description" content="线程池Wiki 上是这样解释的：Thread Pool  作用：利用线程池可以大大减少在创建和销毁线程上所花的时间以及系统资源的开销！ 下面主要讲下线程池中最重要的一个类 ThreadPoolExecutor 。">
@@ -322,6 +323,7 @@ var _hmt = _hmt || [];
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zhisheng.thread.threadpool.demo;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.ArrayBlockingQueue;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.ThreadPoolExecutor;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.TimeUnit;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by 10412 on 2017/7/24.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ThreadPool</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//核心线程数量为 2，最大线程数量 4，空闲线程存活的时间 60s，有界队列长度为 3,</span></span><br><span class="line">        <span class="comment">//ThreadPoolExecutor pool = new ThreadPoolExecutor(2, 4, 60, TimeUnit.SECONDS, new ArrayBlockingQueue&lt;&gt;(3));</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//核心线程数量为 2，最大线程数量 4，空闲线程存活的时间 60s， 无界队列,</span></span><br><span class="line">        <span class="comment">//ThreadPoolExecutor pool = new ThreadPoolExecutor(2, 4, 60L, TimeUnit.SECONDS, new LinkedBlockingDeque&lt;&gt;());</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//核心线程数量为 2，最大线程数量 4，空闲线程存活的时间 60s，有界队列长度为 3, 使用自定义拒绝策略</span></span><br><span class="line">        ThreadPoolExecutor pool = <span class="keyword">new</span> ThreadPoolExecutor(<span class="number">2</span>, <span class="number">4</span>, <span class="number">60</span>, TimeUnit.SECONDS,</span><br><span class="line">                <span class="keyword">new</span> ArrayBlockingQueue&lt;Runnable&gt;(<span class="number">3</span>), <span class="keyword">new</span> RejectedThreadPoolHandler());</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">10</span>; i++) &#123;</span><br><span class="line">            <span class="comment">//创建 10 个任务</span></span><br><span class="line">            MyTask task = <span class="keyword">new</span> MyTask(i, <span class="string">"任务"</span> + i);</span><br><span class="line">            <span class="comment">//运行</span></span><br><span class="line">            pool.execute(task);</span><br><span class="line">            System.out.println(<span class="string">"活跃的线程数："</span>+pool.getActiveCount() + <span class="string">",核心线程数："</span> + pool.getCorePoolSize() + <span class="string">",线程池大小："</span> + pool.getPoolSize() + <span class="string">",队列的大小"</span> + pool.getQueue().size());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//关闭线程池</span></span><br><span class="line">        pool.shutdown();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>这里运行结果就不截图了，我在本地测试了代码是没问题的，感兴趣的建议还是自己跑一下，然后分析下结果是不是和前面分析的一样，如有问题，请在我<a href="http://www.54tianzhisheng.cn/2017/07/29/ThreadPool/" target="_blank" rel="noopener">博客</a>下面评论！</p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本文一开始讲了线程池的介绍和好处，然后分析了线程池中最核心的 ThreadPoolExecutor 类中构造器的七个参数的作用、类中两个重要的方法，然后在对比研究了下 JDK 中自带的四种线程池的用法和内部代码细节，最后写了一个自定义的线程池。</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fp3jkmizmpj30o00didgn.jpg" alt=""></p>
 
       
 
@@ -444,11 +446,11 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/2017/08/04/alibaba/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/08/04/yaxin/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          秋招第三站 —— 内推阿里（一面）
+          秋招第一站 —— 亚信科技
         
       </div>
     </a>
@@ -631,10 +633,6 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
@@ -643,7 +641,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">面经</a>
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -655,11 +653,23 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">面经</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">NIO</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JMM</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Oracle</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -671,15 +681,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">NIO</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Maven</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -723,11 +725,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">RocketMQ</a>
+                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+                <a href="javascript:void(0)" class="js-tag color4">RocketMQ</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -755,11 +757,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Consul</a>
+                <a href="javascript:void(0)" class="js-tag color3">Android</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android</a>
+                <a href="javascript:void(0)" class="js-tag color2">Consul</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -799,6 +801,10 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">书籍</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Servlet</a>
               </li>
              
@@ -811,15 +817,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">书籍</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">实习圈</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">字符串</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -831,11 +829,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">表达式</a>
+                <a href="javascript:void(0)" class="js-tag color4">字符串</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">旋转词</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">表达式</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -855,11 +857,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">邮件发送</a>
+                <a href="javascript:void(0)" class="js-tag color3">finally</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">finally</a>
+                <a href="javascript:void(0)" class="js-tag color5">邮件发送</a>
               </li>
              
               <li class="article-tag-list-item">

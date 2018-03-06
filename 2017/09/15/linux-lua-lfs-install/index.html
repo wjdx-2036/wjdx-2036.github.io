@@ -26,7 +26,8 @@
 <meta property="og:description" content="火云邪神语录：天下武功，无坚不破，唯快不破！Nginx 的看家本领就是速度，Lua 的拿手好戏亦是速度，这两者的结合在速度上无疑有基因上的优势。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://www.lua.org/images/lua.gif">
-<meta property="og:updated_time" content="2018-01-21T11:18:42.000Z">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79gy1fp3jkmizmpj30o00didgn.jpg">
+<meta property="og:updated_time" content="2018-03-06T16:14:55.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux 下 lua 开发环境安装及安装 luafilesystem">
 <meta name="twitter:description" content="火云邪神语录：天下武功，无坚不破，唯快不破！Nginx 的看家本领就是速度，Lua 的拿手好戏亦是速度，这两者的结合在速度上无疑有基因上的优势。">
@@ -275,6 +276,7 @@ var _hmt = _hmt || [];
 <p>当然以上这是在 Linux 安装的， Windows 上的其实比这还简单了，但是安装 luafilesystem 的话需要自己去下载个 lfs.dll ，然后把这个放到 lua 的安装路径去。很简单的，这里就不细说了。</p>
 <h3 id="出现过的错误："><a href="#出现过的错误：" class="headerlink" title="出现过的错误："></a>出现过的错误：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[root@n1 lua-5.1.5]# make linux test</span><br><span class="line">cd src &amp;&amp; make linux</span><br><span class="line">make[1]: Entering directory `/opt/lua-5.1.5/src&apos;</span><br><span class="line">make all MYCFLAGS=-DLUA_USE_LINUX MYLIBS=&quot;-Wl,-E -ldl -lreadline -lhistory -lncurses&quot;</span><br><span class="line">make[2]: Entering directory `/opt/lua-5.1.5/src&apos;</span><br><span class="line">gcc -O2 -Wall -DLUA_USE_LINUX   -c -o lapi.o lapi.c</span><br><span class="line">make[2]: gcc：命令未找到</span><br><span class="line">make[2]: *** [lapi.o] 错误 127</span><br><span class="line">make[2]: Leaving directory `/opt/lua-5.1.5/src&apos;</span><br><span class="line">make[1]: *** [linux] 错误 2</span><br><span class="line">make[1]: Leaving directory `/opt/lua-5.1.5/src&apos;</span><br><span class="line">make: *** [linux] 错误 2</span><br></pre></td></tr></table></figure>
 <p><strong>原因</strong>：最开始的那些依赖没安装</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fp3jkmizmpj30o00didgn.jpg" alt=""></p>
 
       
 
@@ -576,10 +578,6 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
@@ -588,7 +586,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">面经</a>
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -600,11 +598,23 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">面经</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">NIO</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JMM</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Oracle</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -616,15 +626,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">NIO</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Maven</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -668,11 +670,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">RocketMQ</a>
+                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+                <a href="javascript:void(0)" class="js-tag color4">RocketMQ</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -700,11 +702,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Consul</a>
+                <a href="javascript:void(0)" class="js-tag color3">Android</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android</a>
+                <a href="javascript:void(0)" class="js-tag color2">Consul</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -744,6 +746,10 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">书籍</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Servlet</a>
               </li>
              
@@ -756,15 +762,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">书籍</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">实习圈</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">字符串</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -776,11 +774,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">表达式</a>
+                <a href="javascript:void(0)" class="js-tag color4">字符串</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">旋转词</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">表达式</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -800,11 +802,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">邮件发送</a>
+                <a href="javascript:void(0)" class="js-tag color3">finally</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">finally</a>
+                <a href="javascript:void(0)" class="js-tag color5">邮件发送</a>
               </li>
              
               <li class="article-tag-list-item">
