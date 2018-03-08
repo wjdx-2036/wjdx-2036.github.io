@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2018/03/06/SpringBoot2-Migration-Guide/</loc>
+    
+    <lastmod>2018-03-07T14:08:36.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2018/03/04/springcloud-vedio/</loc>
     
     <lastmod>2018-03-06T16:22:50.000Z</lastmod>
@@ -649,13 +656,6 @@
     <loc>http://yoursite.com/2018/03/06/SpringBoot2-new-features/</loc>
     
     <lastmod>2018-03-06T16:03:21.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2018/03/06/SpringBoot2-Migration-Guide/</loc>
-    
-    <lastmod>2018-03-06T16:03:04.000Z</lastmod>
     
   </url>
   
