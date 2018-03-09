@@ -31,7 +31,7 @@
 <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1fp3h0820m2j31hc0zkwxr.jpg">
 <meta property="og:image" content="http://ohfk1r827.bkt.clouddn.com/blog/180103/C6LG3mGa12.jpg">
 <meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79gy1fp3jkmizmpj30o00didgn.jpg">
-<meta property="og:updated_time" content="2018-03-09T05:21:32.000Z">
+<meta property="og:updated_time" content="2018-03-09T06:13:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spring Boot 2.0 迁移指南">
 <meta name="twitter:description" content="前提希望本文档将帮助您把应用程序迁移到 Spring Boot 2.0。">
@@ -227,7 +227,7 @@ var _hmt = _hmt || [];
     <div id="toc-article" class="toc-article">
         <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
         <strong class="toc-title">文章目录</strong>
-           <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#前提"><span class="toc-number">1.</span> <span class="toc-text">前提</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关注我"><span class="toc-number">2.</span> <span class="toc-text">关注我</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在你开始之前"><span class="toc-number">3.</span> <span class="toc-text">在你开始之前</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#构建您的-Spring-Boot-应用程序"><span class="toc-number">4.</span> <span class="toc-text">构建您的 Spring Boot 应用程序</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Spring-Boot-Maven-插件"><span class="toc-number">4.1.</span> <span class="toc-text">Spring Boot Maven 插件</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Surefire-默认值"><span class="toc-number">4.1.1.</span> <span class="toc-text">Surefire 默认值</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Spring-Boot-Gradle-插件"><span class="toc-number">4.2.</span> <span class="toc-text">Spring Boot Gradle 插件</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#依赖管理"><span class="toc-number">4.2.1.</span> <span class="toc-text">依赖管理</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#建立可执行的-Jars-和-Wars"><span class="toc-number">4.2.2.</span> <span class="toc-text">建立可执行的 Jars 和 Wars</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#配置更新"><span class="toc-number">4.2.3.</span> <span class="toc-text">配置更新</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Spring-Boot-特性"><span class="toc-number">5.</span> <span class="toc-text">Spring Boot 特性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#默认代理策略"><span class="toc-number">5.1.</span> <span class="toc-text">默认代理策略</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SpringApplication"><span class="toc-number">5.2.</span> <span class="toc-text">SpringApplication</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Web-环境"><span class="toc-number">5.2.1.</span> <span class="toc-text">Web 环境</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Spring-Boot-应用程序事件更改"><span class="toc-number">5.2.2.</span> <span class="toc-text">Spring Boot 应用程序事件更改</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Banner"><span class="toc-number">5.2.3.</span> <span class="toc-text">Banner</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#外部化配置"><span class="toc-number">5.3.</span> <span class="toc-text">外部化配置</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#轻松的绑定"><span class="toc-number">5.3.1.</span> <span class="toc-text">轻松的绑定</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#ConfigurationProperties-验证"><span class="toc-number">5.3.2.</span> <span class="toc-text">@ConfigurationProperties 验证</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#配置位置"><span class="toc-number">5.3.3.</span> <span class="toc-text">配置位置</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#开发-Web-应用程序"><span class="toc-number">5.4.</span> <span class="toc-text">开发 Web 应用程序</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#嵌入式容器包装结构"><span class="toc-number">5.4.1.</span> <span class="toc-text">嵌入式容器包装结构</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#特定于-Servlet-的服务器属性"><span class="toc-number">5.4.2.</span> <span class="toc-text">特定于 Servlet 的服务器属性</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Web-Starter-作为传递依赖"><span class="toc-number">5.4.3.</span> <span class="toc-text">Web Starter 作为传递依赖</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#模板引擎"><span class="toc-number">5.4.4.</span> <span class="toc-text">模板引擎</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Jackson-JSON-支持"><span class="toc-number">5.4.5.</span> <span class="toc-text">Jackson / JSON 支持</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Spring-MVC-路径匹配默认行为更改"><span class="toc-number">5.4.6.</span> <span class="toc-text">Spring MVC 路径匹配默认行为更改</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Servlet-过滤器"><span class="toc-number">5.4.7.</span> <span class="toc-text">Servlet 过滤器</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#RestTemplateBuilder"><span class="toc-number">5.4.8.</span> <span class="toc-text">RestTemplateBuilder</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#WebJars-定位器"><span class="toc-number">5.4.9.</span> <span class="toc-text">WebJars 定位器</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Security"><span class="toc-number">5.5.</span> <span class="toc-text">Security</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#默认安全"><span class="toc-number">5.5.1.</span> <span class="toc-text">默认安全</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#默认用户"><span class="toc-number">5.5.2.</span> <span class="toc-text">默认用户</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#AuthenticationManager-Bean"><span class="toc-number">5.5.3.</span> <span class="toc-text">AuthenticationManager Bean</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#OAuth2"><span class="toc-number">5.5.4.</span> <span class="toc-text">OAuth2</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#执行器安全"><span class="toc-number">5.5.5.</span> <span class="toc-text">执行器安全</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用-SQL-数据库"><span class="toc-number">5.6.</span> <span class="toc-text">使用 SQL 数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#配置数据源"><span class="toc-number">5.6.1.</span> <span class="toc-text">配置数据源</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#WARN-消息隐含的’打开在视图’"><span class="toc-number">5.6.2.</span> <span class="toc-text">WARN 消息隐含的’打开在视图’</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#JPA-和-Spring-Data"><span class="toc-number">5.6.3.</span> <span class="toc-text">JPA 和 Spring Data</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Flyway"><span class="toc-number">5.6.4.</span> <span class="toc-text">Flyway</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Liquibase"><span class="toc-number">5.6.5.</span> <span class="toc-text">Liquibase</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#数据库初始化"><span class="toc-number">5.6.6.</span> <span class="toc-text">数据库初始化</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#更新默认的’创建-删除’处理"><span class="toc-number">5.6.7.</span> <span class="toc-text">更新默认的’创建 - 删除’处理</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#整合-NoSQL"><span class="toc-number">5.7.</span> <span class="toc-text">整合 NoSQL</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Redis"><span class="toc-number">5.7.1.</span> <span class="toc-text">Redis</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Elasticsearch"><span class="toc-number">5.7.2.</span> <span class="toc-text">Elasticsearch</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#高速缓存"><span class="toc-number">5.8.</span> <span class="toc-text">高速缓存</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#批量"><span class="toc-number">5.9.</span> <span class="toc-text">批量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#测试"><span class="toc-number">5.10.</span> <span class="toc-text">测试</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Mockito-1-x"><span class="toc-number">5.10.1.</span> <span class="toc-text">Mockito 1.x</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Spring-Boot-Actuator"><span class="toc-number">6.</span> <span class="toc-text">Spring Boot Actuator</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#构建"><span class="toc-number">6.1.</span> <span class="toc-text">构建</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Keys-的配置结构"><span class="toc-number">6.2.</span> <span class="toc-text">Keys 的配置结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#基本路径"><span class="toc-number">6.3.</span> <span class="toc-text">基本路径</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#审计事件-API-更改"><span class="toc-number">6.4.</span> <span class="toc-text">审计事件 API 更改</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Endpoints"><span class="toc-number">6.5.</span> <span class="toc-text">Endpoints</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Endpoint-changes"><span class="toc-number">6.5.1.</span> <span class="toc-text">Endpoint changes</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#端点格式"><span class="toc-number">6.6.</span> <span class="toc-text">端点格式</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#actuator-mappings-端点大改变"><span class="toc-number">6.6.1.</span> <span class="toc-text">/actuator/mappings 端点大改变</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#actuator-httptrace-端点大改变"><span class="toc-number">6.6.2.</span> <span class="toc-text">/actuator/httptrace 端点大改变</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#迁移自定义端点"><span class="toc-number">6.7.</span> <span class="toc-text">迁移自定义端点</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Metrics"><span class="toc-number">7.</span> <span class="toc-text">Metrics</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#设置-icrometer"><span class="toc-number">7.1.</span> <span class="toc-text">设置 icrometer</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#迁移定制计数器-量表"><span class="toc-number">7.2.</span> <span class="toc-text">迁移定制计数器/量表</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#开发者工具"><span class="toc-number">8.</span> <span class="toc-text">开发者工具</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#热拔插"><span class="toc-number">8.1.</span> <span class="toc-text">热拔插</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Devtools-远程调试隧道"><span class="toc-number">8.2.</span> <span class="toc-text">Devtools 远程调试隧道</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#已删除的功能"><span class="toc-number">9.</span> <span class="toc-text">已删除的功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#依赖版本"><span class="toc-number">10.</span> <span class="toc-text">依赖版本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-number">11.</span> <span class="toc-text">参考资料</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#相关文章"><span class="toc-number">12.</span> <span class="toc-text">相关文章</span></a></li></ol>
+           <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#前提"><span class="toc-number">1.</span> <span class="toc-text">前提</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关注我"><span class="toc-number">2.</span> <span class="toc-text">关注我</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在你开始之前"><span class="toc-number">3.</span> <span class="toc-text">在你开始之前</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#构建您的-Spring-Boot-应用程序"><span class="toc-number">4.</span> <span class="toc-text">构建您的 Spring Boot 应用程序</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Spring-Boot-Maven-插件"><span class="toc-number">4.1.</span> <span class="toc-text">Spring Boot Maven 插件</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Surefire-默认值"><span class="toc-number">4.1.1.</span> <span class="toc-text">Surefire 默认值</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Spring-Boot-Gradle-插件"><span class="toc-number">4.2.</span> <span class="toc-text">Spring Boot Gradle 插件</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#依赖管理"><span class="toc-number">4.2.1.</span> <span class="toc-text">依赖管理</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#建立可执行的-Jars-和-Wars"><span class="toc-number">4.2.2.</span> <span class="toc-text">建立可执行的 Jars 和 Wars</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#配置更新"><span class="toc-number">4.2.3.</span> <span class="toc-text">配置更新</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Spring-Boot-特性"><span class="toc-number">5.</span> <span class="toc-text">Spring Boot 特性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#默认动态代理策略"><span class="toc-number">5.1.</span> <span class="toc-text">默认动态代理策略</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SpringApplication"><span class="toc-number">5.2.</span> <span class="toc-text">SpringApplication</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Web-环境"><span class="toc-number">5.2.1.</span> <span class="toc-text">Web 环境</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Spring-Boot-应用程序事件更改"><span class="toc-number">5.2.2.</span> <span class="toc-text">Spring Boot 应用程序事件更改</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Banner"><span class="toc-number">5.2.3.</span> <span class="toc-text">Banner</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#外部化配置"><span class="toc-number">5.3.</span> <span class="toc-text">外部化配置</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#轻松的绑定"><span class="toc-number">5.3.1.</span> <span class="toc-text">轻松的绑定</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#ConfigurationProperties-验证"><span class="toc-number">5.3.2.</span> <span class="toc-text">@ConfigurationProperties 验证</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#配置位置"><span class="toc-number">5.3.3.</span> <span class="toc-text">配置位置</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#开发-Web-应用程序"><span class="toc-number">5.4.</span> <span class="toc-text">开发 Web 应用程序</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#嵌入式容器包装结构"><span class="toc-number">5.4.1.</span> <span class="toc-text">嵌入式容器包装结构</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#特定于-Servlet-的服务器属性"><span class="toc-number">5.4.2.</span> <span class="toc-text">特定于 Servlet 的服务器属性</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Web-Starter-作为传递依赖"><span class="toc-number">5.4.3.</span> <span class="toc-text">Web Starter 作为传递依赖</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#模板引擎"><span class="toc-number">5.4.4.</span> <span class="toc-text">模板引擎</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Jackson-JSON-支持"><span class="toc-number">5.4.5.</span> <span class="toc-text">Jackson / JSON 支持</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Spring-MVC-路径匹配默认行为更改"><span class="toc-number">5.4.6.</span> <span class="toc-text">Spring MVC 路径匹配默认行为更改</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Servlet-过滤器"><span class="toc-number">5.4.7.</span> <span class="toc-text">Servlet 过滤器</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#RestTemplateBuilder"><span class="toc-number">5.4.8.</span> <span class="toc-text">RestTemplateBuilder</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#WebJars-定位器"><span class="toc-number">5.4.9.</span> <span class="toc-text">WebJars 定位器</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Security"><span class="toc-number">5.5.</span> <span class="toc-text">Security</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#默认安全"><span class="toc-number">5.5.1.</span> <span class="toc-text">默认安全</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#默认用户"><span class="toc-number">5.5.2.</span> <span class="toc-text">默认用户</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#AuthenticationManager-Bean"><span class="toc-number">5.5.3.</span> <span class="toc-text">AuthenticationManager Bean</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#OAuth2"><span class="toc-number">5.5.4.</span> <span class="toc-text">OAuth2</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#执行器安全"><span class="toc-number">5.5.5.</span> <span class="toc-text">执行器安全</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用-SQL-数据库"><span class="toc-number">5.6.</span> <span class="toc-text">使用 SQL 数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#配置数据源"><span class="toc-number">5.6.1.</span> <span class="toc-text">配置数据源</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#WARN-消息隐含的’打开在视图’"><span class="toc-number">5.6.2.</span> <span class="toc-text">WARN 消息隐含的’打开在视图’</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#JPA-和-Spring-Data"><span class="toc-number">5.6.3.</span> <span class="toc-text">JPA 和 Spring Data</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Flyway"><span class="toc-number">5.6.4.</span> <span class="toc-text">Flyway</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Liquibase"><span class="toc-number">5.6.5.</span> <span class="toc-text">Liquibase</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#数据库初始化"><span class="toc-number">5.6.6.</span> <span class="toc-text">数据库初始化</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#更新默认的’创建-删除’处理"><span class="toc-number">5.6.7.</span> <span class="toc-text">更新默认的’创建 - 删除’处理</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#整合-NoSQL"><span class="toc-number">5.7.</span> <span class="toc-text">整合 NoSQL</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Redis"><span class="toc-number">5.7.1.</span> <span class="toc-text">Redis</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Elasticsearch"><span class="toc-number">5.7.2.</span> <span class="toc-text">Elasticsearch</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#高速缓存"><span class="toc-number">5.8.</span> <span class="toc-text">高速缓存</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#批量"><span class="toc-number">5.9.</span> <span class="toc-text">批量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#测试"><span class="toc-number">5.10.</span> <span class="toc-text">测试</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Mockito-1-x"><span class="toc-number">5.10.1.</span> <span class="toc-text">Mockito 1.x</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Spring-Boot-Actuator"><span class="toc-number">6.</span> <span class="toc-text">Spring Boot Actuator</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#构建"><span class="toc-number">6.1.</span> <span class="toc-text">构建</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Keys-的配置结构"><span class="toc-number">6.2.</span> <span class="toc-text">Keys 的配置结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#基本路径"><span class="toc-number">6.3.</span> <span class="toc-text">基本路径</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#审计事件-API-更改"><span class="toc-number">6.4.</span> <span class="toc-text">审计事件 API 更改</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Endpoints"><span class="toc-number">6.5.</span> <span class="toc-text">Endpoints</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Endpoint-changes"><span class="toc-number">6.5.1.</span> <span class="toc-text">Endpoint changes</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#端点格式"><span class="toc-number">6.6.</span> <span class="toc-text">端点格式</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#actuator-mappings-端点大改变"><span class="toc-number">6.6.1.</span> <span class="toc-text">/actuator/mappings 端点大改变</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#actuator-httptrace-端点大改变"><span class="toc-number">6.6.2.</span> <span class="toc-text">/actuator/httptrace 端点大改变</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#迁移自定义端点"><span class="toc-number">6.7.</span> <span class="toc-text">迁移自定义端点</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Metrics"><span class="toc-number">7.</span> <span class="toc-text">Metrics</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#设置-icrometer"><span class="toc-number">7.1.</span> <span class="toc-text">设置 icrometer</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#迁移定制计数器-量表"><span class="toc-number">7.2.</span> <span class="toc-text">迁移定制计数器/量表</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#开发者工具"><span class="toc-number">8.</span> <span class="toc-text">开发者工具</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#热拔插"><span class="toc-number">8.1.</span> <span class="toc-text">热拔插</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Devtools-远程调试隧道"><span class="toc-number">8.2.</span> <span class="toc-text">Devtools 远程调试隧道</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#已删除的功能"><span class="toc-number">9.</span> <span class="toc-text">已删除的功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#依赖版本"><span class="toc-number">10.</span> <span class="toc-text">依赖版本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-number">11.</span> <span class="toc-text">参考资料</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#相关文章"><span class="toc-number">12.</span> <span class="toc-text">相关文章</span></a></li></ol>
          </div>
    <script type="text/javascript">
     function showToc(){
@@ -270,11 +270,11 @@ var _hmt = _hmt || [];
 <p>注意：依赖管理插件仍然是 spring-boot-gradle-plugin 的传递依赖项，所以不需要在 buildscript 配置中将其列为类路径依赖项。</p>
 <h5 id="建立可执行的-Jars-和-Wars"><a href="#建立可执行的-Jars-和-Wars" class="headerlink" title="建立可执行的 Jars 和 Wars"></a>建立可执行的 Jars 和 Wars</h5><p> <code>bootRepackage</code> 任务已经被替换成 <code>bootJar</code> 和 <code>bootWar</code> 任务，分别用于构建可执行的 <code>jar</code> 包和 <code>war</code>包。</p>
 <h5 id="配置更新"><a href="#配置更新" class="headerlink" title="配置更新"></a>配置更新</h5><p><code>BootRun</code>，<code>BootJar</code>和<code>BootWar</code>任务现在都使用<code>mainClassName</code>的属性来配置主类的名称。这使得三个特定于引导的任务相互一致，并将其与 Gradle 自己的应用程序插件进行对齐。</p>
-<h3 id="Spring-Boot-特性"><a href="#Spring-Boot-特性" class="headerlink" title="Spring Boot 特性"></a>Spring Boot 特性</h3><h4 id="默认代理策略"><a href="#默认代理策略" class="headerlink" title="默认代理策略"></a>默认代理策略</h4><p>Spring Boot 默认使用 CGLIB 代理，包括 AOP 支持。如果你需要基于代理的代理，你需要设置<code>spring.aop.proxy-target-class</code>为<code>false</code>。</p>
-<h4 id="SpringApplication"><a href="#SpringApplication" class="headerlink" title="SpringApplication"></a>SpringApplication</h4><h5 id="Web-环境"><a href="#Web-环境" class="headerlink" title="Web 环境"></a>Web 环境</h5><p>Spring Boot 应用程序现在可以在更多模式下运行，因此<code>spring.main.web-environment</code>现在不推荐使用属性来支持<code>spring.main.web-application-type</code>更多的控制。</p>
+<h3 id="Spring-Boot-特性"><a href="#Spring-Boot-特性" class="headerlink" title="Spring Boot 特性"></a>Spring Boot 特性</h3><h4 id="默认动态代理策略"><a href="#默认动态代理策略" class="headerlink" title="默认动态代理策略"></a>默认动态代理策略</h4><p>Spring Boot 默认使用 CGLIB 做动态代理代理(基于类的动态代理)，包括对 AOP 的支持。如果你需要基于接口的动态代理，你需要将<code>spring.aop.proxy-target-class</code> 设置为<code>false</code>。</p>
+<h4 id="SpringApplication"><a href="#SpringApplication" class="headerlink" title="SpringApplication"></a>SpringApplication</h4><h5 id="Web-环境"><a href="#Web-环境" class="headerlink" title="Web 环境"></a>Web 环境</h5><p>Spring Boot 应用程序现在可以在更多模式下运行，因此<code>spring.main.web-environment</code>现在不推荐使用，<code>spring.main.web-application-type</code>属性可以提供更多的支持。</p>
 <p>如果您想确保应用程序不启动 Web 服务器，则必须将该属性更改为：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">spring.main.web-application-type=none</span><br></pre></td></tr></table></figure>
-<p>注意：还有一个<code>setWebApplicationType</code>上<code>SpringApplication</code>，如果你想这样做编程。</p>
+<p>注意：可以通过  <code>SpringApplication</code> 的 <code>setWebApplicationType</code> 方法实现。</p>
 <h5 id="Spring-Boot-应用程序事件更改"><a href="#Spring-Boot-应用程序事件更改" class="headerlink" title="Spring Boot 应用程序事件更改"></a>Spring Boot 应用程序事件更改</h5><p>我们已经添加了一个新事件<code>ApplicationStartedEvent</code>。 <code>ApplicationStartedEvent</code>在上下文刷新之后但在任何应用程序和命令行参数被调用之前发送。 <code>ApplicationReadyEvent</code>在任何应用程序和命令行参数被调用后发送。它表示应用程序已准备好为请求提供服务。</p>
 <p>请参阅<a href="https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#boot-features-application-events-and-listeners" target="_blank" rel="noopener">更新的参考文档</a>。</p>
 <h5 id="Banner"><a href="#Banner" class="headerlink" title="Banner"></a>Banner</h5><p>在我们限制 Spring Boot 使用的根名称空间的数量的过程中，与标志相关的属性已被重定位到<code>spring.banner</code>。</p>
@@ -294,8 +294,8 @@ var _hmt = _hmt || [];
 <p>由于现在内置了轻松绑定，因此只要使用其中一种支持的格式，就可以请求任何属性而不必关心案例：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">FlagType flagType = Binder.get(environment)</span><br><span class="line">		.bind(<span class="string">"acme.app.my-flag"</span>, FlagType.class)</span><br><span class="line">		.orElse(FlagType.DEFAULT);</span><br></pre></td></tr></table></figure>
 <h5 id="ConfigurationProperties-验证"><a href="#ConfigurationProperties-验证" class="headerlink" title="@ConfigurationProperties 验证"></a><code>@ConfigurationProperties</code> 验证</h5><p>如果您想打开验证，现在必须为您的<code>@ConfigurationProperties</code>对象添加注释<code>@Validated</code>。</p>
-<h5 id="配置位置"><a href="#配置位置" class="headerlink" title="配置位置"></a>配置位置</h5><p><code>spring.config.location</code>配置的行为已被修复; 它先前将一个位置添加到默认位置列表中，现在它将替换默认位置。如果你依靠之前处理的方式，现在应该使用它<code>spring.config.additional-location</code>。</p>
-<h4 id="开发-Web-应用程序"><a href="#开发-Web-应用程序" class="headerlink" title="开发 Web 应用程序"></a>开发 Web 应用程序</h4><h5 id="嵌入式容器包装结构"><a href="#嵌入式容器包装结构" class="headerlink" title="嵌入式容器包装结构"></a>嵌入式容器包装结构</h5><p>为了支持反应性用例，嵌入式容器包结构已经被非常广泛地重构。 <code>EmbeddedServletContainer</code>已被重新命名为，<code>WebServer</code>并且该<code>org.springframework.boot.context.embedded</code>包已被重新定位到<code>org.springframework.boot.web.embedded</code>。例如，如果您使用<code>TomcatEmbeddedServletContainerFactory</code>回调接口定制嵌入式Tomcat容器，则应该使用<code>TomcatServletWebServerFactory</code>。</p>
+<h5 id="配置位置"><a href="#配置位置" class="headerlink" title="配置位置"></a>配置位置</h5><p><code>spring.config.location</code>配置的方式已被修复; 它提前将一个位置添加到默认位置列表中，现在它将替换默认位置。如果你是按照以前的方式进行处理，现在应该使用它<code>spring.config.additional-location</code>进行替换。</p>
+<h4 id="开发-Web-应用程序"><a href="#开发-Web-应用程序" class="headerlink" title="开发 Web 应用程序"></a>开发 Web 应用程序</h4><h5 id="嵌入式容器包装结构"><a href="#嵌入式容器包装结构" class="headerlink" title="嵌入式容器包装结构"></a>嵌入式容器包装结构</h5><p>为了支持响应式用例，嵌入式容器包结构已经被大幅度的重构。 <code>EmbeddedServletContainer</code>已被重新命名为，<code>WebServer</code>并且该<code>org.springframework.boot.context.embedded</code>包已被重新定位到<code>org.springframework.boot.web.embedded</code>。例如，如果您使用<code>TomcatEmbeddedServletContainerFactory</code>回调接口定制嵌入式 Tomcat 容器，则应该使用<code>TomcatServletWebServerFactory</code>。</p>
 <h5 id="特定于-Servlet-的服务器属性"><a href="#特定于-Servlet-的服务器属性" class="headerlink" title="特定于 Servlet 的服务器属性"></a>特定于 Servlet 的服务器属性</h5><p>许多<code>server.*</code> 属性 ( Servlet 特有的) 已经转移到<code>server.servlet</code>：</p>
 <table>
 <thead>
@@ -331,10 +331,10 @@ var _hmt = _hmt || [];
 </tr>
 </tbody>
 </table>
-<h5 id="Web-Starter-作为传递依赖"><a href="#Web-Starter-作为传递依赖" class="headerlink" title="Web Starter 作为传递依赖"></a>Web Starter 作为传递依赖</h5><p>以前有几个 Spring Boot starter 是依赖于 Spring MVC 而传递的<code>spring-boot-starter-web</code>。借助 Spring WebFlux的新支持<code>spring-boot-starter-mustache</code>，<code>spring-boot-starter-freemarker</code>并<code>spring-boot-starter-thymeleaf</code>不再依赖它。开发者有责任选择和添加<code>spring-boot-starter-web</code>或<code>spring-boot-starter-webflux</code>。</p>
-<h5 id="模板引擎"><a href="#模板引擎" class="headerlink" title="模板引擎"></a>模板引擎</h5><p>Mustache 模板的默认文件扩展名是<code>.html</code>，它现在<code>.mustache</code>与官方规范和大多数IDE插件一致。您可以通过更改<code>spring.mustache.suffix</code>配置键来覆盖此新的默认值。</p>
-<h5 id="Jackson-JSON-支持"><a href="#Jackson-JSON-支持" class="headerlink" title="Jackson / JSON 支持"></a>Jackson / JSON 支持</h5><p>在 2.0 中，我们改变了 Jackson 配置默认值，将 JSR-310 日期写为 ISO-8601 字符串。如果你想回到以前的行为，你可以添加<code>spring.jackson.serialization.write-dates-as-timestamps=true</code>到你的配置。</p>
-<p>新的<code>spring-boot-starter-json</code> starter 收集必要的位以读取和写入 JSON。它不仅提供了<code>jackson-databind</code>，与Java8 工作时也是有用的模块：<code>jackson-datatype-jdk8</code>，<code>jackson-datatype-jsr310</code>和<code>jackson-module-parameter-names</code>。以前您需要手动依赖这些模块，现在可以依靠这个新的 starter 。</p>
+<h5 id="Web-Starter-作为传递依赖"><a href="#Web-Starter-作为传递依赖" class="headerlink" title="Web Starter 作为传递依赖"></a>Web Starter 作为传递依赖</h5><p>以前有几个 Spring Boot starter 是依赖于 Spring MVC 而传递的<code>spring-boot-starter-web</code>。在 <code>Spring WebFlux</code> 新的支持下，<code>spring-boot-starter-mustache</code>，<code>spring-boot-starter-freemarker</code>并<code>spring-boot-starter-thymeleaf</code>不再依赖它。开发者有责任选择和添加<code>spring-boot-starter-web</code>或<code>spring-boot-starter-webflux</code>。</p>
+<h5 id="模板引擎"><a href="#模板引擎" class="headerlink" title="模板引擎"></a>模板引擎</h5><p>Mustache 模板曾经的文件扩展名是<code>.html</code>，现在的扩展名为 <code>.mustache</code> ，与官方规范和大多数 IDE 插件一致。您可以通过更改<code>spring.mustache.suffix</code>配置键来覆盖此新的默认值。</p>
+<h5 id="Jackson-JSON-支持"><a href="#Jackson-JSON-支持" class="headerlink" title="Jackson / JSON 支持"></a>Jackson / JSON 支持</h5><p>在 2.0 中，我们改变了 Jackson 配置的默认值，将 ISO-8601 字符串 写为 JSR-310 日期 。如果你想回到以前的行为，你可以添加<code>spring.jackson.serialization.write-dates-as-timestamps=true</code>到你的配置。</p>
+<p>新的<code>spring-boot-starter-json</code> starter 收集了必要的位去读写 JSON。它不仅提供了<code>jackson-databind</code>，而且提供了和 Java8 一起运作的时候相当有用的组件：<code>jackson-datatype-jdk8</code>,  <code>jackson-datatype-jsr310</code> 和 <code>jackson-module-parameter-names</code>。如果你曾经手动地依赖这些组件，现在可以依赖这个新的 starter 取代。</p>
 <h5 id="Spring-MVC-路径匹配默认行为更改"><a href="#Spring-MVC-路径匹配默认行为更改" class="headerlink" title="Spring MVC 路径匹配默认行为更改"></a>Spring MVC 路径匹配默认行为更改</h5><p>我们已决定在 Spring MVC 应用程序中更改后缀路径匹配的默认值（请参阅<a href="https://github.com/spring-projects/spring-boot/issues/11105" target="_blank" rel="noopener">＃11105</a>）。按照 Spring Framework 中记录的<a href="https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#mvc-ann-requestmapping-suffix-pattern-match" target="_blank" rel="noopener">最佳实践</a>，此功能不再默认启用。</p>
 <p>如果您的应用程序希望将请求<code>&quot;GET /projects/spring-boot.json&quot;</code>映射到<code>@GetMapping(&quot;/projects/spring-boot&quot;)</code>映射，则此更改会影响您。</p>
 <p>有关此更多信息以及如何减轻此更改，请查阅<a href="https://docs.spring.io/spring-boot/docs/2.0.0.RC1/reference/html/boot-features-developing-web-applications.html#boot-features-spring-mvc-pathmatch" target="_blank" rel="noopener">Spring Boot中有关路径匹配和内容协商的参考文档</a>。</p>
@@ -629,9 +629,18 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
+    <a href="/2018/03/06/SpringBoot2-new-features/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Spring Boot 2.0 新特性详解
+        
+      </div>
+    </a>
   
-    <a href="/2018/03/06/SpringBoot2-new-features/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Spring Boot 2.0 新特性详解</div>
+  
+    <a href="/2018/03/04/springboot-vedio/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">小马哥 《Java 微服务实践 - Spring Boot 系列》强烈推荐</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -763,19 +772,15 @@ var _hmt = _hmt || [];
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">AJAX</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Bootstrap</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">AJAX</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -795,11 +800,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Guava</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -819,10 +828,6 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">面经</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JVM</a>
               </li>
              
@@ -831,7 +836,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">NIO</a>
+                <a href="javascript:void(0)" class="js-tag color3">面经</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">JSON</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -843,15 +852,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JSON</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Oracle</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Kafka</a>
+                <a href="javascript:void(0)" class="js-tag color4">NIO</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">投资理财</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -859,7 +868,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">投资理财</a>
+                <a href="javascript:void(0)" class="js-tag color1">Kafka</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -891,15 +900,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">RocketMQ</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">RocketMQ</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -951,15 +960,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">文件</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">lua</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">lombok</a>
+                <a href="javascript:void(0)" class="js-tag color3">文件</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -967,11 +972,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">励志</a>
+                <a href="javascript:void(0)" class="js-tag color2">lombok</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Netty</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">励志</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1031,15 +1040,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">邮件发送</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">finally</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">类加载机制</a>
+                <a href="javascript:void(0)" class="js-tag color5">邮件发送</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1048,6 +1053,10 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">类加载机制</a>
               </li>
             
             <div class="clearfix"></div>
