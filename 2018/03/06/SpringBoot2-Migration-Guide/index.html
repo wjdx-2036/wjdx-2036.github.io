@@ -31,7 +31,7 @@
 <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1fp3h0820m2j31hc0zkwxr.jpg">
 <meta property="og:image" content="http://ohfk1r827.bkt.clouddn.com/blog/180103/C6LG3mGa12.jpg">
 <meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79gy1fp3jkmizmpj30o00didgn.jpg">
-<meta property="og:updated_time" content="2018-03-09T05:07:28.000Z">
+<meta property="og:updated_time" content="2018-03-09T05:21:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spring Boot 2.0 迁移指南">
 <meta name="twitter:description" content="前提希望本文档将帮助您把应用程序迁移到 Spring Boot 2.0。">
@@ -263,12 +263,12 @@ var _hmt = _hmt || [];
 <h5 id="Surefire-默认值"><a href="#Surefire-默认值" class="headerlink" title="Surefire 默认值"></a>Surefire 默认值</h5><p>以前的 <code>include/exclude</code> 模式已与最新的 Surefire 默认设置保持一致。如果依赖于此插件，需要相应地更新插件配置。之前对应的配置如下：</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-surefire-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">includes</span>&gt;</span></span><br><span class="line">			 <span class="tag">&lt;<span class="name">include</span>&gt;</span>**/*Tests.java<span class="tag">&lt;/<span class="name">include</span>&gt;</span></span><br><span class="line">			 <span class="tag">&lt;<span class="name">include</span>&gt;</span>**/*Test.java<span class="tag">&lt;/<span class="name">include</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">includes</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">excludes</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">exclude</span>&gt;</span>**/Abstract*.java<span class="tag">&lt;/<span class="name">exclude</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">excludes</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>PS: 如果您使用 JUnit 5，则应将 Surefire 降级到 <code>2.19.1</code>。该<code>**/*Tests.java</code>版本不包含此模式，因此如果您依赖该模式，请确保将其添加到您的配置中。</p>
-<h4 id="Spring-Boot-Gradle-插件"><a href="#Spring-Boot-Gradle-插件" class="headerlink" title="Spring Boot Gradle 插件"></a>Spring Boot Gradle 插件</h4><p>Spring Boot 的 Gradle 插件在很大程度上已被重写，以实现许多重大改进。您可以在其<a href="https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/gradle-plugin/reference" target="_blank" rel="noopener">参考文献</a>和<a href="https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/gradle-plugin/api" target="_blank" rel="noopener">API</a>文档中阅读关于插件功能的更多信息。</p>
-<h5 id="依赖管理"><a href="#依赖管理" class="headerlink" title="依赖管理"></a>依赖管理</h5><p>Spring Boot 的 Gradle 插件不再自动应用依赖管理插件。相反，Spring Boot 的插件现在可以通过导入正确版本的spring-boot-dependencies BOM 来应用依赖管理插件。这使您可以更好地控制配置依赖性管理的方式和时间。</p>
-<p>对于大多数使用依赖管理插件的应用程序来说就足够了：</p>
+<h4 id="Spring-Boot-Gradle-插件"><a href="#Spring-Boot-Gradle-插件" class="headerlink" title="Spring Boot Gradle 插件"></a>Spring Boot Gradle 插件</h4><p>Spring Boot 的 Gradle 插件在很大程度上已被重写，有了重大的改进。您可以在其<a href="https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/gradle-plugin/reference" target="_blank" rel="noopener">参考文献</a>和<a href="https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/gradle-plugin/api" target="_blank" rel="noopener">API</a>文档中阅读关于插件功能的更多信息。</p>
+<h5 id="依赖管理"><a href="#依赖管理" class="headerlink" title="依赖管理"></a>依赖管理</h5><p>Spring Boot 的 Gradle 插件不再自动应用依赖管理插件。相反，Spring Boot 的插件现在可以通过导入正确版本的spring-boot-dependencies BOM 来应用依赖管理插件。当依赖管理被配置的时候，这一点会让你有更多的控制权。</p>
+<p>对于大多数应用程序，使用应用依赖管理插件就足够了：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apply plugin: &apos;org.springframework.boot&apos;</span><br><span class="line">apply plugin: &apos;io.spring.dependency-management&apos; // &lt;-- add this to your build.gradle</span><br></pre></td></tr></table></figure>
 <p>注意：依赖管理插件仍然是 spring-boot-gradle-plugin 的传递依赖项，所以不需要在 buildscript 配置中将其列为类路径依赖项。</p>
-<h5 id="建立可执行的-Jars-和-Wars"><a href="#建立可执行的-Jars-和-Wars" class="headerlink" title="建立可执行的 Jars 和 Wars"></a>建立可执行的 Jars 和 Wars</h5><p>该<code>bootRepackage</code>任务已被替换<code>bootJar</code>，并<code>bootWar</code>分别建立可执行的 Jars 和 Wars 的任务。<code>jar</code>和<code>war</code>任务不再参与。</p>
+<h5 id="建立可执行的-Jars-和-Wars"><a href="#建立可执行的-Jars-和-Wars" class="headerlink" title="建立可执行的 Jars 和 Wars"></a>建立可执行的 Jars 和 Wars</h5><p> <code>bootRepackage</code> 任务已经被替换成 <code>bootJar</code> 和 <code>bootWar</code> 任务，分别用于构建可执行的 <code>jar</code> 包和 <code>war</code>包。</p>
 <h5 id="配置更新"><a href="#配置更新" class="headerlink" title="配置更新"></a>配置更新</h5><p><code>BootRun</code>，<code>BootJar</code>和<code>BootWar</code>任务现在都使用<code>mainClassName</code>的属性来配置主类的名称。这使得三个特定于引导的任务相互一致，并将其与 Gradle 自己的应用程序插件进行对齐。</p>
 <h3 id="Spring-Boot-特性"><a href="#Spring-Boot-特性" class="headerlink" title="Spring Boot 特性"></a>Spring Boot 特性</h3><h4 id="默认代理策略"><a href="#默认代理策略" class="headerlink" title="默认代理策略"></a>默认代理策略</h4><p>Spring Boot 默认使用 CGLIB 代理，包括 AOP 支持。如果你需要基于代理的代理，你需要设置<code>spring.aop.proxy-target-class</code>为<code>false</code>。</p>
 <h4 id="SpringApplication"><a href="#SpringApplication" class="headerlink" title="SpringApplication"></a>SpringApplication</h4><h5 id="Web-环境"><a href="#Web-环境" class="headerlink" title="Web 环境"></a>Web 环境</h5><p>Spring Boot 应用程序现在可以在更多模式下运行，因此<code>spring.main.web-environment</code>现在不推荐使用属性来支持<code>spring.main.web-application-type</code>更多的控制。</p>
@@ -803,6 +803,14 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">HBase</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
@@ -811,11 +819,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">HBase</a>
+                <a href="javascript:void(0)" class="js-tag color3">面经</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -824,10 +828,6 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">性能调优工具</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">面经</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -851,6 +851,14 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Kafka</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">投资理财</a>
               </li>
              
@@ -863,11 +871,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
+                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
+                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -883,15 +891,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
+                <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Kafka</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+                <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -899,11 +903,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
+                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -923,19 +923,19 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Velocity</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">线程池</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Consul</a>
+                <a href="javascript:void(0)" class="js-tag color4">Velocity</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Android</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Consul</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -967,11 +967,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Netty</a>
+                <a href="javascript:void(0)" class="js-tag color3">励志</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">励志</a>
+                <a href="javascript:void(0)" class="js-tag color1">Netty</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -983,10 +983,6 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">实习圈</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">微服务</a>
               </li>
              
@@ -995,11 +991,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
+                <a href="javascript:void(0)" class="js-tag color4">实习圈</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">表达式</a>
+                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1015,7 +1011,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">循环队列</a>
+                <a href="javascript:void(0)" class="js-tag color4">表达式</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1027,7 +1023,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">finally</a>
+                <a href="javascript:void(0)" class="js-tag color5">循环队列</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">编码</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1035,11 +1035,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">类加载机制</a>
+                <a href="javascript:void(0)" class="js-tag color3">finally</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">编码</a>
+                <a href="javascript:void(0)" class="js-tag color1">类加载机制</a>
               </li>
              
               <li class="article-tag-list-item">
