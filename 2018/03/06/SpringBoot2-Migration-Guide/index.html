@@ -20,21 +20,21 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Spring Boot 2.0 迁移指南 | zhisheng的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前提本文档将帮助您把应用程序迁移到 Spring Boot 2.0。">
+  <meta name="description" content="前提希望本文档将帮助您把应用程序迁移到 Spring Boot 2.0。">
 <meta name="keywords" content="Java,SpringBoot">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Spring Boot 2.0 迁移指南">
 <meta property="og:url" content="http://yoursite.com/2018/03/06/SpringBoot2-Migration-Guide/index.html">
 <meta property="og:site_name" content="zhisheng的博客">
-<meta property="og:description" content="前提本文档将帮助您把应用程序迁移到 Spring Boot 2.0。">
+<meta property="og:description" content="前提希望本文档将帮助您把应用程序迁移到 Spring Boot 2.0。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1fp3h0820m2j31hc0zkwxr.jpg">
 <meta property="og:image" content="http://ohfk1r827.bkt.clouddn.com/blog/180103/C6LG3mGa12.jpg">
 <meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79gy1fp3jkmizmpj30o00didgn.jpg">
-<meta property="og:updated_time" content="2018-03-07T14:08:36.000Z">
+<meta property="og:updated_time" content="2018-03-09T05:07:28.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spring Boot 2.0 迁移指南">
-<meta name="twitter:description" content="前提本文档将帮助您把应用程序迁移到 Spring Boot 2.0。">
+<meta name="twitter:description" content="前提希望本文档将帮助您把应用程序迁移到 Spring Boot 2.0。">
 <meta name="twitter:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1fp3h0820m2j31hc0zkwxr.jpg">
   
     <link rel="alternative" href="/atom.xml" title="zhisheng的博客" type="application/atom+xml">
@@ -249,18 +249,18 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fp3h0820m2j31hc0zkwxr.jpg" alt=""></p>
-<h3 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h3><p>本文档将帮助您把应用程序迁移到 Spring Boot 2.0。</p>
+<h3 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h3><p>希望本文档将帮助您把应用程序迁移到 Spring Boot 2.0。</p>
 <a id="more"></a>
 <h3 id="关注我"><a href="#关注我" class="headerlink" title="关注我"></a>关注我</h3><p><img src="http://ohfk1r827.bkt.clouddn.com/blog/180103/C6LG3mGa12.jpg" alt="mark"></p>
 <p>转载请务必注明原创地址为：<a href="http://www.54tianzhisheng.cn/2018/03/06/SpringBoot2-Migration-Guide/" target="_blank" rel="noopener">http://www.54tianzhisheng.cn/2018/03/06/SpringBoot2-Migration-Guide/</a></p>
-<h3 id="在你开始之前"><a href="#在你开始之前" class="headerlink" title="在你开始之前"></a>在你开始之前</h3><p>首先，<strong>Spring Boot 2.0需要Java 8或更高版本</strong>。Java 6 和 7 不再受支持。</p>
-<p>在 Spring Boot 2.0 中，许多配置属性被重新命名/删除，开发人员需要更新<code>application.properties</code>/ <code>application.yml</code>相应的配置。为了帮助你，Spring Boot 发布了一个新<code>spring-boot-properties-migrator</code>模块。一旦作为依赖添加到项目中，这不仅将分析应用程序的环境并在启动时打印诊断信息，而且还会在运行时为您暂时迁移属性。这是您的应用程序迁移期间必须具备的条件：</p>
+<h3 id="在你开始之前"><a href="#在你开始之前" class="headerlink" title="在你开始之前"></a>在你开始之前</h3><p>首先，<strong>Spring Boot 2.0 需要 Java 8 或更高版本</strong>。不再支持 Java 6 和 7 了。</p>
+<p>在 Spring Boot 2.0 中，许多配置属性被重新命名/删除，开发人员需要更新<code>application.properties</code>/ <code>application.yml</code>相应的配置。为了帮助你解决这一问题，Spring Boot 发布了一个新<code>spring-boot-properties-migrator</code>模块。一旦作为该模块作为依赖被添加到你的项目中，它不仅会分析应用程序的环境，而且还会在启动时打印诊断信息，而且还会在运行时为您暂时迁移属性。在您的应用程序迁移期间，这个模块是必备的：</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-properties-migrator<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>注意：完成迁移后，请确保从项目的依赖关系中删除此模块。</p>
-<h3 id="构建您的-Spring-Boot-应用程序"><a href="#构建您的-Spring-Boot-应用程序" class="headerlink" title="构建您的 Spring Boot 应用程序"></a>构建您的 Spring Boot 应用程序</h3><h4 id="Spring-Boot-Maven-插件"><a href="#Spring-Boot-Maven-插件" class="headerlink" title="Spring Boot Maven 插件"></a>Spring Boot Maven 插件</h4><p>如今暴露为属性的插件配置属性都以一个<code>spring-boot</code>前缀开始，以保持一致性并避免与其他插件发生冲突。</p>
+<h3 id="构建您的-Spring-Boot-应用程序"><a href="#构建您的-Spring-Boot-应用程序" class="headerlink" title="构建您的 Spring Boot 应用程序"></a>构建您的 Spring Boot 应用程序</h3><h4 id="Spring-Boot-Maven-插件"><a href="#Spring-Boot-Maven-插件" class="headerlink" title="Spring Boot Maven 插件"></a>Spring Boot Maven 插件</h4><p>为了保持了一致性，并且避免与其他插件发生冲突，现在暴露的插件配置属性都以一个<code>spring-boot</code>前缀开始。</p>
 <p>例如，以下命令<code>prod</code>使用命令行启用配置文件</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn spring-boot:run -Dspring-boot.run.profiles=prod</span><br></pre></td></tr></table></figure>
-<h5 id="Surefire-默认值"><a href="#Surefire-默认值" class="headerlink" title="Surefire 默认值"></a>Surefire 默认值</h5><p>自定义包含/排除模式已与最新的 Surefire 默认设置保持一致。如果您依赖我们的，请相应地更新您的插件配置。他们曾经如下：</p>
+<h5 id="Surefire-默认值"><a href="#Surefire-默认值" class="headerlink" title="Surefire 默认值"></a>Surefire 默认值</h5><p>以前的 <code>include/exclude</code> 模式已与最新的 Surefire 默认设置保持一致。如果依赖于此插件，需要相应地更新插件配置。之前对应的配置如下：</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-surefire-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">includes</span>&gt;</span></span><br><span class="line">			 <span class="tag">&lt;<span class="name">include</span>&gt;</span>**/*Tests.java<span class="tag">&lt;/<span class="name">include</span>&gt;</span></span><br><span class="line">			 <span class="tag">&lt;<span class="name">include</span>&gt;</span>**/*Test.java<span class="tag">&lt;/<span class="name">include</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">includes</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">excludes</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">exclude</span>&gt;</span>**/Abstract*.java<span class="tag">&lt;/<span class="name">exclude</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">excludes</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>PS: 如果您使用 JUnit 5，则应将 Surefire 降级到 <code>2.19.1</code>。该<code>**/*Tests.java</code>版本不包含此模式，因此如果您依赖该模式，请确保将其添加到您的配置中。</p>
 <h4 id="Spring-Boot-Gradle-插件"><a href="#Spring-Boot-Gradle-插件" class="headerlink" title="Spring Boot Gradle 插件"></a>Spring Boot Gradle 插件</h4><p>Spring Boot 的 Gradle 插件在很大程度上已被重写，以实现许多重大改进。您可以在其<a href="https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/gradle-plugin/reference" target="_blank" rel="noopener">参考文献</a>和<a href="https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/gradle-plugin/api" target="_blank" rel="noopener">API</a>文档中阅读关于插件功能的更多信息。</p>
@@ -763,7 +763,11 @@ var _hmt = _hmt || [];
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Bootstrap</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -771,11 +775,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前端</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Bootstrap</a>
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -795,15 +795,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Guava</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">HBase</a>
+                <a href="javascript:void(0)" class="js-tag color1">Guava</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -815,11 +811,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">面经</a>
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+                <a href="javascript:void(0)" class="js-tag color1">HBase</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -831,7 +827,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">面经</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">NIO</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JMM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -847,11 +851,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Kafka</a>
+                <a href="javascript:void(0)" class="js-tag color5">投资理财</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -863,19 +863,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">投资理财</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JMM</a>
+                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -891,6 +883,18 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Kafka</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">RocketMQ</a>
               </li>
              
@@ -900,10 +904,6 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -923,19 +923,19 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">线程池</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Velocity</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android</a>
+                <a href="javascript:void(0)" class="js-tag color4">线程池</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Consul</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Android</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -951,11 +951,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">lua</a>
+                <a href="javascript:void(0)" class="js-tag color3">文件</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">文件</a>
+                <a href="javascript:void(0)" class="js-tag color4">lua</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -967,15 +967,23 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">励志</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Netty</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">励志</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">书籍</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Servlet</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">实习圈</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -987,15 +995,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">实习圈</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Servlet</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">表达式</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1011,23 +1015,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">循环队列</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Github Page</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">博客网站</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">表达式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">循环队列</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">编码</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1039,15 +1035,19 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">类加载机制</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">编码</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Filter过滤器</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">类加载机制</a>
               </li>
             
             <div class="clearfix"></div>
