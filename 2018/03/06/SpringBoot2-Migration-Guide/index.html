@@ -31,7 +31,7 @@
 <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1fp3h0820m2j31hc0zkwxr.jpg">
 <meta property="og:image" content="http://ohfk1r827.bkt.clouddn.com/blog/180103/C6LG3mGa12.jpg">
 <meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79gy1fp3jkmizmpj30o00didgn.jpg">
-<meta property="og:updated_time" content="2018-03-09T06:13:48.000Z">
+<meta property="og:updated_time" content="2018-03-09T13:29:02.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spring Boot 2.0 迁移指南">
 <meta name="twitter:description" content="前提希望本文档将帮助您把应用程序迁移到 Spring Boot 2.0。">
@@ -380,7 +380,7 @@ var _hmt = _hmt || [];
 <h4 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h4><h5 id="Mockito-1-x"><a href="#Mockito-1-x" class="headerlink" title="Mockito 1.x"></a>Mockito 1.x</h5><p>Mockito 1.x 不再支持<code>@MockBean</code>和<code>@SpyBean</code>。如果你不用<code>spring-boot-starter-test</code>来管理你的依赖关系，你应该升级到 Mockito 2.x.</p>
 <h3 id="Spring-Boot-Actuator"><a href="#Spring-Boot-Actuator" class="headerlink" title="Spring Boot Actuator"></a>Spring Boot Actuator</h3><p>Spring Boot 2 为 Actuator 带来了重要变化，无论是内部还是面向用户，请查阅<a href="https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#production-ready" target="_blank" rel="noopener">参考指南中</a>的<a href="https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#production-ready" target="_blank" rel="noopener">更新部分</a>和<a href="https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/actuator-api/html" target="_blank" rel="noopener">新的Actuator API文档</a>。</p>
 <p>您应该期望编程模型，配置密钥和某些端点的响应格式发生变化。Actuator 现在在 Spring MVC，Spring WebFlux 和Jersey 上得到本地支持。</p>
-<h4 id="构建"><a href="#构建" class="headerlink" title="构建"></a>构建</h4><p>Actuator 的代码分为两个模块：现有的<code>spring-boot-actuator</code>和新的<code>spring-boot-actuator-autoconfigure</code>。如果您使用原始模块（<code>spring-boot-actuator</code>）导入执行器，请考虑使用<code>spring-boot-starter-actuator</code>启动器替代它。</p>
+<h4 id="构建"><a href="#构建" class="headerlink" title="构建"></a>构建</h4><p>Actuator 的代码分为两个模块：现有的<code>spring-boot-actuator</code>和新的<code>spring-boot-actuator-autoconfigure</code>。如果您使用原始模块（<code>spring-boot-actuator</code>）导入 actuator，请考虑使用<code>spring-boot-starter-actuator</code>启动器替代它。</p>
 <h4 id="Keys-的配置结构"><a href="#Keys-的配置结构" class="headerlink" title="Keys 的配置结构"></a>Keys 的配置结构</h4><p>Endpoints 基础配置 key 已经统一：</p>
 <table>
 <thead>
@@ -421,7 +421,7 @@ var _hmt = _hmt || [];
 </tbody>
 </table>
 <h4 id="基本路径"><a href="#基本路径" class="headerlink" title="基本路径"></a>基本路径</h4><p>所有 endpoints 默认情况下都已移至 <code>/actuator</code>。</p>
-<p>我们修改了 <code>management.server.servlet.context-path</code> 的含义：它现在是 <code>server.servlet.context-path</code> 的端点管理等效物（只有在设置了 <code>management.server.port</code> 时才有效）。另外，您还可以使用新的单独属性为管理端点设置基本路径：<code>management.endpoints.web.base-path</code>。</p>
+<p>我们修改了 <code>management.server.servlet.context-path</code> 的含义：它现在是 <code>server.servlet.context-path</code> 的端点管理的等价替代（只有在设置了 <code>management.server.port</code> 时才有效）。另外，您还可以使用新的单独属性 <code>management.endpoints.web.base-path</code> 为管理端点设置基本路径。</p>
 <p>例如，如果你设置<code>management.server.servlet.context-path=/management</code>和<code>management.endpoints.web.base-path=/application</code>，你就可以在下面的路径到达终点健康：<code>/management/application/health</code>。</p>
 <p>如果你想恢复 1.x 的行为（即具有<code>/health</code>代替<code>/actuator/health</code>），设置以下属性：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">management.endpoints.web.base-path=/</span><br></pre></td></tr></table></figure>
@@ -482,14 +482,14 @@ var _hmt = _hmt || [];
 <p>Actuator API 文档的<a href="https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/actuator-api/html/#mappings" target="_blank" rel="noopener">相关部分</a>提供了一个示例文档。</p>
 <h5 id="actuator-httptrace-端点大改变"><a href="#actuator-httptrace-端点大改变" class="headerlink" title="/actuator/httptrace 端点大改变"></a><code>/actuator/httptrace</code> 端点大改变</h5><p>响应的结构已经过改进，以反映端点关注跟踪 HTTP 请求 - 响应交换的情况。</p>
 <h4 id="迁移自定义端点"><a href="#迁移自定义端点" class="headerlink" title="迁移自定义端点"></a>迁移自定义端点</h4><p>如果您有自定义执行器端点，请<a href="https://spring.io/blog/2017/08/22/introducing-actuator-endpoints-in-spring-boot-2-0" target="_blank" rel="noopener">查看专用博客文章</a>。该团队还撰写了一个 wiki 页面，介绍<a href="https://github.com/spring-projects/spring-boot/wiki/Migrating-a-custom-Actuator-endpoint-to-Spring-Boot-2" target="_blank" rel="noopener">如何将现有的执行器端点迁移</a>到新的基础架构。</p>
-<h3 id="Metrics"><a href="#Metrics" class="headerlink" title="Metrics"></a>Metrics</h3><p>Spring Boot自己的指标已被支持取代，包括自动配置，用于 <a href="https://micrometer.io/" target="_blank" rel="noopener">icrometer</a>  和 dimensional 指标。</p>
+<h3 id="Metrics"><a href="#Metrics" class="headerlink" title="Metrics"></a>Metrics</h3><p>Spring Boot 自己的指标已被支持取代，包括自动配置，用于 <a href="https://micrometer.io/" target="_blank" rel="noopener">icrometer</a>  和 dimensional 指标。</p>
 <h4 id="设置-icrometer"><a href="#设置-icrometer" class="headerlink" title="设置 icrometer"></a>设置 icrometer</h4><p>如果您的 Spring Boot 2.0 应用程序已依赖于 Actuator，则 icrometer 已在此处并自动配置。如果您希望将度量标准导出到 Prometheus，Atlas 或 Datadog 等外部注册表，Micrometer 将为许多注册表提供依赖关系; 您可以使用<code>spring.metrics.*</code>属性配置您的应用程序以导出到特定的注册表。</p>
-<h4 id="迁移定制计数器-量表"><a href="#迁移定制计数器-量表" class="headerlink" title="迁移定制计数器/量表"></a>迁移定制计数器/量表</h4><p>您可以通过以下方式创建各种指标，而不是在应用程序代码中注入<code>CounterService</code>或<code>GaugeService</code>实例化：</p>
+<h4 id="迁移定制计数器-量表"><a href="#迁移定制计数器-量表" class="headerlink" title="迁移定制计数器/量表"></a>迁移定制计数器/量表</h4><p>您可以通过以下方式创建各种指标，而不是在应用程序代码中注入<code>CounterService</code>或<code>GaugeService</code>的实例：</p>
 <ul>
 <li>注入<code>MeterRegistry</code>和调用方法。</li>
 <li>直接调用静态方法<code>Counter featureCounter = Metrics.counter(&quot;feature&quot;);</code>。</li>
 </ul>
-<h3 id="开发者工具"><a href="#开发者工具" class="headerlink" title="开发者工具"></a>开发者工具</h3><h4 id="热拔插"><a href="#热拔插" class="headerlink" title="热拔插"></a>热拔插</h4><p>由于 Spring Loaded 项目已移至 attic，它在 Spring Boot 的支持已被删除。我们建议使用 Devtools。</p>
+<h3 id="开发者工具"><a href="#开发者工具" class="headerlink" title="开发者工具"></a>开发者工具</h3><h4 id="热拔插"><a href="#热拔插" class="headerlink" title="热拔插"></a>热拔插</h4><p>由于 Spring Loaded 项目被搁置，它在 Spring Boot 的支持已被删除。我们建议使用 Devtools。</p>
 <h4 id="Devtools-远程调试隧道"><a href="#Devtools-远程调试隧道" class="headerlink" title="Devtools 远程调试隧道"></a>Devtools 远程调试隧道</h4><p>已经从 Devtools 中删除了对通过 HTTP 进行隧道远程调试的支持。</p>
 <h3 id="已删除的功能"><a href="#已删除的功能" class="headerlink" title="已删除的功能"></a>已删除的功能</h3><p>以下功能不再可用：</p>
 <ul>
@@ -639,8 +639,8 @@ var _hmt = _hmt || [];
     </a>
   
   
-    <a href="/2018/03/04/springboot-vedio/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">小马哥 《Java 微服务实践 - Spring Boot 系列》强烈推荐</div>
+    <a href="/2018/03/04/springcloud-vedio/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">小马哥 《Java 微服务实践 - Spring Cloud 系列》强烈推荐</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -772,11 +772,15 @@ var _hmt = _hmt || [];
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">AJAX</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前端</a>
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -800,7 +804,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -808,15 +812,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">HBase</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -825,6 +821,10 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -840,6 +840,18 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">NIO</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Oracle</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">JSON</a>
               </li>
              
@@ -848,27 +860,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Oracle</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">NIO</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">投资理财</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Maven</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Kafka</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">投资理财</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -900,10 +900,6 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">RocketMQ</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
               </li>
              
@@ -913,6 +909,10 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">RocketMQ</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -960,15 +960,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">lua</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">文件</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Mac</a>
+                <a href="javascript:void(0)" class="js-tag color4">lua</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -976,19 +972,19 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Netty</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">励志</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">书籍</a>
+                <a href="javascript:void(0)" class="js-tag color4">Mac</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Servlet</a>
+                <a href="javascript:void(0)" class="js-tag color1">Netty</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">书籍</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -997,6 +993,10 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">SpringCloud</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Servlet</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1040,11 +1040,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">finally</a>
+                <a href="javascript:void(0)" class="js-tag color5">邮件发送</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">邮件发送</a>
+                <a href="javascript:void(0)" class="js-tag color3">finally</a>
               </li>
              
               <li class="article-tag-list-item">
