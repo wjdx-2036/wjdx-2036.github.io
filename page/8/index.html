@@ -192,20 +192,20 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-Elasticsearch-install" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Spring-MVC02" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/09/Elasticsearch-install/">Elasticsearch 系列文章（二）：全文搜索引擎 Elasticsearch 集群搭建入门教程</a>
+      <a class="article-title" href="/2017/07/14/Spring-MVC02/">Spring MVC系列文章（四）：看透 Spring MVC 源代码分析与实践 ——  俯视 Spring MVC</a>
     </h1>
   
 
         
-        <a href="/2017/09/09/Elasticsearch-install/" class="archive-article-date">
-  	<time datetime="2017-09-08T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-09</time>
+        <a href="/2017/07/14/Spring-MVC02/" class="archive-article-date">
+  	<time datetime="2017-07-13T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-14</time>
 </a>
         
       </header>
@@ -217,10 +217,10 @@ var _hmt = _hmt || [];
 
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>ElasticSearch 是一个基于 Lucene 的搜索服务器。它提供了一个分布式多用户能力的全文搜索引擎，基于 RESTful web 接口。Elasticsearch 是用 Java 开发的，并作为 Apache 许可条款下的开放源码发布，是当前流行的企业级搜索引擎。设计用于云计算中，能够达到实时搜索，稳定，可靠，快速，安装使用方便。基百科、Stack Overflow、Github 都采用它。</p>
-<p>本文从零开始，讲解如何使用 Elasticsearch 搭建自己的全文搜索引擎。每一步都有详细的说明，大家跟着做就能学会。<br>
+        <p>Spring MVC</p>
+<p><img src="http://ohfk1r827.bkt.clouddn.com/spring-mvc.png" alt="spring-mvc"><br>
         
-          <a class="article-more-a" href="/2017/09/09/Elasticsearch-install/#more">more >></a>
+          <a class="article-more-a" href="/2017/07/14/Spring-MVC02/#more">more >></a>
         
       
 
@@ -238,7 +238,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ElasticSearch</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Spring MVC</a>
         		</li>
       		
 		</ul>
@@ -248,7 +248,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/09/09/Elasticsearch-install/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/07/14/Spring-MVC02/">展开全文 >></a>
         </p>
       
 
@@ -266,20 +266,20 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-Elasticsearch-analyzers" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-servlet" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/08/Elasticsearch-analyzers/">Elasticsearch 系列文章（一）：Elasticsearch 默认分词器和中分分词器之间的比较及使用方法</a>
+      <a class="article-title" href="/2017/07/09/servlet/">通过源码详解 Servlet</a>
     </h1>
   
 
         
-        <a href="/2017/09/08/Elasticsearch-analyzers/" class="archive-article-date">
-  	<time datetime="2017-09-07T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-08</time>
+        <a href="/2017/07/09/servlet/" class="archive-article-date">
+  	<time datetime="2017-07-08T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-09</time>
 </a>
         
       </header>
@@ -291,10 +291,10 @@ var _hmt = _hmt || [];
 
     <div class="article-entry" itemprop="articleBody">
       
-        <p>介绍：ElasticSearch 是一个基于 Lucene 的搜索服务器。它提供了一个分布式多用户能力的全文搜索引擎，基于 RESTful web 接口。Elasticsearch 是用 Java 开发的，并作为Apache许可条款下的开放源码发布，是当前流行的企业级搜索引擎。设计用于云计算中，能够达到实时搜索，稳定，可靠，快速，安装使用方便。</p>
-<p>Elasticsearch中，内置了很多分词器（analyzers）。下面来进行比较下系统默认分词器和常用的中文分词器之间的区别。<br>
+        <h2 id="Servlet-结构"><a href="#Servlet-结构" class="headerlink" title="Servlet 结构"></a>Servlet 结构</h2><p><img src="http://ohfk1r827.bkt.clouddn.com/servlet1.png" alt="servlet1"></p>
+<h3 id="1、Servlet"><a href="#1、Servlet" class="headerlink" title="1、Servlet"></a>1、Servlet</h3><p>Servlet 该接口定义了5个方法。<br>
         
-          <a class="article-more-a" href="/2017/09/08/Elasticsearch-analyzers/#more">more >></a>
+          <a class="article-more-a" href="/2017/07/09/servlet/#more">more >></a>
         
       
 
@@ -312,7 +312,11 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ElasticSearch</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Servlet</a>
         		</li>
       		
 		</ul>
@@ -322,7 +326,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/09/08/Elasticsearch-analyzers/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/07/09/servlet/">展开全文 >></a>
         </p>
       
 
@@ -340,20 +344,20 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-recommend-books" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Velocity-foreach" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/28/recommend-books/">那些年我看过的书 —— 致敬我的大学生活 —— Say Good Bye ！</a>
+      <a class="article-title" href="/2017/06/28/Velocity-foreach/">Velocity 循环指令一种好的解决方法</a>
     </h1>
   
 
         
-        <a href="/2017/08/28/recommend-books/" class="archive-article-date">
-  	<time datetime="2017-08-27T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-28</time>
+        <a href="/2017/06/28/Velocity-foreach/" class="archive-article-date">
+  	<time datetime="2017-06-27T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-28</time>
 </a>
         
       </header>
@@ -365,9 +369,11 @@ var _hmt = _hmt || [];
 
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="http://ohfk1r827.bkt.clouddn.com/learn-2004897_960_720.png-1" alt=""><br>
+        <h3 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h3><p>前台的数据经常是由需要通过 foreach 循环获取。</p>
+<h3 id="好的解决方案：（拿我最近做的一个项目做例子）"><a href="#好的解决方案：（拿我最近做的一个项目做例子）" class="headerlink" title="好的解决方案：（拿我最近做的一个项目做例子）"></a>好的解决方案：（拿我最近做的一个项目做例子）</h3><p>购物商城左边的导航栏，商品大分类和小分类（Category）</p>
+<p><strong>1、在 model 包下创建一个 ViewObject 类</strong></p>
         
-          <a class="article-more-a" href="/2017/08/28/recommend-books/#more">more >></a>
+          <a class="article-more-a" href="/2017/06/28/Velocity-foreach/#more">more >></a>
         
       
 
@@ -385,7 +391,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Velocity</a>
         		</li>
       		
 		</ul>
@@ -395,7 +401,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/08/28/recommend-books/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/06/28/Velocity-foreach/">展开全文 >></a>
         </p>
       
 
@@ -413,20 +419,20 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-Ubuntu-install-Nginx" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-AJAX" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/18/Ubuntu-install-Nginx/">Ubuntu16.10 安装 Nginx</a>
+      <a class="article-title" href="/2017/06/23/AJAX/">AJAX 学习</a>
     </h1>
   
 
         
-        <a href="/2017/08/18/Ubuntu-install-Nginx/" class="archive-article-date">
-  	<time datetime="2017-08-17T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-18</time>
+        <a href="/2017/06/23/AJAX/" class="archive-article-date">
+  	<time datetime="2017-06-22T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-23</time>
 </a>
         
       </header>
@@ -438,10 +444,11 @@ var _hmt = _hmt || [];
 
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="安装-Nginx-依赖库"><a href="#安装-Nginx-依赖库" class="headerlink" title="安装 Nginx 依赖库"></a>安装 Nginx 依赖库</h2><h3 id="安装-gcc-g-的依赖库"><a href="#安装-gcc-g-的依赖库" class="headerlink" title="安装 gcc g++ 的依赖库"></a>安装 gcc g++ 的依赖库</h3><p>Ubuntu 平台使用：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt-get install build-essential</span><br><span class="line">apt-get install libtool</span><br></pre></td></tr></table></figure>
+        <h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>最近的项目中大量地方需要使用 AJAX，无奈，谁叫我既要写前台又要写后台呢，只好学习下这个技术点，主要参考 <a href="http://www.w3school.com.cn/ajax/index.asp" target="_blank" rel="noopener">W3school 文档</a>，下面记录下这些知识点，便于日后自己查阅，下面的一些测试代码建议在 W3school 中测试。</p>
+<h3 id="AJAX-基础："><a href="#AJAX-基础：" class="headerlink" title="AJAX 基础："></a>AJAX 基础：</h3><p> AJAX = Asynchronous JavaScript and XML（异步的 JavaScript 和 XML）。</p>
+<p><strong>AJAX 是一种在无需重新加载整个网页的情况下，能够更新部分网页的技术。</strong> 在很多网站可以见到使用这种技术。<br>
         
-          <a class="article-more-a" href="/2017/08/18/Ubuntu-install-Nginx/#more">more >></a>
+          <a class="article-more-a" href="/2017/06/23/AJAX/#more">more >></a>
         
       
 
@@ -459,7 +466,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Nginx</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">AJAX</a>
         		</li>
       		
 		</ul>
@@ -469,7 +476,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/08/18/Ubuntu-install-Nginx/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/06/23/AJAX/">展开全文 >></a>
         </p>
       
 
@@ -487,20 +494,20 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-most-success" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-java-io" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/11/most-success/">马云热血励志演讲《最伟大的成功》</a>
+      <a class="article-title" href="/2017/06/23/java-io/">Java IO流学习超详细总结（图文并茂）</a>
     </h1>
   
 
         
-        <a href="/2017/08/11/most-success/" class="archive-article-date">
-  	<time datetime="2017-08-10T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-11</time>
+        <a href="/2017/06/23/java-io/" class="archive-article-date">
+  	<time datetime="2017-06-22T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-23</time>
 </a>
         
       </header>
@@ -512,9 +519,9 @@ var _hmt = _hmt || [];
 
     <div class="article-entry" itemprop="articleBody">
       
-        <p>当你乐观的时候，总是会有机会的。那么你可能要问了“机会在哪呢？”你可能没有特别想实现的事，没有迫切要成功的欲望，没有勇攀高峰的决心，没有水滴石穿的毅力，也没有一颗所向披靡的强大心脏。那么，让来自马云的这段演讲来告诉你，你有什么。你有年轻的身体，你有奇妙的想法，你有乐观的心态，你有无限的可能性。<br>
+        <h3 id="Java流操作有关的类或接口："><a href="#Java流操作有关的类或接口：" class="headerlink" title="Java流操作有关的类或接口："></a>Java流操作有关的类或接口：</h3><p><img src="https://ws1.sinaimg.cn/large/006tNc79ly1fnuf0zovznj30c1058mxj.jpg" alt="0659b2ee5661173439cc0a92f3390c89"><br>
         
-          <a class="article-more-a" href="/2017/08/11/most-success/#more">more >></a>
+          <a class="article-more-a" href="/2017/06/23/java-io/#more">more >></a>
         
       
 
@@ -532,7 +539,11 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">励志</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">IO</a>
         		</li>
       		
 		</ul>
@@ -542,7 +553,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/08/11/most-success/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/06/23/java-io/">展开全文 >></a>
         </p>
       
 
@@ -560,20 +571,20 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-android-projects" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Java-error1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/08/android-projects/">源码大招：不服来战！撸这些完整项目，你不牛逼都难！</a>
+      <a class="article-title" href="/2017/06/20/Java-error1/">java.sql.SQLException Field &#39;id&#39; doesn&#39;t have a default value</a>
     </h1>
   
 
         
-        <a href="/2017/08/08/android-projects/" class="archive-article-date">
-  	<time datetime="2017-08-07T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-08</time>
+        <a href="/2017/06/20/Java-error1/" class="archive-article-date">
+  	<time datetime="2017-06-19T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-20</time>
 </a>
         
       </header>
@@ -585,10 +596,15 @@ var _hmt = _hmt || [];
 
     <div class="article-entry" itemprop="articleBody">
       
-        <p>经常有人问我有没有什么项目代码，我回复说去 Github 找，但是还是好多人不知道如何找到那些比较好的项目。</p>
-<p>今天花了点时间找了些安卓的项目，觉得还是不错的，几乎就是自己生活常用的一些 app ，如果你是一个 Android 开发者，我觉得撸完这些项目，你想不牛逼都难。</p>
+        <p>1、错误描述</p>
+<p>在做一个电商网站项目时，使用 Mybatis + MySQL 时出现问题 <code>Caused by: java.sql.SQLException: Field &#39;id&#39; doesn&#39;t have a default value</code> ，网上很多人说是 <a href="https://my.oschina.net/boonya/blog/692232" target="_blank" rel="noopener">MyBatis 插入数据行 ID 没生成自增</a>。但是我尝试好久，没解决该问题。</p>
+<p>2、错误原因</p>
+<p>后来才发现是因为创建数据库时的建表语句中的 id 是主键的，但是在插入的过程中，没有给予数值，并且没有让 id 自增。</p>
+<p>3、解决办法</p>
+<p>修改数据库表中的id，让其自增（在插入的过程中，不插入id数据时）。</p>
+<p>（我是直接将整个数据库都导出来，然后在每个表的 id 后面加上一个 <code>auto_increment</code>）, 如下 ：<br>
         
-          <a class="article-more-a" href="/2017/08/08/android-projects/#more">more >></a>
+          <a class="article-more-a" href="/2017/06/20/Java-error1/#more">more >></a>
         
       
 
@@ -606,7 +622,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
         		</li>
       		
 		</ul>
@@ -616,7 +632,173 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/08/08/android-projects/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/06/20/Java-error1/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-中缀表达式转换成前缀和后缀表达式这类题目的超实用解题技巧" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/19/中缀表达式转换成前缀和后缀表达式这类题目的超实用解题技巧/">中缀表达式转换成前缀和后缀表达式这类题目的超实用解题技巧</a>
+    </h1>
+  
+
+        
+        <a href="/2017/06/19/中缀表达式转换成前缀和后缀表达式这类题目的超实用解题技巧/" class="archive-article-date">
+  	<time datetime="2017-06-18T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-19</time>
+</a>
+        
+      </header>
+    
+
+    <!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>看到了标题如果还不了解的这几个概念的请先看看博客：<a href="http://blog.csdn.net/tzs_1041218129/article/details/52650917" target="_blank" rel="noopener"><strong>详解前缀、中缀、后缀表达式</strong></a></p>
+<p>先给几个中缀表达式转换成后缀表达式题目做做吧，最后我们在总结超实用的技巧！！</p>
+<p><strong>1. 表达式“X=A+B*（C–D）/E”的后缀表示形式可以为</strong></p>
+<p>A. XAB+CDE/-*=</p>
+<p>B. XA+BC-DE/*=</p>
+<p>C. XABCD-*E/+=</p>
+<p>D. XABCDE+*/=</p>
+        
+          <a class="article-more-a" href="/2017/06/19/中缀表达式转换成前缀和后缀表达式这类题目的超实用解题技巧/#more">more >></a>
+        
+      
+
+      <!-- <div>
+  			<img src="/img/wx.jpg"  style="margin: 0 auto;" />
+  		</div> -->
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">表达式</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/06/19/中缀表达式转换成前缀和后缀表达式这类题目的超实用解题技巧/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-Bootstrap入门需掌握的知识点（一）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/18/Bootstrap入门需掌握的知识点（一）/">Bootstrap入门需掌握的知识点（一）</a>
+    </h1>
+  
+
+        
+        <a href="/2017/06/18/Bootstrap入门需掌握的知识点（一）/" class="archive-article-date">
+  	<time datetime="2017-06-17T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-18</time>
+</a>
+        
+      </header>
+    
+
+    <!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Bootstrap"><a href="#Bootstrap" class="headerlink" title="Bootstrap"></a>Bootstrap</h3><p>Bootstrap中文网：<a href="http://www.bootcss.com/" target="_blank" rel="noopener">http://www.bootcss.com/</a></p>
+<p>1.什么是 Bootstrap？</p>
+<p>官方介绍：简洁、直观、强悍的前端开发框架，让web开发更迅速、简单。</p>
+<ol>
+<li>Bootstrap 下载</li>
+</ol>
+<p>Bootstrap3下载地址：<a href="http://v3.bootcss.com/getting-started/#download" target="_blank" rel="noopener">http://v3.bootcss.com/getting-started/#download</a><br>
+        
+          <a class="article-more-a" href="/2017/06/18/Bootstrap入门需掌握的知识点（一）/#more">more >></a>
+        
+      
+
+      <!-- <div>
+  			<img src="/img/wx.jpg"  style="margin: 0 auto;" />
+  		</div> -->
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Bootstrap</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/06/18/Bootstrap入门需掌握的知识点（一）/">展开全文 >></a>
         </p>
       
 
@@ -636,7 +818,7 @@ var _hmt = _hmt || [];
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/7/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/9/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/7/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/9/">Next &raquo;</a>
     </nav>
   
 
@@ -736,15 +918,15 @@ var _hmt = _hmt || [];
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前端</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">AJAX</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -768,15 +950,19 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Guava</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">HBase</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -788,10 +974,6 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JVM</a>
               </li>
              
@@ -800,11 +982,23 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">面经</a>
+                <a href="javascript:void(0)" class="js-tag color4">JMM</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">NIO</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">面经</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">JSON</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -816,23 +1010,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JSON</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JMM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
+                <a href="javascript:void(0)" class="js-tag color5">投资理财</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Kafka</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">投资理财</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -872,11 +1054,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+                <a href="javascript:void(0)" class="js-tag color4">RocketMQ</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">RocketMQ</a>
+                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -900,11 +1082,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Velocity</a>
+                <a href="javascript:void(0)" class="js-tag color3">Android</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android</a>
+                <a href="javascript:void(0)" class="js-tag color4">Velocity</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -920,15 +1102,19 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">博客合集</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">IO</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">文件</a>
+                <a href="javascript:void(0)" class="js-tag color4">lua</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">lua</a>
+                <a href="javascript:void(0)" class="js-tag color3">文件</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -948,15 +1134,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">书籍</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">微服务</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">SpringCloud</a>
+                <a href="javascript:void(0)" class="js-tag color3">书籍</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -965,6 +1147,10 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">实习圈</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">SpringCloud</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1004,15 +1190,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">邮件发送</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">finally</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Filter过滤器</a>
+                <a href="javascript:void(0)" class="js-tag color5">邮件发送</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1024,7 +1206,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">博客合集</a>
+                <a href="javascript:void(0)" class="js-tag color5">Filter过滤器</a>
               </li>
             
             <div class="clearfix"></div>
