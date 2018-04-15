@@ -280,6 +280,92 @@ var _hmt = _hmt || [];
 
 
   
+    <article id="post-通过项目逐步深入了解Mybatis(二)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/13/通过项目逐步深入了解Mybatis(二)/">通过项目逐步深入了解Mybatis（二）</a>
+    </h1>
+  
+
+        
+        <a href="/2017/06/13/通过项目逐步深入了解Mybatis(二)/" class="archive-article-date">
+  	<time datetime="2017-06-12T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-13</time>
+</a>
+        
+      </header>
+    
+
+    <!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>转载请务必注明出处，原创不易！</p>
+<p> 相关文章：<a href="http://blog.csdn.net/tzs_1041218129/article/details/53404326" target="_blank" rel="noopener"><strong>通过项目逐步深入了解Mybatis&lt;一&gt;</strong></a><br>本项目全部代码地址：<a href="https://github.com/zhisheng17/mybatis" target="_blank" rel="noopener"><strong>Github-Mybatis</strong></a></p>
+<h3 id="Mybatis-解决-jdbc-编程的问题"><a href="#Mybatis-解决-jdbc-编程的问题" class="headerlink" title="Mybatis 解决 jdbc 编程的问题"></a>Mybatis 解决 jdbc 编程的问题</h3><p>1、  数据库链接创建、释放频繁造成系统资源浪费从而影响系统性能，如果使用数据库链接池可解决此问题。</p>
+<p>解决：在SqlMapConfig.xml中配置数据链接池，使用连接池管理数据库链接。</p>
+<p>2、  Sql语句写在代码中造成代码不易维护，实际应用sql变化的可能较大，sql变动需要改变java代码。</p>
+<p>解决：将Sql语句配置在XXXXmapper.xml文件中与java代码分离。</p>
+<p>3、  向sql语句传参数麻烦，因为sql语句的where条件不一定，可能多也可能少，占位符需要和参数一一对应。</p>
+<p>解决：Mybatis自动将java对象映射至sql语句，通过statement中的parameterType定义输入参数的类型。</p>
+<p>4、  对结果集解析麻烦，sql变化导致解析代码变化，且解析前需要遍历，如果能将数据库记录封装成pojo对象解析比较方便。</p>
+<p>解决：Mybatis自动将sql执行结果映射至java对象，通过statement中的resultType定义输出结果的类型。</p>
+        
+          <a class="article-more-a" href="/2017/06/13/通过项目逐步深入了解Mybatis(二)/#more">more >></a>
+        
+      
+
+      <!-- <div>
+  			<img src="/img/wx.jpg"  style="margin: 0 auto;" />
+  		</div> -->
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Mybatis</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">SpringMVC</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/06/13/通过项目逐步深入了解Mybatis(二)/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-Pyspider框架 —— Python爬虫实战之爬取 V2EX 网站帖子" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -438,19 +524,19 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-MyBatis-foreach" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-String-new" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/13/MyBatis-foreach/">MyBatis的foreach语句详解</a>
+      <a class="article-title" href="/2017/06/13/String-new/">关于String s = new String(&#34;xyz&#34;); 创建几个对象的问题</a>
     </h1>
   
 
         
-        <a href="/2017/06/13/MyBatis-foreach/" class="archive-article-date">
+        <a href="/2017/06/13/String-new/" class="archive-article-date">
   	<time datetime="2017-06-12T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-13</time>
 </a>
         
@@ -463,28 +549,12 @@ var _hmt = _hmt || [];
 
     <div class="article-entry" itemprop="articleBody">
       
-        <p><strong>foreach</strong> 的主要用在构建in条件中，它可以在SQL语句中进行迭代一个集合。</p>
-<p>foreach 元素的属性主要有 item，index，collection，open，separator，close。</p>
-<ul>
-<li><p>item 表示集合中每一个元素进行迭代时的别名，</p>
-</li>
-<li><p>index 指 定一个名字，用于表示在迭代过程中，每次迭代到的位置，</p>
-</li>
-<li><p>open 表示该语句以什么开始，</p>
-</li>
-<li><p>separator 表示在每次进行迭代之间以什么符号作为分隔 符，</p>
-</li>
-<li><p>close 表示以什么结束。</p>
-</li>
-</ul>
-<p>在使用 foreach 的时候最关键的也是最容易出错的就是 collection 属性，该属性是必须指定的，但是在不同情况 下，该属性的值是不一样的，主要有一下3种情况：</p>
-<ol>
-<li>如果传入的是单参数且参数类型是一个List的时候，collection 属性值为 list</li>
-<li>如果传入的是单参数且参数类型是一个 array 数组的时候，collection 的属性值为 array</li>
-<li>如果传入的参数是多个的时候，我们就需要把它们封装成一个 Map 了，<strong>当然单参数也可以封装成map</strong>，实际上如果你在传入参数的时候，在 breast 里面也是会把它封装成一个 Map 的，map 的 key 就是参数名，所以这个时候 collection 属性值就是传入的 List 或 array 对象在自己封装的 map 里面的 key 。</li>
-</ol>
+        <p>你知道在 <code>java</code> 中除了 8 种基本类型外，其他的都是类对象以及其引用。所以 <code>&quot;xyz &quot;</code>在 <code>java</code> 中它是一个<code>String</code> 对象.对于 <code>string</code> 类对象来说他的对象值是不能修改的，也就是具有不变性。</p>
+<p>看：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">String   s= &quot;hello &quot;; </span><br><span class="line">s= &quot;Java &quot;; </span><br><span class="line">String   s1= &quot;hello &quot;; </span><br><span class="line">String   s2=new   String( &quot;hello &quot;);</span><br></pre></td></tr></table></figure></p>
+<p>结果如下图：<br><img src="http://img.blog.csdn.net/20170405232029845?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdHpzXzEwNDEyMTgxMjk=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="string-new1"></p>
+<p>啊，s 所引用的 <code>string</code> 对象不是被修改了吗？之前所说的不变性，去那里了啊？<br>
         
-          <a class="article-more-a" href="/2017/06/13/MyBatis-foreach/#more">more >></a>
+          <a class="article-more-a" href="/2017/06/13/String-new/#more">more >></a>
         
       
 
@@ -502,11 +572,11 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Mybatis</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">foreach</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">String</a>
         		</li>
       		
 		</ul>
@@ -516,7 +586,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/13/MyBatis-foreach/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/06/13/String-new/">展开全文 >></a>
         </p>
       
 
@@ -765,88 +835,9 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-Hexo-yilia-changyan" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/13/Hexo-yilia-changyan/">Github pages + Hexo 博客 yilia 主题使用畅言评论系统</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/13/Hexo-yilia-changyan/" class="archive-article-date">
-  	<time datetime="2017-04-12T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-13</time>
-</a>
-        
-      </header>
-    
-
-    <!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>Hexo的Yilia主题由于原来使用的是多说的留言板，近期<a href="http://dev.duoshuo.com/threads/58d1169ae293b89a20c57241" target="_blank" rel="noopener">多说公告要停止提供服务</a>了，所以我就把多说换成搜狐的畅言了，下面写一个简单的小教程。</p>
-<p><img src="http://img.blog.csdn.net/20170413231005895?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdHpzXzEwNDEyMTgxMjk=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="duoshuo"></p>
-<h3 id="注册畅言"><a href="#注册畅言" class="headerlink" title="注册畅言"></a>注册畅言</h3><p>进入<a href="http://changyan.kuaizhan.com/" target="_blank" rel="noopener">畅言官网</a> , 点击右上角 “免费注册”，并填写注册信息。（注意域名需要备案信息）</p>
-        
-          <a class="article-more-a" href="/2017/04/13/Hexo-yilia-changyan/#more">more >></a>
-        
-      
-
-      <!-- <div>
-  			<img src="/img/wx.jpg"  style="margin: 0 auto;" />
-  		</div> -->
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">yilia</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/13/Hexo-yilia-changyan/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/12/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span>
+      <a class="extend prev" rel="prev" href="/page/12/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/14/">Next &raquo;</a>
     </nav>
   
 

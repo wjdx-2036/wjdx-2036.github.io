@@ -196,20 +196,20 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-Spring-MVC02" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Spring-MVC03" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/14/Spring-MVC02/">Spring MVC系列文章（四）：看透 Spring MVC 源代码分析与实践 ——  俯视 Spring MVC</a>
+      <a class="article-title" href="/2017/07/21/Spring-MVC03/">Spring MVC系列文章（五）：看透 Spring MVC 源代码分析与实践 ——  Spring MVC 组件分析</a>
     </h1>
   
 
         
-        <a href="/2017/07/14/Spring-MVC02/" class="archive-article-date">
-  	<time datetime="2017-07-13T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-14</time>
+        <a href="/2017/07/21/Spring-MVC03/" class="archive-article-date">
+  	<time datetime="2017-07-20T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-21</time>
 </a>
         
       </header>
@@ -221,10 +221,11 @@ var _hmt = _hmt || [];
 
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Spring MVC</p>
-<p><img src="http://ohfk1r827.bkt.clouddn.com/spring-mvc.png" alt="spring-mvc"><br>
+        <p>由于星期一接到面试通知，和面试官约好了星期四面试，所以这几天没更新完这系列的文章，面完试后立马就把这个解决掉。通过这次面试，也让我懂得了很多，知道了自己的一些不足之处，后面还要继续下功夫好好的深入复习下去。这几篇文章写的我觉得还是不够仔细，感兴趣的还是建议自己去看看源码。</p>
+<h3 id="第-11-章-——-组件概览"><a href="#第-11-章-——-组件概览" class="headerlink" title="第 11 章  ——  组件概览"></a>第 11 章  ——  组件概览</h3><p><strong>HandlerMapping</strong></p>
+<p>根据 request 找到对应的处理器 Handler 和 Interceptors。内部只有一个方法<br>
         
-          <a class="article-more-a" href="/2017/07/14/Spring-MVC02/#more">more >></a>
+          <a class="article-more-a" href="/2017/07/21/Spring-MVC03/#more">more >></a>
         
       
 
@@ -252,7 +253,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/07/14/Spring-MVC02/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/07/21/Spring-MVC03/">展开全文 >></a>
         </p>
       
 
@@ -331,6 +332,80 @@ var _hmt = _hmt || [];
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/07/14/Spring-MVC01/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-Spring-MVC02" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/14/Spring-MVC02/">Spring MVC系列文章（四）：看透 Spring MVC 源代码分析与实践 ——  俯视 Spring MVC</a>
+    </h1>
+  
+
+        
+        <a href="/2017/07/14/Spring-MVC02/" class="archive-article-date">
+  	<time datetime="2017-07-13T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-14</time>
+</a>
+        
+      </header>
+    
+
+    <!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Spring MVC</p>
+<p><img src="http://ohfk1r827.bkt.clouddn.com/spring-mvc.png" alt="spring-mvc"><br>
+        
+          <a class="article-more-a" href="/2017/07/14/Spring-MVC02/#more">more >></a>
+        
+      
+
+      <!-- <div>
+  			<img src="/img/wx.jpg"  style="margin: 0 auto;" />
+  		</div> -->
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Spring MVC</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/07/14/Spring-MVC02/">展开全文 >></a>
         </p>
       
 
@@ -732,92 +807,9 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-中缀表达式转换成前缀和后缀表达式这类题目的超实用解题技巧" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/19/中缀表达式转换成前缀和后缀表达式这类题目的超实用解题技巧/">中缀表达式转换成前缀和后缀表达式这类题目的超实用解题技巧</a>
-    </h1>
-  
-
-        
-        <a href="/2017/06/19/中缀表达式转换成前缀和后缀表达式这类题目的超实用解题技巧/" class="archive-article-date">
-  	<time datetime="2017-06-18T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-19</time>
-</a>
-        
-      </header>
-    
-
-    <!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>看到了标题如果还不了解的这几个概念的请先看看博客：<a href="http://blog.csdn.net/tzs_1041218129/article/details/52650917" target="_blank" rel="noopener"><strong>详解前缀、中缀、后缀表达式</strong></a></p>
-<p>先给几个中缀表达式转换成后缀表达式题目做做吧，最后我们在总结超实用的技巧！！</p>
-<p><strong>1. 表达式“X=A+B*（C–D）/E”的后缀表示形式可以为</strong></p>
-<p>A. XAB+CDE/-*=</p>
-<p>B. XA+BC-DE/*=</p>
-<p>C. XABCD-*E/+=</p>
-<p>D. XABCDE+*/=</p>
-        
-          <a class="article-more-a" href="/2017/06/19/中缀表达式转换成前缀和后缀表达式这类题目的超实用解题技巧/#more">more >></a>
-        
-      
-
-      <!-- <div>
-  			<img src="/img/wx.jpg"  style="margin: 0 auto;" />
-  		</div> -->
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">表达式</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/19/中缀表达式转换成前缀和后缀表达式这类题目的超实用解题技巧/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/7/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/9/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/7/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/9/">Next &raquo;</a>
     </nav>
   
 
