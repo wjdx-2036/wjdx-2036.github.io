@@ -18,33 +18,37 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>深入分析 Java Web 中的中文编码问题 | zhisheng的博客</title>
+  <title>Spring Boot 2.0系列文章(四)：Spring Boot 2.0 项目源码结构预览 | zhisheng的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="背景：  编码问题一直困扰着程序开发人员，尤其是在 Java 中更加明显，因为 Java 是跨平台的语言，在不同平台的编码之间的切换较多。接下来将介绍 Java 编码问题出现的根本原因；在 Java 中经常遇到的几种编码格式的区别；在 Java 中经常需要编码的场景；出现中文问题的原因分析；在开发 Java Web 中可能存在编码的几个地方；一个 HTTP 请求怎么控制编码格式；如何避免出现中文编">
-<meta name="keywords" content="Java,编码">
+  <meta name="keywords" content="Java,SpringBoot">
 <meta property="og:type" content="article">
-<meta property="og:title" content="深入分析 Java Web 中的中文编码问题">
-<meta property="og:url" content="http://yoursite.com/2017/06/13/深入分析 Java Web 中的中文编码问题/index.html">
+<meta property="og:title" content="Spring Boot 2.0系列文章(四)：Spring Boot 2.0 项目源码结构预览">
+<meta property="og:url" content="http://yoursite.com/2018/04/18/spring_boot2_project/index.html">
 <meta property="og:site_name" content="zhisheng的博客">
-<meta property="og:description" content="背景：  编码问题一直困扰着程序开发人员，尤其是在 Java 中更加明显，因为 Java 是跨平台的语言，在不同平台的编码之间的切换较多。接下来将介绍 Java 编码问题出现的根本原因；在 Java 中经常遇到的几种编码格式的区别；在 Java 中经常需要编码的场景；出现中文问题的原因分析；在开发 Java Web 中可能存在编码的几个地方；一个 HTTP 请求怎么控制编码格式；如何避免出现中文编">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://img.blog.csdn.net/20170214161559348?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdHpzXzEwNDEyMTgxMjk=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:image" content="http://img.blog.csdn.net/20170214161657828?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdHpzXzEwNDEyMTgxMjk=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:image" content="http://img.blog.csdn.net/20170214161746411?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdHpzXzEwNDEyMTgxMjk=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:image" content="http://img.blog.csdn.net/20170214161831162?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdHpzXzEwNDEyMTgxMjk=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:image" content="http://img.blog.csdn.net/20170214161903787?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdHpzXzEwNDEyMTgxMjk=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:image" content="http://img.blog.csdn.net/20170214161925600?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdHpzXzEwNDEyMTgxMjk=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:image" content="https://www.ibm.com/developerworks/cn/java/j-lo-chinesecoding/image025.jpg">
-<meta property="og:image" content="https://www.ibm.com/developerworks/cn/java/j-lo-chinesecoding/image027.gif">
-<meta property="og:image" content="https://www.ibm.com/developerworks/cn/java/j-lo-chinesecoding/image029.gif">
-<meta property="og:image" content="https://www.ibm.com/developerworks/cn/java/j-lo-chinesecoding/image031.gif">
-<meta property="og:image" content="https://www.ibm.com/developerworks/cn/java/j-lo-chinesecoding/image033.gif">
-<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79gy1fp3jkmizmpj30o00didgn.jpg">
-<meta property="og:updated_time" content="2018-03-06T16:06:07.000Z">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1fqhraflay7j31hc0zk0z1.jpg">
+<meta property="og:image" content="http://ohfk1r827.bkt.clouddn.com/blog/180103/C6LG3mGa12.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1fqhsa07r59j30ps104gpd.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1fqhs874239j30p00n2dip.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1fqhs885a4zj30xk1ea78a.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1fqhs8ibzjzj30xk15mjv8.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1fqhs8hfazpj30wi1dy0xb.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1fqhs89img2j30xs0og0uz.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1fqhsa2hmasj30x21aqq6j.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1fqhs9xrj6qj31kw16be31.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1fqhs9z88hrj30v41bw785.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1fqhs8affekj30xo1ecdkr.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1fqhs8dxfnij31kw0zrqkw.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1fqhs9wkyvsj30um18678o.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1fqhs8foqadj31he1hwh5l.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1fqhs84zby0j31kw0xdkb0.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1fqhs8kcu5ej30ri0lqwh5.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1fqhsa4qklcj31kw11y7ud.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1fqhs8cezdbj30ui1dqagt.jpg">
+<meta property="og:updated_time" content="2018-04-19T03:02:27.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="深入分析 Java Web 中的中文编码问题">
-<meta name="twitter:description" content="背景：  编码问题一直困扰着程序开发人员，尤其是在 Java 中更加明显，因为 Java 是跨平台的语言，在不同平台的编码之间的切换较多。接下来将介绍 Java 编码问题出现的根本原因；在 Java 中经常遇到的几种编码格式的区别；在 Java 中经常需要编码的场景；出现中文问题的原因分析；在开发 Java Web 中可能存在编码的几个地方；一个 HTTP 请求怎么控制编码格式；如何避免出现中文编">
-<meta name="twitter:image" content="http://img.blog.csdn.net/20170214161559348?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdHpzXzEwNDEyMTgxMjk=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta name="twitter:title" content="Spring Boot 2.0系列文章(四)：Spring Boot 2.0 项目源码结构预览">
+<meta name="twitter:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1fqhraflay7j31hc0zk0z1.jpg">
   
     <link rel="alternative" href="/atom.xml" title="zhisheng的博客" type="application/atom+xml">
   
@@ -212,20 +216,20 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-深入分析 Java Web 中的中文编码问题" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-spring_boot2_project" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      深入分析 Java Web 中的中文编码问题
+      Spring Boot 2.0系列文章(四)：Spring Boot 2.0 项目源码结构预览
     </h1>
   
 
         
-        <a href="/2017/06/13/深入分析 Java Web 中的中文编码问题/" class="archive-article-date">
-  	<time datetime="2017-06-12T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-13</time>
+        <a href="/2018/04/18/spring_boot2_project/" class="archive-article-date">
+  	<time datetime="2018-04-17T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-18</time>
 </a>
         
       </header>
@@ -240,7 +244,7 @@ var _hmt = _hmt || [];
     <div id="toc-article" class="toc-article">
         <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
         <strong class="toc-title">文章目录</strong>
-           <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、几种常见的编码格式"><span class="toc-number">1.</span> <span class="toc-text">1、几种常见的编码格式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-为什么要编码"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 为什么要编码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-如何翻译"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 如何翻译</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、在-Java-中需要编码的场景"><span class="toc-number">2.</span> <span class="toc-text">2、在 Java 中需要编码的场景</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-在-I-O-操作中存在的编码"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 在 I/O 操作中存在的编码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-在内存操作中的编码"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 在内存操作中的编码</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、在-Java-中如何编解码"><span class="toc-number">3.</span> <span class="toc-text">3、在 Java 中如何编解码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#几种编码格式的比较"><span class="toc-number">3.1.</span> <span class="toc-text">几种编码格式的比较</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4、在-Java-Web-中涉及的编解码"><span class="toc-number">4.</span> <span class="toc-text">4、在 Java Web 中涉及的编解码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-URL-的编解码"><span class="toc-number">4.1.</span> <span class="toc-text">4.1 URL 的编解码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-HTTP-Header-的编解码"><span class="toc-number">4.2.</span> <span class="toc-text">4.2 HTTP Header 的编解码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-3-POST-表单的编解码"><span class="toc-number">4.3.</span> <span class="toc-text">4.3 POST 表单的编解码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-4-HTTP-BODY-的编解码"><span class="toc-number">4.4.</span> <span class="toc-text">4.4 HTTP BODY 的编解码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-5-其它需要编码的地方"><span class="toc-number">4.5.</span> <span class="toc-text">4.5 其它需要编码的地方</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5、常见问题分析"><span class="toc-number">5.</span> <span class="toc-text">5、常见问题分析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#5-1-中文变成了看不懂的字符"><span class="toc-number">5.1.</span> <span class="toc-text">5.1 中文变成了看不懂的字符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-2-一个汉字变成一个问号"><span class="toc-number">5.2.</span> <span class="toc-text">5.2 一个汉字变成一个问号</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-3-一个汉字变成两个问号"><span class="toc-number">5.3.</span> <span class="toc-text">5.3 一个汉字变成两个问号</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-4-一种不正常的正确编码"><span class="toc-number">5.4.</span> <span class="toc-text">5.4 一种不正常的正确编码</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6、总结"><span class="toc-number">6.</span> <span class="toc-text">6、总结</span></a></li></ol>
+           <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#关注我"><span class="toc-number">1.</span> <span class="toc-text">关注我</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#项目结构"><span class="toc-number">2.</span> <span class="toc-text">项目结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#spring-boot-project"><span class="toc-number">3.</span> <span class="toc-text">spring-boot-project</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Spirng-boot"><span class="toc-number">3.1.</span> <span class="toc-text">Spirng-boot</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#spring-boot-actuator"><span class="toc-number">3.2.</span> <span class="toc-text">spring-boot-actuator</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#spring-boot-actuator-autoconfigure"><span class="toc-number">3.3.</span> <span class="toc-text">spring-boot-actuator-autoconfigure</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#spring-boot-autoconfigure"><span class="toc-number">3.4.</span> <span class="toc-text">spring-boot-autoconfigure</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#spring-boot-cli"><span class="toc-number">3.5.</span> <span class="toc-text">spring-boot-cli</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#spring-boot-dependencies"><span class="toc-number">3.6.</span> <span class="toc-text">spring-boot-dependencies</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#spring-boot-devtools"><span class="toc-number">3.7.</span> <span class="toc-text">spring-boot-devtools</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#spring-boot-docs"><span class="toc-number">3.8.</span> <span class="toc-text">spring-boot-docs</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#spring-boot-parent"><span class="toc-number">3.9.</span> <span class="toc-text">spring-boot-parent</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#spring-boot-properties-migrator"><span class="toc-number">3.10.</span> <span class="toc-text">spring-boot-properties-migrator</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#spring-boot-starters"><span class="toc-number">3.11.</span> <span class="toc-text">spring-boot-starters</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#spring-boot-test"><span class="toc-number">3.12.</span> <span class="toc-text">spring-boot-test</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#spring-boot-test-autoconfigure"><span class="toc-number">3.13.</span> <span class="toc-text">spring-boot-test-autoconfigure</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#spring-boot-tools"><span class="toc-number">3.14.</span> <span class="toc-text">spring-boot-tools</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#spring-boot-samples"><span class="toc-number">4.</span> <span class="toc-text">spring-boot-samples</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#spring-boot-tests"><span class="toc-number">5.</span> <span class="toc-text">spring-boot-tests</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#相关文章"><span class="toc-number">6.</span> <span class="toc-text">相关文章</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#总结"><span class="toc-number">7.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#最后"><span class="toc-number">8.</span> <span class="toc-text">最后</span></a></li></ol>
          </div>
    <script type="text/javascript">
     function showToc(){
@@ -261,123 +265,97 @@ var _hmt = _hmt || [];
 
     <div class="article-entry" itemprop="articleBody">
       
-        <p>背景：</p>
-<blockquote>
-<p>编码问题一直困扰着程序开发人员，尤其是在 Java 中更加明显，因为 Java 是跨平台的语言，在不同平台的编码之间的切换较多。接下来将介绍 Java 编码问题出现的根本原因；在 Java 中经常遇到的几种编码格式的区别；在 Java 中经常需要编码的场景；出现中文问题的原因分析；在开发 Java Web 中可能存在编码的几个地方；一个 HTTP 请求怎么控制编码格式；如何避免出现中文编码问题等。</p>
-</blockquote>
+        <p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fqhraflay7j31hc0zk0z1.jpg" alt="fireworks-2585843_1920"></p>
 <a id="more"></a>
-<h3 id="1、几种常见的编码格式"><a href="#1、几种常见的编码格式" class="headerlink" title="1、几种常见的编码格式"></a>1、几种常见的编码格式</h3><h4 id="1-1-为什么要编码"><a href="#1-1-为什么要编码" class="headerlink" title="1.1 为什么要编码"></a>1.1 为什么要编码</h4><ul>
-<li>在计算机中存储信息的最小单元是 1 个字节，即 8 个 bit， 所以能表示的字符范围是 0 ~ 255 个。</li>
-<li>要表示的符号太多，无法用 1 个字节来完全表示。</li>
-</ul>
-<h4 id="1-2-如何翻译"><a href="#1-2-如何翻译" class="headerlink" title="1.2 如何翻译"></a>1.2 如何翻译</h4><p>计算机中提供多种翻译方式，常见的有 ASCII、ISO-8859-1、GB2312、GBK、UTF-8、UTF-16等。这些都规定了转化的规则，按照这个规则就可以让计算机正确的表示我们的字符。下面介绍这几种编码格式：</p>
+<h3 id="关注我"><a href="#关注我" class="headerlink" title="关注我"></a>关注我</h3><p><img src="http://ohfk1r827.bkt.clouddn.com/blog/180103/C6LG3mGa12.jpg" alt="mark"></p>
+<p>转载请务必注明原创地址为：<a href="http://www.54tianzhisheng.cn/2018/04/18/spring_boot2_project/" target="_blank" rel="noopener">http://www.54tianzhisheng.cn/2018/04/15/springboot2_code/</a></p>
+<h3 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h3><p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fqhsa07r59j30ps104gpd.jpg" alt="springboot2001"></p>
+<p>结构分析：</p>
 <ul>
-<li><p>ASCII 码</p>
-<p>总共有 128 个，用 1 个字节的低 7 位表示， 0 ~ 31 是控制字符如换行、回车、删除等，32 ~ 126 是打印字符，可以通过键盘输入并且能够显示出来。</p>
-</li>
-<li><p>ISO-8859-1</p>
-<p>128 个字符显然是不够用的，所以 ISO 组织在 ASCII 的基础上扩展，他们是 ISO-8859-1 至 ISO-8859-15，前者涵盖大多数字符，应用最广。ISO-8859-1 仍是单字节编码，它总归能表示 256 个字符。</p>
-</li>
-<li><p>GB2312</p>
-<p>它是双字节编码，总的编码范围是 A1 ~ F7，其中 A1 ~ A9 是符号区，总共包含 682 个符号；B0 ~ F7 是汉字区，包含 6763 个汉字。</p>
-</li>
-<li><p>GBk</p>
-<p>GBK 为《汉字内码扩展规范》，为 GB2312 的扩展，它的编码范围是 8140 ~ FEFE（去掉XX7F），总共有 23940 个码位，能表示 21003 个汉字，和 GB2312的编码兼容，不会有乱码。</p>
-</li>
-<li><p>UTF-16</p>
-<p>它具体定义了 Unicode 字符在计算机中的存取方法。UTF-16 用两个字节来表示 Unicode 的转化格式，它采用定长的表示方法，即不论什么字符用两个字节表示。两个字节是 16 个 bit，所以叫 UTF-16。它表示字符非常方便，没两个字节表示一个字符，这就大大简化了字符串操作。</p>
-</li>
-<li><p><strong>UTF-8</strong></p>
-<p>虽说 UTF-16 统一采用两个字节表示一个字符很简单方便，但是很大一部分字符用一个字节就可以表示，如果用两个字节表示，存储空间放大了一倍，在网络带宽有限的情况下会增加网络传输的流量。UTF-8 采用了一种变长技术，每个编码区域有不同的字码长度不同类型的字符可以由 1 ~ 6 个字节组成。</p>
-<p>UTF-8 有以下编码规则：</p>
-<blockquote>
+<li>Spring-boot-project   核心代码，代码量很多（197508 行）</li>
+<li>Spring-boot-samples  一些样例 demo，代码量不多（9685 行），蛮有用的</li>
+<li>Spring-boot-samples-invoker  里面无代码</li>
+<li>Spring-boot-tests   测试代码（1640 行）</li>
+</ul>
+<h3 id="spring-boot-project"><a href="#spring-boot-project" class="headerlink" title="spring-boot-project"></a>spring-boot-project</h3><p>Spring-boot-project 下面有很多模块，如下：</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fqhs874239j30p00n2dip.jpg" alt="springboot2002"></p>
+<h4 id="Spirng-boot"><a href="#Spirng-boot" class="headerlink" title="Spirng-boot"></a>Spirng-boot</h4><p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fqhs885a4zj30xk1ea78a.jpg" alt="springboot"></p>
+<p>该模块 47760 行代码（含测试代码），Spring boot 主要的库，提供了支持 Spring Boot 其他部分的功能，其中包括了：</p>
 <ul>
-<li>如果是 1 个字节，最高位（第 8 位）为 0，则表示这是一个 ASCII 字符（00 ~ 7F）</li>
-<li>如果是 1 个字节，以 11 开头，则连续的 1 的个数暗示这个字符的字节数</li>
-<li>如果是 1 个字节，以 10 开头，表示它不是首字节，则需要向前查找才能得到当前字符的首字节</li>
+<li>在<code>SpringApplication</code>类，提供静态便捷方法，可以很容易写一个独立的 Spring 应用程序。它唯一的工作就是创造并更新一个合适的 Spring<code>ApplicationContext</code></li>
+<li>带有可选容器的嵌入式 Web 应用程序（Tomcat，Jetty 或 Undertow）</li>
+<li>一流的外部配置支持</li>
+<li>便捷<code>ApplicationContext</code>初始化程序，包括对敏感日志记录默认值的支持</li>
 </ul>
-</blockquote>
-<p>​</p>
+<h4 id="spring-boot-actuator"><a href="#spring-boot-actuator" class="headerlink" title="spring-boot-actuator"></a>spring-boot-actuator</h4><p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fqhs8ibzjzj30xk15mjv8.jpg" alt="springboot-actuator"></p>
+<p>该模块 18398 行代码（含测试代码），spring-boot-actuator 模块它完全是一个用于暴露自身信息的模块，提供了一个监控和管理生产环境的模块，可以使用 http、jmx、ssh、telnet 等管理和监控应用。审计（Auditing）、 健康（health）、数据采集（metrics gathering）会自动加入到应用里面。</p>
+<h4 id="spring-boot-actuator-autoconfigure"><a href="#spring-boot-actuator-autoconfigure" class="headerlink" title="spring-boot-actuator-autoconfigure"></a>spring-boot-actuator-autoconfigure</h4><p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fqhs8hfazpj30wi1dy0xb.jpg" alt="springboot-actoator-autoconfig"></p>
+<p>该模块 16721 行代码（含测试代码），Spring Boot Actuator 提供了额外的自动配置功能，可以在生产环境中实现可即时部署和支持的功能，从而装饰你的应用。例如，如果您正在编写 JSON Web 服务，那么它将提供服务器，安全性，日志记录，外部配置，管理端点，审计抽象等等功能。如果您想关闭内置功能，或者扩展或替换它们，它也会变得非常简单。</p>
+<h4 id="spring-boot-autoconfigure"><a href="#spring-boot-autoconfigure" class="headerlink" title="spring-boot-autoconfigure"></a>spring-boot-autoconfigure</h4><p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fqhs89img2j30xs0og0uz.jpg" alt="springboot-autoconfig"></p>
+<p>该模块 51100 行代码（含测试代码）， Spring Boot 可以根据类路径的内容配置大部分常用应用程序。单个<code>@EnableAutoConfiguration</code>注释会触发 Spring上下文的自动配置。</p>
+<p>自动配置尝试推断用户可能需要哪些 bean。例如，如果 <code>HSQLDB</code>在类路径中，并且用户尚未配置任何数据库连接，则他们可能需要定义内存数据库。当用户开始定义他们自己的 bean 时，自动配置将永远远离。</p>
+<h4 id="spring-boot-cli"><a href="#spring-boot-cli" class="headerlink" title="spring-boot-cli"></a>spring-boot-cli</h4><p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fqhsa2hmasj30x21aqq6j.jpg" alt="springboot-cli"></p>
+<p>该模块 9346 行代码（含测试代码），Spring 命令行应用程序编译并运行 Groovy 源代码，使得可以编写少量代码就能运行应用程序。Spring CLI 也可以监视文件，当它们改变时自动重新编译并重新启动。</p>
+<h4 id="spring-boot-dependencies"><a href="#spring-boot-dependencies" class="headerlink" title="spring-boot-dependencies"></a>spring-boot-dependencies</h4><p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fqhs9xrj6qj31kw16be31.jpg" alt="springboot-dependencies"></p>
+<p>该模块里面没有源码，只有所有依赖和插件的版本号信息。</p>
+<h4 id="spring-boot-devtools"><a href="#spring-boot-devtools" class="headerlink" title="spring-boot-devtools"></a>spring-boot-devtools</h4><p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fqhs9z88hrj30v41bw785.jpg" alt="springboot-devtools"></p>
+<p>该模块 9418 行代码（含测试代码），spring-boot-devtools 模块来使 Spring Boot 应用支持热部署，提高开发者的开发效率，无需手动重启 Spring Boot 应用。</p>
+<h4 id="spring-boot-docs"><a href="#spring-boot-docs" class="headerlink" title="spring-boot-docs"></a>spring-boot-docs</h4><p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fqhs8affekj30xo1ecdkr.jpg" alt="springboot-docs"></p>
+<p>该模块 671 行代码，springboot 参考文件。</p>
+<h4 id="spring-boot-parent"><a href="#spring-boot-parent" class="headerlink" title="spring-boot-parent"></a>spring-boot-parent</h4><p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fqhs8dxfnij31kw0zrqkw.jpg" alt="springboot-parent"></p>
+<p>该模块是其他项目的 parent，该模块的父模块是 spring-boot-dependencies。</p>
+<h4 id="spring-boot-properties-migrator"><a href="#spring-boot-properties-migrator" class="headerlink" title="spring-boot-properties-migrator"></a>spring-boot-properties-migrator</h4><p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fqhs9wkyvsj30um18678o.jpg" alt="springboot-properties-migrator"></p>
+<p>该模块有 495 行代码，在 Spring Boot 2.0 中，许多配置属性被重新命名/删除，开发人员需要更新<code>application.properties</code>/ <code>application.yml</code>相应的配置。为了帮助你解决这一问题，Spring Boot 发布了一个新<code>spring-boot-properties-migrator</code>模块。一旦作为该模块作为依赖被添加到你的项目中，它不仅会分析应用程序的环境，而且还会在启动时打印诊断信息，而且还会在运行时为您暂时迁移属性。在您的应用程序迁移期间，这个模块是必备的，完成迁移后，请确保从项目的依赖关系中删除此模块。</p>
+<h4 id="spring-boot-starters"><a href="#spring-boot-starters" class="headerlink" title="spring-boot-starters"></a>spring-boot-starters</h4><p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fqhs8foqadj31he1hwh5l.jpg" alt="springboot-starter"></p>
+<p>Starter POMs 是由很多方便的依赖集合组成，如果你需要使用某种技术，通过添加少量的jar就可以把相关的依赖加入到项目中去。</p>
+<p>虽然你看得到有这么多 starter，但是却没有一行 Java 代码，意不意外？</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fqhs84zby0j31kw0xdkb0.jpg" alt="springboot-starter-activemq"></p>
+<p>这确实是 Spring Boot 自动配置的关键之处，后面我可以讲讲。</p>
+<h4 id="spring-boot-test"><a href="#spring-boot-test" class="headerlink" title="spring-boot-test"></a>spring-boot-test</h4><p>测试代码！有 10980 行代码。</p>
+<h4 id="spring-boot-test-autoconfigure"><a href="#spring-boot-test-autoconfigure" class="headerlink" title="spring-boot-test-autoconfigure"></a>spring-boot-test-autoconfigure</h4><p>自动配置的测试代码，有 6063 行代码。</p>
+<h4 id="spring-boot-tools"><a href="#spring-boot-tools" class="headerlink" title="spring-boot-tools"></a>spring-boot-tools</h4><p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fqhs8kcu5ej30ri0lqwh5.jpg" alt="springboot-tools"></p>
+<ul>
+<li><p>spring-boot-antlib</p>
+<p>Spring Boot AntLib 模块为 Apache Ant 提供了基本的 Spring Boot 支持。 您可以使用该模块创建可执行文件夹。 要使用该模块，您需要在 build.xml 中声明一个额外的 spring-boot 命名空间，如以下示例所示：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">project</span> <span class="attr">xmlns:ivy</span>=<span class="string">"antlib:org.apache.ivy.ant"</span></span></span><br><span class="line"><span class="tag">	<span class="attr">xmlns:spring-boot</span>=<span class="string">"antlib:org.springframework.boot.ant"</span></span></span><br><span class="line"><span class="tag">	<span class="attr">name</span>=<span class="string">"myapp"</span> <span class="attr">default</span>=<span class="string">"build"</span>&gt;</span></span><br><span class="line">	...</span><br><span class="line"><span class="tag">&lt;/<span class="name">project</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>您需要记住使用 -lib 选项启动 Ant，如以下示例所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ant -lib &lt;folder containing spring-boot-antlib-2.1.0.BUILD-SNAPSHOT.jar&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Spring-boot-autoconfigure-processor</p>
+<p>spring boot 自动配置的核心类</p>
+</li>
+<li><p>Spring-boot-configuration-metadata</p>
+<p>Spring boot 配置元数据</p>
+</li>
+<li><p>Spring-boot-configuration-processor</p>
+<p>spring boot 配置的核心</p>
+</li>
+<li><p>Spring-boot-gradle-plugin</p>
+<p>Spring Boot Gradle 插件在 Gradle 中提供了 Spring Boot 支持，可以打包成可执行 jar 或 war ，运行 Spring Boot 应用程序，并使用 spring-boot-dependencies 提供的依赖关系管理。 它需要 Gradle 4.0 或更高版本。</p>
+</li>
+<li><p>Spring-boot-maven-plugin</p>
+<p>Spring Boot Maven Plugin 在 Maven 中提供了 Spring Boot 支持，让您可以打包成可执行 jar 或 war 应用，并“就地”运行应用程序。 要使用它，你必须使用 Maven 3.2（或更高版本）。</p>
+</li>
+<li><p>Spring-boot-loader</p>
+<p>spring-boot-load 模块通过自定义 jar 包结构，自定义类加载器，优雅的实现了嵌套 jar 资源的加载，通过打包时候重新设置启动类和组织 jar 结构，通过运行时设置自定义加载器来实现嵌套 jar 资源加载。</p>
+</li>
+<li><p>Spring-boot-loader-tools</p>
+<p>spring-boot-load 模块的工具模块</p>
+</li>
+<li><p>Spring-boot-test-support</p>
+<p>测试</p>
 </li>
 </ul>
-<h3 id="2、在-Java-中需要编码的场景"><a href="#2、在-Java-中需要编码的场景" class="headerlink" title="2、在 Java 中需要编码的场景"></a>2、在 Java 中需要编码的场景</h3><h4 id="2-1-在-I-O-操作中存在的编码"><a href="#2-1-在-I-O-操作中存在的编码" class="headerlink" title="2.1 在 I/O 操作中存在的编码"></a>2.1 在 I/O 操作中存在的编码</h4><p><img src="http://img.blog.csdn.net/20170214161559348?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdHpzXzEwNDEyMTgxMjk=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
-<p>如上图：Reader 类是在 Java 的 I/O 中读取符的父类，而 InputStream 类是读字节的父类， InputStreamReader 类就是关联字节到字符的桥梁，它负责在 I/O 过程中处理读取字节到字符的转换，而对具体字节到字符的解码实现，它又委托 StreamDecoder 去做，在 StreamDecoder 解码过程中必须由用户指定 Charset 编码格式。值得注意的是，如果你没有指定 Charset，则将使用本地环境中默认的字符集，如在中文环境中将使用 GBK 编码。</p>
-<p>如下面一段代码，实现了文件的读写功能：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">String file = <span class="string">"c:/stream.txt"</span>;</span><br><span class="line">String charset = <span class="string">"UTF-8"</span>;</span><br><span class="line"><span class="comment">// 写字符换转成字节流</span></span><br><span class="line">FileOutputStream outputStream = <span class="keyword">new</span> FileOutputStream(file);</span><br><span class="line">OutputStreamWriter writer = <span class="keyword">new</span> OutputStreamWriter(</span><br><span class="line">outputStream, charset);</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">   writer.write(<span class="string">"这是要保存的中文字符"</span>);</span><br><span class="line">&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">   writer.close();</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 读取字节转换成字符</span></span><br><span class="line">FileInputStream inputStream = <span class="keyword">new</span> FileInputStream(file);</span><br><span class="line">InputStreamReader reader = <span class="keyword">new</span> InputStreamReader(</span><br><span class="line">inputStream, charset);</span><br><span class="line">StringBuffer buffer = <span class="keyword">new</span> StringBuffer();</span><br><span class="line"><span class="keyword">char</span>[] buf = <span class="keyword">new</span> <span class="keyword">char</span>[<span class="number">64</span>];</span><br><span class="line"><span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">   <span class="keyword">while</span> ((count = reader.read(buf)) != -<span class="number">1</span>) &#123;</span><br><span class="line">       buffer.append(buffer, <span class="number">0</span>, count);</span><br><span class="line">   &#125;</span><br><span class="line">&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">   reader.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>在我们的应用程序中涉及 I/O 操作时，只要注意指定统一的编解码 Charset 字符集，一般不会出现乱码问题。</p>
-<h4 id="2-2-在内存操作中的编码"><a href="#2-2-在内存操作中的编码" class="headerlink" title="2.2 在内存操作中的编码"></a>2.2 在内存操作中的编码</h4><p>在内存中进行从字符到字节的数据类型转换。</p>
-<p>1、String 类提供字符串转换到字节的方法，也支持将字节转换成字符串的构造函数。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String s  = <span class="string">"字符串"</span>；</span><br><span class="line"><span class="keyword">byte</span>[] b = s.getBytes(<span class="string">"UTF-8"</span>);</span><br><span class="line">String n = <span class="keyword">new</span> String(b, <span class="string">"UTF-8"</span>);</span><br></pre></td></tr></table></figure>
-<p>2、Charset 提供 encode 与 decode，分别对应 char[] 到 byte[] 的编码 和 byte[] 到 char[] 的解码。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Charset charset = Charset.forName(<span class="string">"UTF-8"</span>);</span><br><span class="line">ByteBuffer byteBuffer = charset.encode(string);</span><br><span class="line">CharBuffer charBuffer = charset.decode(byteBuffer);</span><br></pre></td></tr></table></figure>
-<p>…</p>
-<h3 id="3、在-Java-中如何编解码"><a href="#3、在-Java-中如何编解码" class="headerlink" title="3、在 Java 中如何编解码"></a>3、在 Java 中如何编解码</h3><p>Java 编码类图</p>
-<p><img src="http://img.blog.csdn.net/20170214161657828?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdHpzXzEwNDEyMTgxMjk=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
-<p>首先根据指定的 charsetName 通过 Charset.forName(charsetName) 设置 Charset 类，然后根据 Charset 创建 CharsetEncoder 对象，再调用 CharsetEncoder.encode 对字符串进行编码，不同的编码类型都会对应到一个类中，实际的编码过程是在这些类中完成的。下面是 String. getBytes(charsetName) 编码过程的时序图</p>
-<p>Java 编码时序图</p>
-<p><img src="http://img.blog.csdn.net/20170214161746411?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdHpzXzEwNDEyMTgxMjk=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
-<p>从上图可以看出根据 charsetName 找到 Charset 类，然后根据这个字符集编码生成 CharsetEncoder，这个类是所有字符编码的父类，针对不同的字符编码集在其子类中定义了如何实现编码，有了 CharsetEncoder 对象后就可以调用 encode 方法去实现编码了。这个是 String.getBytes 编码方法，其它的如 StreamEncoder 中也是类似的方式。</p>
-<p>经常会出现中文变成“？”很可能就是错误的使用了 ISO-8859-1 这个编码导致的。中文字符经过 ISO-8859-1 编码会丢失信息，通常我们称之为“黑洞”，它会把不认识的字符吸收掉。由于现在大部分基础的 Java 框架或系统默认的字符集编码都是 ISO-8859-1，所以很容易出现乱码问题，后面将会分析不同的乱码形式是怎么出现的。</p>
-<h4 id="几种编码格式的比较"><a href="#几种编码格式的比较" class="headerlink" title="几种编码格式的比较"></a>几种编码格式的比较</h4><p>对中文字符后面四种编码格式都能处理，GB2312 与 GBK 编码规则类似，但是 GBK 范围更大，它能处理所有汉字字符，所以 GB2312 与 GBK 比较应该选择 GBK。UTF-16 与 UTF-8 都是处理 Unicode 编码，它们的编码规则不太相同，相对来说 UTF-16 编码效率最高，字符到字节相互转换更简单，进行字符串操作也更好。它适合在本地磁盘和内存之间使用，可以进行字符和字节之间快速切换，如 Java 的内存编码就是采用 UTF-16 编码。但是它不适合在网络之间传输，因为网络传输容易损坏字节流，一旦字节流损坏将很难恢复，想比较而言 UTF-8 更适合网络传输，对 ASCII 字符采用单字节存储，另外单个字符损坏也不会影响后面其它字符，在编码效率上介于 GBK 和 UTF-16 之间，所以 UTF-8 在编码效率上和编码安全性上做了平衡，是理想的中文编码方式。</p>
-<h3 id="4、在-Java-Web-中涉及的编解码"><a href="#4、在-Java-Web-中涉及的编解码" class="headerlink" title="4、在 Java Web 中涉及的编解码"></a>4、在 Java Web 中涉及的编解码</h3><p>对于使用中文来说，有 I/O 的地方就会涉及到编码，前面已经提到了 I/O 操作会引起编码，而大部分 I/O 引起的乱码都是网络 I/O，因为现在几乎所有的应用程序都涉及到网络操作，而数据经过网络传输都是以字节为单位的，所以所有的数据都必须能够被序列化为字节。在 Java 中数据被序列化必须继承 Serializable 接口。</p>
-<p>一段文本它的实际大小应该怎么计算，我曾经碰到过一个问题：就是要想办法压缩 Cookie 大小，减少网络传输量，当时有选择不同的压缩算法，发现压缩后字符数是减少了，但是并没有减少字节数。所谓的压缩只是将多个单字节字符通过编码转变成一个多字节字符。减少的是 String.length()，而并没有减少最终的字节数。例如将“ab”两个字符通过某种编码转变成一个奇怪的字符，虽然字符数从两个变成一个，但是如果采用 UTF-8 编码这个奇怪的字符最后经过编码可能又会变成三个或更多的字节。同样的道理比如整型数字 1234567 如果当成字符来存储，采用 UTF-8 来编码占用 7 个 byte，采用 UTF-16 编码将会占用 14 个 byte，但是把它当成 int 型数字来存储只需要 4 个 byte 来存储。所以看一段文本的大小，看字符本身的长度是没有意义的，即使是一样的字符采用不同的编码最终存储的大小也会不同，所以<strong>从字符到字节一定要看编码类型</strong>。</p>
-<p>我们能够看到的汉字都是以字符形式出现的，例如在 Java 中“淘宝”两个字符，它在计算机中的数值 10 进制是 28120 和 23453，16 进制是 6bd8 和 5d9d，也就是这两个字符是由这两个数字唯一表示的。Java 中一个 char 是 16 个 bit 相当于两个字节，所以两个汉字用 char 表示在内存中占用相当于四个字节的空间。</p>
-<p>这两个问题搞清楚后，我们看一下 Java Web 中那些地方可能会存在编码转换？</p>
-<p>用户从浏览器端发起一个 HTTP 请求，需要存在编码的地方是 URL、Cookie、Parameter。服务器端接受到 HTTP 请求后要解析 HTTP 协议，其中 URI、Cookie 和 POST 表单参数需要解码，服务器端可能还需要读取数据库中的数据，本地或网络中其它地方的文本文件，这些数据都可能存在编码问题，当 Servlet 处理完所有请求的数据后，需要将这些数据再编码通过 Socket 发送到用户请求的浏览器里，再经过浏览器解码成为文本。这些过程如下图所示：</p>
-<p><img src="http://img.blog.csdn.net/20170214161831162?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdHpzXzEwNDEyMTgxMjk=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
-<p>一次 HTTP 请求的编码示例</p>
-<h4 id="4-1-URL-的编解码"><a href="#4-1-URL-的编解码" class="headerlink" title="4.1 URL 的编解码"></a>4.1 URL 的编解码</h4><p>用户提交一个 URL，这个 URL 中可能存在中文，因此需要编码，如何对这个 URL 进行编码？根据什么规则来编码？有如何来解码？如下图一个 URL：</p>
-<p><img src="http://img.blog.csdn.net/20170214161903787?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdHpzXzEwNDEyMTgxMjk=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
-<p>上图中以 Tomcat 作为 Servlet Engine 为例，它们分别对应到下面这些配置文件中：<br>Port 对应在 Tomcat 的 <connector port="8080"> 中配置，而 Context Path 在 <context path="/examples"> 中配置，Servlet Path 在 Web 应用的 web.xml 中的</context></connector></p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>junshanExample<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/servlets/servlet/*<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p><url-pattern> 中配置，PathInfo 是我们请求的具体的 Servlet，QueryString 是要传递的参数，注意这里是在浏览器里直接输入 URL 所以是通过 Get 方法请求的，如果是 POST 方法请求的话，QueryString 将通过表单方式提交到服务器端。</url-pattern></p>
-<p>上图中 PathInfo 和 QueryString 出现了中文，当我们在浏览器中直接输入这个 URL 时，在浏览器端和服务端会如何编码和解析这个 URL 呢？为了验证浏览器是怎么编码 URL 的我选择的是360极速浏览器并通过 Postman 插件观察我们请求的 URL 的实际的内容，以下是 URL：</p>
-<p><code>HTTP://localhost:8080/examples/servlets/servlet/君山?author=君山</code></p>
-<p><img src="http://img.blog.csdn.net/20170214161925600?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdHpzXzEwNDEyMTgxMjk=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
-<p>君山的编码结果是：e5 90 9b e5 b1 b1，和《深入分析 Java Web 技术内幕》中的结果不一样，这是因为我使用的浏览器和插件和原作者是有区别的，那么这些浏览器之间的默认编码是不一样的，原文中的结果是：</p>
-<p><img src="https://www.ibm.com/developerworks/cn/java/j-lo-chinesecoding/image025.jpg" alt=""></p>
-<p>君山的编码结果分别是：e5 90 9b e5 b1 b1，be fd c9 bd，查阅上一届的编码可知，PathInfo 是 UTF-8 编码而 QueryString 是经过 GBK 编码，至于为什么会有“%”？查阅 URL 的编码规范 RFC3986 可知浏览器编码 URL 是将非 ASCII 字符按照某种编码格式编码成 16 进制数字然后将每个 16 进制表示的字节前加上“%”，所以最终的 URL 就成了上图的格式了。</p>
-<p>从上面测试结果可知浏览器对 PathInfo 和 QueryString 的编码是不一样的，不同浏览器对 PathInfo 也可能不一样，这就对服务器的解码造成很大的困难，下面我们以 Tomcat 为例看一下，Tomcat 接受到这个 URL 是如何解码的。</p>
-<p>解析请求的 URL 是在 org.apache.coyote.HTTP11.InternalInputBuffer 的 parseRequestLine 方法中，这个方法把传过来的 URL 的 byte[] 设置到 org.apache.coyote.Request 的相应的属性中。这里的 URL 仍然是 byte 格式，转成 char 是在 org.apache.catalina.connector.CoyoteAdapter 的 convertURI 方法中完成的：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">convertURI</span><span class="params">(MessageBytes uri, Request request)</span></span></span><br><span class="line"><span class="function"> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        ByteChunk bc = uri.getByteChunk();</span><br><span class="line">        <span class="keyword">int</span> length = bc.getLength();</span><br><span class="line">        CharChunk cc = uri.getCharChunk();</span><br><span class="line">        cc.allocate(length, -<span class="number">1</span>);</span><br><span class="line">        String enc = connector.getURIEncoding();</span><br><span class="line">        <span class="keyword">if</span> (enc != <span class="keyword">null</span>) &#123;</span><br><span class="line">            B2CConverter conv = request.getURIConverter();</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> (conv == <span class="keyword">null</span>) &#123;</span><br><span class="line">                    conv = <span class="keyword">new</span> B2CConverter(enc);</span><br><span class="line">                    request.setURIConverter(conv);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">catch</span> (IOException e) &#123;...&#125;</span><br><span class="line">            <span class="keyword">if</span> (conv != <span class="keyword">null</span>) &#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    conv.convert(bc, cc, cc.getBuffer().length -</span><br><span class="line"> cc.getEnd());</span><br><span class="line">                    uri.setChars(cc.getBuffer(), cc.getStart(),</span><br><span class="line"> cc.getLength());</span><br><span class="line">                    <span class="keyword">return</span>;</span><br><span class="line">                &#125; <span class="keyword">catch</span> (IOException e) &#123;...&#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// Default encoding: fast conversion</span></span><br><span class="line">        <span class="keyword">byte</span>[] bbuf = bc.getBuffer();</span><br><span class="line">        <span class="keyword">char</span>[] cbuf = cc.getBuffer();</span><br><span class="line">        <span class="keyword">int</span> start = bc.getStart();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; length; i++) &#123;</span><br><span class="line">            cbuf[i] = (<span class="keyword">char</span>) (bbuf[i + start] &amp; <span class="number">0xff</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        uri.setChars(cbuf, <span class="number">0</span>, length);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-<p>从上面的代码中可以知道对 URL 的 URI 部分进行解码的字符集是在 connector 的 <connector uriencoding="”UTF-8”/"> 中定义的，如果没有定义，那么将以默认编码 ISO-8859-1 解析。所以如果有中文 URL 时最好把 URIEncoding 设置成 UTF-8 编码。</connector></p>
-<p>QueryString 又如何解析？ GET 方式 HTTP 请求的 QueryString 与 POST 方式 HTTP 请求的表单参数都是作为 Parameters 保存，都是通过 request.getParameter 获取参数值。对它们的解码是在 request.getParameter 方法第一次被调用时进行的。request.getParameter 方法被调用时将会调用 org.apache.catalina.connector.Request 的 parseParameters 方法。这个方法将会对 GET 和 POST 方式传递的参数进行解码，但是它们的解码字符集有可能不一样。POST 表单的解码将在后面介绍，QueryString 的解码字符集是在哪定义的呢？它本身是通过 HTTP 的 Header 传到服务端的，并且也在 URL 中，是否和 URI 的解码字符集一样呢？从前面浏览器对 PathInfo 和 QueryString 的编码采取不同的编码格式不同可以猜测到解码字符集肯定也不会是一致的。的确是这样 QueryString 的解码字符集要么是 Header 中 ContentType 中定义的 Charset 要么就是默认的 ISO-8859-1，要使用 ContentType 中定义的编码就要设置 connector 的 <connector uriencoding="”UTF-8”" usebodyencodingforuri="”true”/"> 中的 useBodyEncodingForURI 设置为 true。这个配置项的名字有点让人产生混淆，它并不是对整个 URI 都采用 BodyEncoding 进行解码而仅仅是对 QueryString 使用 BodyEncoding 解码，这一点还要特别注意。</connector></p>
-<p>从上面的 URL 编码和解码过程来看，比较复杂，而且编码和解码并不是我们在应用程序中能完全控制的，所以在我们的应用程序中应该尽量避免在 URL 中使用非 ASCII 字符，不然很可能会碰到乱码问题，当然在我们的服务器端最好设置 <connector> 中的 URIEncoding 和 useBodyEncodingForURI 两个参数。</connector></p>
-<h4 id="4-2-HTTP-Header-的编解码"><a href="#4-2-HTTP-Header-的编解码" class="headerlink" title="4.2 HTTP Header 的编解码"></a>4.2 HTTP Header 的编解码</h4><p>当客户端发起一个 HTTP 请求除了上面的 URL 外还可能会在 Header 中传递其它参数如 Cookie、redirectPath 等，这些用户设置的值很可能也会存在编码问题，Tomcat 对它们又是怎么解码的呢？</p>
-<p>对 Header 中的项进行解码也是在调用 request.getHeader 是进行的，如果请求的 Header 项没有解码则调用 MessageBytes 的 toString 方法，这个方法将从 byte 到 char 的转化使用的默认编码也是 ISO-8859-1，而我们也不能设置 Header 的其它解码格式，所以如果你设置 Header 中有非 ASCII 字符解码肯定会有乱码。</p>
-<p>我们在添加 Header 时也是同样的道理，不要在 Header 中传递非 ASCII 字符，如果一定要传递的话，我们可以先将这些字符用 org.apache.catalina.util.URLEncoder 编码然后再添加到 Header 中，这样在浏览器到服务器的传递过程中就不会丢失信息了，如果我们要访问这些项时再按照相应的字符集解码就好了。</p>
-<h4 id="4-3-POST-表单的编解码"><a href="#4-3-POST-表单的编解码" class="headerlink" title="4.3 POST 表单的编解码"></a>4.3 POST 表单的编解码</h4><p>在前面提到了 POST 表单提交的参数的解码是在第一次调用 request.getParameter 发生的，POST 表单参数传递方式与 QueryString 不同，它是通过 HTTP 的 BODY 传递到服务端的。当我们在页面上点击 submit 按钮时浏览器首先将根据 ContentType 的 Charset 编码格式对表单填的参数进行编码然后提交到服务器端，在服务器端同样也是用 ContentType 中字符集进行解码。所以通过 POST 表单提交的参数一般不会出现问题，而且这个字符集编码是我们自己设置的，可以通过 request.setCharacterEncoding(charset) 来设置。</p>
-<p>另外针对 multipart/form-data 类型的参数，也就是上传的文件编码同样也是使用 ContentType 定义的字符集编码，值得注意的地方是上传文件是用字节流的方式传输到服务器的本地临时目录，这个过程并没有涉及到字符编码，而真正编码是在将文件内容添加到 parameters 中，如果用这个编码不能编码时将会用默认编码 ISO-8859-1 来编码。</p>
-<h4 id="4-4-HTTP-BODY-的编解码"><a href="#4-4-HTTP-BODY-的编解码" class="headerlink" title="4.4 HTTP BODY 的编解码"></a>4.4 HTTP BODY 的编解码</h4><p>当用户请求的资源已经成功获取后，这些内容将通过 Response 返回给客户端浏览器，这个过程先要经过编码再到浏览器进行解码。这个过程的编解码字符集可以通过 response.setCharacterEncoding 来设置，它将会覆盖 request.getCharacterEncoding 的值，并且通过 Header 的 Content-Type 返回客户端，浏览器接受到返回的 socket 流时将通过 Content-Type 的 charset 来解码，如果返回的 HTTP Header 中 Content-Type 没有设置 charset，那么浏览器将根据 Html 的 <meta http-equiv="Content-Type" content="text/html; charset=GBK"> 中的 charset 来解码。如果也没有定义的话，那么浏览器将使用默认的编码来解码。</p>
-<h4 id="4-5-其它需要编码的地方"><a href="#4-5-其它需要编码的地方" class="headerlink" title="4.5 其它需要编码的地方"></a>4.5 其它需要编码的地方</h4><p>除了 URL 和参数编码问题外，在服务端还有很多地方可能存在编码，如可能需要读取 xml、velocity 模版引擎、JSP 或者从数据库读取数据等。<br>xml 文件可以通过设置头来制定编码格式</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="php"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span><span class="meta">?&gt;</span></span></span><br></pre></td></tr></table></figure>
-<p>Velocity 模版设置编码格式：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">services.VelocityService.input.encoding=UTF-8</span><br></pre></td></tr></table></figure>
-<p>JSP 设置编码格式：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@page contentType=&quot;text/html; charset=UTF-8&quot;%&gt;</span><br></pre></td></tr></table></figure>
-<p>访问数据库都是通过客户端 JDBC 驱动来完成，用 JDBC 来存取数据要和数据的内置编码保持一致，可以通过设置 JDBC URL 来制定如 MySQL：url=”jdbc:mysql://localhost:3306/DB?useUnicode=true&amp;characterEncoding=GBK”。</p>
-<h3 id="5、常见问题分析"><a href="#5、常见问题分析" class="headerlink" title="5、常见问题分析"></a>5、常见问题分析</h3><p>下面看一下，当我们碰到一些乱码时，应该怎么处理这些问题？出现乱码问题唯一的原因都是在 char 到 byte 或 byte 到 char 转换中编码和解码的字符集不一致导致的，由于往往一次操作涉及到多次编解码，所以出现乱码时很难查找到底是哪个环节出现了问题，下面就几种常见的现象进行分析。</p>
-<h4 id="5-1-中文变成了看不懂的字符"><a href="#5-1-中文变成了看不懂的字符" class="headerlink" title="5.1 中文变成了看不懂的字符"></a>5.1 中文变成了看不懂的字符</h4><p>例如，字符串“淘！我喜欢！”变成了“Ì Ô £ ¡Î Ò Ï²»¶ £ ¡”编码过程如下图所示：</p>
-<p><img src="https://www.ibm.com/developerworks/cn/java/j-lo-chinesecoding/image027.gif" alt=""></p>
-<p><strong>字符串在解码时所用的字符集与编码字符集不一致</strong>导致汉字变成了看不懂的乱码，而且是<strong>一个汉字字符变成两个乱码字符</strong>。</p>
-<h4 id="5-2-一个汉字变成一个问号"><a href="#5-2-一个汉字变成一个问号" class="headerlink" title="5.2 一个汉字变成一个问号"></a>5.2 一个汉字变成一个问号</h4><p>例如，字符串“淘！我喜欢！”变成了“？？？？？？”编码过程如下图所示:</p>
-<p><img src="https://www.ibm.com/developerworks/cn/java/j-lo-chinesecoding/image029.gif" alt=""></p>
-<p>将中文和中文符号经过不支持中文的 ISO-8859-1 编码后，所有字符变成了“？”，这是因为<strong>用 ISO-8859-1 进行编解码时遇到不在码值范围内的字符时统一用 3f 表示</strong>，这也就是通常所说的“黑洞”，所有 ISO-8859-1 不认识的字符都变成了“？”。</p>
-<h4 id="5-3-一个汉字变成两个问号"><a href="#5-3-一个汉字变成两个问号" class="headerlink" title="5.3 一个汉字变成两个问号"></a>5.3 一个汉字变成两个问号</h4><p>例如，字符串“淘！我喜欢！”变成了“？？？？？？？？？？？？”编码过程如下图所示:</p>
-<p><img src="https://www.ibm.com/developerworks/cn/java/j-lo-chinesecoding/image031.gif" alt=""></p>
-<p>这种情况比较复杂，中文经过多次编码，但是其中有一次编码或者解码不对仍然会出现中文字符变成“？”现象，出现这种情况要仔细查看中间的编码环节，找出出现编码错误的地方。</p>
-<h4 id="5-4-一种不正常的正确编码"><a href="#5-4-一种不正常的正确编码" class="headerlink" title="5.4 一种不正常的正确编码"></a>5.4 一种不正常的正确编码</h4><p>还有一种情况是在我们通过 request.getParameter 获取参数值时，当我们直接调用</p>
-<p><code>String value = request.getParameter(name);</code>  会出现乱码，但是如果用下面的方式</p>
-<p><code>String value = String(request.getParameter(name).getBytes(&quot; ISO-8859-1&quot;), &quot;GBK&quot;);</code></p>
-<p>解析时取得的 value 会是正确的汉字字符，这种情况是怎么造成的呢？</p>
-<p>看下如所示：</p>
-<p><img src="https://www.ibm.com/developerworks/cn/java/j-lo-chinesecoding/image033.gif" alt=""></p>
-<p>这种情况是这样的，ISO-8859-1 字符集的编码范围是 0000-00FF，正好和一个字节的编码范围相对应。这种特性保证了使用 ISO-8859-1 进行编码和解码可以保持编码数值“不变”。虽然中文字符在经过网络传输时，被错误地“拆”成了两个欧洲字符，但由于输出时也是用 ISO-8859-1，结果被“拆”开的中文字的两半又被合并在一起，从而又刚好组成了一个正确的汉字。虽然最终能取得正确的汉字，但是还是不建议用这种不正常的方式取得参数值，因为这中间增加了一次额外的编码与解码，这种情况出现乱码时因为 Tomcat 的配置文件中 useBodyEncodingForURI 配置项没有设置为”true”，从而造成第一次解析式用 ISO-8859-1 来解析才造成乱码的。</p>
-<h3 id="6、总结"><a href="#6、总结" class="headerlink" title="6、总结"></a>6、总结</h3><p>本文首先总结了几种常见编码格式的区别，然后介绍了支持中文的几种编码格式，并比较了它们的使用场景。接着介绍了 Java 那些地方会涉及到编码问题，已经 Java 中如何对编码的支持。并以网络 I/O 为例重点介绍了 HTTP 请求中的存在编码的地方，以及 Tomcat 对 HTTP 协议的解析，最后分析了我们平常遇到的乱码问题出现的原因。</p>
-<p>综上所述，要解决中文问题，首先要搞清楚哪些地方会引起字符到字节的编码以及字节到字符的解码，最常见的地方就是读取会存储数据到磁盘，或者数据要经过网络传输。然后针对这些地方搞清楚操作这些数据的框架的或系统是如何控制编码的，正确设置编码格式，避免使用软件默认的或者是操作系统平台默认的编码格式。</p>
-<hr>
-<p>注明：文章大部分参考书籍《深入 Java Web 技术内幕》第三章，自己有删减，二次转载请也务必注明此出处。</p>
-<p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fp3jkmizmpj30o00didgn.jpg" alt=""></p>
+<h3 id="spring-boot-samples"><a href="#spring-boot-samples" class="headerlink" title="spring-boot-samples"></a>spring-boot-samples</h3><p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fqhsa4qklcj31kw11y7ud.jpg" alt="springboot-samples"></p>
+<p>样例 demo 比较多，大家看源码的时候可以拿这些现成 demo 测试。</p>
+<h3 id="spring-boot-tests"><a href="#spring-boot-tests" class="headerlink" title="spring-boot-tests"></a>spring-boot-tests</h3><p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fqhs8cezdbj30ui1dqagt.jpg" alt="springboot-tests"></p>
+<h3 id="相关文章"><a href="#相关文章" class="headerlink" title="相关文章"></a>相关文章</h3><p>1、<a href="http://www.54tianzhisheng.cn/2018/03/06/SpringBoot2-Migration-Guide/" target="_blank" rel="noopener">Spring Boot 2.0系列文章(一)：Spring Boot 2.0 迁移指南</a></p>
+<p>2、<a href="http://www.54tianzhisheng.cn/2018/03/06/SpringBoot2-new-features/" target="_blank" rel="noopener">Spring Boot 2.0系列文章(二)：Spring Boot 2.0 新特性详解</a></p>
+<p>3、<a href="http://www.54tianzhisheng.cn/2018/04/13/Spring_Boot_2.0_Configuration_Changelog/" target="_blank" rel="noopener">Spring Boot 2.0系列文章(三)：Spring Boot 2.0 配置改变</a></p>
+<p>4、<a href="http://www.54tianzhisheng.cn/2018/04/15/springboot2_code/" target="_blank" rel="noopener">Spring Boot 2.0系列文章(四)：Spring Boot 2.0 源码阅读环境搭建</a></p>
+<p>5、<a href="http://www.54tianzhisheng.cn/2018/04/18/spring_boot2_project/" target="_blank" rel="noopener">Spring Boot 2.0系列文章(四)：Spring Boot 2.0 项目源码结构预览</a></p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>本文主要分析了下 Spring boot 项目源码结构。包含 Spring boot 核心源码、样例 demo、测试。分析了项目的整体结构后，后面才能够有的放矢的去读源码。</p>
+<h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>虽然源码很难，但随着不断的探索，源码在你面前将会一览无遗，享受这种探索后的成就感！加油！骚年！</p>
 
       
 
@@ -430,7 +408,7 @@ var _hmt = _hmt || [];
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">编码</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">SpringBoot</a>
         		</li>
       		
 		</ul>
@@ -486,7 +464,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/06/13/深入分析 Java Web 中的中文编码问题/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2018/04/18/spring_boot2_project/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -500,18 +478,9 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/2017/06/13/解决jdk1.8中发送邮件失败（handshake_failure）问题/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          解决jdk1.8中发送邮件失败（handshake_failure）问题
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/06/13/程序访问文件的几种方式/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">程序访问文件的几种方式</div>
+    <a href="/2018/04/15/springboot2_code/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Spring Boot 2.0系列文章(四)：Spring Boot 2.0 源码阅读环境搭建</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -530,7 +499,7 @@ var _hmt = _hmt || [];
 
   <section id="comments">
 <!--高速版，加载速度快，使用前需测试页面的兼容性-->
-<div id="SOHUCS" sid="深入分析 Java Web 中的中文编码问题"  style="padding: 0px 30px 0px 46px;"></div>
+<div id="SOHUCS" sid="Spring Boot 2.0系列文章(四)：Spring Boot 2.0 项目源码结构预览"  style="padding: 0px 30px 0px 46px;"></div>
 <script>
   (function(){
     var appid = 'cysWCg9Ij',
