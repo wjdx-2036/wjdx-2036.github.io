@@ -18,42 +18,31 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>RestTemplate 详解 | zhisheng的博客</title>
+  <title>Spring Boot 2.0系列文章(六)：Spring Boot 2.0中SpringBootApplication注解详解 | zhisheng的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="背景这段时间自己做的项目中需要调用服务提供者的服务（接口），具体就是：我这边需要将页面所输入的 Groovy 脚本代码传给别人提供的服务接口，然后那边返回脚本编译的结果给我，我需要将编译结果展示在页面，用的就是 RestTemplate 了，那 RestTemplate 是什么呢？简单说就是：简化了发起 HTTP 请求以及处理响应的过程，并且支持 REST 。下文就稍微总结下。">
-<meta name="keywords" content="Spring">
+  <meta name="keywords" content="Java,SpringBoot">
 <meta property="og:type" content="article">
-<meta property="og:title" content="RestTemplate 详解">
-<meta property="og:url" content="http://yoursite.com/2017/12/03/RestTemplate/index.html">
+<meta property="og:title" content="Spring Boot 2.0系列文章(六)：Spring Boot 2.0中SpringBootApplication注解详解">
+<meta property="og:url" content="http://yoursite.com/2018/04/19/SpringBootApplication-annotation/index.html">
 <meta property="og:site_name" content="zhisheng的博客">
-<meta property="og:description" content="背景这段时间自己做的项目中需要调用服务提供者的服务（接口），具体就是：我这边需要将页面所输入的 Groovy 脚本代码传给别人提供的服务接口，然后那边返回脚本编译的结果给我，我需要将编译结果展示在页面，用的就是 RestTemplate 了，那 RestTemplate 是什么呢？简单说就是：简化了发起 HTTP 请求以及处理响应的过程，并且支持 REST 。下文就稍微总结下。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://ohfk1r827.bkt.clouddn.com/p3.jpeg-1">
-<meta property="og:image" content="http://ohfk1r827.bkt.clouddn.com/blog/171203/dB18a2j7bi.png-1">
-<meta property="og:image" content="http://ohfk1r827.bkt.clouddn.com/blog/171203/HIdKJdjkCC.png-1">
-<meta property="og:image" content="http://ohfk1r827.bkt.clouddn.com/blog/171203/97g3ha24HG.png">
-<meta property="og:image" content="http://ohfk1r827.bkt.clouddn.com/blog/171203/jHbbB37bjC.png">
-<meta property="og:image" content="http://ohfk1r827.bkt.clouddn.com/blog/171203/hbllDEdjLe.png-1">
-<meta property="og:image" content="http://ohfk1r827.bkt.clouddn.com/blog/171203/Lb08cmh0CL.png-1">
-<meta property="og:image" content="http://ohfk1r827.bkt.clouddn.com/blog/171203/aFjFlhl4l2.png">
-<meta property="og:image" content="http://ohfk1r827.bkt.clouddn.com/blog/171203/ij0G627Flh.png-1">
-<meta property="og:image" content="http://ohfk1r827.bkt.clouddn.com/blog/171203/2dhJF1ld7b.png-1">
-<meta property="og:image" content="http://ohfk1r827.bkt.clouddn.com/blog/171203/C7EJl11A7a.png-1">
-<meta property="og:image" content="http://ohfk1r827.bkt.clouddn.com/blog/171203/gF7ID9a8bk.png-1">
-<meta property="og:image" content="http://ohfk1r827.bkt.clouddn.com/blog/171203/707a2704Ij.png-1">
-<meta property="og:image" content="http://ohfk1r827.bkt.clouddn.com/blog/171203/DGJF2243G2.png-1">
-<meta property="og:image" content="http://ohfk1r827.bkt.clouddn.com/blog/171203/CmFD4kl9g4.png-1">
-<meta property="og:image" content="http://ohfk1r827.bkt.clouddn.com/blog/171203/1l7Il8faKH.png-1">
-<meta property="og:image" content="http://ohfk1r827.bkt.clouddn.com/blog/171203/756HHijFIh.png-1">
-<meta property="og:image" content="http://ohfk1r827.bkt.clouddn.com/blog/171203/A9dgDiG1JL.png-1">
-<meta property="og:image" content="http://ohfk1r827.bkt.clouddn.com/blog/171203/B7k85lBkBk.png-1">
-<meta property="og:image" content="http://ohfk1r827.bkt.clouddn.com/blog/171203/h5HaHC6g12.png-1">
-<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79gy1fp3jkmizmpj30o00didgn.jpg">
-<meta property="og:updated_time" content="2018-03-06T16:18:37.000Z">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1fqifa86vplj31hc0p0n7e.jpg">
+<meta property="og:image" content="http://ohfk1r827.bkt.clouddn.com/blog/180103/C6LG3mGa12.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1fqifa18tt5j31kw17uap2.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1fqifa27hu2j31kw1aqgy0.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1fqifa5xheaj31kw12rwsj.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1fqifab18l3j31kw0w4jyu.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1fqifa4wulcj31h80qgjy9.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1fqifa6z9noj31kw1c8k9o.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1fqifaa174hj317i0tun1o.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1fqifad0xvxj31kw0xw1eq.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1fqifabw5ksj31bk0mwdlf.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1fqifa972ujj31kw0wj4d6.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1fqifa3k9x8j31k41f2h3x.jpg">
+<meta property="og:updated_time" content="2018-04-19T16:21:10.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="RestTemplate 详解">
-<meta name="twitter:description" content="背景这段时间自己做的项目中需要调用服务提供者的服务（接口），具体就是：我这边需要将页面所输入的 Groovy 脚本代码传给别人提供的服务接口，然后那边返回脚本编译的结果给我，我需要将编译结果展示在页面，用的就是 RestTemplate 了，那 RestTemplate 是什么呢？简单说就是：简化了发起 HTTP 请求以及处理响应的过程，并且支持 REST 。下文就稍微总结下。">
-<meta name="twitter:image" content="http://ohfk1r827.bkt.clouddn.com/p3.jpeg-1">
+<meta name="twitter:title" content="Spring Boot 2.0系列文章(六)：Spring Boot 2.0中SpringBootApplication注解详解">
+<meta name="twitter:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1fqifa86vplj31hc0p0n7e.jpg">
   
     <link rel="alternative" href="/atom.xml" title="zhisheng的博客" type="application/atom+xml">
   
@@ -221,20 +210,20 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-RestTemplate" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-SpringBootApplication-annotation" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      RestTemplate 详解
+      Spring Boot 2.0系列文章(六)：Spring Boot 2.0中SpringBootApplication注解详解
     </h1>
   
 
         
-        <a href="/2017/12/03/RestTemplate/" class="archive-article-date">
-  	<time datetime="2017-12-02T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-03</time>
+        <a href="/2018/04/19/SpringBootApplication-annotation/" class="archive-article-date">
+  	<time datetime="2018-04-18T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-19</time>
 </a>
         
       </header>
@@ -249,7 +238,7 @@ var _hmt = _hmt || [];
     <div id="toc-article" class="toc-article">
         <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
         <strong class="toc-title">文章目录</strong>
-           <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#背景"><span class="toc-number">1.</span> <span class="toc-text">背景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#如何使用"><span class="toc-number">2.</span> <span class="toc-text">如何使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RestTemplate-内部方法"><span class="toc-number">3.</span> <span class="toc-text">RestTemplate 内部方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Get-方法"><span class="toc-number">4.</span> <span class="toc-text">Get 方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#POST-方法"><span class="toc-number">5.</span> <span class="toc-text">POST 方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PUT-方法"><span class="toc-number">6.</span> <span class="toc-text">PUT 方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DELETE-方法"><span class="toc-number">7.</span> <span class="toc-text">DELETE 方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HEADER-方法"><span class="toc-number">8.</span> <span class="toc-text">HEADER 方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#OPTIONS"><span class="toc-number">9.</span> <span class="toc-text">OPTIONS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#EXCHANGE"><span class="toc-number">10.</span> <span class="toc-text">EXCHANGE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#EXECUTE"><span class="toc-number">11.</span> <span class="toc-text">EXECUTE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#doExecute-方法"><span class="toc-number">12.</span> <span class="toc-text">doExecute 方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#最后"><span class="toc-number">13.</span> <span class="toc-text">最后</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考资料"><span class="toc-number">14.</span> <span class="toc-text">参考资料</span></a></li></ol>
+           <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#关注我"><span class="toc-number">1.</span> <span class="toc-text">关注我</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#概述"><span class="toc-number">2.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SpringBootApplication"><span class="toc-number">3.</span> <span class="toc-text">@SpringBootApplication</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SpringBootConfiguration"><span class="toc-number">4.</span> <span class="toc-text">@SpringBootConfiguration</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Configuration"><span class="toc-number">4.1.</span> <span class="toc-text">@Configuration</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Bean"><span class="toc-number">4.2.</span> <span class="toc-text">@Bean</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ComponentScan"><span class="toc-number">5.</span> <span class="toc-text">@ComponentScan</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#EnableAutoConfiguration"><span class="toc-number">6.</span> <span class="toc-text">@EnableAutoConfiguration</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#相关文章"><span class="toc-number">7.</span> <span class="toc-text">相关文章</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#总结"><span class="toc-number">8.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#最后"><span class="toc-number">9.</span> <span class="toc-text">最后</span></a></li></ol>
          </div>
    <script type="text/javascript">
     function showToc(){
@@ -270,145 +259,72 @@ var _hmt = _hmt || [];
 
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="http://ohfk1r827.bkt.clouddn.com/p3.jpeg-1" alt=""></p>
-<h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>这段时间自己做的项目中需要调用服务提供者的服务（接口），具体就是：我这边需要将页面所输入的 Groovy 脚本代码传给别人提供的服务接口，然后那边返回脚本编译的结果给我，我需要将编译结果展示在页面，用的就是 RestTemplate 了，那 RestTemplate 是什么呢？简单说就是：简化了发起 HTTP 请求以及处理响应的过程，并且支持 REST 。下文就稍微总结下。<br><a id="more"></a></p>
-<h3 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h3><p>先讲讲如何使用吧，我项目是 SpringBoot 项目，可以在启动类中加入：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> RestTemplate <span class="title">restTemplate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> RestTemplate();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>然后在 Controller 层中引入：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="keyword">private</span> RestTemplate restTemplate;</span><br></pre></td></tr></table></figure>
-<p>接下来就可以在 Controller 中各个方法中使用 restTemplate 了，但是 restTemplate 里面有什么方法呢？</p>
-<h3 id="RestTemplate-内部方法"><a href="#RestTemplate-内部方法" class="headerlink" title="RestTemplate 内部方法"></a>RestTemplate 内部方法</h3><p><img src="http://ohfk1r827.bkt.clouddn.com/blog/171203/dB18a2j7bi.png-1" alt="mark"></p>
-<p>从图中 RestTemplate 可以看到有很多方法，我们可以提取出主要的几种方法是：</p>
+        <p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fqifa86vplj31hc0p0n7e.jpg" alt="nature-3201015_1920"></p>
+<a id="more"></a>
+<h3 id="关注我"><a href="#关注我" class="headerlink" title="关注我"></a>关注我</h3><p><img src="http://ohfk1r827.bkt.clouddn.com/blog/180103/C6LG3mGa12.jpg" alt="mark"></p>
+<p>转载请务必注明原创地址为：<a href="http://www.54tianzhisheng.cn/2018/04/19/SpringBootApplication-annotation/" target="_blank" rel="noopener">http://www.54tianzhisheng.cn/2018/04/19/SpringBootApplication-annotation/</a></p>
+<h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>许多 Spring Boot 开发者喜欢他们的应用程序使用自动配置、组件扫描、并能够在他们的 “Application” 类上定义额外的配置。 可以使用一个 <code>@SpringBootApplication</code> 注解来启用这些功能。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.springframework.boot.SpringApplication;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.SpringBootApplication;</span><br><span class="line"></span><br><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Application</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		SpringApplication.run(Application.class, args);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="SpringBootApplication"><a href="#SpringBootApplication" class="headerlink" title="@SpringBootApplication"></a>@SpringBootApplication</h3><p>跟进去 <code>@SpringBootApplication</code>  注解可以发现下图：</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fqifa18tt5j31kw17uap2.jpg" alt="springbootapplication"></p>
+<p>其中标注的三个注解正能解决我们上面所说的三种功能，它们是：</p>
 <ul>
-<li><strong>GET</strong></li>
-<li><strong>POST</strong></li>
-<li><strong>PUT</strong></li>
-<li><strong>DELETE</strong></li>
-<li><strong>HEAD</strong></li>
-<li><strong>OPTIONS</strong></li>
-<li><strong>EXCHANGE</strong></li>
-<li><strong>EXECUTE</strong></li>
+<li><code>@SpringBootConfiguration</code></li>
+<li><code>@EnableAutoConfiguration</code></li>
+<li><code>@ComponentScan</code></li>
 </ul>
-<p>图片中依然可以知道 RestTemplate 类中的方法主要是来自接口 RestOperations，下面我们具体看看这些方法里面的具体实现与该如何使用。</p>
-<h3 id="Get-方法"><a href="#Get-方法" class="headerlink" title="Get 方法"></a>Get 方法</h3><p>在 RestTemplate 中，发送一个 GET 请求，我们可以通过如下两种方式：</p>
+<p>该接口除了上面三个注解外，还有四个方法如下：</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fqifa27hu2j31kw1aqgy0.jpg" alt="springbootapplication"></p>
 <ul>
-<li><p><strong>getForEntity</strong></p>
-<p><img src="http://ohfk1r827.bkt.clouddn.com/blog/171203/HIdKJdjkCC.png-1" alt="mark"></p>
-<p>getForEntity 方法的返回值是一个<code>ResponseEntity&lt;T&gt;</code>，<code>ResponseEntity&lt;T&gt;</code>是 Spring 对 HTTP 请求响应的封装，包括了几个重要的元素，如响应码、contentType、contentLength、响应消息体等。比如下面一个例子：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/gethello"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">getHello</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ResponseEntity&lt;String&gt; responseEntity = restTemplate.getForEntity(<span class="string">"http://HELLO-SERVICE/hello"</span>, String.class);</span><br><span class="line">    String body = responseEntity.getBody();</span><br><span class="line">    HttpStatus statusCode = responseEntity.getStatusCode();</span><br><span class="line">    <span class="keyword">int</span> statusCodeValue = responseEntity.getStatusCodeValue();</span><br><span class="line">    HttpHeaders headers = responseEntity.getHeaders();</span><br><span class="line">    StringBuffer result = <span class="keyword">new</span> StringBuffer();</span><br><span class="line">    result.append(<span class="string">"responseEntity.getBody()："</span>).append(body).append(<span class="string">"&lt;hr&gt;"</span>)</span><br><span class="line">            .append(<span class="string">"responseEntity.getStatusCode()："</span>).append(statusCode).append(<span class="string">"&lt;hr&gt;"</span>)</span><br><span class="line">            .append(<span class="string">"responseEntity.getStatusCodeValue()："</span>).append(statusCodeValue).append(<span class="string">"&lt;hr&gt;"</span>)</span><br><span class="line">            .append(<span class="string">"responseEntity.getHeaders()："</span>).append(headers).append(<span class="string">"&lt;hr&gt;"</span>);</span><br><span class="line">    <span class="keyword">return</span> result.toString();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>关于这段代码，说如下几点：</p>
-<ul>
-<li><p>getForEntity 的第一个参数为我要调用的服务的地址，这里我调用了服务提供者提供的 /hello 接口，注意这里是通过服务名调用而不是服务地址，如果写成服务地址就没法实现客户端负载均衡了。（备注：我项目中需要通过 ConsulClient 去获取服务名，然后在去获取服务的 IP 和 Port，并把它拼接起来组合成我的服务地址，所以就没法实现客户端的负载均衡了，如果要是实现负载均衡，可以在 SpringBoot 启动类的中加入注解 <code>@LoadBalanced</code>, 如下:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="meta">@LoadBalanced</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> RestTemplate <span class="title">restTemplate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> RestTemplate();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p> ）</p>
-</li>
-<li><p>getForEntity 第二个参数 String.class 表示我希望返回的 body 类型是 String</p>
-</li>
-<li><p>拿到返回结果之后，将返回结果遍历打印出来</p>
-</li>
+<li>Class&lt;?&gt;[] exclude() default {}:<br>根据 class 来排除，排除特定的类加入 spring 容器，传入参数 value 类型是 class 类型。</li>
+<li>String[] excludeName() default {}:<br>根据 class name 来排除，排除特定的类加入 spring 容器，传入参数 value 类型是 class 的全类名字符串数组。</li>
+<li>String[] scanBasePackages() default {}:<br>指定扫描包，参数是包名的字符串数组。</li>
+<li>Class&lt;?&gt;[] scanBasePackageClasses() default {}:<br>扫描特定的包，参数类似是 Class 类型数组。</li>
 </ul>
-<p><img src="http://ohfk1r827.bkt.clouddn.com/blog/171203/97g3ha24HG.png" alt="mark"></p>
-</li>
-</ul>
-<p>  有时候我在调用服务提供者提供的接口时，可能需要传递参数，有两种不同的方式:</p>
-  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/sayhello"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">sayHello</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ResponseEntity&lt;String&gt; responseEntity = restTemplate.getForEntity(<span class="string">"http://HELLO-SERVICE/sayhello?name=&#123;1&#125;"</span>, String.class, <span class="string">"张三"</span>);</span><br><span class="line">    <span class="keyword">return</span> responseEntity.getBody();</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/sayhello2"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">sayHello2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Map&lt;String, String&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    map.put(<span class="string">"name"</span>, <span class="string">"李四"</span>);</span><br><span class="line">    ResponseEntity&lt;String&gt; responseEntity = restTemplate.getForEntity(<span class="string">"http://HELLO-SERVICE/sayhello?name=&#123;name&#125;"</span>, String.class, map);</span><br><span class="line">    <span class="keyword">return</span> responseEntity.getBody();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>可以用一个数字做占位符，最后是一个可变长度的参数，来一 一替换前面的占位符</li>
-<li><p>也可以前面使用 name={name} 这种形式，最后一个参数是一个 map，map 的 key 即为前边占位符的名字，map的 value 为参数值</p>
-<p>第一个调用地址也可以是一个URI而不是字符串，这个时候我们构建一个URI即可，参数神马的都包含在URI中了，如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/sayhello3"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">sayHello3</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    UriComponents uriComponents = UriComponentsBuilder.fromUriString(<span class="string">"http://HELLO-SERVICE/sayhello?name=&#123;name&#125;"</span>).build().expand(<span class="string">"王五"</span>).encode();</span><br><span class="line">    URI uri = uriComponents.toUri();</span><br><span class="line">    ResponseEntity&lt;String&gt; responseEntity = restTemplate.getForEntity(uri, String.class);</span><br><span class="line">    <span class="keyword">return</span> responseEntity.getBody();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>通过Spring中提供的UriComponents来构建Uri即可。</p>
-<p>当然，服务提供者不仅可以返回String，也可以返回一个自定义类型的对象，比如我的服务提供者中有如下方法：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(value = <span class="string">"/getbook1"</span>, method = RequestMethod.GET)</span><br><span class="line"><span class="function"><span class="keyword">public</span> Book <span class="title">book1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> Book(<span class="string">"三国演义"</span>, <span class="number">90</span>, <span class="string">"罗贯中"</span>, <span class="string">"花城出版社"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>对于该方法我可以在服务消费者中通过如下方式来调用：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/book1"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> Book <span class="title">book1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ResponseEntity&lt;Book&gt; responseEntity = restTemplate.getForEntity(<span class="string">"http://HELLO-SERVICE/getbook1"</span>, Book.class);</span><br><span class="line">    <span class="keyword">return</span> responseEntity.getBody();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>运行结果如下：</p>
-<p><img src="http://ohfk1r827.bkt.clouddn.com/blog/171203/jHbbB37bjC.png" alt="mark"></p>
-</li>
-</ul>
-<ul>
-<li><p><strong>getForObject</strong></p>
-<p><img src="http://ohfk1r827.bkt.clouddn.com/blog/171203/hbllDEdjLe.png-1" alt="mark"><br>​</p>
-<p>getForObject 函数实际上是对 getForEntity 函数的进一步封装，如果你只关注返回的消息体的内容，对其他信息都不关注，此时可以使用 getForObject，举一个简单的例子，如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/book2"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> Book <span class="title">book2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Book book = restTemplate.getForObject(<span class="string">"http://HELLO-SERVICE/getbook1"</span>, Book.class);</span><br><span class="line">    <span class="keyword">return</span> book;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="POST-方法"><a href="#POST-方法" class="headerlink" title="POST 方法"></a>POST 方法</h3><p>在 RestTemplate 中，POST 请求可以通过如下三个方法来发起：</p>
-<ul>
-<li><p><strong>postForEntity</strong></p>
-<p><img src="http://ohfk1r827.bkt.clouddn.com/blog/171203/Lb08cmh0CL.png-1" alt="mark"></p>
-<p>该方法和get请求中的getForEntity方法类似，如下例子：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/book3"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> Book <span class="title">book3</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Book book = <span class="keyword">new</span> Book();</span><br><span class="line">    book.setName(<span class="string">"红楼梦"</span>);</span><br><span class="line">    ResponseEntity&lt;Book&gt; responseEntity = restTemplate.postForEntity(<span class="string">"http://HELLO-SERVICE/getbook2"</span>, book, Book.class);</span><br><span class="line">    <span class="keyword">return</span> responseEntity.getBody();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>方法的第一参数表示要调用的服务的地址</li>
-<li>方法的第二个参数表示上传的参数</li>
-<li>方法的第三个参数表示返回的消息体的数据类型</li>
-</ul>
-<p>我这里创建了一个Book对象，这个Book对象只有name属性有值，将之传递到服务提供者那里去，服务提供者代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(value = <span class="string">"/getbook2"</span>, method = RequestMethod.POST)</span><br><span class="line"><span class="function"><span class="keyword">public</span> Book <span class="title">book2</span><span class="params">(@RequestBody Book book)</span> </span>&#123;</span><br><span class="line">    System.out.println(book.getName());</span><br><span class="line">    book.setPrice(<span class="number">33</span>);</span><br><span class="line">    book.setAuthor(<span class="string">"曹雪芹"</span>);</span><br><span class="line">    book.setPublisher(<span class="string">"人民文学出版社"</span>);</span><br><span class="line">    <span class="keyword">return</span> book;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>服务提供者接收到服务消费者传来的参数book，给其他属性设置上值再返回，调用结果如下：</p>
-<p><img src="http://ohfk1r827.bkt.clouddn.com/blog/171203/aFjFlhl4l2.png" alt="mark"></p>
-</li>
-<li><p><strong>postForObject</strong></p>
-<p><img src="http://ohfk1r827.bkt.clouddn.com/blog/171203/ij0G627Flh.png-1" alt="mark"></p>
-<p>如果你只关注，返回的消息体，可以直接使用postForObject。用法和getForObject一致。</p>
-</li>
-<li><p><strong>postForLocation</strong></p>
-<p><img src="http://ohfk1r827.bkt.clouddn.com/blog/171203/2dhJF1ld7b.png-1" alt="mark"></p>
-<p>postForLocation 也是提交新资源，提交成功之后，返回新资源的 URI，postForLocation 的参数和前面两种的参数基本一致，只不过该方法的返回值为 URI ，这个只需要服务提供者返回一个 URI 即可，该 URI 表示新资源的位置。</p>
-</li>
-</ul>
-<h3 id="PUT-方法"><a href="#PUT-方法" class="headerlink" title="PUT 方法"></a>PUT 方法</h3><p><img src="http://ohfk1r827.bkt.clouddn.com/blog/171203/C7EJl11A7a.png-1" alt="mark"></p>
-<p>在 RestTemplate 中，PUT 请求可以通过 put 方法调用，put 方法的参数和前面介绍的 postForEntity 方法的参数基本一致，只是 put 方法没有返回值而已。举一个简单的例子，如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/put"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">put</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Book book = <span class="keyword">new</span> Book();</span><br><span class="line">    book.setName(<span class="string">"红楼梦"</span>);</span><br><span class="line">    restTemplate.put(<span class="string">"http://HELLO-SERVICE/getbook3/&#123;1&#125;"</span>, book, <span class="number">99</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>book对象是我要提交的参数，最后的99用来替换前面的占位符{1}</p>
-<h3 id="DELETE-方法"><a href="#DELETE-方法" class="headerlink" title="DELETE 方法"></a>DELETE 方法</h3><p><img src="http://ohfk1r827.bkt.clouddn.com/blog/171203/gF7ID9a8bk.png-1" alt="mark"></p>
-<p>delete 请求我们可以通过 delete 方法调用来实现，如下例子：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/delete"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">delete</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    restTemplate.delete(<span class="string">"http://HELLO-SERVICE/getbook4/&#123;1&#125;"</span>, <span class="number">100</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="HEADER-方法"><a href="#HEADER-方法" class="headerlink" title="HEADER 方法"></a>HEADER 方法</h3><p><img src="http://ohfk1r827.bkt.clouddn.com/blog/171203/707a2704Ij.png-1" alt="mark"></p>
-<p>返回资源的所有 HTTP headers。</p>
-<h3 id="OPTIONS"><a href="#OPTIONS" class="headerlink" title="OPTIONS"></a>OPTIONS</h3><p><img src="http://ohfk1r827.bkt.clouddn.com/blog/171203/DGJF2243G2.png-1" alt="mark"></p>
-<p>问可以执行哪些方法。</p>
-<h3 id="EXCHANGE"><a href="#EXCHANGE" class="headerlink" title="EXCHANGE"></a>EXCHANGE</h3><p><img src="http://ohfk1r827.bkt.clouddn.com/blog/171203/CmFD4kl9g4.png-1" alt="mark"></p>
-<p>与其它接口的不同：</p>
-<ul>
-<li>允许调用者指定HTTP请求的方法（GET,POST,PUT等）</li>
-<li>可以在请求中增加body以及头信息，其内容通过参数 HttpEntity&lt;?&gt;requestEntity 描述</li>
-<li>exchange支持‘含参数的类型’（即泛型类）作为返回类型，该特性通过 ParameterizedTypeReference<t>responseType 描述</t></li>
-</ul>
-<h3 id="EXECUTE"><a href="#EXECUTE" class="headerlink" title="EXECUTE"></a>EXECUTE</h3><p>细心的你，不知道有没有发现上面所有的方法内部返回值都调用了同一个方法 —— execute  方法。</p>
-<p>下面我们来看看：</p>
-<p><img src="http://ohfk1r827.bkt.clouddn.com/blog/171203/1l7Il8faKH.png-1" alt="mark"></p>
-<p>可以看到，Excute方法只是将 String 格式的 URI 转成了 java.net.URI，之后调用了doExecute方法。整个调用过程关键起作用的是 doExecute 方法</p>
-<p><img src="http://ohfk1r827.bkt.clouddn.com/blog/171203/756HHijFIh.png-1" alt="mark"></p>
-<h3 id="doExecute-方法"><a href="#doExecute-方法" class="headerlink" title="doExecute 方法"></a>doExecute 方法</h3><p><img src="http://ohfk1r827.bkt.clouddn.com/blog/171203/A9dgDiG1JL.png-1" alt="mark"></p>
-<p>这里需要了解两个类： RequestCallback 和 ResponseExtractor</p>
-<p><img src="http://ohfk1r827.bkt.clouddn.com/blog/171203/B7k85lBkBk.png-1" alt="mark"></p>
-<p>RestTemplate 类中可以看到他们两的实现类。</p>
-<p><strong>RequestCallback</strong> ：用于操作请求头和body，在请求发出前执行。</p>
-<p>该接口有两个实现类：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">AcceptHeaderRequestCallback</th>
-<th style="text-align:left">只处理请求头，用于getXXX()方法。</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">HttpEntityRequestCallback</td>
-<td style="text-align:left">继承于AcceptHeaderRequestCallback可以处理请求头和body，用于putXXX()、postXXX()和exchange()方法。</td>
-</tr>
-</tbody>
-</table>
-<p><strong>ResponseExtractor</strong>：解析HTTP响应的数据，而且不需要担心异常和资源的关闭</p>
-<p>上面图纸这个实现类 ResponseEntityResponseExtractor 的作用是：使用 HttpMessageConverterExtractor 提取 body（委托模式），然后将 body 和响应头、状态封装成 ResponseEntity 对象。</p>
-<h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>转载请注明地址：<a href="http://www.54tianzhisheng.cn/2017/12/03/RestTemplate/" target="_blank" rel="noopener">http://www.54tianzhisheng.cn/2017/12/03/RestTemplate/</a></p>
-<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><p>1、<a href="https://www.cnblogs.com/caolei1108/p/6169950.html" target="_blank" rel="noopener">https://www.cnblogs.com/caolei1108/p/6169950.html</a></p>
-<p>2、<a href="https://segmentfault.com/a/1190000011093597" target="_blank" rel="noopener">https://segmentfault.com/a/1190000011093597</a></p>
-<p>如果想和我进一步交流请关注：</p>
-<p><img src="http://ohfk1r827.bkt.clouddn.com/blog/171203/h5HaHC6g12.png-1" alt="mark"></p>
-<p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fp3jkmizmpj30o00didgn.jpg" alt=""></p>
+<p>就拿 scanBasePackages 来举个例子：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootApplication</span>(scanBasePackages = &#123;<span class="string">"com.zhisheng.controller"</span>,<span class="string">"com.zhisheng.model"</span>&#125;)</span><br></pre></td></tr></table></figure>
+<p>将不需要的 bean 排除在 spring 容器中，如何操作？看看官方的代码怎么用的：</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fqifa5xheaj31kw12rwsj.jpg" alt="sb-enableautoconfig-exclude"></p>
+<h3 id="SpringBootConfiguration"><a href="#SpringBootConfiguration" class="headerlink" title="@SpringBootConfiguration"></a>@SpringBootConfiguration</h3><p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fqifab18l3j31kw0w4jyu.jpg" alt="springbootconfiguration"></p>
+<p><code>@SpringBootConfiguration</code>继承自<code>@Configuration</code>，二者功能也一致，标注当前类是配置类，并会将当前类内声明的一个或多个以<code>@Bean</code>注解标记的方法的实例纳入到<code>srping</code>容器中，并且实例名就是方法名。</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fqifa4wulcj31h80qgjy9.jpg" alt="configuration"></p>
+<p>虽说现在已经推荐使用 Spring Boot 里面的 <code>@SpringBootConfiguration</code> 注解，为了探个究竟，我们还是继续研究下 <code>@Configuration</code> 注解。</p>
+<h4 id="Configuration"><a href="#Configuration" class="headerlink" title="@Configuration"></a>@Configuration</h4><p>@Configuration 标注在类上，相当于把该类作为 spring 的 xml 配置文件中的 <code>&lt;beans&gt;</code>，作用为：配置 spring 容器(应用上下文)</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">beans</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">beans</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="Bean"><a href="#Bean" class="headerlink" title="@Bean"></a>@Bean</h4><p>@Bean 标注在方法上(返回某个实例的方法)，等价于 spring 的 xml 配置文件中的<code>&lt;bean&gt;</code>，作用为：注册 bean 对象</p>
+<p>可以看看这篇文章：<a href="">https://www.ibm.com/developerworks/cn/webservices/ws-springjava/index.html</a></p>
+<h3 id="ComponentScan"><a href="#ComponentScan" class="headerlink" title="@ComponentScan"></a>@ComponentScan</h3><p>可以通过该注解指定扫描某些包下包含如下注解的均自动注册为 spring beans：</p>
+<p>@Component、@Service、 @Repository、 @Controller、@Entity 等等</p>
+<p>例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ComponentScan</span>(basePackages = &#123;<span class="string">"com.zhisheng.controller"</span>,<span class="string">"com.zhisheng.model"</span>&#125;)</span><br></pre></td></tr></table></figure>
+<p>以前是在 xml 配置文件中设置如下标签：<code>&lt;context:component-scan&gt;</code>（用来扫描包配置）</p>
+<p>除了可以使用 <code>@ComponentScan</code>  注解来加载我们的 bean，还可以在 Application 类中使用 <code>@Import</code> 指定该类。</p>
+<p>例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Import</span>(&#123;ConsulConfig.class, Log4jEndPointConfiguration.class&#125;)	<span class="comment">//直接 imoport 要引入的类</span></span><br></pre></td></tr></table></figure>
+<h3 id="EnableAutoConfiguration"><a href="#EnableAutoConfiguration" class="headerlink" title="@EnableAutoConfiguration"></a>@EnableAutoConfiguration</h3><p><code>@EnableAutoConfiguration</code>的作用启动自动的配置，<code>@EnableAutoConfiguration</code>注解的意思就是<code>Springboot</code>根据你添加的 jar 包来配置你项目的默认配置，比如根据<code>spring-boot-starter-web</code> ，来判断你的项目是否需要添加了<code>webmvc</code>和<code>tomcat</code>，就会自动的帮你配置 web 项目中所需要的默认配置。简单点说就是它会根据定义在 classpath 下的类，自动的给你生成一些 Bean，并加载到 Spring 的 Context 中。</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fqifa6z9noj31kw1c8k9o.jpg" alt="enable-autoconfiguration"></p>
+<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fqifaa174hj317i0tun1o.jpg" alt="2018-04-19_18-44-22"></p>
+<p>可以看到 import  引入了 AutoConfigurationImportSelector 类。该类使用了 Spring Core 包的 SpringFactoriesLoader 类的 loadFactoryNamesof() 方法。</p>
+<p>AutoConfigurationImportSelector 类实现了 DeferredImportSelector 接口，并实现了 <strong>selectImports</strong> 方法，用来导出<em>Configuration</em> 类。</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fqifad0xvxj31kw0xw1eq.jpg" alt="getconfigurations"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; configurations = getCandidateConfigurations(annotationMetadata, attributes);</span><br></pre></td></tr></table></figure>
+<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fqifabw5ksj31bk0mwdlf.jpg" alt="getconfigurations01"></p>
+<p>导出的类是通过 <em>SpringFactoriesLoader.loadFactoryNames()</em> 读取了 <em>ClassPath</em> 下面的 <em>META-INF/spring.factories</em> 文件。</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fqifa972ujj31kw0wj4d6.jpg" alt="loadfactoryname"></p>
+<p>这个文件内容大致如下。</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fqifa3k9x8j31k41f2h3x.jpg" alt="springfactories"></p>
+<p>后面继续会写自动配置方面的博客，请继续关注！</p>
+<p>如果你发现自动装配的 Bean 不是你想要的，你也可以 disable 它。比如说，我不想要自动装配 Database 的那些Bean：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@EnableAutoConfiguration</span>(exclude = &#123;DataSourceAutoConfiguration.class&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="相关文章"><a href="#相关文章" class="headerlink" title="相关文章"></a>相关文章</h3><p>1、<a href="http://www.54tianzhisheng.cn/2018/03/06/SpringBoot2-Migration-Guide/" target="_blank" rel="noopener">Spring Boot 2.0系列文章(一)：Spring Boot 2.0 迁移指南</a></p>
+<p>2、<a href="http://www.54tianzhisheng.cn/2018/03/06/SpringBoot2-new-features/" target="_blank" rel="noopener">Spring Boot 2.0系列文章(二)：Spring Boot 2.0 新特性详解</a></p>
+<p>3、<a href="http://www.54tianzhisheng.cn/2018/04/13/Spring_Boot_2.0_Configuration_Changelog/" target="_blank" rel="noopener">Spring Boot 2.0系列文章(三)：Spring Boot 2.0 配置改变</a></p>
+<p>4、<a href="http://www.54tianzhisheng.cn/2018/04/15/springboot2_code/" target="_blank" rel="noopener">Spring Boot 2.0系列文章(四)：Spring Boot 2.0 源码阅读环境搭建</a></p>
+<p>5、<a href="http://www.54tianzhisheng.cn/2018/04/18/spring_boot2_project/" target="_blank" rel="noopener">Spring Boot 2.0系列文章(五)：Spring Boot 2.0 项目源码结构预览</a></p>
+<p>6、<a href="http://www.54tianzhisheng.cn/2018/04/19/SpringBootApplication-annotation/" target="_blank" rel="noopener">Spring Boot 2.0系列文章(六)：Spring boot 2.0 中 SpringBootApplication 注解详解</a></p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>本文主要讲了 SpringBootApplication 注解，然后展开写了其包含的三个注解 SpringBootConfiguration、ComponentScan、EnableAutoConfiguration</p>
+<h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>虽然源码很难，但随着不断的探索，源码在你面前将会一览无遗，享受这种探索后的成就感！加油！骚年！</p>
+<p>自己本人能力有限，源码看的不多，上面如有不对的还请留言交流。</p>
 
       
 
@@ -457,7 +373,11 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Spring</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">SpringBoot</a>
         		</li>
       		
 		</ul>
@@ -513,7 +433,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/12/03/RestTemplate/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2018/04/19/SpringBootApplication-annotation/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -527,18 +447,9 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/2017/12/08/netty-01-env/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Netty系列文章（一）：Netty 源码阅读之初始环境搭建
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/12/02/wx-01/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">实习圈群里提问小记</div>
+    <a href="/2018/04/18/spring_boot2_project/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Spring Boot 2.0系列文章(五)：Spring Boot 2.0 项目源码结构预览</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -557,7 +468,7 @@ var _hmt = _hmt || [];
 
   <section id="comments">
 <!--高速版，加载速度快，使用前需测试页面的兼容性-->
-<div id="SOHUCS" sid="RestTemplate 详解"  style="padding: 0px 30px 0px 46px;"></div>
+<div id="SOHUCS" sid="Spring Boot 2.0系列文章(六)：Spring Boot 2.0中SpringBootApplication注解详解"  style="padding: 0px 30px 0px 46px;"></div>
 <script>
   (function(){
     var appid = 'cysWCg9Ij',
