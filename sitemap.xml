@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2018/04/24/Distributed_lock/</loc>
+    
+    <lastmod>2018-04-25T10:18:38.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/02/28/Java-Memory-Model/</loc>
+    
+    <lastmod>2018-04-23T14:14:52.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2018/04/19/SpringBootApplication-annotation/</loc>
     
     <lastmod>2018-04-19T16:21:10.000Z</lastmod>
@@ -404,13 +418,6 @@
     <loc>http://yoursite.com/2017/07/25/Java-performance-tuning/</loc>
     
     <lastmod>2018-03-06T16:13:44.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2018/02/28/Java-Memory-Model/</loc>
-    
-    <lastmod>2018-03-06T16:13:35.000Z</lastmod>
     
   </url>
   
