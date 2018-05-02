@@ -38,6 +38,7 @@
 <meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1fqx6tt63ojj31kw0kotk4.jpg">
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNc79gy1fqx6ty24gvj31kw0l3n7h.jpg">
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNc79gy1fqx6u0khy1j31kw0wuhar.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1fqxei8t4u6j31do0ow0z9.jpg">
 <meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1fqx6tx7lchj31kw0nw4gr.jpg">
 <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1fqx6tp9y81j31kw0tfdqv.jpg">
 <meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79gy1fqx6tli7pjj31kw1757h0.jpg">
@@ -50,7 +51,7 @@
 <meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1fqx6xmgbpvj31kw0x8hc4.jpg">
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNc79gy1fqx6tq6fzhj31kw0y5azk.jpg">
 <meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1fqx6xla7afj31kw0unx1j.jpg">
-<meta property="og:updated_time" content="2018-05-02T13:33:21.000Z">
+<meta property="og:updated_time" content="2018-05-02T15:15:33.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spring Boot 2.0系列文章(七)：SpringApplication 深入探索">
 <meta name="twitter:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1fqxbkmfds2j31hc0oegze.jpg">
@@ -338,6 +339,8 @@ var _hmt = _hmt || [];
 <p>实际上是就是设置系统属性 java.awt.headless，该属性会被设置为 true。</p>
 <p><strong>2、getRunListeners()</strong>：加载 SpringApplicationRunListener 对象</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">//<span class="doctag">TODO:</span>  xxx</span></span><br><span class="line">SpringApplicationRunListeners listeners = getRunListeners(args);<span class="comment">//初始化监听器</span></span><br><span class="line">listeners.starting();</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  prepareContext(context, environment, listeners, applicationArguments, printedBanner);</span><br><span class="line">  refreshContext(context);</span><br><span class="line">  afterRefresh(context, applicationArguments);</span><br><span class="line">  listeners.started(context);</span><br><span class="line">  callRunners(context, applicationArguments);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  listeners.running(context);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> SpringApplicationRunListeners <span class="title">getRunListeners</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">  Class&lt;?&gt;[] types = <span class="keyword">new</span> Class&lt;?&gt;[] &#123; SpringApplication.class, String[].class &#125;;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> SpringApplicationRunListeners(logger, getSpringFactoriesInstances(</span><br><span class="line">    SpringApplicationRunListener.class, types, <span class="keyword">this</span>, args));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面的 getRunListeners() 中也利用 SpringFactoriesLoader 加载 META-INF/spring.factories 中 key 为 SpringApplicationRunListener 的值，然后再将获取到的值作为参数传递到 SpringApplicationRunListeners 的构造方法中去创建对象。</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fqxei8t4u6j31do0ow0z9.jpg" alt="2018-05-02_23-11-01"></p>
 <p><strong>3、new DefaultApplicationArguments(args)</strong> ：获取启动时传入参数 args（main 方法传进来的参数） 并初始化为 ApplicationArguments 对象。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">DefaultApplicationArguments</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">  Assert.notNull(args, <span class="string">"Args must not be null"</span>);</span><br><span class="line">  <span class="keyword">this</span>.source = <span class="keyword">new</span> Source(args);</span><br><span class="line">  <span class="keyword">this</span>.args = args;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><strong>4、prepareEnvironment(listeners, applicationArguments)</strong>：根据 listeners 和 applicationArguments 配置SpringBoot 应用的环境。</p>
@@ -352,7 +355,7 @@ var _hmt = _hmt || [];
 <p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fqx6tx7lchj31kw0nw4gr.jpg" alt="createApplicationContext"></p>
 <p><strong>8、exceptionReporters = getSpringFactoriesInstances(      SpringBootExceptionReporter.class,      new Class[] { ConfigurableApplicationContext.class }, context)</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> &lt;T&gt; <span class="function">Collection&lt;T&gt; <span class="title">getSpringFactoriesInstances</span><span class="params">(Class&lt;T&gt; type,</span></span></span><br><span class="line"><span class="function"><span class="params">            Class&lt;?&gt;[] parameterTypes, Object... args)</span> </span>&#123;</span><br><span class="line">  ClassLoader classLoader = Thread.currentThread().getContextClassLoader();</span><br><span class="line">  <span class="comment">// Use names and ensure unique to protect against duplicates</span></span><br><span class="line">  Set&lt;String&gt; names = <span class="keyword">new</span> LinkedHashSet&lt;&gt;(</span><br><span class="line">    SpringFactoriesLoader.loadFactoryNames(type, classLoader));</span><br><span class="line">  List&lt;T&gt; instances = createSpringFactoriesInstances(type, parameterTypes,</span><br><span class="line">       classLoader, args, names);<span class="comment">//根据类型 key 为 SpringBootExceptionReporter 去加载</span></span><br><span class="line">  AnnotationAwareOrderComparator.sort(instances);<span class="comment">//对实例排序</span></span><br><span class="line">  <span class="keyword">return</span> instances;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这里也是通过 SpringFactoriesLoader 加载 META-INF/spring.factories 中 key 为 SpringBootExceptionReporter 的。</p>
+<p>这里也是通过 SpringFactoriesLoader 加载 META-INF/spring.factories 中 key 为 SpringBootExceptionReporter 的全类名的 value 值。</p>
 <p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fqx6tp9y81j31kw0tfdqv.jpg" alt="springbootexception"></p>
 <p><strong>9、prepareContext(context, environment, listeners, applicationArguments, printedBanner)</strong>：完成整个容器的创建与启动以及 bean 的注入功能。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//装配 Context</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">prepareContext</span><span class="params">(ConfigurableApplicationContext context,</span></span></span><br><span class="line"><span class="function"><span class="params">   ConfigurableEnvironment environment, SpringApplicationRunListeners listeners,</span></span></span><br><span class="line"><span class="function"><span class="params">   ApplicationArguments applicationArguments, Banner printedBanner)</span> </span>&#123;</span><br><span class="line">  <span class="comment">//将之前准备好的 environment 设置给创建好的 ApplicationContext 使用</span></span><br><span class="line">  context.setEnvironment(environment);</span><br><span class="line">  <span class="comment">//1、</span></span><br><span class="line">  postProcessApplicationContext(context);</span><br><span class="line">  <span class="comment">//2、</span></span><br><span class="line">  applyInitializers(context);</span><br><span class="line">  listeners.contextPrepared(context);</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">this</span>.logStartupInfo) &#123;<span class="comment">//启动日志</span></span><br><span class="line">    logStartupInfo(context.getParent() == <span class="keyword">null</span>);</span><br><span class="line">    logStartupProfileInfo(context);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// Add boot specific singleton beans</span></span><br><span class="line">  context.getBeanFactory().registerSingleton(<span class="string">"springApplicationArguments"</span>,</span><br><span class="line">                                             applicationArguments);</span><br><span class="line">  <span class="keyword">if</span> (printedBanner != <span class="keyword">null</span>) &#123;</span><br><span class="line">    context.getBeanFactory().registerSingleton(<span class="string">"springBootBanner"</span>, printedBanner);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// Load the sources</span></span><br><span class="line">  Set&lt;Object&gt; sources = getAllSources();</span><br><span class="line">  Assert.notEmpty(sources, <span class="string">"Sources must not be empty"</span>);</span><br><span class="line">  <span class="comment">//3、</span></span><br><span class="line">  load(context, sources.toArray(<span class="keyword">new</span> Object[<span class="number">0</span>]));</span><br><span class="line">  listeners.contextLoaded(context);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -408,7 +411,7 @@ var _hmt = _hmt || [];
 <p>5、<a href="http://www.54tianzhisheng.cn/2018/04/18/spring_boot2_project/" target="_blank" rel="noopener">Spring Boot 2.0系列文章(五)：Spring Boot 2.0 项目源码结构预览</a></p>
 <p>6、<a href="http://www.54tianzhisheng.cn/2018/04/19/SpringBootApplication-annotation/" target="_blank" rel="noopener">Spring Boot 2.0系列文章(六)：Spring boot 2.0 中 SpringBootApplication 注解详解</a></p>
 <p>7、<a href="http://www.54tianzhisheng.cn/2018/04/30/springboot_SpringApplication/" target="_blank" rel="noopener">Spring Boot 2.0系列文章(七)：SpringApplication 深入探索</a></p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>本文从源码级别分析了 Spring Boot 应用程序的启动过程，着重看了 SpringApplication 类中的 run 方法其内部实现，并把涉及到的流程代码都过了一遍。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>本文从源码级别分析了 Spring Boot 应用程序的启动过程，着重看了 SpringApplication 类中的构造函数的初始化和其 run 方法内部实现，并把涉及到的流程代码都过了一遍。</p>
 <p>感悟：有时候跟代码跟着跟着，发现越陷越深，好难跳出来！后面还需多向别人请教阅读源码的技巧！</p>
 <h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>虽然源码很难，但随着不断的探索，源码在你面前将会一览无遗，享受这种探索后的成就感！加油！骚年！</p>
 <p>自己本人能力有限，源码看的不多，上面如有不对的还请留言交流。</p>
@@ -668,6 +671,10 @@ var _hmt = _hmt || [];
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">AJAX</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
@@ -676,7 +683,19 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">AJAX</a>
+                <a href="javascript:void(0)" class="js-tag color5">分布式锁</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Zookeeper</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -696,19 +715,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">分布式锁</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Redis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Zookeeper</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -716,7 +723,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color1">HBase</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -725,10 +732,6 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">yilia</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">HBase</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -744,11 +747,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">NIO</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Oracle</a>
+                <a href="javascript:void(0)" class="js-tag color3">面经</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -756,19 +755,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">NIO</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">JSON</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">面经</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Kafka</a>
+                <a href="javascript:void(0)" class="js-tag color2">Oracle</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -776,11 +771,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">投资理财</a>
+                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
+                <a href="javascript:void(0)" class="js-tag color1">Kafka</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -792,7 +787,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">投资理财</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -840,19 +843,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Velocity</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">线程池</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Consul</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">流控</a>
+                <a href="javascript:void(0)" class="js-tag color4">Velocity</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -860,11 +855,27 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Consul</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">博客合集</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">流控</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">IO</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">文件</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">lua</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -876,14 +887,6 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">lua</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">文件</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">励志</a>
               </li>
              
@@ -892,19 +895,19 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Servlet</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">书籍</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">微服务</a>
+                <a href="javascript:void(0)" class="js-tag color3">Servlet</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">SpringCloud</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">微服务</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -944,15 +947,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">finally</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">编码</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">邮件发送</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">finally</a>
               </li>
              
               <li class="article-tag-list-item">
