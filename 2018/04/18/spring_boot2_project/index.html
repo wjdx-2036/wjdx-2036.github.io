@@ -45,7 +45,7 @@
 <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1fqhs8kcu5ej30ri0lqwh5.jpg">
 <meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1fqhsa4qklcj31kw11y7ud.jpg">
 <meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1fqhs8cezdbj30ui1dqagt.jpg">
-<meta property="og:updated_time" content="2018-04-19T16:10:18.000Z">
+<meta property="og:updated_time" content="2018-05-02T13:27:46.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spring Boot 2.0系列文章(五)：Spring Boot 2.0 项目源码结构预览">
 <meta name="twitter:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1fqhraflay7j31hc0zk0z1.jpg">
@@ -355,6 +355,7 @@ var _hmt = _hmt || [];
 <p>4、<a href="http://www.54tianzhisheng.cn/2018/04/15/springboot2_code/" target="_blank" rel="noopener">Spring Boot 2.0系列文章(四)：Spring Boot 2.0 源码阅读环境搭建</a></p>
 <p>5、<a href="http://www.54tianzhisheng.cn/2018/04/18/spring_boot2_project/" target="_blank" rel="noopener">Spring Boot 2.0系列文章(五)：Spring Boot 2.0 项目源码结构预览</a></p>
 <p>6、<a href="http://www.54tianzhisheng.cn/2018/04/19/SpringBootApplication-annotation/" target="_blank" rel="noopener">Spring Boot 2.0系列文章(六)：Spring boot 2.0 中 SpringBootApplication 注解详解</a></p>
+<p>7、<a href="http://www.54tianzhisheng.cn/2018/04/30/springboot_SpringApplication/" target="_blank" rel="noopener">Spring Boot 2.0系列文章(七)：SpringApplication 深入探索</a></p>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>本文主要分析了下 Spring boot 项目源码结构。包含 Spring boot 核心源码、样例 demo、测试。分析了项目的整体结构后，后面才能够有的放矢的去读源码。</p>
 <h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>虽然源码很难，但随着不断的探索，源码在你面前将会一览无遗，享受这种探索后的成就感！加油！骚年！</p>
 
@@ -638,10 +639,6 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ElasticSearch</a>
               </li>
              
@@ -654,19 +651,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">HBase</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">yilia</a>
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -686,11 +671,23 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JMM</a>
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">HBase</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -702,11 +699,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">面经</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JSON</a>
+                <a href="javascript:void(0)" class="js-tag color4">NIO</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -714,7 +707,19 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JMM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">JSON</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">多线程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">面经</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -730,10 +735,6 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">NIO</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
               </li>
              
@@ -746,6 +747,10 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
@@ -755,10 +760,6 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Pyspider</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -798,19 +799,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">线程池</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">流控</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">博客合集</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -818,15 +807,23 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">流控</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Android</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">博客合集</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">IO</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">文件</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">lua</a>
+                <a href="javascript:void(0)" class="js-tag color2">lombok</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -834,7 +831,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">lombok</a>
+                <a href="javascript:void(0)" class="js-tag color4">lua</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">文件</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -846,11 +847,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">书籍</a>
+                <a href="javascript:void(0)" class="js-tag color3">Servlet</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Servlet</a>
+                <a href="javascript:void(0)" class="js-tag color3">书籍</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -858,11 +859,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">实习圈</a>
+                <a href="javascript:void(0)" class="js-tag color2">SpringCloud</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">SpringCloud</a>
+                <a href="javascript:void(0)" class="js-tag color4">实习圈</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -870,15 +871,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">表达式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">循环队列</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -890,7 +883,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">编码</a>
+                <a href="javascript:void(0)" class="js-tag color4">表达式</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -902,11 +895,23 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">类加载机制</a>
+                <a href="javascript:void(0)" class="js-tag color5">循环队列</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">finally</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">编码</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">邮件发送</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">类加载机制</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -915,10 +920,6 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">finally</a>
               </li>
             
             <div class="clearfix"></div>
