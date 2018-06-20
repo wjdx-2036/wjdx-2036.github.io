@@ -31,7 +31,7 @@
 <meta property="og:image" content="http://ohfk1r827.bkt.clouddn.com/cb5.jpeg-1">
 <meta property="og:image" content="https://datadog-prod.imgix.net/img/blog/monitor-elasticsearch-performance-metrics/elasticsearch-dashboard-final2.png?fit=max">
 <meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79gy1fp3jkmizmpj30o00didgn.jpg">
-<meta property="og:updated_time" content="2018-03-24T02:26:13.000Z">
+<meta property="og:updated_time" content="2018-06-03T03:21:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Elasticsearch 系列文章（三）：ElasticSearch 集群监控">
 <meta name="twitter:description" content="最近在做 ElasticSearch 的信息（集群和节点）监控，特此稍微整理下学到的东西。这篇文章主要介绍集群的监控。">
@@ -293,13 +293,13 @@ var _hmt = _hmt || [];
 <li><code>initializing_shards</code> 是刚刚创建的分片的个数。比如，当你刚创建第一个索引，分片都会短暂的处于 <code>initializing</code> 状态。这通常会是一个临时事件，分片不应该长期停留在 <code>initializing</code>状态。你还可能在节点刚重启的时候看到 <code>initializing</code> 分片：当分片从磁盘上加载后，它们会从<code>initializing</code> 状态开始。</li>
 <li><code>unassigned_shards</code> 是已经在集群状态中存在的分片，但是实际在集群里又找不着。通常未分配分片的来源是未分配的副本。比如，一个有 5 分片和 1 副本的索引，在单节点集群上，就会有 5 个未分配副本分片。如果你的集群是 <code>red</code> 状态，也会长期保有未分配分片（因为缺少主分片）。</li>
 </ul>
-<h3 id="集群统计"><a href="#集群统计" class="headerlink" title="集群统计"></a>集群统计</h3><p>集群统计信息包含 集群的分片数，文档数，存储空间，缓存信息，内存作用率，插件内容，文件系统内容，JVM 作用状况，系统 CPU，OS 信息，段信息。</p>
+<h3 id="集群统计"><a href="#集群统计" class="headerlink" title="集群统计"></a>集群统计</h3><p>集群统计信息包含 集群的分片数，文档数，存储空间，缓存信息，内存使用率，插件内容，文件系统内容，JVM 作用状况，系统 CPU，OS 信息，段信息。</p>
 <p>查看全部统计信息命令：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -XGET &apos;http://localhost:9200/_cluster/stats?human&amp;pretty&apos;</span><br></pre></td></tr></table></figure>
 <p>返回 JSON 结果：</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">   <span class="attr">"timestamp"</span>: <span class="number">1459427693515</span>,</span><br><span class="line">   <span class="attr">"cluster_name"</span>: <span class="string">"elasticsearch"</span>,</span><br><span class="line">   <span class="attr">"status"</span>: <span class="string">"green"</span>,</span><br><span class="line">   <span class="attr">"indices"</span>: &#123;</span><br><span class="line">      <span class="attr">"count"</span>: <span class="number">2</span>,</span><br><span class="line">      <span class="attr">"shards"</span>: &#123;</span><br><span class="line">         <span class="attr">"total"</span>: <span class="number">10</span>,</span><br><span class="line">         <span class="attr">"primaries"</span>: <span class="number">10</span>,</span><br><span class="line">         <span class="attr">"replication"</span>: <span class="number">0</span>,</span><br><span class="line">         <span class="attr">"index"</span>: &#123;</span><br><span class="line">            <span class="attr">"shards"</span>: &#123;</span><br><span class="line">               <span class="attr">"min"</span>: <span class="number">5</span>,</span><br><span class="line">               <span class="attr">"max"</span>: <span class="number">5</span>,</span><br><span class="line">               <span class="attr">"avg"</span>: <span class="number">5</span></span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="attr">"primaries"</span>: &#123;</span><br><span class="line">               <span class="attr">"min"</span>: <span class="number">5</span>,</span><br><span class="line">               <span class="attr">"max"</span>: <span class="number">5</span>,</span><br><span class="line">               <span class="attr">"avg"</span>: <span class="number">5</span></span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="attr">"replication"</span>: &#123;</span><br><span class="line">               <span class="attr">"min"</span>: <span class="number">0</span>,</span><br><span class="line">               <span class="attr">"max"</span>: <span class="number">0</span>,</span><br><span class="line">               <span class="attr">"avg"</span>: <span class="number">0</span></span><br><span class="line">            &#125;</span><br><span class="line">         &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="attr">"docs"</span>: &#123;</span><br><span class="line">         <span class="attr">"count"</span>: <span class="number">10</span>,</span><br><span class="line">         <span class="attr">"deleted"</span>: <span class="number">0</span></span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="attr">"store"</span>: &#123;</span><br><span class="line">         <span class="attr">"size"</span>: <span class="string">"16.2kb"</span>,</span><br><span class="line">         <span class="attr">"size_in_bytes"</span>: <span class="number">16684</span>,</span><br><span class="line">         <span class="attr">"throttle_time"</span>: <span class="string">"0s"</span>,</span><br><span class="line">         <span class="attr">"throttle_time_in_millis"</span>: <span class="number">0</span></span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="attr">"fielddata"</span>: &#123;</span><br><span class="line">         <span class="attr">"memory_size"</span>: <span class="string">"0b"</span>,</span><br><span class="line">         <span class="attr">"memory_size_in_bytes"</span>: <span class="number">0</span>,</span><br><span class="line">         <span class="attr">"evictions"</span>: <span class="number">0</span></span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="attr">"query_cache"</span>: &#123;</span><br><span class="line">         <span class="attr">"memory_size"</span>: <span class="string">"0b"</span>,</span><br><span class="line">         <span class="attr">"memory_size_in_bytes"</span>: <span class="number">0</span>,</span><br><span class="line">         <span class="attr">"total_count"</span>: <span class="number">0</span>,</span><br><span class="line">         <span class="attr">"hit_count"</span>: <span class="number">0</span>,</span><br><span class="line">         <span class="attr">"miss_count"</span>: <span class="number">0</span>,</span><br><span class="line">         <span class="attr">"cache_size"</span>: <span class="number">0</span>,</span><br><span class="line">         <span class="attr">"cache_count"</span>: <span class="number">0</span>,</span><br><span class="line">         <span class="attr">"evictions"</span>: <span class="number">0</span></span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="attr">"completion"</span>: &#123;</span><br><span class="line">         <span class="attr">"size"</span>: <span class="string">"0b"</span>,</span><br><span class="line">         <span class="attr">"size_in_bytes"</span>: <span class="number">0</span></span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="attr">"segments"</span>: &#123;</span><br><span class="line">         <span class="attr">"count"</span>: <span class="number">4</span>,</span><br><span class="line">         <span class="attr">"memory"</span>: <span class="string">"8.6kb"</span>,</span><br><span class="line">         <span class="attr">"memory_in_bytes"</span>: <span class="number">8898</span>,</span><br><span class="line">         <span class="attr">"terms_memory"</span>: <span class="string">"6.3kb"</span>,</span><br><span class="line">         <span class="attr">"terms_memory_in_bytes"</span>: <span class="number">6522</span>,</span><br><span class="line">         <span class="attr">"stored_fields_memory"</span>: <span class="string">"1.2kb"</span>,</span><br><span class="line">         <span class="attr">"stored_fields_memory_in_bytes"</span>: <span class="number">1248</span>,</span><br><span class="line">         <span class="attr">"term_vectors_memory"</span>: <span class="string">"0b"</span>,</span><br><span class="line">         <span class="attr">"term_vectors_memory_in_bytes"</span>: <span class="number">0</span>,</span><br><span class="line">         <span class="attr">"norms_memory"</span>: <span class="string">"384b"</span>,</span><br><span class="line">         <span class="attr">"norms_memory_in_bytes"</span>: <span class="number">384</span>,</span><br><span class="line">         <span class="attr">"doc_values_memory"</span>: <span class="string">"744b"</span>,</span><br><span class="line">         <span class="attr">"doc_values_memory_in_bytes"</span>: <span class="number">744</span>,</span><br><span class="line">         <span class="attr">"index_writer_memory"</span>: <span class="string">"0b"</span>,</span><br><span class="line">         <span class="attr">"index_writer_memory_in_bytes"</span>: <span class="number">0</span>,</span><br><span class="line">         <span class="attr">"version_map_memory"</span>: <span class="string">"0b"</span>,</span><br><span class="line">         <span class="attr">"version_map_memory_in_bytes"</span>: <span class="number">0</span>,</span><br><span class="line">         <span class="attr">"fixed_bit_set"</span>: <span class="string">"0b"</span>,</span><br><span class="line">         <span class="attr">"fixed_bit_set_memory_in_bytes"</span>: <span class="number">0</span>,</span><br><span class="line">         <span class="attr">"file_sizes"</span>: &#123;&#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="attr">"percolator"</span>: &#123;</span><br><span class="line">         <span class="attr">"num_queries"</span>: <span class="number">0</span></span><br><span class="line">      &#125;</span><br><span class="line">   &#125;,</span><br><span class="line">   <span class="attr">"nodes"</span>: &#123;</span><br><span class="line">      <span class="attr">"count"</span>: &#123;</span><br><span class="line">         <span class="attr">"total"</span>: <span class="number">1</span>,</span><br><span class="line">         <span class="attr">"data"</span>: <span class="number">1</span>,</span><br><span class="line">         <span class="attr">"coordinating_only"</span>: <span class="number">0</span>,</span><br><span class="line">         <span class="attr">"master"</span>: <span class="number">1</span>,</span><br><span class="line">         <span class="attr">"ingest"</span>: <span class="number">1</span></span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="attr">"versions"</span>: [</span><br><span class="line">         <span class="string">"5.6.3"</span></span><br><span class="line">      ],</span><br><span class="line">      <span class="attr">"os"</span>: &#123;</span><br><span class="line">         <span class="attr">"available_processors"</span>: <span class="number">8</span>,</span><br><span class="line">         <span class="attr">"allocated_processors"</span>: <span class="number">8</span>,</span><br><span class="line">         <span class="attr">"names"</span>: [</span><br><span class="line">            &#123;</span><br><span class="line">               <span class="attr">"name"</span>: <span class="string">"Mac OS X"</span>,</span><br><span class="line">               <span class="attr">"count"</span>: <span class="number">1</span></span><br><span class="line">            &#125;</span><br><span class="line">         ],</span><br><span class="line">         <span class="attr">"mem"</span> : &#123;</span><br><span class="line">            <span class="attr">"total"</span> : <span class="string">"16gb"</span>,</span><br><span class="line">            <span class="attr">"total_in_bytes"</span> : <span class="number">17179869184</span>,</span><br><span class="line">            <span class="attr">"free"</span> : <span class="string">"78.1mb"</span>,</span><br><span class="line">            <span class="attr">"free_in_bytes"</span> : <span class="number">81960960</span>,</span><br><span class="line">            <span class="attr">"used"</span> : <span class="string">"15.9gb"</span>,</span><br><span class="line">            <span class="attr">"used_in_bytes"</span> : <span class="number">17097908224</span>,</span><br><span class="line">            <span class="attr">"free_percent"</span> : <span class="number">0</span>,</span><br><span class="line">            <span class="attr">"used_percent"</span> : <span class="number">100</span></span><br><span class="line">         &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="attr">"process"</span>: &#123;</span><br><span class="line">         <span class="attr">"cpu"</span>: &#123;</span><br><span class="line">            <span class="attr">"percent"</span>: <span class="number">9</span></span><br><span class="line">         &#125;,</span><br><span class="line">         <span class="attr">"open_file_descriptors"</span>: &#123;</span><br><span class="line">            <span class="attr">"min"</span>: <span class="number">268</span>,</span><br><span class="line">            <span class="attr">"max"</span>: <span class="number">268</span>,</span><br><span class="line">            <span class="attr">"avg"</span>: <span class="number">268</span></span><br><span class="line">         &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="attr">"jvm"</span>: &#123;</span><br><span class="line">         <span class="attr">"max_uptime"</span>: <span class="string">"13.7s"</span>,</span><br><span class="line">         <span class="attr">"max_uptime_in_millis"</span>: <span class="number">13737</span>,</span><br><span class="line">         <span class="attr">"versions"</span>: [</span><br><span class="line">            &#123;</span><br><span class="line">               <span class="attr">"version"</span>: <span class="string">"1.8.0_74"</span>,</span><br><span class="line">               <span class="attr">"vm_name"</span>: <span class="string">"Java HotSpot(TM) 64-Bit Server VM"</span>,</span><br><span class="line">               <span class="attr">"vm_version"</span>: <span class="string">"25.74-b02"</span>,</span><br><span class="line">               <span class="attr">"vm_vendor"</span>: <span class="string">"Oracle Corporation"</span>,</span><br><span class="line">               <span class="attr">"count"</span>: <span class="number">1</span></span><br><span class="line">            &#125;</span><br><span class="line">         ],</span><br><span class="line">         <span class="attr">"mem"</span>: &#123;</span><br><span class="line">            <span class="attr">"heap_used"</span>: <span class="string">"57.5mb"</span>,</span><br><span class="line">            <span class="attr">"heap_used_in_bytes"</span>: <span class="number">60312664</span>,</span><br><span class="line">            <span class="attr">"heap_max"</span>: <span class="string">"989.8mb"</span>,</span><br><span class="line">            <span class="attr">"heap_max_in_bytes"</span>: <span class="number">1037959168</span></span><br><span class="line">         &#125;,</span><br><span class="line">         <span class="attr">"threads"</span>: <span class="number">90</span></span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="attr">"fs"</span>: &#123;</span><br><span class="line">         <span class="attr">"total"</span>: <span class="string">"200.6gb"</span>,</span><br><span class="line">         <span class="attr">"total_in_bytes"</span>: <span class="number">215429193728</span>,</span><br><span class="line">         <span class="attr">"free"</span>: <span class="string">"32.6gb"</span>,</span><br><span class="line">         <span class="attr">"free_in_bytes"</span>: <span class="number">35064553472</span>,</span><br><span class="line">         <span class="attr">"available"</span>: <span class="string">"32.4gb"</span>,</span><br><span class="line">         <span class="attr">"available_in_bytes"</span>: <span class="number">34802409472</span></span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="attr">"plugins"</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="attr">"name"</span>: <span class="string">"analysis-icu"</span>,</span><br><span class="line">          <span class="attr">"version"</span>: <span class="string">"5.6.3"</span>,</span><br><span class="line">          <span class="attr">"description"</span>: <span class="string">"The ICU Analysis plugin integrates Lucene ICU module into elasticsearch, adding ICU relates analysis components."</span>,</span><br><span class="line">          <span class="attr">"classname"</span>: <span class="string">"org.elasticsearch.plugin.analysis.icu.AnalysisICUPlugin"</span>,</span><br><span class="line">          <span class="attr">"has_native_controller"</span>: <span class="literal">false</span></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="attr">"name"</span>: <span class="string">"ingest-geoip"</span>,</span><br><span class="line">          <span class="attr">"version"</span>: <span class="string">"5.6.3"</span>,</span><br><span class="line">          <span class="attr">"description"</span>: <span class="string">"Ingest processor that uses looksup geo data based on ip adresses using the Maxmind geo database"</span>,</span><br><span class="line">          <span class="attr">"classname"</span>: <span class="string">"org.elasticsearch.ingest.geoip.IngestGeoIpPlugin"</span>,</span><br><span class="line">          <span class="attr">"has_native_controller"</span>: <span class="literal">false</span></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="attr">"name"</span>: <span class="string">"ingest-user-agent"</span>,</span><br><span class="line">          <span class="attr">"version"</span>: <span class="string">"5.6.3"</span>,</span><br><span class="line">          <span class="attr">"description"</span>: <span class="string">"Ingest processor that extracts information from a user agent"</span>,</span><br><span class="line">          <span class="attr">"classname"</span>: <span class="string">"org.elasticsearch.ingest.useragent.IngestUserAgentPlugin"</span>,</span><br><span class="line">          <span class="attr">"has_native_controller"</span>: <span class="literal">false</span></span><br><span class="line">        &#125;</span><br><span class="line">      ]</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="内存使用和-GC-指标"><a href="#内存使用和-GC-指标" class="headerlink" title="内存使用和 GC 指标"></a>内存使用和 GC 指标</h4><p>在运行 Elasticsearch 时，内存是您要密切监控的关键资源之一。 Elasticsearch 和 Lucene 以两种方式利用节点上的所有可用 RAM：JVM heap 和文件系统缓存。 Elasticsearch 运行在Java虚拟机（JVM）中，这意味着JVM垃圾回收的持续时间和频率将成为其他重要的监控领域。</p>
-<p>上面返回的 JSON监控的指标有我个人觉得有这些：</p>
+<p>上面返回的 JSON，监控的指标有我个人觉得有这些：</p>
 <ul>
 <li>nodes.successful</li>
 <li>nodes.failed</li>
@@ -592,6 +592,10 @@ var _hmt = _hmt || [];
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">AJAX</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
@@ -600,23 +604,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">AJAX</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">数据库</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">分布式锁</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Redis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Zookeeper</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -636,7 +624,23 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">分布式锁</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Zookeeper</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">HBase</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -644,7 +648,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">HBase</a>
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -653,10 +657,6 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">yilia</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -672,15 +672,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JMM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">NIO</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
+                <a href="javascript:void(0)" class="js-tag color5">JSON</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JMM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -688,7 +688,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JSON</a>
+                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Kafka</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -704,19 +712,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Kafka</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -732,7 +728,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -741,6 +737,10 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -760,6 +760,10 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">线程池</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">String</a>
               </li>
              
@@ -768,11 +772,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">线程池</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Consul</a>
+                <a href="javascript:void(0)" class="js-tag color5">博客合集</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -780,7 +780,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">博客合集</a>
+                <a href="javascript:void(0)" class="js-tag color2">Consul</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -792,7 +792,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">lombok</a>
+                <a href="javascript:void(0)" class="js-tag color4">lua</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -800,11 +800,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">励志</a>
+                <a href="javascript:void(0)" class="js-tag color2">lombok</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">lua</a>
+                <a href="javascript:void(0)" class="js-tag color3">励志</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -816,15 +816,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">书籍</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">微服务</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Servlet</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">书籍</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -832,7 +828,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">字符串</a>
+                <a href="javascript:void(0)" class="js-tag color4">微服务</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">实习圈</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -844,15 +844,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">实习圈</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">表达式</a>
+                <a href="javascript:void(0)" class="js-tag color4">字符串</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">旋转词</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">表达式</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -868,6 +868,10 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">邮件发送</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">编码</a>
               </li>
              
@@ -876,11 +880,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">邮件发送</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
+                <a href="javascript:void(0)" class="js-tag color5">Filter过滤器</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -888,7 +888,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Filter过滤器</a>
+                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
               </li>
             
             <div class="clearfix"></div>
@@ -1025,6 +1025,10 @@ var _hmt = _hmt || [];
           
             <li class="search-li">
               <a href="http://www.carlzone.cn" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>carl.zhao</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="http://dongkelun.com/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>伦少的博客</a>
             </li>
           
         </ul>
