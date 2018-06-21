@@ -28,7 +28,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1fsho6kitc6j31hc0zkdr7.jpg">
 <meta property="og:image" content="http://ohfk1r827.bkt.clouddn.com/blog/180103/C6LG3mGa12.jpg">
-<meta property="og:updated_time" content="2018-06-20T07:25:43.000Z">
+<meta property="og:updated_time" content="2018-06-20T15:21:02.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="20 个案例教你在 Java 8 中如何处理日期和时间?">
 <meta name="twitter:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1fsho6kitc6j31hc0zkdr7.jpg">
@@ -251,7 +251,7 @@ var _hmt = _hmt || [];
         <p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fsho6kitc6j31hc0zkdr7.jpg" alt="002"><br><a id="more"></a></p>
 <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>前面一篇文章写了<a href="http://www.54tianzhisheng.cn/2018/06/19/SimpleDateFormat/" target="_blank" rel="noopener">《SimpleDateFormat 如何安全的使用？》</a>, 里面介绍了 SimpleDateFormat 如何处理日期／时间，以及如何保证线程安全，及其介绍了在 Java 8 中的处理时间／日期默认就线程安全的 DateTimeFormatter 类。那么 Java 8 中该怎么样处理生活中常见的一些日期／时间呢？比如：计算一周后的日期；计算一年前或一年后的日期；检查闰年等。</p>
 <p>接下来创建了 20 个基于任务的实例来学习 Java 8 的新特性。从最简单创建当天的日期开始，然后创建时间及时区，接着模拟一个日期提醒应用中的任务——计算重要日期的到期天数，例如生日、纪念日、账单日、保费到期日、信用卡过期日等。</p>
-<h3 id="关注我"><a href="#关注我" class="headerlink" title="关注我"></a>关注我</h3><p><img src="http://ohfk1r827.bkt.clouddn.com/blog/180103/C6LG3mGa12.jpg" alt="mark"></p>
+<h3 id="关注我"><a href="#关注我" class="headerlink" title="关注我"></a>关注我</h3><p><img src="http://ohfk1r827.bkt.clouddn.com/blog/180103/C6LG3mGa12.jpg" alt="zhisheng"></p>
 <p>转载请务必注明原创地址为：<a href="http://www.54tianzhisheng.cn/2018/06/20/java-8-date/" target="_blank" rel="noopener">http://www.54tianzhisheng.cn/2018/06/20/java-8-date/</a></p>
 <h3 id="示例-1、在-Java-8-中获取今天的日期"><a href="#示例-1、在-Java-8-中获取今天的日期" class="headerlink" title="示例 1、在 Java 8 中获取今天的日期"></a>示例 1、在 Java 8 中获取今天的日期</h3><p>Java 8 中的 LocalDate 用于表示当天日期。和 java.util.Date 不同，它只有日期，不包含时间。当你仅需要表示日期时就用这个类。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">LocalDate now = LocalDate.now();</span><br><span class="line">System.out.println(now);</span><br></pre></td></tr></table></figure>
@@ -276,17 +276,17 @@ var _hmt = _hmt || [];
 <h3 id="示例-6、在-Java-8-中获取当前时间"><a href="#示例-6、在-Java-8-中获取当前时间" class="headerlink" title="示例 6、在 Java 8 中获取当前时间"></a>示例 6、在 Java 8 中获取当前时间</h3><p>与 Java 8 获取日期的例子很像，获取时间使用的是 LocalTime 类，一个只有时间没有日期的 LocalDate 近亲。可以调用静态工厂方法 now() 来获取当前时间。默认的格式是 hh:mm:ss:nnn。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">LocalTime localTime = LocalTime.now();</span><br><span class="line">System.out.println(localTime);</span><br></pre></td></tr></table></figure>
 <p>结果：</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">13:35:56.155</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">13:35:56.155</span><br></pre></td></tr></table></figure>
 <p>可以看到当前时间就只包含时间信息，没有日期。</p>
 <h3 id="示例-7、如何在现有的时间上增加小时"><a href="#示例-7、如何在现有的时间上增加小时" class="headerlink" title="示例 7、如何在现有的时间上增加小时"></a>示例 7、如何在现有的时间上增加小时</h3><p>通过增加小时、分、秒来计算将来的时间很常见。Java 8 除了不变类型和线程安全的好处之外，还提供了更好的plusHours() 方法替换 add()，并且是兼容的。注意，这些方法返回一个全新的 LocalTime 实例，由于其不可变性，返回后一定要用变量赋值。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">LocalTime localTime = LocalTime.now();</span><br><span class="line">System.out.println(localTime);</span><br><span class="line">LocalTime localTime1 = localTime.plusHours(<span class="number">2</span>);<span class="comment">//增加2小时</span></span><br><span class="line">System.out.println(localTime1);</span><br></pre></td></tr></table></figure>
 <p>结果：</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">13:41:20.721</span><br><span class="line">15:41:20.721</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">13:41:20.721</span><br><span class="line">15:41:20.721</span><br></pre></td></tr></table></figure>
 <p>可以看到，新的时间在当前时间 13:41:20.721 的基础上增加了 2 个小时。</p>
 <h3 id="示例-8、如何计算一周后的日期"><a href="#示例-8、如何计算一周后的日期" class="headerlink" title="示例 8、如何计算一周后的日期"></a>示例 8、如何计算一周后的日期</h3><p>和上个例子计算两小时以后的时间类似，这个例子会计算一周后的日期。LocalDate 日期不包含时间信息，它的 plus()方法用来增加天、周、月，ChronoUnit 类声明了这些时间单位。由于 LocalDate 也是不变类型，返回后一定要用变量赋值。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">LocalDate now = LocalDate.now();</span><br><span class="line">LocalDate plusDate = now.plus(<span class="number">1</span>, ChronoUnit.WEEKS);</span><br><span class="line">System.out.println(now);</span><br><span class="line">System.out.println(plusDate);</span><br></pre></td></tr></table></figure>
 <p>结果：</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">2018-06-20</span><br><span class="line">2018-06-27</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">2018-06-20</span><br><span class="line">2018-06-27</span><br></pre></td></tr></table></figure>
 <p>可以看到新日期离当天日期是 7 天，也就是一周。你可以用同样的方法增加 1 个月、1 年、1 小时、1 分钟甚至一个世纪，更多选项可以查看 Java 8 API 中的 ChronoUnit 类。</p>
 <h3 id="示例-9、计算一年前或一年后的日期"><a href="#示例-9、计算一年前或一年后的日期" class="headerlink" title="示例 9、计算一年前或一年后的日期"></a>示例 9、计算一年前或一年后的日期</h3><p>继续上面的例子，上个例子中我们通过 LocalDate 的 plus() 方法增加天数、周数或月数，这个例子我们利用 minus() 方法计算一年前的日期。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">LocalDate now = LocalDate.now();</span><br><span class="line">LocalDate minusDate = now.minus(<span class="number">1</span>, ChronoUnit.YEARS);</span><br><span class="line">LocalDate plusDate1 = now.plus(<span class="number">1</span>, ChronoUnit.YEARS);</span><br><span class="line">System.out.println(minusDate);</span><br><span class="line">System.out.println(plusDate1);</span><br></pre></td></tr></table></figure>
@@ -597,10 +597,6 @@ var _hmt = _hmt || [];
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">AJAX</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
@@ -609,11 +605,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+                <a href="javascript:void(0)" class="js-tag color5">AJAX</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -645,15 +645,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">HBase</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Guava</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+                <a href="javascript:void(0)" class="js-tag color1">HBase</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -665,15 +661,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JVM</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">性能调优工具</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">面经</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -685,7 +681,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JMM</a>
+                <a href="javascript:void(0)" class="js-tag color3">面经</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -693,15 +689,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Kafka</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
+                <a href="javascript:void(0)" class="js-tag color4">JMM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">投资理财</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -713,11 +709,19 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">投资理财</a>
+                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -733,7 +737,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
+                <a href="javascript:void(0)" class="js-tag color4">RocketMQ</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -742,14 +750,6 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">RocketMQ</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -765,19 +765,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">线程池</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">String</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Velocity</a>
+                <a href="javascript:void(0)" class="js-tag color4">线程池</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">博客合集</a>
+                <a href="javascript:void(0)" class="js-tag color4">Velocity</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -789,11 +785,19 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">博客合集</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">流控</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">IO</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">励志</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -809,7 +813,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">励志</a>
+                <a href="javascript:void(0)" class="js-tag color4">Mac</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -817,7 +821,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Mac</a>
+                <a href="javascript:void(0)" class="js-tag color4">微服务</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -830,10 +834,6 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">SpringCloud</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">微服务</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -857,14 +857,6 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">表达式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">循环队列</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Github Page</a>
               </li>
              
@@ -873,7 +865,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">邮件发送</a>
+                <a href="javascript:void(0)" class="js-tag color4">表达式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">循环队列</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -881,7 +877,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">finally</a>
+                <a href="javascript:void(0)" class="js-tag color5">邮件发送</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -889,11 +889,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">类加载机制</a>
+                <a href="javascript:void(0)" class="js-tag color3">finally</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
+                <a href="javascript:void(0)" class="js-tag color1">类加载机制</a>
               </li>
             
             <div class="clearfix"></div>
