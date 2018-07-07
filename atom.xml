@@ -370,9 +370,9 @@
     </summary>
     
     
-      <category term="RocketMQ" scheme="http://yoursite.com/tags/RocketMQ/"/>
-    
       <category term="SpringBoot" scheme="http://yoursite.com/tags/SpringBoot/"/>
+    
+      <category term="RocketMQ" scheme="http://yoursite.com/tags/RocketMQ/"/>
     
   </entry>
   
