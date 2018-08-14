@@ -267,19 +267,19 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-详细深入分析 Java ClassLoader 工作机制" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-详解 Filter 过滤器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/17/详细深入分析 Java ClassLoader 工作机制/">详细深入分析 Java ClassLoader 工作机制</a>
+      <a class="article-title" href="/2017/06/17/详解 Filter 过滤器/">详解 Filter 过滤器</a>
     </h1>
   
 
         
-        <a href="/2017/06/17/详细深入分析 Java ClassLoader 工作机制/" class="archive-article-date">
+        <a href="/2017/06/17/详解 Filter 过滤器/" class="archive-article-date">
   	<time datetime="2017-06-16T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-17</time>
 </a>
         
@@ -292,9 +292,11 @@ var _hmt = _hmt || [];
 
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="什么是-ClassLoader-？"><a href="#什么是-ClassLoader-？" class="headerlink" title="什么是 ClassLoader ？"></a>什么是 ClassLoader ？</h3><p>大家都知道，当我们写好一个 Java 程序之后，不是管是 C/S 还是 B/S 应用，都是由若干个 .class 文件组织而成的一个完整的 Java 应用程序，当程序在运行时，即会调用该程序的一个入口函数来调用系统的相关功能，而这些功能都被封装在不同的 class 文件当中，所以经常要从这个 class 文件中要调用另外一个 class 文件中的方法，如果另外一个文件不存在的，则会引发系统异常。而程序在启动的时候，并不会一次性加载程序所要用的所有class文件，而是根据程序的需要，通过Java的类加载机制（ClassLoader）来动态加载某个 class 文件到内存当中的，从而只有 class 文件被载入到了内存之后，才能被其它 class 所引用。所以 ClassLoader 就是用来动态加载 class 文件到内存当中用的。</p>
+        <p><strong>1、简介</strong></p>
+<p>　　Filter也称之为过滤器，它是Servlet技术中最实用的技术，WEB开发人员通过Filter技术，对web服务器管理的所有web资源：例如Jsp, Servlet, 静态图片文件或静态 html 文件等进行拦截，从而实现一些特殊的功能。例如实现URL级别的权限访问控制、过滤敏感词汇、压缩响应信息等一些高级功能。</p>
+<p>　　它主要用于对用户请求进行预处理，也可以对HttpServletResponse 进行后处理。使用Filter 的完整流程：Filter 对用户请求进行预处理，接着将请求交给Servlet 进行处理并生成响应，最后Filter 再对服务器响应进行后处理。</p>
         
-          <a class="article-more-a" href="/2017/06/17/详细深入分析 Java ClassLoader 工作机制/#more">more >></a>
+          <a class="article-more-a" href="/2017/06/17/详解 Filter 过滤器/#more">more >></a>
         
       
 
@@ -316,11 +318,7 @@ var _hmt = _hmt || [];
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JVM</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">类加载机制</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Filter过滤器</a>
         		</li>
       		
 		</ul>
@@ -330,7 +328,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/17/详细深入分析 Java ClassLoader 工作机制/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/06/17/详解 Filter 过滤器/">展开全文 >></a>
         </p>
       
 
@@ -596,19 +594,19 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-奇怪的Java题：为什么128 == 128返回为False，而127 == 127会返回为True-" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-【字符串】字符串逆序" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/13/奇怪的Java题：为什么128 == 128返回为False，而127 == 127会返回为True-/">奇怪的Java题：为什么128 == 128返回为False，而127 == 127会返回为True?</a>
+      <a class="article-title" href="/2017/06/13/【字符串】字符串逆序/">字符串</a>
     </h1>
   
 
         
-        <a href="/2017/06/13/奇怪的Java题：为什么128 == 128返回为False，而127 == 127会返回为True-/" class="archive-article-date">
+        <a href="/2017/06/13/【字符串】字符串逆序/" class="archive-article-date">
   	<time datetime="2017-06-12T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-13</time>
 </a>
         
@@ -621,14 +619,95 @@ var _hmt = _hmt || [];
 
     <div class="article-entry" itemprop="articleBody">
       
-        <p>这是我们今天要讨论的话题，因为我觉得它非常的有趣。</p>
-<p>如果你运行如下代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">class  A</span><br><span class="line">&#123;</span><br><span class="line">	public static void main(String[] args)</span><br><span class="line">	&#123;</span><br><span class="line">		Integer a = 128, b = 128;</span><br><span class="line">		System.out.println(a == b);</span><br><span class="line">		Integer c = 127, d = 127;</span><br><span class="line">		System.out.println(c == d);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>你会得到如下结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">false</span><br><span class="line">true</span><br></pre></td></tr></table></figure>
-<p><img src="http://img.blog.csdn.net/20161211172715176?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdHpzXzEwNDEyMTgxMjk=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"><br>
+        <h4 id="题目一："><a href="#题目一：" class="headerlink" title="题目一："></a>题目一：</h4><p>如果一个字符串 str ，把字符串 str 前面的任意部分挪到后面去形成的字符串叫做 str 的旋转词。比如 str = “ 1234 ” ， 那么 str 的旋转词有 “ 1234 ” ， “ 2341 ” ， “ 3412 ” ， “ 4123 ” 。给定两个字符串 a 和 b ，请判断 a 和 b 是否互为旋转词？<br>
         
-          <a class="article-more-a" href="/2017/06/13/奇怪的Java题：为什么128 == 128返回为False，而127 == 127会返回为True-/#more">more >></a>
+          <a class="article-more-a" href="/2017/06/13/【字符串】字符串逆序/#more">more >></a>
+        
+      
+
+      <!-- <div>
+  			<img src="/img/wx.jpg"  style="margin: 0 auto;" />
+  		</div> -->
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">字符串</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/06/13/【字符串】字符串逆序/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-Java-16-lession" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/13/Java-16-lession/">《疯狂 Java 突破程序员基本功的 16 课》读书笔记</a>
+    </h1>
+  
+
+        
+        <a href="/2017/06/13/Java-16-lession/" class="archive-article-date">
+  	<time datetime="2017-06-12T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-13</time>
+</a>
+        
+      </header>
+    
+
+    <!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="第-1-课-——-数组与内存控制"><a href="#第-1-课-——-数组与内存控制" class="headerlink" title="第 1 课 —— 数组与内存控制"></a>第 1 课 —— 数组与内存控制</h2><h3 id="数组初始化"><a href="#数组初始化" class="headerlink" title="数组初始化"></a>数组初始化</h3><p>数组初始化之后，该数组的长度是不可变的（可通过数组的 length 属性访问数组的长度）。Java 中的数组必须经过初始化（为数组对象的元素分配内存空间，并为每个数组元素指定初始值）才可使用。</p>
+<p>数组初始化的形式：</p>
+<ul>
+<li>静态初始化：初始化时由程序员显示的指定每个数组的初始值，系统决定数组长度。</li>
+<li>动态初始化：初始化时程序员只指定数组的长度，系统为数组元素分配初始值。</li>
+</ul>
+        
+          <a class="article-more-a" href="/2017/06/13/Java-16-lession/#more">more >></a>
         
       
 
@@ -656,7 +735,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/13/奇怪的Java题：为什么128 == 128返回为False，而127 == 127会返回为True-/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/06/13/Java-16-lession/">展开全文 >></a>
         </p>
       
 
@@ -674,19 +753,19 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-Spring MVC + Hibernate JPA + Bootstrap 搭建的博客系统" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-MyBatis-foreach" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/13/Spring MVC + Hibernate JPA + Bootstrap 搭建的博客系统/">Spring MVC系列文章（一）：Spring MVC + Hibernate JPA + Bootstrap 搭建的博客系统 Demo</a>
+      <a class="article-title" href="/2017/06/13/MyBatis-foreach/">MyBatis的foreach语句详解</a>
     </h1>
   
 
         
-        <a href="/2017/06/13/Spring MVC + Hibernate JPA + Bootstrap 搭建的博客系统/" class="archive-article-date">
+        <a href="/2017/06/13/MyBatis-foreach/" class="archive-article-date">
   	<time datetime="2017-06-12T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-13</time>
 </a>
         
@@ -699,114 +778,28 @@ var _hmt = _hmt || [];
 
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="相关阅读："><a href="#相关阅读：" class="headerlink" title="相关阅读："></a>相关阅读：</h4><p>1、<a href="http://blog.csdn.net/tzs_1041218129/article/details/53791765" target="_blank" rel="noopener">Spring MVC+Hibernate JPA+ Bootstrap 搭建的博客系统项目中所遇到的坑</a></p>
-<p>由于整个系统不是很难，这里就不详细介绍了，我相信看源码的话，应该能够看得懂。</p>
-<h3 id="源码地址：https-github-com-zhisheng17-springmvc"><a href="#源码地址：https-github-com-zhisheng17-springmvc" class="headerlink" title="源码地址：https://github.com/zhisheng17/springmvc"></a>源码地址：<a href="https://github.com/zhisheng17/springmvc" target="_blank" rel="noopener">https://github.com/zhisheng17/springmvc</a></h3><p><strong>数据库</strong>：<a href="https://github.com/zhisheng17/springmvc/tree/master/sql/springdemo.sql" target="_blank" rel="noopener">springdemo.sql</a></p>
-<p>下面给出下整个系统的截图吧，觉得不错，可以给个 star ，哈哈！后续继续在这个项目中加入新的项目。</p>
-<h4 id="截图："><a href="#截图：" class="headerlink" title="截图："></a>截图：</h4><p><strong>首页</strong></p>
-<p><img src="https://github.com/zhisheng17/springmvc/blob/master/pic/index.jpg?raw=true" alt=""></p>
-        
-          <a class="article-more-a" href="/2017/06/13/Spring MVC + Hibernate JPA + Bootstrap 搭建的博客系统/#more">more >></a>
-        
-      
-
-      <!-- <div>
-  			<img src="/img/wx.jpg"  style="margin: 0 auto;" />
-  		</div> -->
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Bootstrap</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySQL</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Spring</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Spring MVC</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Hibernate JPA</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/13/Spring MVC + Hibernate JPA + Bootstrap 搭建的博客系统/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-Python爬虫实战之爬取糗事百科段子" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/13/Python爬虫实战之爬取糗事百科段子/">Python爬虫实战之爬取糗事百科段子</a>
-    </h1>
-  
-
-        
-        <a href="/2017/06/13/Python爬虫实战之爬取糗事百科段子/" class="archive-article-date">
-  	<time datetime="2017-06-12T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-13</time>
-</a>
-        
-      </header>
-    
-
-    <!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="完整代码地址：Python爬虫实战之爬取糗事百科段子"><a href="#完整代码地址：Python爬虫实战之爬取糗事百科段子" class="headerlink" title="完整代码地址：Python爬虫实战之爬取糗事百科段子"></a>完整代码地址：<a href="https://github.com/zhisheng17/Python-Projects/tree/master/qiushibaike" target="_blank" rel="noopener">Python爬虫实战之爬取糗事百科段子</a></h3><h3 id="程序代码详解："><a href="#程序代码详解：" class="headerlink" title="程序代码详解："></a>程序代码详解：</h3><ol>
-<li><p><strong>Spider1-qiushibaike.py</strong>：爬取糗事百科的8小时最新页的段子。包含的信息有作者名称，觉得好笑人数，评论人数，发布的内容。如果发布的内容中含有图片的话，则过滤图片，内容依然显示出来。</p>
+        <p><strong>foreach</strong> 的主要用在构建in条件中，它可以在SQL语句中进行迭代一个集合。</p>
+<p>foreach 元素的属性主要有 item，index，collection，open，separator，close。</p>
+<ul>
+<li><p>item 表示集合中每一个元素进行迭代时的别名，</p>
 </li>
-<li><p><strong>Spider2-qiushibaike.py</strong>：在Spider1-qiushibaike.py基础上，引入类和方法，进行优化和封装，爬取糗事百科的24小时热门页的段子。进一步优化，每按一次回车更新一条内容，当前页的内容抓取完毕后，自动抓取下一页的内容，按‘q’退出。</p>
+<li><p>index 指 定一个名字，用于表示在迭代过程中，每次迭代到的位置，</p>
 </li>
-<li><p><strong>Spider3-qiushibaike.py</strong>：在Spiders-qiushibaike.py基础上，爬取了百科段子的评论。按C查看当前这个糗事的评论，当切换到查看评论时，换回车显示下一个评论,按Q退出回到查看糗事。糗事段子页数是一页一页加载的，如果你已经看完所有的糗事，就会自动退出！</p>
+<li><p>open 表示该语句以什么开始，</p>
 </li>
+<li><p>separator 表示在每次进行迭代之间以什么符号作为分隔 符，</p>
+</li>
+<li><p>close 表示以什么结束。</p>
+</li>
+</ul>
+<p>在使用 foreach 的时候最关键的也是最容易出错的就是 collection 属性，该属性是必须指定的，但是在不同情况 下，该属性的值是不一样的，主要有一下3种情况：</p>
+<ol>
+<li>如果传入的是单参数且参数类型是一个List的时候，collection 属性值为 list</li>
+<li>如果传入的是单参数且参数类型是一个 array 数组的时候，collection 的属性值为 array</li>
+<li>如果传入的参数是多个的时候，我们就需要把它们封装成一个 Map 了，<strong>当然单参数也可以封装成map</strong>，实际上如果你在传入参数的时候，在 breast 里面也是会把它封装成一个 Map 的，map 的 key 就是参数名，所以这个时候 collection 属性值就是传入的 List 或 array 对象在自己封装的 map 里面的 key 。</li>
 </ol>
         
-          <a class="article-more-a" href="/2017/06/13/Python爬虫实战之爬取糗事百科段子/#more">more >></a>
+          <a class="article-more-a" href="/2017/06/13/MyBatis-foreach/#more">more >></a>
         
       
 
@@ -824,11 +817,11 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Mybatis</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">爬虫</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">foreach</a>
         		</li>
       		
 		</ul>
@@ -838,7 +831,90 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/13/Python爬虫实战之爬取糗事百科段子/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/06/13/MyBatis-foreach/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-Java连接Oracle数据库的三种连接方式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/13/Java连接Oracle数据库的三种连接方式/">Java连接Oracle数据库的三种连接方式</a>
+    </h1>
+  
+
+        
+        <a href="/2017/06/13/Java连接Oracle数据库的三种连接方式/" class="archive-article-date">
+  	<time datetime="2017-06-12T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-13</time>
+</a>
+        
+      </header>
+    
+
+    <!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="背景："><a href="#背景：" class="headerlink" title="背景："></a>背景：</h3><p>这两天在学习Oracle数据库，这里就总结下自己上课所学的知识，同时记录下来，方便整理当天所学下的知识，也同时方便日后自己查询。</p>
+<p>SQL语句的话，这里我就不多讲了，感觉和其他的数据库（MySQL、SQL Server）都是类似，区别不大。</p>
+<p>今天在这里就写下 Java 连接 Oracle 数据库的三种连接方式。<br>
+        
+          <a class="article-more-a" href="/2017/06/13/Java连接Oracle数据库的三种连接方式/#more">more >></a>
+        
+      
+
+      <!-- <div>
+  			<img src="/img/wx.jpg"  style="margin: 0 auto;" />
+  		</div> -->
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">数据库</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Oracle</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/06/13/Java连接Oracle数据库的三种连接方式/">展开全文 >></a>
         </p>
       
 
@@ -941,19 +1017,19 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-MySQL-select-good" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Python爬虫实战之爬取糗事百科段子" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/13/MySQL-select-good/">MySQL 处理海量数据时的一些优化查询速度方法</a>
+      <a class="article-title" href="/2017/06/13/Python爬虫实战之爬取糗事百科段子/">Python爬虫实战之爬取糗事百科段子</a>
     </h1>
   
 
         
-        <a href="/2017/06/13/MySQL-select-good/" class="archive-article-date">
+        <a href="/2017/06/13/Python爬虫实战之爬取糗事百科段子/" class="archive-article-date">
   	<time datetime="2017-06-12T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-13</time>
 </a>
         
@@ -966,9 +1042,16 @@ var _hmt = _hmt || [];
 
     <div class="article-entry" itemprop="articleBody">
       
-        <p>在参与实际项目中，当 MySQL 表的数据量达到百万级时，普通的 SQL 查询效率呈直线下降，而且如果 where 中的查询条件较多时，其查询速度无法容忍。想想可知，假如我们查询淘宝的一个订单详情，如果查询时间高达几十秒，这么高的查询延时，任何用户都会抓狂。因此如何提高 SQL 语句查询效率，显得十分重要。<br>
+        <h3 id="完整代码地址：Python爬虫实战之爬取糗事百科段子"><a href="#完整代码地址：Python爬虫实战之爬取糗事百科段子" class="headerlink" title="完整代码地址：Python爬虫实战之爬取糗事百科段子"></a>完整代码地址：<a href="https://github.com/zhisheng17/Python-Projects/tree/master/qiushibaike" target="_blank" rel="noopener">Python爬虫实战之爬取糗事百科段子</a></h3><h3 id="程序代码详解："><a href="#程序代码详解：" class="headerlink" title="程序代码详解："></a>程序代码详解：</h3><ol>
+<li><p><strong>Spider1-qiushibaike.py</strong>：爬取糗事百科的8小时最新页的段子。包含的信息有作者名称，觉得好笑人数，评论人数，发布的内容。如果发布的内容中含有图片的话，则过滤图片，内容依然显示出来。</p>
+</li>
+<li><p><strong>Spider2-qiushibaike.py</strong>：在Spider1-qiushibaike.py基础上，引入类和方法，进行优化和封装，爬取糗事百科的24小时热门页的段子。进一步优化，每按一次回车更新一条内容，当前页的内容抓取完毕后，自动抓取下一页的内容，按‘q’退出。</p>
+</li>
+<li><p><strong>Spider3-qiushibaike.py</strong>：在Spiders-qiushibaike.py基础上，爬取了百科段子的评论。按C查看当前这个糗事的评论，当切换到查看评论时，换回车显示下一个评论,按Q退出回到查看糗事。糗事段子页数是一页一页加载的，如果你已经看完所有的糗事，就会自动退出！</p>
+</li>
+</ol>
         
-          <a class="article-more-a" href="/2017/06/13/MySQL-select-good/#more">more >></a>
+          <a class="article-more-a" href="/2017/06/13/Python爬虫实战之爬取糗事百科段子/#more">more >></a>
         
       
 
@@ -986,7 +1069,11 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySQL</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">爬虫</a>
         		</li>
       		
 		</ul>
@@ -996,7 +1083,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/13/MySQL-select-good/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/06/13/Python爬虫实战之爬取糗事百科段子/">展开全文 >></a>
         </p>
       
 
@@ -1014,19 +1101,19 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-Java NIO 系列教程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Spring MVC + Hibernate JPA + Bootstrap 搭建的博客系统" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/13/Java NIO 系列教程/">Java NIO 系列教程</a>
+      <a class="article-title" href="/2017/06/13/Spring MVC + Hibernate JPA + Bootstrap 搭建的博客系统/">Spring MVC系列文章（一）：Spring MVC + Hibernate JPA + Bootstrap 搭建的博客系统 Demo</a>
     </h1>
   
 
         
-        <a href="/2017/06/13/Java NIO 系列教程/" class="archive-article-date">
+        <a href="/2017/06/13/Spring MVC + Hibernate JPA + Bootstrap 搭建的博客系统/" class="archive-article-date">
   	<time datetime="2017-06-12T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-13</time>
 </a>
         
@@ -1039,18 +1126,14 @@ var _hmt = _hmt || [];
 
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Java NIO（New IO）是从Java 1.4版本开始引入的一个新的IO API，可以替代标准的Java IO API。</p>
-<p>Java NIO提供了与标准IO不同的IO工作方式：</p>
-<ul>
-<li><p><strong>Channels and Buffers（通道和缓冲区）</strong>：标准的IO基于字节流和字符流进行操作的，而NIO是基于通道（Channel）和缓冲区（Buffer）进行操作，数据总是从通道读取到缓冲区中，或者从缓冲区写入到通道中。</p>
-</li>
-<li><p><strong>Asynchronous IO（异步IO）</strong>：Java NIO可以让你异步的使用IO，例如：当线程从通道读取数据到缓冲区时，线程还是可以进行其他事情。当数据被写入到缓冲区时，线程可以继续处理它。从缓冲区写入通道也类似。</p>
-</li>
-<li><p><strong>Selectors（选择器）</strong>：Java NIO引入了选择器的概念，选择器用于监听多个通道的事件（比如：连接打开，数据到达）。因此，单个的线程可以监听多个数据通道。</p>
-</li>
-</ul>
+        <h4 id="相关阅读："><a href="#相关阅读：" class="headerlink" title="相关阅读："></a>相关阅读：</h4><p>1、<a href="http://blog.csdn.net/tzs_1041218129/article/details/53791765" target="_blank" rel="noopener">Spring MVC+Hibernate JPA+ Bootstrap 搭建的博客系统项目中所遇到的坑</a></p>
+<p>由于整个系统不是很难，这里就不详细介绍了，我相信看源码的话，应该能够看得懂。</p>
+<h3 id="源码地址：https-github-com-zhisheng17-springmvc"><a href="#源码地址：https-github-com-zhisheng17-springmvc" class="headerlink" title="源码地址：https://github.com/zhisheng17/springmvc"></a>源码地址：<a href="https://github.com/zhisheng17/springmvc" target="_blank" rel="noopener">https://github.com/zhisheng17/springmvc</a></h3><p><strong>数据库</strong>：<a href="https://github.com/zhisheng17/springmvc/tree/master/sql/springdemo.sql" target="_blank" rel="noopener">springdemo.sql</a></p>
+<p>下面给出下整个系统的截图吧，觉得不错，可以给个 star ，哈哈！后续继续在这个项目中加入新的项目。</p>
+<h4 id="截图："><a href="#截图：" class="headerlink" title="截图："></a>截图：</h4><p><strong>首页</strong></p>
+<p><img src="https://github.com/zhisheng17/springmvc/blob/master/pic/index.jpg?raw=true" alt=""></p>
         
-          <a class="article-more-a" href="/2017/06/13/Java NIO 系列教程/#more">more >></a>
+          <a class="article-more-a" href="/2017/06/13/Spring MVC + Hibernate JPA + Bootstrap 搭建的博客系统/#more">more >></a>
         
       
 
@@ -1067,108 +1150,28 @@ var _hmt = _hmt || [];
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Bootstrap</a>
+        		</li>
+      		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">NIO</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/13/Java NIO 系列教程/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-MyBatis-foreach" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/13/MyBatis-foreach/">MyBatis的foreach语句详解</a>
-    </h1>
-  
-
-        
-        <a href="/2017/06/13/MyBatis-foreach/" class="archive-article-date">
-  	<time datetime="2017-06-12T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-13</time>
-</a>
-        
-      </header>
-    
-
-    <!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>foreach</strong> 的主要用在构建in条件中，它可以在SQL语句中进行迭代一个集合。</p>
-<p>foreach 元素的属性主要有 item，index，collection，open，separator，close。</p>
-<ul>
-<li><p>item 表示集合中每一个元素进行迭代时的别名，</p>
-</li>
-<li><p>index 指 定一个名字，用于表示在迭代过程中，每次迭代到的位置，</p>
-</li>
-<li><p>open 表示该语句以什么开始，</p>
-</li>
-<li><p>separator 表示在每次进行迭代之间以什么符号作为分隔 符，</p>
-</li>
-<li><p>close 表示以什么结束。</p>
-</li>
-</ul>
-<p>在使用 foreach 的时候最关键的也是最容易出错的就是 collection 属性，该属性是必须指定的，但是在不同情况 下，该属性的值是不一样的，主要有一下3种情况：</p>
-<ol>
-<li>如果传入的是单参数且参数类型是一个List的时候，collection 属性值为 list</li>
-<li>如果传入的是单参数且参数类型是一个 array 数组的时候，collection 的属性值为 array</li>
-<li>如果传入的参数是多个的时候，我们就需要把它们封装成一个 Map 了，<strong>当然单参数也可以封装成map</strong>，实际上如果你在传入参数的时候，在 breast 里面也是会把它封装成一个 Map 的，map 的 key 就是参数名，所以这个时候 collection 属性值就是传入的 List 或 array 对象在自己封装的 map 里面的 key 。</li>
-</ol>
-        
-          <a class="article-more-a" href="/2017/06/13/MyBatis-foreach/#more">more >></a>
-        
-      
-
-      <!-- <div>
-  			<img src="/img/wx.jpg"  style="margin: 0 auto;" />
-  		</div> -->
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Mybatis</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySQL</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">foreach</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Spring</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Spring MVC</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Hibernate JPA</a>
         		</li>
       		
 		</ul>
@@ -1178,7 +1181,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/13/MyBatis-foreach/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/06/13/Spring MVC + Hibernate JPA + Bootstrap 搭建的博客系统/">展开全文 >></a>
         </p>
       
 
@@ -1332,18 +1335,6 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ElasticSearch</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LogStash</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Kibana</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">分布式锁</a>
               </li>
              
@@ -1356,7 +1347,23 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ElasticSearch</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">LogStash</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Kibana</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">HBase</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1364,7 +1371,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">HBase</a>
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1373,10 +1380,6 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">yilia</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1392,11 +1395,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">NIO</a>
+                <a href="javascript:void(0)" class="js-tag color4">JMM</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JSON</a>
+                <a href="javascript:void(0)" class="js-tag color4">NIO</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1404,15 +1407,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JMM</a>
+                <a href="javascript:void(0)" class="js-tag color5">JSON</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">投资理财</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
+                <a href="javascript:void(0)" class="js-tag color1">Kafka</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1420,7 +1419,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Kafka</a>
+                <a href="javascript:void(0)" class="js-tag color5">投资理财</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1429,6 +1428,14 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">foreach</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1448,7 +1455,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
+                <a href="javascript:void(0)" class="js-tag color4">RocketMQ</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1457,10 +1464,6 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">RocketMQ</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1484,11 +1487,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Velocity</a>
+                <a href="javascript:void(0)" class="js-tag color4">线程池</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">线程池</a>
+                <a href="javascript:void(0)" class="js-tag color4">Velocity</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1524,6 +1527,10 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Mac</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">励志</a>
               </li>
              
@@ -1532,15 +1539,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Mac</a>
+                <a href="javascript:void(0)" class="js-tag color3">书籍</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Servlet</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">书籍</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1560,7 +1563,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">表达式</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1568,15 +1571,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">循环队列</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">旋转词</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">表达式</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1588,7 +1587,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">邮件发送</a>
+                <a href="javascript:void(0)" class="js-tag color3">编码</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">循环队列</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1596,15 +1599,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">编码</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Filter过滤器</a>
+                <a href="javascript:void(0)" class="js-tag color5">邮件发送</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">类加载机制</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Filter过滤器</a>
               </li>
              
               <li class="article-tag-list-item">
