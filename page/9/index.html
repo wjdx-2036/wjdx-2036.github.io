@@ -192,20 +192,20 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-Nginx" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-String-new" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/05/Nginx/">Nginx 基本知识快速入门</a>
+      <a class="article-title" href="/2017/06/13/String-new/">关于String s = new String(&#34;xyz&#34;); 创建几个对象的问题</a>
     </h1>
   
 
         
-        <a href="/2017/08/05/Nginx/" class="archive-article-date">
-  	<time datetime="2017-08-04T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-05</time>
+        <a href="/2017/06/13/String-new/" class="archive-article-date">
+  	<time datetime="2017-06-12T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-13</time>
 </a>
         
       </header>
@@ -217,316 +217,99 @@ var _hmt = _hmt || [];
 
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="什么是-Nginx？"><a href="#什么是-Nginx？" class="headerlink" title="什么是 Nginx？"></a>什么是 Nginx？</h2><p>Nginx 是一个高性能的 HTTP 和反向代理服务器，以高稳定性、丰富的功能集、示例配置文件和低系统资源的消耗而闻名。</p>
-<h2 id="Nginx-特点"><a href="#Nginx-特点" class="headerlink" title="Nginx 特点"></a>Nginx 特点</h2><ul>
-<li>处理静态文件，索引文件以及自动索引；打开文件描述符缓冲．</li>
-<li>无缓存的反向代理加速，简单的负载均衡和容错．</li>
-<li>FastCGI，简单的负载均衡和容错．</li>
-<li>模块化的结构。包括 gzipping, byte ranges, chunked responses,以及 SSI-filter 等 filter。如果由 FastCGI 或其它代理服务器处理单页中存在的多个 SSI，则这项处理可以并行运行，而不需要相互等待。</li>
-<li>支持 SSL 和 TLSSNI．</li>
+        <p>你知道在 <code>java</code> 中除了 8 种基本类型外，其他的都是类对象以及其引用。所以 <code>&quot;xyz &quot;</code>在 <code>java</code> 中它是一个<code>String</code> 对象.对于 <code>string</code> 类对象来说他的对象值是不能修改的，也就是具有不变性。</p>
+<p>看：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">String   s= &quot;hello &quot;; </span><br><span class="line">s= &quot;Java &quot;; </span><br><span class="line">String   s1= &quot;hello &quot;; </span><br><span class="line">String   s2=new   String( &quot;hello &quot;);</span><br></pre></td></tr></table></figure></p>
+<p>结果如下图：<br><img src="http://img.blog.csdn.net/20170405232029845?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdHpzXzEwNDEyMTgxMjk=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="string-new1"></p>
+<p>啊，s 所引用的 <code>string</code> 对象不是被修改了吗？之前所说的不变性，去那里了啊？<br>
+        
+          <a class="article-more-a" href="/2017/06/13/String-new/#more">more >></a>
+        
+      
+
+      <!-- <div>
+  			<img src="/img/wx.jpg"  style="margin: 0 auto;" />
+  		</div> -->
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">String</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/06/13/String-new/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-Java-Thread" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/13/Java-Thread/">《Java 多线程编程核心技术》学习笔记及总结</a>
+    </h1>
+  
+
+        
+        <a href="/2017/06/13/Java-Thread/" class="archive-article-date">
+  	<time datetime="2017-06-12T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-13</time>
+</a>
+        
+      </header>
+    
+
+    <!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="第一章-——-Java-多线程技能"><a href="#第一章-——-Java-多线程技能" class="headerlink" title="第一章 —— Java 多线程技能"></a>第一章 —— Java 多线程技能</h2><p>线程技术点：</p>
+<ul>
+<li>线程的启动</li>
+<li>如何使线程暂停</li>
+<li>如何使线程停止</li>
+<li>线程的优先级</li>
+<li>线程安全相关问题</li>
 </ul>
+<h3 id="进程和线程的概念及多线程的优点"><a href="#进程和线程的概念及多线程的优点" class="headerlink" title="进程和线程的概念及多线程的优点"></a>进程和线程的概念及多线程的优点</h3><p>进程：比如我们电脑运行的 QQ.exe 程序，是操作系统管理的基本运行单元</p>
+<p>线程：在进程中独立运行的子任务，比如 QQ.exe 进程中就有很多线程在运行，下载文件线程、发送消息线程、语音线程、视频线程等。</p>
+<p>多线程优点：我们电脑可以同时操作不同的软件，边听着歌，敲着代码，查看 pdf 文档，浏览网页等，CPU 在这些任务之间不停的切换，切换非常快，所以我们就觉得他们是在同时运行的。<br>
         
-          <a class="article-more-a" href="/2017/08/05/Nginx/#more">more >></a>
-        
-      
-
-      <!-- <div>
-  			<img src="/img/wx.jpg"  style="margin: 0 auto;" />
-  		</div> -->
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Nginx</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/08/05/Nginx/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-alibaba" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/04/alibaba/">秋招第三站 —— 内推阿里（一面）</a>
-    </h1>
-  
-
-        
-        <a href="/2017/08/04/alibaba/" class="archive-article-date">
-  	<time datetime="2017-08-03T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-04</time>
-</a>
-        
-      </header>
-    
-
-    <!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="3、阿里巴巴（菜鸟网络部门）（一面-49-分钟）"><a href="#3、阿里巴巴（菜鸟网络部门）（一面-49-分钟）" class="headerlink" title="3、阿里巴巴（菜鸟网络部门）（一面 49 分钟）"></a>3、阿里巴巴（菜鸟网络部门）（一面 49 分钟）</h3><p>2017.08.02   晚上9点21打电话过来，预约明天什么时候有空面试，约好第二天下午两点。</p>
-<p>2017.08.03   下午两点10分打过来了。</p>
-<p>说看了我的<a href="http://www.54tianzhisheng.cn/" target="_blank" rel="noopener">博客</a>和 <a href="https://github.com/zhisheng17" target="_blank" rel="noopener">GitHub</a>，觉得我学的还行，知识广度都还不错，但是还是要问问具体情况，为什么没看到你春招的记录，什么原因没投阿里？非得说一个原因，那就是：我自己太菜了，不敢投。<br>
-        
-          <a class="article-more-a" href="/2017/08/04/alibaba/#more">more >></a>
-        
-      
-
-      <!-- <div>
-  			<img src="/img/wx.jpg"  style="margin: 0 auto;" />
-  		</div> -->
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">面经</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/08/04/alibaba/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-yaxin" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/04/yaxin/">秋招第一站 —— 亚信科技</a>
-    </h1>
-  
-
-        
-        <a href="/2017/08/04/yaxin/" class="archive-article-date">
-  	<time datetime="2017-08-03T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-04</time>
-</a>
-        
-      </header>
-    
-
-    <!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="第-1-站、亚信科技-Java-开发"><a href="#第-1-站、亚信科技-Java-开发" class="headerlink" title="第 1 站、亚信科技    Java 开发"></a>第 1 站、亚信科技    Java 开发</h3><p>1）自我介绍（说到一个亮点：长期坚持写博客，面试官觉得这个习惯很好，算加分项吧）</p>
-<p>2）看到简历项目中用到 Solr，详细的问了下 Solr（自己介绍了下 Solr 的使用场景和建立索引等东西）<br>
-        
-          <a class="article-more-a" href="/2017/08/04/yaxin/#more">more >></a>
-        
-      
-
-      <!-- <div>
-  			<img src="/img/wx.jpg"  style="margin: 0 auto;" />
-  		</div> -->
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">面经</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/08/04/yaxin/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-iqiyi" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/04/iqiyi/">秋招第二站 —— 内推爱奇艺（一面二面）</a>
-    </h1>
-  
-
-        
-        <a href="/2017/08/04/iqiyi/" class="archive-article-date">
-  	<time datetime="2017-08-03T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-04</time>
-</a>
-        
-      </header>
-    
-
-    <!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="第-2-站-、爱奇艺-后端-Java-开发实习生"><a href="#第-2-站-、爱奇艺-后端-Java-开发实习生" class="headerlink" title="第 2 站 、爱奇艺   后端 Java 开发实习生"></a>第 2 站 、爱奇艺   后端 Java 开发实习生</h3><h4 id="笔试（半个小时）"><a href="#笔试（半个小时）" class="headerlink" title="笔试（半个小时）"></a>笔试（半个小时）</h4><p>题目：（记得一些）</p>
-<p>1、重载重写的区别？</p>
-<p>2、转发和重定向的区别？<br>
-        
-          <a class="article-more-a" href="/2017/08/04/iqiyi/#more">more >></a>
-        
-      
-
-      <!-- <div>
-  			<img src="/img/wx.jpg"  style="margin: 0 auto;" />
-  		</div> -->
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">面经</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/08/04/iqiyi/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-ThreadPool" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/29/ThreadPool/">Java 线程池艺术探索</a>
-    </h1>
-  
-
-        
-        <a href="/2017/07/29/ThreadPool/" class="archive-article-date">
-  	<time datetime="2017-07-28T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-29</time>
-</a>
-        
-      </header>
-    
-
-    <!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h2><p>Wiki 上是这样解释的：<a href="https://en.wikipedia.org/wiki/Thread_pool" target="_blank" rel="noopener">Thread Pool</a></p>
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Thread_pool.svg/400px-Thread_pool.svg.png" alt=""></p>
-<p>作用：<strong>利用线程池可以大大减少在创建和销毁线程上所花的时间以及系统资源的开销！</strong></p>
-<p>下面主要讲下线程池中最重要的一个类 ThreadPoolExecutor 。<br>
-        
-          <a class="article-more-a" href="/2017/07/29/ThreadPool/#more">more >></a>
+          <a class="article-more-a" href="/2017/06/13/Java-Thread/#more">more >></a>
         
       
 
@@ -550,10 +333,6 @@ var _hmt = _hmt || [];
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">多线程</a>
         		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">线程池</a>
-        		</li>
       		
 		</ul>
 	</div>
@@ -562,7 +341,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/07/29/ThreadPool/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/06/13/Java-Thread/">展开全文 >></a>
         </p>
       
 
@@ -580,20 +359,20 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-Java-performance-tuning" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Java连接Oracle数据库的三种连接方式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/25/Java-performance-tuning/">Java 性能调优需要格外注意的细节</a>
+      <a class="article-title" href="/2017/06/13/Java连接Oracle数据库的三种连接方式/">Java连接Oracle数据库的三种连接方式</a>
     </h1>
   
 
         
-        <a href="/2017/07/25/Java-performance-tuning/" class="archive-article-date">
-  	<time datetime="2017-07-24T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-25</time>
+        <a href="/2017/06/13/Java连接Oracle数据库的三种连接方式/" class="archive-article-date">
+  	<time datetime="2017-06-12T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-13</time>
 </a>
         
       </header>
@@ -605,14 +384,92 @@ var _hmt = _hmt || [];
 
     <div class="article-entry" itemprop="articleBody">
       
-        <p>昨天写了篇文章 <a href="http://www.54tianzhisheng.cn/2017/04/29/MySQL-select-good/" target="_blank" rel="noopener">《MySQL 处理海量数据时的一些优化查询速度方法》</a> ，其实开发中不止数据库要优化，还有我们本身的开发代码也需要优化，这样我们开发的产品才能够得到极致的体验。也许有些人认为这些细小的地方没有啥好修改的，改与不改对运行效率没啥大的影响？首先在我们本地一个人测试下效率是不怎么明显，但是如果到发布上线后，你的用户有几百万，甚至上千万，这些用户同时访问你的网站，那么你的网站是否经得住考验呢，效率那高不高呢，如果效率不高，那么需要多出很多买服务器的经费呢，所以想想还是很有必要注意这些小的细节。今天就讲讲一些 Java 性能调优需要格外注意的一些细节。</p>
-<p>代码优化的目标：</p>
-<ul>
-<li>减少代码的体积</li>
-<li>提高代码的运行效率</li>
-</ul>
+        <h3 id="背景："><a href="#背景：" class="headerlink" title="背景："></a>背景：</h3><p>这两天在学习Oracle数据库，这里就总结下自己上课所学的知识，同时记录下来，方便整理当天所学下的知识，也同时方便日后自己查询。</p>
+<p>SQL语句的话，这里我就不多讲了，感觉和其他的数据库（MySQL、SQL Server）都是类似，区别不大。</p>
+<p>今天在这里就写下 Java 连接 Oracle 数据库的三种连接方式。<br>
         
-          <a class="article-more-a" href="/2017/07/25/Java-performance-tuning/#more">more >></a>
+          <a class="article-more-a" href="/2017/06/13/Java连接Oracle数据库的三种连接方式/#more">more >></a>
+        
+      
+
+      <!-- <div>
+  			<img src="/img/wx.jpg"  style="margin: 0 auto;" />
+  		</div> -->
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">数据库</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Oracle</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/06/13/Java连接Oracle数据库的三种连接方式/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-HashMap-Hashtable" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/13/HashMap-Hashtable/">HashMap、Hashtable、HashSet 和 ConcurrentHashMap 的比较</a>
+    </h1>
+  
+
+        
+        <a href="/2017/06/13/HashMap-Hashtable/" class="archive-article-date">
+  	<time datetime="2017-06-12T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-13</time>
+</a>
+        
+      </header>
+    
+
+    <!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>HashMap 和 Hashtable 的比较是 Java 面试中的常见问题，用来考验程序员是否能够正确使用集合类以及是否可以随机应变使用多种思路解决问题。HashMap 的工作原理、ArrayList 与 Vector 的比较以及这个问题是有关 Java 集合框架的最经典的问题。Hashtable 是个过时的集合类，存在于 Java API 中很久了。在 Java 4 中被重写了，实现了 Map 接口，所以自此以后也成了 Java 集合框架中的一部分。Hashtable 和 HashMap 在 Java 面试中相当容易被问到，甚至成为了集合框架面试题中最常被考的问题，所以在参加任何 Java 面试之前，都不要忘了准备这一题。<br>
+        
+          <a class="article-more-a" href="/2017/06/13/HashMap-Hashtable/#more">more >></a>
         
       
 
@@ -640,7 +497,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/07/25/Java-performance-tuning/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/06/13/HashMap-Hashtable/">展开全文 >></a>
         </p>
       
 
@@ -658,20 +515,20 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-Spring-MVC03" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Hexo-yilia-toc" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/21/Spring-MVC03/">Spring MVC系列文章（五）：看透 Spring MVC 源代码分析与实践 ——  Spring MVC 组件分析</a>
+      <a class="article-title" href="/2017/06/13/Hexo-yilia-toc/">Hexo + yilia 主题实现文章目录</a>
     </h1>
   
 
         
-        <a href="/2017/07/21/Spring-MVC03/" class="archive-article-date">
-  	<time datetime="2017-07-20T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-21</time>
+        <a href="/2017/06/13/Hexo-yilia-toc/" class="archive-article-date">
+  	<time datetime="2017-06-12T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-13</time>
 </a>
         
       </header>
@@ -683,11 +540,10 @@ var _hmt = _hmt || [];
 
     <div class="article-entry" itemprop="articleBody">
       
-        <p>由于星期一接到面试通知，和面试官约好了星期四面试，所以这几天没更新完这系列的文章，面完试后立马就把这个解决掉。通过这次面试，也让我懂得了很多，知道了自己的一些不足之处，后面还要继续下功夫好好的深入复习下去。这几篇文章写的我觉得还是不够仔细，感兴趣的还是建议自己去看看源码。</p>
-<h3 id="第-11-章-——-组件概览"><a href="#第-11-章-——-组件概览" class="headerlink" title="第 11 章  ——  组件概览"></a>第 11 章  ——  组件概览</h3><p><strong>HandlerMapping</strong></p>
-<p>根据 request 找到对应的处理器 Handler 和 Interceptors。内部只有一个方法<br>
+        <h3 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h3><p>为了方便查看每篇文章的目录结构，可以定位到想看的地方，特地找了下如何实现这个功能。</p>
+<h3 id="添加-CSS-样式"><a href="#添加-CSS-样式" class="headerlink" title="添加 CSS 样式"></a>添加 CSS 样式</h3><p>打开 <code>themes\yilia\source</code> 下的 <code>main.234bc0.css</code> 文件，直接在后面添加如下代码：<br>
         
-          <a class="article-more-a" href="/2017/07/21/Spring-MVC03/#more">more >></a>
+          <a class="article-more-a" href="/2017/06/13/Hexo-yilia-toc/#more">more >></a>
         
       
 
@@ -705,7 +561,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Spring MVC</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
         		</li>
       		
 		</ul>
@@ -715,7 +571,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/07/21/Spring-MVC03/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/06/13/Hexo-yilia-toc/">展开全文 >></a>
         </p>
       
 
@@ -733,20 +589,20 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-Spring-MVC01" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-【字符串】字符串逆序" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/14/Spring-MVC01/">Spring MVC系列文章（三）：看透 Spring MVC 源代码分析与实践 ——  网站基础知识</a>
+      <a class="article-title" href="/2017/06/13/【字符串】字符串逆序/">字符串</a>
     </h1>
   
 
         
-        <a href="/2017/07/14/Spring-MVC01/" class="archive-article-date">
-  	<time datetime="2017-07-13T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-14</time>
+        <a href="/2017/06/13/【字符串】字符串逆序/" class="archive-article-date">
+  	<time datetime="2017-06-12T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-13</time>
 </a>
         
       </header>
@@ -758,14 +614,95 @@ var _hmt = _hmt || [];
 
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="网站架构及其演变过程"><a href="#网站架构及其演变过程" class="headerlink" title="网站架构及其演变过程"></a>网站架构及其演变过程</h3><h4 id="基础结构"><a href="#基础结构" class="headerlink" title="基础结构"></a>基础结构</h4><p>网络传输分解方式：</p>
-<ul>
-<li>标准的 OSI 参考模型</li>
-<li>TCP/IP 参考模型</li>
+        <h4 id="题目一："><a href="#题目一：" class="headerlink" title="题目一："></a>题目一：</h4><p>如果一个字符串 str ，把字符串 str 前面的任意部分挪到后面去形成的字符串叫做 str 的旋转词。比如 str = “ 1234 ” ， 那么 str 的旋转词有 “ 1234 ” ， “ 2341 ” ， “ 3412 ” ， “ 4123 ” 。给定两个字符串 a 和 b ，请判断 a 和 b 是否互为旋转词？<br>
+        
+          <a class="article-more-a" href="/2017/06/13/【字符串】字符串逆序/#more">more >></a>
+        
+      
+
+      <!-- <div>
+  			<img src="/img/wx.jpg"  style="margin: 0 auto;" />
+  		</div> -->
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">字符串</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/06/13/【字符串】字符串逆序/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-java读取文件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/13/java读取文件/">Java读取文件</a>
+    </h1>
+  
+
+        
+        <a href="/2017/06/13/java读取文件/" class="archive-article-date">
+  	<time datetime="2017-06-12T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-13</time>
+</a>
+        
+      </header>
+    
+
+    <!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li>以字节为单位读取文件</li>
+<li>以字符为单位读取文件</li>
+<li>以行为单位读取文件</li>
+<li>随机读取文件内容</li>
 </ul>
-<p><img src="http://ohfk1r827.bkt.clouddn.com/OSI-TCPIP.jpg" alt="OSI-TCPIP"><br>
         
-          <a class="article-more-a" href="/2017/07/14/Spring-MVC01/#more">more >></a>
+          <a class="article-more-a" href="/2017/06/13/java读取文件/#more">more >></a>
         
       
 
@@ -783,7 +720,11 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Spring MVC</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">文件</a>
         		</li>
       		
 		</ul>
@@ -793,7 +734,422 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/07/14/Spring-MVC01/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/06/13/java读取文件/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-通过项目逐步深入了解Mybatis(二)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/13/通过项目逐步深入了解Mybatis(二)/">通过项目逐步深入了解Mybatis（二）</a>
+    </h1>
+  
+
+        
+        <a href="/2017/06/13/通过项目逐步深入了解Mybatis(二)/" class="archive-article-date">
+  	<time datetime="2017-06-12T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-13</time>
+</a>
+        
+      </header>
+    
+
+    <!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>转载请务必注明出处，原创不易！</p>
+<p> 相关文章：<a href="http://blog.csdn.net/tzs_1041218129/article/details/53404326" target="_blank" rel="noopener"><strong>通过项目逐步深入了解Mybatis&lt;一&gt;</strong></a><br>本项目全部代码地址：<a href="https://github.com/zhisheng17/mybatis" target="_blank" rel="noopener"><strong>Github-Mybatis</strong></a></p>
+<h3 id="Mybatis-解决-jdbc-编程的问题"><a href="#Mybatis-解决-jdbc-编程的问题" class="headerlink" title="Mybatis 解决 jdbc 编程的问题"></a>Mybatis 解决 jdbc 编程的问题</h3><p>1、  数据库链接创建、释放频繁造成系统资源浪费从而影响系统性能，如果使用数据库链接池可解决此问题。</p>
+<p>解决：在SqlMapConfig.xml中配置数据链接池，使用连接池管理数据库链接。</p>
+<p>2、  Sql语句写在代码中造成代码不易维护，实际应用sql变化的可能较大，sql变动需要改变java代码。</p>
+<p>解决：将Sql语句配置在XXXXmapper.xml文件中与java代码分离。</p>
+<p>3、  向sql语句传参数麻烦，因为sql语句的where条件不一定，可能多也可能少，占位符需要和参数一一对应。</p>
+<p>解决：Mybatis自动将java对象映射至sql语句，通过statement中的parameterType定义输入参数的类型。</p>
+<p>4、  对结果集解析麻烦，sql变化导致解析代码变化，且解析前需要遍历，如果能将数据库记录封装成pojo对象解析比较方便。</p>
+<p>解决：Mybatis自动将sql执行结果映射至java对象，通过statement中的resultType定义输出结果的类型。</p>
+        
+          <a class="article-more-a" href="/2017/06/13/通过项目逐步深入了解Mybatis(二)/#more">more >></a>
+        
+      
+
+      <!-- <div>
+  			<img src="/img/wx.jpg"  style="margin: 0 auto;" />
+  		</div> -->
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Mybatis</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">SpringMVC</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/06/13/通过项目逐步深入了解Mybatis(二)/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-【字符串】判断两字符串是否互为旋转词？" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/13/【字符串】判断两字符串是否互为旋转词？/">【字符串】判断两字符串是否互为旋转词？</a>
+    </h1>
+  
+
+        
+        <a href="/2017/06/13/【字符串】判断两字符串是否互为旋转词？/" class="archive-article-date">
+  	<time datetime="2017-06-12T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-13</time>
+</a>
+        
+      </header>
+    
+
+    <!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="相关阅读："><a href="#相关阅读：" class="headerlink" title="相关阅读："></a>相关阅读：</h4><h3 id="字符串逆序问题的解决方法"><a href="#字符串逆序问题的解决方法" class="headerlink" title="字符串逆序问题的解决方法"></a><a href="http://blog.csdn.net/tzs_1041218129/article/details/54645569" target="_blank" rel="noopener">字符串逆序问题的解决方法</a></h3><p>题目：</p>
+<p>如果对于一个字符串A，将A的前面任意一部分挪到后边去形成的字符串称为A的旋转词。</p>
+<p>比如A=”12345”,A的旋转词有”12345”,”23451”,”34512”,”45123”和”51234”。</p>
+<p>对于两个字符串A和B，请判断A和B是否互为旋转词。</p>
+<p>给定两个字符串A和B及他们的长度lena，lenb，请返回一个bool值，代表他们是否互为旋转词。<br>
+        
+          <a class="article-more-a" href="/2017/06/13/【字符串】判断两字符串是否互为旋转词？/#more">more >></a>
+        
+      
+
+      <!-- <div>
+  			<img src="/img/wx.jpg"  style="margin: 0 auto;" />
+  		</div> -->
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">字符串</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">旋转词</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/06/13/【字符串】判断两字符串是否互为旋转词？/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-java-var" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/13/java-var/">从对象深入分析 Java 中实例变量和类变量的区别</a>
+    </h1>
+  
+
+        
+        <a href="/2017/06/13/java-var/" class="archive-article-date">
+  	<time datetime="2017-06-12T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-13</time>
+</a>
+        
+      </header>
+    
+
+    <!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="实例变量-和-类变量"><a href="#实例变量-和-类变量" class="headerlink" title="实例变量 和 类变量"></a>实例变量 和 类变量</h3><h4 id="局部变量"><a href="#局部变量" class="headerlink" title="局部变量"></a>局部变量</h4><p>特点：作用时间短，存储在方法的栈内存中</p>
+<p>种类：</p>
+<ul>
+<li>形参：方法签名中定义的局部变量，由方法调用者负责为其赋值，随方法结束而消亡</li>
+<li>方法内的局部变量：方法内定义的局部变量，必须在方法内对其进行显示初始化，从初始化后开始生效，随方法结束而消亡</li>
+<li>代码块内的局部变量：在代码块中定义的局部变量，必须在代码块中进行显示初始化，从初始化后开始生效，随代码块结束而消亡</li>
+</ul>
+        
+          <a class="article-more-a" href="/2017/06/13/java-var/#more">more >></a>
+        
+      
+
+      <!-- <div>
+  			<img src="/img/wx.jpg"  style="margin: 0 auto;" />
+  		</div> -->
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/06/13/java-var/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-利用Github Page 搭建个人博客网站" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/13/利用Github Page 搭建个人博客网站/">利用Github Page 搭建个人博客网站</a>
+    </h1>
+  
+
+        
+        <a href="/2017/06/13/利用Github Page 搭建个人博客网站/" class="archive-article-date">
+  	<time datetime="2017-06-12T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-13</time>
+</a>
+        
+      </header>
+    
+
+    <!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>最近这几天，没事干，想找点事折腾下，于是自己便想到了自己一直想干的一件事：搭建一个属于自己的博客网站。目前搭建个人 <code>blog</code> 网站最好的是用 <code>wordpress</code> ，但是那个折腾起来好像还挺麻烦的，再加上还需要自己修改些前端代码和用 <code>PHP</code> 做（虽然我学了几天拍黄片，但是早已忘了），然后就是用 <code>Github Page</code> 吧，自己也一直在这个最大的交友网站装 X 。想想就用这个吧（后来好像觉得这个还挺省事的）</p>
+<p>再说说拥有个人博客网站的好处吧：</p>
+<ul>
+<li>装 X（如果网站够炫）</li>
+<li>很好的用来总结自己所学的知识</li>
+<li>面试加分（在简历上放上自己的个人网站链接，面试官就可以更好的了解你，知道你所学知识的深度和广度）</li>
+<li>不再受其他博客平台的规则所束缚</li>
+</ul>
+<p>如果你现在还没有自己个人博客网站的话，那么我觉得你看完本篇博客后，强烈的建议你去折腾折腾下，搞个自己的，让自己也能够体验装 X 的感觉。</p>
+        
+          <a class="article-more-a" href="/2017/06/13/利用Github Page 搭建个人博客网站/#more">more >></a>
+        
+      
+
+      <!-- <div>
+  			<img src="/img/wx.jpg"  style="margin: 0 auto;" />
+  		</div> -->
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Github Page</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">博客网站</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/06/13/利用Github Page 搭建个人博客网站/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-程序访问文件的几种方式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/13/程序访问文件的几种方式/">程序访问文件的几种方式</a>
+    </h1>
+  
+
+        
+        <a href="/2017/06/13/程序访问文件的几种方式/" class="archive-article-date">
+  	<time datetime="2017-06-12T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-13</time>
+</a>
+        
+      </header>
+    
+
+    <!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="IO"><a href="#IO" class="headerlink" title="IO"></a>IO</h2><h3 id="程序访问文件的几种方式"><a href="#程序访问文件的几种方式" class="headerlink" title="程序访问文件的几种方式"></a>程序访问文件的几种方式</h3><blockquote>
+<p>读取和写入文件 I/O 操作都调用操作系统提供的接口。因为磁盘设备是由操作系统管理的，应用程序要访问物理设备只能通过系统调用的方式来工作。读和写分别对应 read() 和 write() 两个系统调用。而只要是系统调用就可能存在内核空间地址和用户空间地址切换的问题，这也是为什么操作系统为了保护系统本身的运行安全而将内核程序运行使用的内存空间和用户程序运行的内存空间进行隔离造成的。虽然这样可以保证内核程序运行的安全性，但是也存在数据可能需要从内核空间向用户空间复制的问题。</p>
+<p>如果遇到非常耗时的操作，如磁盘 I/O， 数据从磁盘复制到内核空间，然后又从内核空间复制到用户空间，将会非常缓慢。这时操作系统为了加速 I/O 访问，在内核空间使用缓存机制，也就是将从磁盘读取的文件按照一定的组织方式进行缓存，如果用户程序访问的是同一段磁盘地址的空间数据，那么操作系统将从内核缓存中直接取出返回给用户程序，这样就可以减小 I/O 的响应时间。</p>
+</blockquote>
+        
+          <a class="article-more-a" href="/2017/06/13/程序访问文件的几种方式/#more">more >></a>
+        
+      
+
+      <!-- <div>
+  			<img src="/img/wx.jpg"  style="margin: 0 auto;" />
+  		</div> -->
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">IO</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/06/13/程序访问文件的几种方式/">展开全文 >></a>
         </p>
       
 
@@ -813,7 +1169,7 @@ var _hmt = _hmt || [];
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/8/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/10/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/8/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/10/">Next &raquo;</a>
     </nav>
   
 
@@ -927,6 +1283,10 @@ var _hmt = _hmt || [];
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">AJAX</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
@@ -935,23 +1295,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">AJAX</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">分布式锁</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">数据库</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Redis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Zookeeper</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -968,6 +1312,18 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Kibana</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">分布式锁</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Zookeeper</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -995,10 +1351,6 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">面经</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JVM</a>
               </li>
              
@@ -1007,7 +1359,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JSON</a>
+                <a href="javascript:void(0)" class="js-tag color3">面经</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1015,7 +1367,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JMM</a>
+                <a href="javascript:void(0)" class="js-tag color5">JSON</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1023,11 +1375,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Kafka</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
+                <a href="javascript:void(0)" class="js-tag color4">JMM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1039,15 +1387,19 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Kafka</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Mybatis</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">foreach</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1067,11 +1419,19 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">RocketMQ</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1087,10 +1447,6 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">RocketMQ</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ActiveMQ</a>
               </li>
              
@@ -1099,19 +1455,19 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">线程池</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Velocity</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Consul</a>
+                <a href="javascript:void(0)" class="js-tag color4">线程池</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Android</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Consul</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1127,19 +1483,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">lua</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">文件</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">励志</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Mac</a>
+                <a href="javascript:void(0)" class="js-tag color4">lua</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1147,15 +1495,23 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">励志</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Netty</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">书籍</a>
+                <a href="javascript:void(0)" class="js-tag color4">Mac</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Servlet</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">书籍</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1175,7 +1531,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color4">表达式</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1183,15 +1539,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">旋转词</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">表达式</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">循环队列</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">旋转词</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1203,15 +1559,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">编码</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">邮件发送</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">finally</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">编码</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -18,15 +18,25 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>zhisheng的博客</title>
+  <title>教你如何在 IDEA 远程 Debug ElasticSearch | zhisheng的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="zhisheng的博客">
-<meta property="og:url" content="http://yoursite.com/page/11/index.html">
+  <meta name="keywords" content="ElasticSearch">
+<meta property="og:type" content="article">
+<meta property="og:title" content="教你如何在 IDEA 远程 Debug ElasticSearch">
+<meta property="og:url" content="http://yoursite.com/2018/08/14/idea-remote-debug-elasticsearch/index.html">
 <meta property="og:site_name" content="zhisheng的博客">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/0069RVTdly1fu9jy37ktlj31hc0zkdnx.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNbRwgy1fu9gcjbddyj31dv0fd7al.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwgy1fu9gchtqvrj30v10lwgp8.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNbRwgy1fu9gchfmn9j30v10lwgnz.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNbRwgy1fu9gcirlstj30o107o75i.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNbRwgy1fu9gddmwktj30ou09r74p.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwgy1fu9gcgggq1j31kw0uk4qp.jpg">
+<meta property="og:updated_time" content="2018-08-14T13:36:16.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="zhisheng的博客">
+<meta name="twitter:title" content="教你如何在 IDEA 远程 Debug ElasticSearch">
+<meta name="twitter:image" content="https://ws1.sinaimg.cn/large/0069RVTdly1fu9jy37ktlj31hc0zkdnx.jpg">
   
     <link rel="alternative" href="/atom.xml" title="zhisheng的博客" type="application/atom+xml">
   
@@ -190,22 +200,20 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-Bootstrap入门需掌握的知识点（二）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-idea-remote-debug-elasticsearch" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/18/Bootstrap入门需掌握的知识点（二）/">Bootstrap入门需掌握的知识点（二）</a>
+    <h1 class="article-title" itemprop="name">
+      教你如何在 IDEA 远程 Debug ElasticSearch
     </h1>
   
 
         
-        <a href="/2017/06/18/Bootstrap入门需掌握的知识点（二）/" class="archive-article-date">
-  	<time datetime="2017-06-17T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-18</time>
+        <a href="/2018/08/14/idea-remote-debug-elasticsearch/" class="archive-article-date">
+  	<time datetime="2018-08-13T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-14</time>
 </a>
         
       </header>
@@ -213,21 +221,108 @@ var _hmt = _hmt || [];
 
     <!-- 目录内容 -->
 
+    <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
+          <span class="btn-bg"></span>
+          <span class="btn-text">文章导航</span>
+          </p>
+    <div id="toc-article" class="toc-article">
+        <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
+        <strong class="toc-title">文章目录</strong>
+           <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#前提"><span class="toc-number">1.</span> <span class="toc-text">前提</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#远程-Debug"><span class="toc-number">2.</span> <span class="toc-text">远程 Debug</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#启动一个实例"><span class="toc-number">2.1.</span> <span class="toc-text">启动一个实例</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#配置-IDEA"><span class="toc-number">2.2.</span> <span class="toc-text">配置 IDEA</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#总结"><span class="toc-number">3.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#最后"><span class="toc-number">4.</span> <span class="toc-text">最后</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#相关文章"><span class="toc-number">5.</span> <span class="toc-text">相关文章</span></a></li></ol>
+         </div>
+   <script type="text/javascript">
+    function showToc(){
+        var toc_article = document.getElementById("toc-article");
+        var show_toc_btn = document.getElementById("show-toc-btn");
+        toc_article.setAttribute("style","display:block");
+        show_toc_btn.setAttribute("style","display:none");
+        };
+    function showBtn(){
+        var toc_article = document.getElementById("toc-article");
+        var show_toc_btn = document.getElementById("show-toc-btn");
+        toc_article.setAttribute("style","display:none");
+        show_toc_btn.setAttribute("style","display:block");
+        };
+   </script>
+      
 <!-- 目录内容结束 -->
 
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="相关阅读："><a href="#相关阅读：" class="headerlink" title="相关阅读："></a>相关阅读：</h4><h4 id="Bootstrap入门需掌握的知识点（一）"><a href="#Bootstrap入门需掌握的知识点（一）" class="headerlink" title="Bootstrap入门需掌握的知识点（一）"></a><a href="http://blog.csdn.net/tzs_1041218129/article/details/53966502" target="_blank" rel="noopener">Bootstrap入门需掌握的知识点（一）</a></h4><h3 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h3><h4 id="基本实例"><a href="#基本实例" class="headerlink" title="基本实例"></a>基本实例</h4><p>为任意 <code>&lt;table&gt;</code> 标签添加 <code>.table</code> 类可以为其赋予基本的样式 — 少量的内补（padding）和水平方向的分隔线。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;table class=&quot;table&quot;&gt;</span><br><span class="line">  ...</span><br><span class="line">&lt;/table&gt;</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2017/06/18/Bootstrap入门需掌握的知识点（二）/#more">more >></a>
-        
+        <p><img src="https://ws1.sinaimg.cn/large/0069RVTdly1fu9jy37ktlj31hc0zkdnx.jpg" alt="007"></p>
+<a id="more"></a>
+<h3 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h3><p>之前在<a href="http://www.54tianzhisheng.cn/2018/08/05/es-code01/" target="_blank" rel="noopener">源码阅读环境搭建文章</a>中写过我遇到的一个问题迟迟没有解决，也一直困扰着我。问题如下，在启动的时候解决掉其他异常和报错后，最后剩下这个错误一直解决不了：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">2018</span>-<span class="number">08</span>-<span class="number">01</span>T09:<span class="number">44</span>:<span class="number">27</span>,<span class="number">370</span>][ERROR][o.e.b.ElasticsearchUncaughtExceptionHandler] [] fatal error in thread [main], exiting</span><br><span class="line">java.lang.NoClassDefFoundError: org/elasticsearch/plugins/ExtendedPluginsClassLoader</span><br><span class="line">    at org.elasticsearch.plugins.PluginsService.loadBundle(PluginsService.java:<span class="number">632</span>) ~[main/:?]</span><br><span class="line">    at org.elasticsearch.plugins.PluginsService.loadBundles(PluginsService.java:<span class="number">557</span>) ~[main/:?]</span><br><span class="line">    at org.elasticsearch.plugins.PluginsService.&lt;init&gt;(PluginsService.java:<span class="number">162</span>) ~[main/:?]</span><br><span class="line">    at org.elasticsearch.node.Node.&lt;init&gt;(Node.java:<span class="number">311</span>) ~[main/:?]</span><br><span class="line">    at org.elasticsearch.node.Node.&lt;init&gt;(Node.java:<span class="number">252</span>) ~[main/:?]</span><br><span class="line">    at org.elasticsearch.bootstrap.Bootstrap$<span class="number">5</span>.&lt;init&gt;(Bootstrap.java:<span class="number">213</span>) ~[main/:?]</span><br><span class="line">    at org.elasticsearch.bootstrap.Bootstrap.setup(Bootstrap.java:<span class="number">213</span>) ~[main/:?]</span><br><span class="line">    at org.elasticsearch.bootstrap.Bootstrap.init(Bootstrap.java:<span class="number">326</span>) ~[main/:?]</span><br><span class="line">    at org.elasticsearch.bootstrap.Elasticsearch.init(Elasticsearch.java:<span class="number">136</span>) ~[main/:?]</span><br><span class="line">    at org.elasticsearch.bootstrap.Elasticsearch.execute(Elasticsearch.java:<span class="number">127</span>) ~[main/:?]</span><br><span class="line">    at org.elasticsearch.cli.EnvironmentAwareCommand.execute(EnvironmentAwareCommand.java:<span class="number">86</span>) ~[main/:?]</span><br><span class="line">    at org.elasticsearch.cli.Command.mainWithoutErrorHandling(Command.java:<span class="number">124</span>) ~[main/:?]</span><br><span class="line">    at org.elasticsearch.cli.Command.main(Command.java:<span class="number">90</span>) ~[main/:?]</span><br><span class="line">    at org.elasticsearch.bootstrap.Elasticsearch.main(Elasticsearch.java:<span class="number">93</span>) ~[main/:?]</span><br><span class="line">    at org.elasticsearch.bootstrap.Elasticsearch.main(Elasticsearch.java:<span class="number">86</span>) ~[main/:?]</span><br><span class="line">Caused by: java.lang.ClassNotFoundException: org.elasticsearch.plugins.ExtendedPluginsClassLoader</span><br><span class="line">    at jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:<span class="number">582</span>) ~[?:?]</span><br><span class="line">    at jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:<span class="number">190</span>) ~[?:?]</span><br><span class="line">    at java.lang.ClassLoader.loadClass(ClassLoader.java:<span class="number">499</span>) ~[?:?]</span><br><span class="line">    ... <span class="number">15</span> more</span><br></pre></td></tr></table></figure>
+<p>网上的解决办法也试了很多遍，包括自己也在 <a href="https://github.com/elastic/elasticsearch/issues/30774" target="_blank" rel="noopener">GitHub issue</a> 提问了，也没能解决。然后后面自己分享文章在掘金也发现有人和我有同样的问题。</p>
+<p>下面讲讲另一种可以让你继续看源码的方法。</p>
+<h3 id="远程-Debug"><a href="#远程-Debug" class="headerlink" title="远程 Debug"></a>远程 Debug</h3><p>前提条件是你之前已经把项目导入进 IDEA 了，如果你还没了解，请看之前的文章，这里不重复了。</p>
+<h4 id="启动一个实例"><a href="#启动一个实例" class="headerlink" title="启动一个实例"></a>启动一个实例</h4><p>在你 git 拉取下的代码，切换你要阅读的分支代码后，执行下面这条命令启动一个 debug 的实例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./gradlew run --debug-jvm</span><br></pre></td></tr></table></figure>
+<p>启动等会后，就可以看到启动好后的端口号为 8000 了。</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fu9gcjbddyj31dv0fd7al.jpg" alt="启动debug实例"></p>
+<h4 id="配置-IDEA"><a href="#配置-IDEA" class="headerlink" title="配置 IDEA"></a>配置 IDEA</h4><p>新建一个远程的 debug：</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fu9gchtqvrj30v10lwgp8.jpg" alt="idea-remote"></p>
+<p>配置如下图：</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNbRwgy1fu9gchfmn9j30v10lwgnz.jpg" alt="remote-settings"></p>
+<p>接下来点击 OK 就好了。</p>
+<p>然后点击下面的 debug 图标：</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNbRwgy1fu9gcirlstj30o107o75i.jpg" alt="debug"></p>
+<p>启动后如下：</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fu9gddmwktj30ou09r74p.jpg" alt="2018-08-14_19-18-11"></p>
+<p>这时就可以发现是可以把整个流程全启动了，也不会报什么错误！</p>
+<p>流程全启动后，你会发现终端的日志都打印出来了（注意：这时不是打印在你的 IDEA 控制台）</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fu9gcgggq1j31kw0uk4qp.jpg" alt="2018-08-14_19-21-48"></p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>遇到问题，多思考，多搜索，多想办法解决！这样才能够不断的提升你解决问题的能力！</p>
+<h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>转载请务必注明文章出处为：</p>
+<p><a href="http://www.54tianzhisheng.cn/2018/08/14/idea-remote-debug-elasticsearch/" target="_blank" rel="noopener">http://www.54tianzhisheng.cn/2018/08/14/idea-remote-debug-elasticsearch/</a></p>
+<h3 id="相关文章"><a href="#相关文章" class="headerlink" title="相关文章"></a>相关文章</h3><p>1、<a href="http://www.54tianzhisheng.cn/2018/08/04/why-see-es-code/" target="_blank" rel="noopener">渣渣菜鸡为什么要看 ElasticSearch 源码？</a></p>
+<p>2、<a href="http://www.54tianzhisheng.cn/2018/08/05/es-code01/" target="_blank" rel="noopener">渣渣菜鸡的 ElasticSearch 源码解析 —— 环境搭建</a></p>
+<p>3、<a href="http://www.54tianzhisheng.cn/2018/08/11/es-code02/" target="_blank" rel="noopener">渣渣菜鸡的 ElasticSearch 源码解析 —— 启动流程(上)</a></p>
+<p>4、<a href="http://www.54tianzhisheng.cn/2018/08/11/es-code03/" target="_blank" rel="noopener">渣渣菜鸡的 ElasticSearch 源码解析 —— 启动流程(下)</a></p>
+<p>5、<a href="http://www.54tianzhisheng.cn/2017/09/08/Elasticsearch-analyzers/" target="_blank" rel="noopener">Elasticsearch 系列文章（一）：Elasticsearch 默认分词器和中分分词器之间的比较及使用方法</a></p>
+<p>6、<a href="http://www.54tianzhisheng.cn/2017/09/09/Elasticsearch-install/" target="_blank" rel="noopener">Elasticsearch 系列文章（二）：全文搜索引擎 Elasticsearch 集群搭建入门教程</a></p>
+<p>7、<a href="http://www.54tianzhisheng.cn/2017/10/15/ElasticSearch-cluster-health-metrics/" target="_blank" rel="noopener">Elasticsearch 系列文章（三）：ElasticSearch 集群监控</a></p>
+<p>8、<a href="http://www.54tianzhisheng.cn/2017/10/18/ElasticSearch-nodes-metrics/" target="_blank" rel="noopener">Elasticsearch 系列文章（四）：ElasticSearch 单个节点监控</a></p>
+<p>9、<a href="http://www.54tianzhisheng.cn/2017/12/25/ELK/" target="_blank" rel="noopener">Elasticsearch 系列文章（五）：ELK 实时日志分析平台环境搭建</a></p>
+<p>10、<a href="http://www.54tianzhisheng.cn/2018/08/14/idea-remote-debug-elasticsearch/" target="_blank" rel="noopener">教你如何在 IDEA 远程 Debug ElasticSearch</a></p>
+
       
 
       <!-- <div>
   			<img src="/img/wx.jpg"  style="margin: 0 auto;" />
   		</div> -->
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你支持我买服务器！<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/zhifubao.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/weixin.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -238,11 +333,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Bootstrap</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ElasticSearch</a>
         		</li>
       		
 		</ul>
@@ -251,18 +342,74 @@ var _hmt = _hmt || [];
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/18/Bootstrap入门需掌握的知识点（二）/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2018/08/14/idea-remote-debug-elasticsearch/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
 
-
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2018/08/12/es-code03/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">渣渣菜鸡的 ElasticSearch 源码解析 —— 启动流程（下）</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
 
 
@@ -270,578 +417,30 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-Bootstrap入门需掌握的知识点（一）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/18/Bootstrap入门需掌握的知识点（一）/">Bootstrap入门需掌握的知识点（一）</a>
-    </h1>
+    <div class="duoshuo"></div>
   
 
-        
-        <a href="/2017/06/18/Bootstrap入门需掌握的知识点（一）/" class="archive-article-date">
-  	<time datetime="2017-06-17T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-18</time>
-</a>
-        
-      </header>
-    
-
-    <!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="Bootstrap"><a href="#Bootstrap" class="headerlink" title="Bootstrap"></a>Bootstrap</h3><p>Bootstrap中文网：<a href="http://www.bootcss.com/" target="_blank" rel="noopener">http://www.bootcss.com/</a></p>
-<p>1.什么是 Bootstrap？</p>
-<p>官方介绍：简洁、直观、强悍的前端开发框架，让web开发更迅速、简单。</p>
-<ol>
-<li>Bootstrap 下载</li>
-</ol>
-<p>Bootstrap3下载地址：<a href="http://v3.bootcss.com/getting-started/#download" target="_blank" rel="noopener">http://v3.bootcss.com/getting-started/#download</a><br>
-        
-          <a class="article-more-a" href="/2017/06/18/Bootstrap入门需掌握的知识点（一）/#more">more >></a>
-        
-      
-
-      <!-- <div>
-  			<img src="/img/wx.jpg"  style="margin: 0 auto;" />
-  		</div> -->
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Bootstrap</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/18/Bootstrap入门需掌握的知识点（一）/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
 
 
-
-
-
-
-
-
+  <section id="comments">
+<!--高速版，加载速度快，使用前需测试页面的兼容性-->
+<div id="SOHUCS" sid="教你如何在 IDEA 远程 Debug ElasticSearch"  style="padding: 0px 30px 0px 46px;"></div>
+<script>
+  (function(){
+    var appid = 'cysWCg9Ij',
+    conf = '7f51baf245f3217589bb3b4ba8d8c691';
+    var doc = document,
+    s = doc.createElement('script'),
+    h = doc.getElementsByTagName('head')[0] || doc.head || doc.documentElement;
+    s.type = 'text/javascript';
+    s.charset = 'utf-8';
+    s.src =  'http://assets.changyan.sohu.com/upload/changyan.js?conf='+ conf +'&appid=' + appid;
+    h.insertBefore(s,h.firstChild);
+    window.SCS_NO_IFRAME = true;
+  })()
+</script>
+  </section>
   
-    <article id="post-blog-talk" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/17/blog-talk/">搭建一个博客项目后的碎碎念</a>
-    </h1>
-  
-
-        
-        <a href="/2017/06/17/blog-talk/" class="archive-article-date">
-  	<time datetime="2017-06-16T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-17</time>
-</a>
-        
-      </header>
-    
-
-    <!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
-<p>以前大二的时候就想一个人独立做一个由 Java 开发的个人博客, 可耐当时还很弱鸡，一个人难以独挡一片，因为要会的东西太多，后来自己看到很多都是由 WordPress 搭建的博客，很多模板很漂亮，可是自己要稍微对 “拍黄片” 了解一点，并且里面的各种插件特特别的多。去年的时候就开始用上了 GitHub Page 搭建静态的博客，因为自己一直习惯用 Markdown 写作，写完后，软件可以直接生成 PDF 和 HTML 文件，这样就很方便了，直接将自己的 HTML、PDF 和 MD 文件一起 push 到 GitHub 上，然后自己在通过域名加上文章链接就可以直接访问我的博客了，这样就省了很多事了。还提供了 PDF 和 MD 版本，对有不同需求的人都可满足了。可是后来觉得这样的逼格还是不够高，就又开始折腾 Hexo 了，发现用 Hexo 也是很非常简单的（其实是看到 Hexo 的 yilia 主题非常漂亮）。于是就换上了 Hexo 了，自己在这上面写博客也很方便。每次用软件写完后，在 Git Bash 下敲一行命令 <code>hexo d -g</code> 就行了，很方便！前段时间看到了一款开源的博客（由 Java 搭建而成）——  Tale，主题比较简洁，符合程序员的范。也刚好符合自己最初的想法，但是我是没打算放弃现在的博客，就是有一个想法，自己也跟着在那个基础山修改下。（因为 Tale 使用的是轻量级 mvc 框架 <code>Blade</code> 开发，我好像不太了解这个框架呢），想着就 SpringBoot 开发比较快，上手也简单。当时就有这个想法，可怜没时间，不过前些天发现有人就是基于那个 Tale 博客重新修改了，用的就是 SpringBoot ，哇，果然是英雄所见略同。当时就和作者邮件联系了，于是蹭这些天的时间赶紧去看看，结果不只是看看，完全自己就全部敲了一遍，终于在今天搞定了，为了庆祝，才写下这篇文章，好好记录这些美好的时刻（博客可以完全发挥，不限题材）。通过自己深入这个项目，才能够很了解内部的实现方式，这点收获很大，这十天时间花的值，再此感谢两位原作者 <a href="https://github.com/ZHENFENG13" target="_blank" rel="noopener">ZHENFENG13</a> 、<a href="https://github.com/otale" target="_blank" rel="noopener">otale</a> 。</p>
-</blockquote>
-        
-          <a class="article-more-a" href="/2017/06/17/blog-talk/#more">more >></a>
-        
-      
-
-      <!-- <div>
-  			<img src="/img/wx.jpg"  style="margin: 0 auto;" />
-  		</div> -->
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/17/blog-talk/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-详解 Filter 过滤器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/17/详解 Filter 过滤器/">详解 Filter 过滤器</a>
-    </h1>
-  
-
-        
-        <a href="/2017/06/17/详解 Filter 过滤器/" class="archive-article-date">
-  	<time datetime="2017-06-16T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-17</time>
-</a>
-        
-      </header>
-    
-
-    <!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>1、简介</strong></p>
-<p>　　Filter也称之为过滤器，它是Servlet技术中最实用的技术，WEB开发人员通过Filter技术，对web服务器管理的所有web资源：例如Jsp, Servlet, 静态图片文件或静态 html 文件等进行拦截，从而实现一些特殊的功能。例如实现URL级别的权限访问控制、过滤敏感词汇、压缩响应信息等一些高级功能。</p>
-<p>　　它主要用于对用户请求进行预处理，也可以对HttpServletResponse 进行后处理。使用Filter 的完整流程：Filter 对用户请求进行预处理，接着将请求交给Servlet 进行处理并生成响应，最后Filter 再对服务器响应进行后处理。</p>
-        
-          <a class="article-more-a" href="/2017/06/17/详解 Filter 过滤器/#more">more >></a>
-        
-      
-
-      <!-- <div>
-  			<img src="/img/wx.jpg"  style="margin: 0 auto;" />
-  		</div> -->
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Filter过滤器</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/17/详解 Filter 过滤器/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-详细深入分析 Java ClassLoader 工作机制" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/17/详细深入分析 Java ClassLoader 工作机制/">详细深入分析 Java ClassLoader 工作机制</a>
-    </h1>
-  
-
-        
-        <a href="/2017/06/17/详细深入分析 Java ClassLoader 工作机制/" class="archive-article-date">
-  	<time datetime="2017-06-16T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-17</time>
-</a>
-        
-      </header>
-    
-
-    <!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="什么是-ClassLoader-？"><a href="#什么是-ClassLoader-？" class="headerlink" title="什么是 ClassLoader ？"></a>什么是 ClassLoader ？</h3><p>大家都知道，当我们写好一个 Java 程序之后，不是管是 C/S 还是 B/S 应用，都是由若干个 .class 文件组织而成的一个完整的 Java 应用程序，当程序在运行时，即会调用该程序的一个入口函数来调用系统的相关功能，而这些功能都被封装在不同的 class 文件当中，所以经常要从这个 class 文件中要调用另外一个 class 文件中的方法，如果另外一个文件不存在的，则会引发系统异常。而程序在启动的时候，并不会一次性加载程序所要用的所有class文件，而是根据程序的需要，通过Java的类加载机制（ClassLoader）来动态加载某个 class 文件到内存当中的，从而只有 class 文件被载入到了内存之后，才能被其它 class 所引用。所以 ClassLoader 就是用来动态加载 class 文件到内存当中用的。</p>
-        
-          <a class="article-more-a" href="/2017/06/17/详细深入分析 Java ClassLoader 工作机制/#more">more >></a>
-        
-      
-
-      <!-- <div>
-  			<img src="/img/wx.jpg"  style="margin: 0 auto;" />
-  		</div> -->
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JVM</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">类加载机制</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/17/详细深入分析 Java ClassLoader 工作机制/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-通过项目逐步深入了解Spring MVC（一）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/16/通过项目逐步深入了解Spring MVC（一）/">通过项目逐步深入了解Spring MVC（一）</a>
-    </h1>
-  
-
-        
-        <a href="/2017/06/16/通过项目逐步深入了解Spring MVC（一）/" class="archive-article-date">
-  	<time datetime="2017-06-15T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-16</time>
-</a>
-        
-      </header>
-    
-
-    <!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="相关阅读："><a href="#相关阅读：" class="headerlink" title="相关阅读："></a>相关阅读：</h3><p>本文档和项目代码地址：<a href="https://github.com/zhisheng17/springmvc" target="_blank" rel="noopener">https://github.com/zhisheng17/springmvc</a></p>
-<hr>
-<p>了解 Spring：</p>
-<p>Spring 官网：<a href="http://spring.io/" target="_blank" rel="noopener">http://spring.io/</a></p>
-<p>一个好的东西一般都会有一个好的文档解释说明，如果你英语还行，建议还是看官方文档。</p>
-<hr>
-<h2 id="Spring-MVC基础知识"><a href="#Spring-MVC基础知识" class="headerlink" title="Spring MVC基础知识"></a>Spring MVC基础知识</h2><p>什么是Spring MVC？</p>
-<p>Spring MVC框架原理（掌握）</p>
-<p>​    前端控制器、处理器映射器、处理器适配器、试图解析器<br>
-        
-          <a class="article-more-a" href="/2017/06/16/通过项目逐步深入了解Spring MVC（一）/#more">more >></a>
-        
-      
-
-      <!-- <div>
-  			<img src="/img/wx.jpg"  style="margin: 0 auto;" />
-  		</div> -->
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Spring MVC</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/16/通过项目逐步深入了解Spring MVC（一）/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-通过项目逐步深入了解Mybatis(四)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/15/通过项目逐步深入了解Mybatis(四)/">通过项目逐步深入了解Mybatis（四）</a>
-    </h1>
-  
-
-        
-        <a href="/2017/06/15/通过项目逐步深入了解Mybatis(四)/" class="archive-article-date">
-  	<time datetime="2017-06-14T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-15</time>
-</a>
-        
-      </header>
-    
-
-    <!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>相关阅读：</p>
-<p>1、<a href="http://blog.csdn.net/tzs_1041218129/article/details/53404326" target="_blank" rel="noopener">通过项目逐步深入了解Mybatis&lt;一&gt;</a></p>
-<p>2、<a href="http://blog.csdn.net/tzs_1041218129/article/details/53449052" target="_blank" rel="noopener">通过项目逐步深入了解Mybatis&lt;二&gt;</a></p>
-<p>3、<a href="http://blog.csdn.net/tzs_1041218129/article/details/53456677" target="_blank" rel="noopener">通过项目逐步深入了解Mybatis&lt;三&gt;</a></p>
-<p>本项目所有代码及文档都托管在 Github地址：<a href="https://github.com/zhisheng17/mybatis" target="_blank" rel="noopener">https://github.com/zhisheng17/mybatis</a></p>
-<h3 id="延迟加载"><a href="#延迟加载" class="headerlink" title="延迟加载"></a>延迟加载</h3><h3 id="什么是延迟加载？"><a href="#什么是延迟加载？" class="headerlink" title="什么是延迟加载？"></a>什么是延迟加载？</h3><p>resultMap可以实现高级映射（使用association、collection实现一对一及一对多映射），association、collection具备延迟加载功能。<br>需求：<br>如果查询订单并且关联查询用户信息。如果先查询订单信息即可满足要求，当我们需要查询用户信息时再查询用户信息。把对用户信息的按需去查询就是延迟加载。</p>
-<p>延迟加载：先从单表查询、需要时再从关联表去关联查询，大大提高 数据库性能，因为查询单表要比关联查询多张表速度要快。<br>
-        
-          <a class="article-more-a" href="/2017/06/15/通过项目逐步深入了解Mybatis(四)/#more">more >></a>
-        
-      
-
-      <!-- <div>
-  			<img src="/img/wx.jpg"  style="margin: 0 auto;" />
-  		</div> -->
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Mybatis</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">SpringMVC</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/15/通过项目逐步深入了解Mybatis(四)/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-通过项目逐步深入了解Mybatis(三)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/14/通过项目逐步深入了解Mybatis(三)/">通过项目逐步深入了解Mybatis（三）</a>
-    </h1>
-  
-
-        
-        <a href="/2017/06/14/通过项目逐步深入了解Mybatis(三)/" class="archive-article-date">
-  	<time datetime="2017-06-13T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-14</time>
-</a>
-        
-      </header>
-    
-
-    <!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>相关阅读：<br>1、<a href="http://blog.csdn.net/tzs_1041218129/article/details/53404326" target="_blank" rel="noopener">通过项目逐步深入了解Mybatis&lt;一&gt;</a></p>
-<p>2、<a href="http://blog.csdn.net/tzs_1041218129/article/details/53449052" target="_blank" rel="noopener"> 通过项目逐步深入了解Mybatis&lt;二&gt;</a></p>
-<p>本项目所有代码及文档都托管在 Github地址：<a href="https://github.com/zhisheng17/mybatis" target="_blank" rel="noopener">https://github.com/zhisheng17/mybatis</a></p>
-<h2 id="Mybatis-高级知识"><a href="#Mybatis-高级知识" class="headerlink" title="Mybatis 高级知识"></a>Mybatis 高级知识</h2><p>安排：对订单商品数据模型进行分析</p>
-        
-          <a class="article-more-a" href="/2017/06/14/通过项目逐步深入了解Mybatis(三)/#more">more >></a>
-        
-      
-
-      <!-- <div>
-  			<img src="/img/wx.jpg"  style="margin: 0 auto;" />
-  		</div> -->
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Mybatis</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">SpringMVC</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/14/通过项目逐步深入了解Mybatis(三)/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-  
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/10/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><a class="page-number" href="/page/13/">13</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/12/">Next &raquo;</a>
-    </nav>
-  
-
 
           </div>
         </div>
@@ -885,8 +484,8 @@ var _hmt = _hmt || [];
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
@@ -952,6 +551,10 @@ var _hmt = _hmt || [];
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">AJAX</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
@@ -960,23 +563,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">AJAX</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">分布式锁</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">数据库</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Redis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Zookeeper</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -993,6 +580,18 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Kibana</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">分布式锁</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Zookeeper</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1020,10 +619,6 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">面经</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JVM</a>
               </li>
              
@@ -1032,7 +627,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JSON</a>
+                <a href="javascript:void(0)" class="js-tag color3">面经</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1040,7 +635,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JMM</a>
+                <a href="javascript:void(0)" class="js-tag color5">JSON</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1048,11 +643,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Kafka</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
+                <a href="javascript:void(0)" class="js-tag color4">JMM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1064,15 +655,19 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Kafka</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Mybatis</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">foreach</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1092,11 +687,19 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">RocketMQ</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1112,10 +715,6 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">RocketMQ</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ActiveMQ</a>
               </li>
              
@@ -1124,19 +723,19 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">线程池</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Velocity</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Consul</a>
+                <a href="javascript:void(0)" class="js-tag color4">线程池</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Android</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Consul</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1152,19 +751,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">lua</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">文件</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">励志</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Mac</a>
+                <a href="javascript:void(0)" class="js-tag color4">lua</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1172,15 +763,23 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">励志</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Netty</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">书籍</a>
+                <a href="javascript:void(0)" class="js-tag color4">Mac</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Servlet</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">书籍</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1200,7 +799,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color4">表达式</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1208,15 +807,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">旋转词</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">表达式</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">循环队列</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">旋转词</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1228,15 +827,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">编码</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">邮件发送</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">finally</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">编码</a>
               </li>
              
               <li class="article-tag-list-item">
