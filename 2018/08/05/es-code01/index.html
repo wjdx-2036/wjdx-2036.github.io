@@ -38,7 +38,9 @@
 <meta property="og:image" content="https://ws2.sinaimg.cn/large/0069RVTdly1fty1xglydpj30v10l9q5h.jpg">
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/0069RVTdly1fty1xhjppqj31h40gbted.jpg">
 <meta property="og:image" content="https://ws2.sinaimg.cn/large/0069RVTdly1fty1xi20xzj310q0ilgsa.jpg">
-<meta property="og:updated_time" content="2018-08-14T13:34:30.000Z">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwgy1fukk7004jvj30v10lwjtu.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNbRwgy1fukkbubwxkj312a0qktdf.jpg">
+<meta property="og:updated_time" content="2018-08-26T04:10:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="渣渣菜鸡的 ElasticSearch 源码解析 —— 环境搭建">
 <meta name="twitter:image" content="https://ws4.sinaimg.cn/large/006tNc79ly1fty28q9ljkj31hc0zbqf5.jpg">
@@ -233,7 +235,7 @@ var _hmt = _hmt || [];
     <div id="toc-article" class="toc-article">
         <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
         <strong class="toc-title">文章目录</strong>
-           <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#关注我"><span class="toc-number">1.</span> <span class="toc-text">关注我</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#软件环境"><span class="toc-number">2.</span> <span class="toc-text">软件环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装-ElasticSearch"><span class="toc-number">3.</span> <span class="toc-text">安装 ElasticSearch</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#下载源码"><span class="toc-number">4.</span> <span class="toc-text">下载源码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编译"><span class="toc-number">5.</span> <span class="toc-text">编译</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#运行"><span class="toc-number">6.</span> <span class="toc-text">运行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#总结"><span class="toc-number">7.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#相关文章"><span class="toc-number">8.</span> <span class="toc-text">相关文章</span></a></li></ol>
+           <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#关注我"><span class="toc-number">1.</span> <span class="toc-text">关注我</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#软件环境"><span class="toc-number">2.</span> <span class="toc-text">软件环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装-ElasticSearch"><span class="toc-number">3.</span> <span class="toc-text">安装 ElasticSearch</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#下载源码"><span class="toc-number">4.</span> <span class="toc-text">下载源码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编译"><span class="toc-number">5.</span> <span class="toc-text">编译</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#运行"><span class="toc-number">6.</span> <span class="toc-text">运行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#更新"><span class="toc-number">7.</span> <span class="toc-text">更新</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#总结"><span class="toc-number">8.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#相关文章"><span class="toc-number">9.</span> <span class="toc-text">相关文章</span></a></li></ol>
          </div>
    <script type="text/javascript">
     function showToc(){
@@ -320,6 +322,20 @@ var _hmt = _hmt || [];
 <p>但是并没有解决我的问题，这里暂时先记录下来！我自己也跟了下源码，定位到错误信息是怎么产生的，但是没有解决方案！</p>
 <p>后面写了篇文章：<a href="http://www.54tianzhisheng.cn/2018/08/14/idea-remote-debug-elasticsearch/" target="_blank" rel="noopener">教你如何在 IDEA 远程 Debug ElasticSearch</a></p>
 <p>或许可以帮你解决上面问题带给你的困扰！</p>
+<h3 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h3><p>后面有一个读者提醒了我一下，他自己也遇到这个问题，然后他的解决方案挺好的，完美解决我的问题。这里做个记录：</p>
+<p><strong>解决方法：</strong> 打开 IDEA <code>Edit Configurations</code> ，给 <code>Include dependencies with Provided scope</code> 打上勾即可解决，很简单吧！！</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fukk7004jvj30v10lwjtu.jpg" alt=""></p>
+<p>继续RUN，又来一个 EXceptin：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">[2018-08-23T01:13:38,551][WARN ][o.e.b.ElasticsearchUncaughtExceptionHandler] [] uncaught exception in thread [main]</span><br><span class="line">org.elasticsearch.bootstrap.StartupException: java.security.AccessControlException: access denied (&quot;java.lang.RuntimePermission&quot; &quot;createClassLoader&quot;)</span><br><span class="line">    at org.elasticsearch.bootstrap.Elasticsearch.init(Elasticsearch.java:140) ~[main/:?]</span><br><span class="line">    at org.elasticsearch.bootstrap.Elasticsearch.execute(Elasticsearch.java:127) ~[main/:?]</span><br><span class="line">    at org.elasticsearch.cli.EnvironmentAwareCommand.execute(EnvironmentAwareCommand.java:86) ~[main/:?]</span><br><span class="line">    at org.elasticsearch.cli.Command.mainWithoutErrorHandling(Command.java:124) ~[main/:?]</span><br><span class="line">    at org.elasticsearch.cli.Command.main(Command.java:90) ~[main/:?]</span><br><span class="line">    at org.elasticsearch.bootstrap.Elasticsearch.main(Elasticsearch.java:93) ~[main/:?]</span><br><span class="line">    at org.elasticsearch.bootstrap.Elasticsearch.main(Elasticsearch.java:86) ~[main/:?]</span><br><span class="line">Caused by: java.security.AccessControlException: access denied (&quot;java.lang.RuntimePermission&quot; &quot;createClassLoader&quot;)</span><br><span class="line">    at java.security.AccessControlContext.checkPermission(AccessControlContext.java:472) ~[?:?]</span><br><span class="line">    at java.security.AccessController.checkPermission(AccessController.java:895) ~[?:?]</span><br><span class="line">    at java.lang.SecurityManager.checkPermission(SecurityManager.java:335) ~[?:?]</span><br><span class="line">    at java.lang.SecurityManager.checkCreateClassLoader(SecurityManager.java:397) ~[?:?]</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">Exception: java.security.AccessControlException thrown from the UncaughtExceptionHandler in thread &quot;Thread-2&quot;</span><br></pre></td></tr></table></figure>
+<p><strong>第一种：</strong> 在 <code>config</code> 目录下新建 <code>java.policy</code> 文件，填入下面内容:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">grant &#123;</span><br><span class="line">    permission java.lang.RuntimePermission &quot;createClassLoader&quot;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>然后在 <code>VM options</code> 加入 <code>java.security.policy</code> 的设置，指向该文件即可</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-Djava.security.policy=/usr/local/elasticsearch-6.3.2/config/java.policy</span><br></pre></td></tr></table></figure>
+<p><strong>第二种：</strong> 就是在 <code>%JAVA_HOME%/conf/security</code> 目录下（JDK10是这个路径，之前的版本不确定），我的目录是 <code>/Library/Java/JavaVirtualMachines/jdk-10.0.2.jdk/Contents/Home/conf/security</code>，打开 <code>java.policy</code> 文件，在 <code>grant</code> 中加入下面这句，赋予权限。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//for es 6.3.2</span><br><span class="line">permission java.lang.RuntimePermission &quot;createClassLoader&quot;;</span><br></pre></td></tr></table></figure>
+<p><img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fukkbubwxkj312a0qktdf.jpg" alt=""></p>
+<p>再 RUN，这次可终于运行起来了！！！</p>
+<p>再次感谢下读者，他的文章地址是：<a href="">http://laijianfeng.org/2018/08/%E6%95%99%E4%BD%A0%E7%BC%96%E8%AF%91%E8%B0%83%E8%AF%95Elasticsearch-6-3-2%E6%BA%90%E7%A0%81/</a></p>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>折腾的路上少不了各种错误烦扰你，学会解决问题！</p>
 <h3 id="相关文章"><a href="#相关文章" class="headerlink" title="相关文章"></a>相关文章</h3><p>1、<a href="http://www.54tianzhisheng.cn/2018/08/04/why-see-es-code/" target="_blank" rel="noopener">渣渣菜鸡为什么要看 ElasticSearch 源码？</a></p>
 <p>2、<a href="http://www.54tianzhisheng.cn/2018/08/05/es-code01/" target="_blank" rel="noopener">渣渣菜鸡的 ElasticSearch 源码解析 —— 环境搭建</a></p>
@@ -626,18 +642,6 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">分布式锁</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Redis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Zookeeper</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ElasticSearch</a>
               </li>
              
@@ -650,11 +654,19 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color5">分布式锁</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">HBase</a>
+                <a href="javascript:void(0)" class="js-tag color1">Redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Zookeeper</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -662,7 +674,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+                <a href="javascript:void(0)" class="js-tag color1">HBase</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -671,6 +683,10 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -686,11 +702,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">NIO</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JMM</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">NIO</a>
+                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -726,10 +746,6 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
               </li>
              
@@ -746,19 +762,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">RocketMQ</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">RocketMQ</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -767,6 +775,14 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Hibernate JPA</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -786,11 +802,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android</a>
+                <a href="javascript:void(0)" class="js-tag color2">Consul</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Consul</a>
+                <a href="javascript:void(0)" class="js-tag color3">Android</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -806,19 +822,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">文件</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">lua</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">lombok</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Mac</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -826,7 +830,19 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">文件</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">lombok</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Netty</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Mac</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -878,15 +894,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">编码</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">循环队列</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">finally</a>
+                <a href="javascript:void(0)" class="js-tag color3">编码</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -894,15 +906,19 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">finally</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">类加载机制</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Filter过滤器</a>
+                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
+                <a href="javascript:void(0)" class="js-tag color5">Filter过滤器</a>
               </li>
             
             <div class="clearfix"></div>
