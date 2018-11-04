@@ -518,19 +518,19 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-Bootstrap入门需掌握的知识点（一）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-循环队列的相关条件和公式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/18/Bootstrap入门需掌握的知识点（一）/">Bootstrap入门需掌握的知识点（一）</a>
+      <a class="article-title" href="/2017/06/18/循环队列的相关条件和公式/">循环队列的相关条件和公式</a>
     </h1>
   
 
         
-        <a href="/2017/06/18/Bootstrap入门需掌握的知识点（一）/" class="archive-article-date">
+        <a href="/2017/06/18/循环队列的相关条件和公式/" class="archive-article-date">
   	<time datetime="2017-06-17T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-18</time>
 </a>
         
@@ -543,16 +543,17 @@ var _hmt = _hmt || [];
 
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="Bootstrap"><a href="#Bootstrap" class="headerlink" title="Bootstrap"></a>Bootstrap</h3><p>Bootstrap中文网：<a href="http://www.bootcss.com/" target="_blank" rel="noopener">http://www.bootcss.com/</a></p>
-<p>1.什么是 Bootstrap？</p>
-<p>官方介绍：简洁、直观、强悍的前端开发框架，让web开发更迅速、简单。</p>
+        <p><strong>循环队列的相关条件和公式：</strong><br>队尾指针是rear,队头是front，其中QueueSize为循环队列的最大长度</p>
 <ol>
-<li>Bootstrap 下载</li>
+<li>队空条件：rear==front</li>
+<li>队满条件：(rear+1) %QueueSIze==front</li>
+<li>计算队列长度：（rear-front+QueueSize）%QueueSize</li>
+<li>入队：（rear+1）%QueueSize</li>
+<li>出队：（front+1）%QueueSize</li>
+<li>队列中元素的个数： (rear-front+QueueSize)%QueueSize</li>
 </ol>
-<p>Bootstrap3下载地址：<a href="http://v3.bootcss.com/getting-started/#download" target="_blank" rel="noopener">http://v3.bootcss.com/getting-started/#download</a><br>
-        
-          <a class="article-more-a" href="/2017/06/18/Bootstrap入门需掌握的知识点（一）/#more">more >></a>
-        
+<p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fp3jkmizmpj30o00didgn.jpg" alt=""></p>
+
       
 
       <!-- <div>
@@ -569,11 +570,15 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Bootstrap</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">循环队列</a>
         		</li>
       		
 		</ul>
@@ -583,7 +588,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/18/Bootstrap入门需掌握的知识点（一）/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/06/18/循环队列的相关条件和公式/">展开全文 >></a>
         </p>
       
 
@@ -679,19 +684,19 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-循环队列的相关条件和公式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Bootstrap入门需掌握的知识点（一）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/18/循环队列的相关条件和公式/">循环队列的相关条件和公式</a>
+      <a class="article-title" href="/2017/06/18/Bootstrap入门需掌握的知识点（一）/">Bootstrap入门需掌握的知识点（一）</a>
     </h1>
   
 
         
-        <a href="/2017/06/18/循环队列的相关条件和公式/" class="archive-article-date">
+        <a href="/2017/06/18/Bootstrap入门需掌握的知识点（一）/" class="archive-article-date">
   	<time datetime="2017-06-17T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-18</time>
 </a>
         
@@ -704,17 +709,16 @@ var _hmt = _hmt || [];
 
     <div class="article-entry" itemprop="articleBody">
       
-        <p><strong>循环队列的相关条件和公式：</strong><br>队尾指针是rear,队头是front，其中QueueSize为循环队列的最大长度</p>
+        <h3 id="Bootstrap"><a href="#Bootstrap" class="headerlink" title="Bootstrap"></a>Bootstrap</h3><p>Bootstrap中文网：<a href="http://www.bootcss.com/" target="_blank" rel="noopener">http://www.bootcss.com/</a></p>
+<p>1.什么是 Bootstrap？</p>
+<p>官方介绍：简洁、直观、强悍的前端开发框架，让web开发更迅速、简单。</p>
 <ol>
-<li>队空条件：rear==front</li>
-<li>队满条件：(rear+1) %QueueSIze==front</li>
-<li>计算队列长度：（rear-front+QueueSize）%QueueSize</li>
-<li>入队：（rear+1）%QueueSize</li>
-<li>出队：（front+1）%QueueSize</li>
-<li>队列中元素的个数： (rear-front+QueueSize)%QueueSize</li>
+<li>Bootstrap 下载</li>
 </ol>
-<p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fp3jkmizmpj30o00didgn.jpg" alt=""></p>
-
+<p>Bootstrap3下载地址：<a href="http://v3.bootcss.com/getting-started/#download" target="_blank" rel="noopener">http://v3.bootcss.com/getting-started/#download</a><br>
+        
+          <a class="article-more-a" href="/2017/06/18/Bootstrap入门需掌握的知识点（一）/#more">more >></a>
+        
       
 
       <!-- <div>
@@ -731,15 +735,11 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">循环队列</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Bootstrap</a>
         		</li>
       		
 		</ul>
@@ -749,7 +749,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/18/循环队列的相关条件和公式/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/06/18/Bootstrap入门需掌握的知识点（一）/">展开全文 >></a>
         </p>
       
 
@@ -1330,11 +1330,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Guava</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color1">Guava</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1354,10 +1354,6 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">面经</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JVM</a>
               </li>
              
@@ -1366,7 +1362,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JMM</a>
+                <a href="javascript:void(0)" class="js-tag color3">面经</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1374,7 +1370,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
+                <a href="javascript:void(0)" class="js-tag color4">JMM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1383,6 +1379,10 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">JSON</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1530,11 +1530,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Servlet</a>
+                <a href="javascript:void(0)" class="js-tag color4">微服务</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">微服务</a>
+                <a href="javascript:void(0)" class="js-tag color3">Servlet</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1578,11 +1578,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">编码</a>
+                <a href="javascript:void(0)" class="js-tag color3">finally</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">finally</a>
+                <a href="javascript:void(0)" class="js-tag color3">编码</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1590,11 +1590,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Filter过滤器</a>
+                <a href="javascript:void(0)" class="js-tag color1">类加载机制</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">类加载机制</a>
+                <a href="javascript:void(0)" class="js-tag color5">Filter过滤器</a>
               </li>
              
               <li class="article-tag-list-item">
