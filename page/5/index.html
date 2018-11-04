@@ -80,7 +80,11 @@ var _hmt = _hmt || [];
 	        
 				<li><a href="/archives/">博客</a></li>
 	        
-				<li><a href="/tags/随笔/">随笔</a></li>
+				<li><a href="/tags/Flink/">Flink</a></li>
+	        
+				<li><a href="/tags/ElasticSearch/">ElasticSearch</a></li>
+	        
+				<li><a href="/tags/SpringBoot/">Spring Boot</a></li>
 	        
 			</ul>
 		</nav>
@@ -151,6 +155,10 @@ var _hmt = _hmt || [];
 			
 				
 			
+				
+			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -171,11 +179,15 @@ var _hmt = _hmt || [];
 				<ul style="width: 70%">
 				
 				
-					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
+					<li style="width: 20%"><a href="/">主页</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/archives/">博客</a></li>
+					<li style="width: 20%"><a href="/archives/">博客</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/tags/随笔/">随笔</a></li>
+					<li style="width: 20%"><a href="/tags/Flink/">Flink</a></li>
+		        
+					<li style="width: 20%"><a href="/tags/ElasticSearch/">ElasticSearch</a></li>
+		        
+					<li style="width: 20%"><a href="/tags/SpringBoot/">Spring Boot</a></li>
 		        
 				</ul>
 			</nav>
@@ -192,20 +204,20 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-Money-management" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Google-Developer-Days" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/18/Money-management/">谈谈我的理财</a>
+      <a class="article-title" href="/2017/12/13/Google-Developer-Days/">谷歌开发者大会收获满满，不去真 “可惜” 了</a>
     </h1>
   
 
         
-        <a href="/2017/11/18/Money-management/" class="archive-article-date">
-  	<time datetime="2017-11-17T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-18</time>
+        <a href="/2017/12/13/Google-Developer-Days/" class="archive-article-date">
+  	<time datetime="2017-12-12T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-13</time>
 </a>
         
       </header>
@@ -217,9 +229,9 @@ var _hmt = _hmt || [];
 
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="http://ohfk1r827.bkt.clouddn.com/p5.jpeg-1" alt=""><br>
+        <p><img src="http://ohfk1r827.bkt.clouddn.com/blog/171213/1DJAFA7Kmb.png-1" alt="mark"><br>全文图片较多，请在 WiFi 下阅读，土豪请随意！<br>
         
-          <a class="article-more-a" href="/2017/11/18/Money-management/#more">more >></a>
+          <a class="article-more-a" href="/2017/12/13/Google-Developer-Days/#more">more >></a>
         
       
 
@@ -237,7 +249,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">投资理财</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
         		</li>
       		
 		</ul>
@@ -247,7 +259,380 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/11/18/Money-management/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/12/13/Google-Developer-Days/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-CodeMirror" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/09/CodeMirror/">使用 CodeMirror 打造属于自己的在线代码编辑器</a>
+    </h1>
+  
+
+        
+        <a href="/2017/12/09/CodeMirror/" class="archive-article-date">
+  	<time datetime="2017-12-08T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-09</time>
+</a>
+        
+      </header>
+    
+
+    <!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="http://ohfk1r827.bkt.clouddn.com/blog/171209/bA6g59gGB5.jpg-1" alt="mark"></p>
+<h3 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h3><p>写这个的目的是因为之前项目里用到过 CodeMirror，觉得作为一款在线代码编辑器还是不错，也看到过有些网站用到过在线代码编辑，当然我不知道他们是用什么做的，这里我把公司项目里用到的那部分抽出来，单独写篇博客，并把抽出来的那部分代码提交到 GitHub 去（<a href="https://github.com/zhisheng17/CoderBlog/tree/master/CodeMirror" target="_blank" rel="noopener">地址</a>），以防日后可能会再次用到（没准毕业设计里可能用的到）。<br>
+        
+          <a class="article-more-a" href="/2017/12/09/CodeMirror/#more">more >></a>
+        
+      
+
+      <!-- <div>
+  			<img src="/img/wx.jpg"  style="margin: 0 auto;" />
+  		</div> -->
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/12/09/CodeMirror/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-netty-01-env" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/08/netty-01-env/">Netty系列文章（一）：Netty 源码阅读之初始环境搭建</a>
+    </h1>
+  
+
+        
+        <a href="/2017/12/08/netty-01-env/" class="archive-article-date">
+  	<time datetime="2017-12-07T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-08</time>
+</a>
+        
+      </header>
+    
+
+    <!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="http://ohfk1r827.bkt.clouddn.com/p4.jpeg-1" alt=""></p>
+<h3 id="Netty-简介"><a href="#Netty-简介" class="headerlink" title="Netty 简介"></a>Netty 简介</h3><p>Netty 是由 JBOSS 提供的一个开源的 java 网络编程框架，主要是对 java 的 nio 包进行了再次封装。Netty 比 java 原生的nio 包提供了更加强大、稳定的功能和易于使用的 api。 netty 的作者是 Trustin Lee，这是一个韩国人，他还开发了另外一个著名的网络编程框架，mina。二者在很多方面都十分相似，它们的线程模型也是基本一致 。不过 netty 社区的活跃程度要 mina 高得多。<br>
+        
+          <a class="article-more-a" href="/2017/12/08/netty-01-env/#more">more >></a>
+        
+      
+
+      <!-- <div>
+  			<img src="/img/wx.jpg"  style="margin: 0 auto;" />
+  		</div> -->
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Netty</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/12/08/netty-01-env/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-RestTemplate" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/03/RestTemplate/">RestTemplate 详解</a>
+    </h1>
+  
+
+        
+        <a href="/2017/12/03/RestTemplate/" class="archive-article-date">
+  	<time datetime="2017-12-02T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-03</time>
+</a>
+        
+      </header>
+    
+
+    <!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="http://ohfk1r827.bkt.clouddn.com/p3.jpeg-1" alt=""></p>
+<h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>这段时间自己做的项目中需要调用服务提供者的服务（接口），具体就是：我这边需要将页面所输入的 Groovy 脚本代码传给别人提供的服务接口，然后那边返回脚本编译的结果给我，我需要将编译结果展示在页面，用的就是 RestTemplate 了，那 RestTemplate 是什么呢？简单说就是：简化了发起 HTTP 请求以及处理响应的过程，并且支持 REST 。下文就稍微总结下。<br>
+        
+          <a class="article-more-a" href="/2017/12/03/RestTemplate/#more">more >></a>
+        
+      
+
+      <!-- <div>
+  			<img src="/img/wx.jpg"  style="margin: 0 auto;" />
+  		</div> -->
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Spring</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/12/03/RestTemplate/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-wx-01" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/02/wx-01/">实习圈群里提问小记</a>
+    </h1>
+  
+
+        
+        <a href="/2017/12/02/wx-01/" class="archive-article-date">
+  	<time datetime="2017-12-01T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-02</time>
+</a>
+        
+      </header>
+    
+
+    <!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="http://ohfk1r827.bkt.clouddn.com/p2.jpeg-1" alt=""></p>
+        
+          <a class="article-more-a" href="/2017/12/02/wx-01/#more">more >></a>
+        
+      
+
+      <!-- <div>
+  			<img src="/img/wx.jpg"  style="margin: 0 auto;" />
+  		</div> -->
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">实习圈</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/12/02/wx-01/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-Docker-harbor" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/26/Docker-harbor/">Docker系列文章（一）：基于 Harbor 搭建 Docker 私有镜像仓库</a>
+    </h1>
+  
+
+        
+        <a href="/2017/11/26/Docker-harbor/" class="archive-article-date">
+  	<time datetime="2017-11-25T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-26</time>
+</a>
+        
+      </header>
+    
+
+    <!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="http://ohfk1r827.bkt.clouddn.com/blog/171126/j9de1Jf6m0.png-1" alt="mark"></p>
+<h3 id="什么是-Harbor？"><a href="#什么是-Harbor？" class="headerlink" title="什么是 Harbor？"></a>什么是 Harbor？</h3><p>第一次使用这个的时候是刚进公司处理的第一个任务的时候，发现 Harbor 就是一个用于存储和分发 Docker 镜像的企业级Registry 服务器。<br>
+        
+          <a class="article-more-a" href="/2017/11/26/Docker-harbor/#more">more >></a>
+        
+      
+
+      <!-- <div>
+  			<img src="/img/wx.jpg"  style="margin: 0 auto;" />
+  		</div> -->
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Docker</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/11/26/Docker-harbor/">展开全文 >></a>
         </p>
       
 
@@ -342,20 +727,20 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-recommended-books" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Money-management" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/11/recommended-books/">送你一份双十一剁手书单【墙裂推荐】</a>
+      <a class="article-title" href="/2017/11/18/Money-management/">谈谈我的理财</a>
     </h1>
   
 
         
-        <a href="/2017/11/11/recommended-books/" class="archive-article-date">
-  	<time datetime="2017-11-10T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-11</time>
+        <a href="/2017/11/18/Money-management/" class="archive-article-date">
+  	<time datetime="2017-11-17T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-18</time>
 </a>
         
       </header>
@@ -367,9 +752,9 @@ var _hmt = _hmt || [];
 
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1510377299466&amp;di=46ef1567d27dca27fcfe2970924e2c28&amp;imgtype=0&amp;src=http%3A%2F%2Fwww.redsh.com%2Fimg2017%2F1710251213522.jpeg" alt=""><br>昨晚和朋友聊天说双十一都买啥，结果 TMD 竟然都是书籍，不愧是标准的程序猿。所以这里想推荐基佬的一份书单，方便大家在双十一剁剁剁，建议先收藏本书单，认真啃完一本再买下一本，扎实走完每一步，希望书单能在你想要进一步打怪升级的路上，给予些许帮助！<br>
+        <p><img src="http://ohfk1r827.bkt.clouddn.com/p5.jpeg-1" alt=""><br>
         
-          <a class="article-more-a" href="/2017/11/11/recommended-books/#more">more >></a>
+          <a class="article-more-a" href="/2017/11/18/Money-management/#more">more >></a>
         
       
 
@@ -387,7 +772,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">书籍</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">投资理财</a>
         		</li>
       		
 		</ul>
@@ -397,7 +782,7 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/11/11/recommended-books/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/11/18/Money-management/">展开全文 >></a>
         </p>
       
 
@@ -471,6 +856,79 @@ var _hmt = _hmt || [];
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/11/11/Maven-dependencies-dependencyManagement/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-recommended-books" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/11/recommended-books/">送你一份双十一剁手书单【墙裂推荐】</a>
+    </h1>
+  
+
+        
+        <a href="/2017/11/11/recommended-books/" class="archive-article-date">
+  	<time datetime="2017-11-10T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-11</time>
+</a>
+        
+      </header>
+    
+
+    <!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1510377299466&amp;di=46ef1567d27dca27fcfe2970924e2c28&amp;imgtype=0&amp;src=http%3A%2F%2Fwww.redsh.com%2Fimg2017%2F1710251213522.jpeg" alt=""><br>昨晚和朋友聊天说双十一都买啥，结果 TMD 竟然都是书籍，不愧是标准的程序猿。所以这里想推荐基佬的一份书单，方便大家在双十一剁剁剁，建议先收藏本书单，认真啃完一本再买下一本，扎实走完每一步，希望书单能在你想要进一步打怪升级的路上，给予些许帮助！<br>
+        
+          <a class="article-more-a" href="/2017/11/11/recommended-books/#more">more >></a>
+        
+      
+
+      <!-- <div>
+  			<img src="/img/wx.jpg"  style="margin: 0 auto;" />
+  		</div> -->
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">书籍</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/11/11/recommended-books/">展开全文 >></a>
         </p>
       
 
@@ -636,449 +1094,6 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-ElasticSearch-nodes-metrics" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/18/ElasticSearch-nodes-metrics/">Elasticsearch 系列文章（四）：ElasticSearch 单个节点监控</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/18/ElasticSearch-nodes-metrics/" class="archive-article-date">
-  	<time datetime="2017-10-17T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-18</time>
-</a>
-        
-      </header>
-    
-
-    <!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="http://ohfk1r827.bkt.clouddn.com/cb6.jpeg-1" alt=""></p>
-<p>集群健康监控是对集群信息进行高度的概括，节点统计值 API 提供了集群中每个节点的统计值。节点统计值很多，在监控的时候仍需要我们清楚哪些指标是最值得关注的。</p>
-<p>集群健康监控可以参考这篇文章：<a href="http://www.54tianzhisheng.cn/2017/10/15/ElasticSearch-cluster-health-metrics/" target="_blank" rel="noopener">ElasticSearch 集群监控</a><br>
-        
-          <a class="article-more-a" href="/2017/10/18/ElasticSearch-nodes-metrics/#more">more >></a>
-        
-      
-
-      <!-- <div>
-  			<img src="/img/wx.jpg"  style="margin: 0 auto;" />
-  		</div> -->
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ElasticSearch</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/18/ElasticSearch-nodes-metrics/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-ElasticSearch-cluster-health-metrics" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/15/ElasticSearch-cluster-health-metrics/">Elasticsearch 系列文章（三）：ElasticSearch 集群监控</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/15/ElasticSearch-cluster-health-metrics/" class="archive-article-date">
-  	<time datetime="2017-10-14T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-15</time>
-</a>
-        
-      </header>
-    
-
-    <!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="http://ohfk1r827.bkt.clouddn.com/cb5.jpeg-1" alt=""></p>
-<p>最近在做 ElasticSearch 的信息（集群和节点）监控，特此稍微整理下学到的东西。这篇文章主要介绍集群的监控。<br>
-        
-          <a class="article-more-a" href="/2017/10/15/ElasticSearch-cluster-health-metrics/#more">more >></a>
-        
-      
-
-      <!-- <div>
-  			<img src="/img/wx.jpg"  style="margin: 0 auto;" />
-  		</div> -->
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ElasticSearch</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/15/ElasticSearch-cluster-health-metrics/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-JsonPath" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/14/JsonPath/">JsonPath —— JSON 解析神器</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/14/JsonPath/" class="archive-article-date">
-  	<time datetime="2017-10-13T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-14</time>
-</a>
-        
-      </header>
-    
-
-    <!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="http://ohfk1r827.bkt.clouddn.com/cb3.jpeg-1" alt=""></p>
-<p>真乃神器也，再复杂的 Json 都能给你解析出来，非常方便的获取 JSON 的内容，很强大！<br>
-        
-          <a class="article-more-a" href="/2017/10/14/JsonPath/#more">more >></a>
-        
-      
-
-      <!-- <div>
-  			<img src="/img/wx.jpg"  style="margin: 0 auto;" />
-  		</div> -->
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JSON</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/14/JsonPath/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-Nexus3-Maven" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/14/Nexus3-Maven/">Centos7 搭建最新 Nexus3 Maven 私服</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/14/Nexus3-Maven/" class="archive-article-date">
-  	<time datetime="2017-10-13T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-14</time>
-</a>
-        
-      </header>
-    
-
-    <!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="http://ohfk1r827.bkt.clouddn.com/cb4.jpeg-1" alt=""></p>
-<h3 id="Maven-介绍"><a href="#Maven-介绍" class="headerlink" title="Maven 介绍"></a>Maven 介绍</h3><p>Apache Maven 是一个创新的软件项目管理和综合工具。<br>Maven 提供了一个基于项目对象模型（POM）文件的新概念来管理项目的构建，可以从一个中心资料片管理项目构建，报告和文件。<br>
-        
-          <a class="article-more-a" href="/2017/10/14/Nexus3-Maven/#more">more >></a>
-        
-      
-
-      <!-- <div>
-  			<img src="/img/wx.jpg"  style="margin: 0 auto;" />
-  		</div> -->
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Maven</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/14/Nexus3-Maven/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-Guava-limit" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/23/Guava-limit/">Google Guava 缓存实现接口的限流</a>
-    </h1>
-  
-
-        
-        <a href="/2017/09/23/Guava-limit/" class="archive-article-date">
-  	<time datetime="2017-09-22T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-23</time>
-</a>
-        
-      </header>
-    
-
-    <!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="http://ohfk1r827.bkt.clouddn.com/cb2.jpeg-1" alt=""><br>
-        
-          <a class="article-more-a" href="/2017/09/23/Guava-limit/#more">more >></a>
-        
-      
-
-      <!-- <div>
-  			<img src="/img/wx.jpg"  style="margin: 0 auto;" />
-  		</div> -->
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Guava</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/09/23/Guava-limit/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-Interview-summary" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/17/Interview-summary/">面试过阿里等互联网大公司，我知道了这些套路</a>
-    </h1>
-  
-
-        
-        <a href="/2017/09/17/Interview-summary/" class="archive-article-date">
-  	<time datetime="2017-09-16T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-17</time>
-</a>
-        
-      </header>
-    
-
-    <!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="http://ohfk1r827.bkt.clouddn.com/shanghai.jpeg-1" alt=""></p>
-        
-          <a class="article-more-a" href="/2017/09/17/Interview-summary/#more">more >></a>
-        
-      
-
-      <!-- <div>
-  			<img src="/img/wx.jpg"  style="margin: 0 auto;" />
-  		</div> -->
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">面经</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/09/17/Interview-summary/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/6/">Next &raquo;</a>
@@ -1195,6 +1210,10 @@ var _hmt = _hmt || [];
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">AJAX</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
@@ -1203,27 +1222,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">AJAX</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Docker</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">数据库</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ElasticSearch</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LogStash</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Kibana</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1239,11 +1238,27 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color2">Docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ElasticSearch</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">LogStash</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Kibana</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Guava</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1263,6 +1278,10 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">面经</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JVM</a>
               </li>
              
@@ -1271,7 +1290,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">面经</a>
+                <a href="javascript:void(0)" class="js-tag color4">JMM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">NIO</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1283,23 +1310,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">NIO</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Kafka</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
+                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">投资理财</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1311,15 +1330,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JMM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1343,6 +1358,10 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">RocketMQ</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Spring</a>
               </li>
              
@@ -1352,10 +1371,6 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Hibernate JPA</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">RocketMQ</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1395,19 +1410,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">流式计算</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">流控</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">GO</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">lua</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">lombok</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1419,11 +1430,19 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">励志</a>
+                <a href="javascript:void(0)" class="js-tag color4">lua</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">lombok</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Mac</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">励志</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1439,11 +1458,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">实习圈</a>
+                <a href="javascript:void(0)" class="js-tag color4">微服务</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">微服务</a>
+                <a href="javascript:void(0)" class="js-tag color2">SpringCloud</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">实习圈</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1460,10 +1483,6 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">旋转词</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">SpringCloud</a>
               </li>
              
               <li class="article-tag-list-item">

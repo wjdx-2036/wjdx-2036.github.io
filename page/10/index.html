@@ -80,7 +80,11 @@ var _hmt = _hmt || [];
 	        
 				<li><a href="/archives/">博客</a></li>
 	        
-				<li><a href="/tags/随笔/">随笔</a></li>
+				<li><a href="/tags/Flink/">Flink</a></li>
+	        
+				<li><a href="/tags/ElasticSearch/">ElasticSearch</a></li>
+	        
+				<li><a href="/tags/SpringBoot/">Spring Boot</a></li>
 	        
 			</ul>
 		</nav>
@@ -151,6 +155,10 @@ var _hmt = _hmt || [];
 			
 				
 			
+				
+			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -171,11 +179,15 @@ var _hmt = _hmt || [];
 				<ul style="width: 70%">
 				
 				
-					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
+					<li style="width: 20%"><a href="/">主页</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/archives/">博客</a></li>
+					<li style="width: 20%"><a href="/archives/">博客</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/tags/随笔/">随笔</a></li>
+					<li style="width: 20%"><a href="/tags/Flink/">Flink</a></li>
+		        
+					<li style="width: 20%"><a href="/tags/ElasticSearch/">ElasticSearch</a></li>
+		        
+					<li style="width: 20%"><a href="/tags/SpringBoot/">Spring Boot</a></li>
 		        
 				</ul>
 			</nav>
@@ -192,19 +204,19 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-Hexo-yilia-toc" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-String-new" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/13/Hexo-yilia-toc/">Hexo + yilia 主题实现文章目录</a>
+      <a class="article-title" href="/2017/06/13/String-new/">关于String s = new String(&#34;xyz&#34;); 创建几个对象的问题</a>
     </h1>
   
 
         
-        <a href="/2017/06/13/Hexo-yilia-toc/" class="archive-article-date">
+        <a href="/2017/06/13/String-new/" class="archive-article-date">
   	<time datetime="2017-06-12T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-13</time>
 </a>
         
@@ -217,10 +229,12 @@ var _hmt = _hmt || [];
 
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h3><p>为了方便查看每篇文章的目录结构，可以定位到想看的地方，特地找了下如何实现这个功能。</p>
-<h3 id="添加-CSS-样式"><a href="#添加-CSS-样式" class="headerlink" title="添加 CSS 样式"></a>添加 CSS 样式</h3><p>打开 <code>themes\yilia\source</code> 下的 <code>main.234bc0.css</code> 文件，直接在后面添加如下代码：<br>
+        <p>你知道在 <code>java</code> 中除了 8 种基本类型外，其他的都是类对象以及其引用。所以 <code>&quot;xyz &quot;</code>在 <code>java</code> 中它是一个<code>String</code> 对象.对于 <code>string</code> 类对象来说他的对象值是不能修改的，也就是具有不变性。</p>
+<p>看：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">String   s= &quot;hello &quot;; </span><br><span class="line">s= &quot;Java &quot;; </span><br><span class="line">String   s1= &quot;hello &quot;; </span><br><span class="line">String   s2=new   String( &quot;hello &quot;);</span><br></pre></td></tr></table></figure></p>
+<p>结果如下图：<br><img src="http://img.blog.csdn.net/20170405232029845?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdHpzXzEwNDEyMTgxMjk=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="string-new1"></p>
+<p>啊，s 所引用的 <code>string</code> 对象不是被修改了吗？之前所说的不变性，去那里了啊？<br>
         
-          <a class="article-more-a" href="/2017/06/13/Hexo-yilia-toc/#more">more >></a>
+          <a class="article-more-a" href="/2017/06/13/String-new/#more">more >></a>
         
       
 
@@ -238,7 +252,11 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">String</a>
         		</li>
       		
 		</ul>
@@ -248,7 +266,534 @@ var _hmt = _hmt || [];
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/13/Hexo-yilia-toc/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/06/13/String-new/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-【字符串】判断两字符串是否互为旋转词？" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/13/【字符串】判断两字符串是否互为旋转词？/">【字符串】判断两字符串是否互为旋转词？</a>
+    </h1>
+  
+
+        
+        <a href="/2017/06/13/【字符串】判断两字符串是否互为旋转词？/" class="archive-article-date">
+  	<time datetime="2017-06-12T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-13</time>
+</a>
+        
+      </header>
+    
+
+    <!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="相关阅读："><a href="#相关阅读：" class="headerlink" title="相关阅读："></a>相关阅读：</h4><h3 id="字符串逆序问题的解决方法"><a href="#字符串逆序问题的解决方法" class="headerlink" title="字符串逆序问题的解决方法"></a><a href="http://blog.csdn.net/tzs_1041218129/article/details/54645569" target="_blank" rel="noopener">字符串逆序问题的解决方法</a></h3><p>题目：</p>
+<p>如果对于一个字符串A，将A的前面任意一部分挪到后边去形成的字符串称为A的旋转词。</p>
+<p>比如A=”12345”,A的旋转词有”12345”,”23451”,”34512”,”45123”和”51234”。</p>
+<p>对于两个字符串A和B，请判断A和B是否互为旋转词。</p>
+<p>给定两个字符串A和B及他们的长度lena，lenb，请返回一个bool值，代表他们是否互为旋转词。<br>
+        
+          <a class="article-more-a" href="/2017/06/13/【字符串】判断两字符串是否互为旋转词？/#more">more >></a>
+        
+      
+
+      <!-- <div>
+  			<img src="/img/wx.jpg"  style="margin: 0 auto;" />
+  		</div> -->
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">字符串</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">旋转词</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/06/13/【字符串】判断两字符串是否互为旋转词？/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-【字符串】字符串逆序" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/13/【字符串】字符串逆序/">字符串</a>
+    </h1>
+  
+
+        
+        <a href="/2017/06/13/【字符串】字符串逆序/" class="archive-article-date">
+  	<time datetime="2017-06-12T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-13</time>
+</a>
+        
+      </header>
+    
+
+    <!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="题目一："><a href="#题目一：" class="headerlink" title="题目一："></a>题目一：</h4><p>如果一个字符串 str ，把字符串 str 前面的任意部分挪到后面去形成的字符串叫做 str 的旋转词。比如 str = “ 1234 ” ， 那么 str 的旋转词有 “ 1234 ” ， “ 2341 ” ， “ 3412 ” ， “ 4123 ” 。给定两个字符串 a 和 b ，请判断 a 和 b 是否互为旋转词？<br>
+        
+          <a class="article-more-a" href="/2017/06/13/【字符串】字符串逆序/#more">more >></a>
+        
+      
+
+      <!-- <div>
+  			<img src="/img/wx.jpg"  style="margin: 0 auto;" />
+  		</div> -->
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">字符串</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/06/13/【字符串】字符串逆序/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-Spring MVC+Hibernate JPA搭建的博客系统项目中所遇到的坑" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/13/Spring MVC+Hibernate JPA搭建的博客系统项目中所遇到的坑/">Spring MVC系列文章（二）：Spring MVC+Hibernate JPA搭建的博客系统项目中所遇到的坑</a>
+    </h1>
+  
+
+        
+        <a href="/2017/06/13/Spring MVC+Hibernate JPA搭建的博客系统项目中所遇到的坑/" class="archive-article-date">
+  	<time datetime="2017-06-12T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-13</time>
+</a>
+        
+      </header>
+    
+
+    <!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="项目代码地址：https-github-com-zhisheng17-springmvc"><a href="#项目代码地址：https-github-com-zhisheng17-springmvc" class="headerlink" title="项目代码地址：https://github.com/zhisheng17/springmvc"></a>项目代码地址：<a href="https://github.com/zhisheng17/springmvc" target="_blank" rel="noopener">https://github.com/zhisheng17/springmvc</a></h3><p>最近在学习 Spring MVC ，其中在做一个简单的博客系统demo，是使用 SpringMVC 集成</p>
+<p>Spring Data JPA（由 Hibernate JPA 提供），来进行强大的数据库访问。结果其中遇到的坑不</p>
+<p>是一点点啊，我差点崩溃了，其中最大的原因就是由于 Hibernate JPA 中的bug了，反正一开始</p>
+<p>还不知道是这个问题，导致折腾了快一天的时间。想想都可怕啊。</p>
+        
+          <a class="article-more-a" href="/2017/06/13/Spring MVC+Hibernate JPA搭建的博客系统项目中所遇到的坑/#more">more >></a>
+        
+      
+
+      <!-- <div>
+  			<img src="/img/wx.jpg"  style="margin: 0 auto;" />
+  		</div> -->
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Bootstrap</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySQL</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Spring</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Spring MVC</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Hibernate JPA</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/06/13/Spring MVC+Hibernate JPA搭建的博客系统项目中所遇到的坑/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-利用Github Page 搭建个人博客网站" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/13/利用Github Page 搭建个人博客网站/">利用Github Page 搭建个人博客网站</a>
+    </h1>
+  
+
+        
+        <a href="/2017/06/13/利用Github Page 搭建个人博客网站/" class="archive-article-date">
+  	<time datetime="2017-06-12T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-13</time>
+</a>
+        
+      </header>
+    
+
+    <!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>最近这几天，没事干，想找点事折腾下，于是自己便想到了自己一直想干的一件事：搭建一个属于自己的博客网站。目前搭建个人 <code>blog</code> 网站最好的是用 <code>wordpress</code> ，但是那个折腾起来好像还挺麻烦的，再加上还需要自己修改些前端代码和用 <code>PHP</code> 做（虽然我学了几天拍黄片，但是早已忘了），然后就是用 <code>Github Page</code> 吧，自己也一直在这个最大的交友网站装 X 。想想就用这个吧（后来好像觉得这个还挺省事的）</p>
+<p>再说说拥有个人博客网站的好处吧：</p>
+<ul>
+<li>装 X（如果网站够炫）</li>
+<li>很好的用来总结自己所学的知识</li>
+<li>面试加分（在简历上放上自己的个人网站链接，面试官就可以更好的了解你，知道你所学知识的深度和广度）</li>
+<li>不再受其他博客平台的规则所束缚</li>
+</ul>
+<p>如果你现在还没有自己个人博客网站的话，那么我觉得你看完本篇博客后，强烈的建议你去折腾折腾下，搞个自己的，让自己也能够体验装 X 的感觉。</p>
+        
+          <a class="article-more-a" href="/2017/06/13/利用Github Page 搭建个人博客网站/#more">more >></a>
+        
+      
+
+      <!-- <div>
+  			<img src="/img/wx.jpg"  style="margin: 0 auto;" />
+  		</div> -->
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Github Page</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">博客网站</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/06/13/利用Github Page 搭建个人博客网站/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-奇怪的Java题：为什么128 == 128返回为False，而127 == 127会返回为True-" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/13/奇怪的Java题：为什么128 == 128返回为False，而127 == 127会返回为True-/">奇怪的Java题：为什么128 == 128返回为False，而127 == 127会返回为True?</a>
+    </h1>
+  
+
+        
+        <a href="/2017/06/13/奇怪的Java题：为什么128 == 128返回为False，而127 == 127会返回为True-/" class="archive-article-date">
+  	<time datetime="2017-06-12T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-13</time>
+</a>
+        
+      </header>
+    
+
+    <!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这是我们今天要讨论的话题，因为我觉得它非常的有趣。</p>
+<p>如果你运行如下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">class  A</span><br><span class="line">&#123;</span><br><span class="line">	public static void main(String[] args)</span><br><span class="line">	&#123;</span><br><span class="line">		Integer a = 128, b = 128;</span><br><span class="line">		System.out.println(a == b);</span><br><span class="line">		Integer c = 127, d = 127;</span><br><span class="line">		System.out.println(c == d);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>你会得到如下结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">false</span><br><span class="line">true</span><br></pre></td></tr></table></figure>
+<p><img src="http://img.blog.csdn.net/20161211172715176?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdHpzXzEwNDEyMTgxMjk=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"><br>
+        
+          <a class="article-more-a" href="/2017/06/13/奇怪的Java题：为什么128 == 128返回为False，而127 == 127会返回为True-/#more">more >></a>
+        
+      
+
+      <!-- <div>
+  			<img src="/img/wx.jpg"  style="margin: 0 auto;" />
+  		</div> -->
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/06/13/奇怪的Java题：为什么128 == 128返回为False，而127 == 127会返回为True-/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-Spring MVC + Hibernate JPA + Bootstrap 搭建的博客系统" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/13/Spring MVC + Hibernate JPA + Bootstrap 搭建的博客系统/">Spring MVC系列文章（一）：Spring MVC + Hibernate JPA + Bootstrap 搭建的博客系统 Demo</a>
+    </h1>
+  
+
+        
+        <a href="/2017/06/13/Spring MVC + Hibernate JPA + Bootstrap 搭建的博客系统/" class="archive-article-date">
+  	<time datetime="2017-06-12T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-13</time>
+</a>
+        
+      </header>
+    
+
+    <!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="相关阅读："><a href="#相关阅读：" class="headerlink" title="相关阅读："></a>相关阅读：</h4><p>1、<a href="http://blog.csdn.net/tzs_1041218129/article/details/53791765" target="_blank" rel="noopener">Spring MVC+Hibernate JPA+ Bootstrap 搭建的博客系统项目中所遇到的坑</a></p>
+<p>由于整个系统不是很难，这里就不详细介绍了，我相信看源码的话，应该能够看得懂。</p>
+<h3 id="源码地址：https-github-com-zhisheng17-springmvc"><a href="#源码地址：https-github-com-zhisheng17-springmvc" class="headerlink" title="源码地址：https://github.com/zhisheng17/springmvc"></a>源码地址：<a href="https://github.com/zhisheng17/springmvc" target="_blank" rel="noopener">https://github.com/zhisheng17/springmvc</a></h3><p><strong>数据库</strong>：<a href="https://github.com/zhisheng17/springmvc/tree/master/sql/springdemo.sql" target="_blank" rel="noopener">springdemo.sql</a></p>
+<p>下面给出下整个系统的截图吧，觉得不错，可以给个 star ，哈哈！后续继续在这个项目中加入新的项目。</p>
+<h4 id="截图："><a href="#截图：" class="headerlink" title="截图："></a>截图：</h4><p><strong>首页</strong></p>
+<p><img src="https://github.com/zhisheng17/springmvc/blob/master/pic/index.jpg?raw=true" alt=""></p>
+        
+          <a class="article-more-a" href="/2017/06/13/Spring MVC + Hibernate JPA + Bootstrap 搭建的博客系统/#more">more >></a>
+        
+      
+
+      <!-- <div>
+  			<img src="/img/wx.jpg"  style="margin: 0 auto;" />
+  		</div> -->
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Bootstrap</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySQL</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Spring</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Spring MVC</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Hibernate JPA</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/06/13/Spring MVC + Hibernate JPA + Bootstrap 搭建的博客系统/">展开全文 >></a>
         </p>
       
 
@@ -346,82 +891,6 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-程序访问文件的几种方式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/13/程序访问文件的几种方式/">程序访问文件的几种方式</a>
-    </h1>
-  
-
-        
-        <a href="/2017/06/13/程序访问文件的几种方式/" class="archive-article-date">
-  	<time datetime="2017-06-12T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-13</time>
-</a>
-        
-      </header>
-    
-
-    <!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="IO"><a href="#IO" class="headerlink" title="IO"></a>IO</h2><h3 id="程序访问文件的几种方式"><a href="#程序访问文件的几种方式" class="headerlink" title="程序访问文件的几种方式"></a>程序访问文件的几种方式</h3><blockquote>
-<p>读取和写入文件 I/O 操作都调用操作系统提供的接口。因为磁盘设备是由操作系统管理的，应用程序要访问物理设备只能通过系统调用的方式来工作。读和写分别对应 read() 和 write() 两个系统调用。而只要是系统调用就可能存在内核空间地址和用户空间地址切换的问题，这也是为什么操作系统为了保护系统本身的运行安全而将内核程序运行使用的内存空间和用户程序运行的内存空间进行隔离造成的。虽然这样可以保证内核程序运行的安全性，但是也存在数据可能需要从内核空间向用户空间复制的问题。</p>
-<p>如果遇到非常耗时的操作，如磁盘 I/O， 数据从磁盘复制到内核空间，然后又从内核空间复制到用户空间，将会非常缓慢。这时操作系统为了加速 I/O 访问，在内核空间使用缓存机制，也就是将从磁盘读取的文件按照一定的组织方式进行缓存，如果用户程序访问的是同一段磁盘地址的空间数据，那么操作系统将从内核缓存中直接取出返回给用户程序，这样就可以减小 I/O 的响应时间。</p>
-</blockquote>
-        
-          <a class="article-more-a" href="/2017/06/13/程序访问文件的几种方式/#more">more >></a>
-        
-      
-
-      <!-- <div>
-  			<img src="/img/wx.jpg"  style="margin: 0 auto;" />
-  		</div> -->
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">IO</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/13/程序访问文件的几种方式/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
     <article id="post-深度探究Java 中 finally 语句块" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -483,6 +952,82 @@ var _hmt = _hmt || [];
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/06/13/深度探究Java 中 finally 语句块/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-程序访问文件的几种方式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/13/程序访问文件的几种方式/">程序访问文件的几种方式</a>
+    </h1>
+  
+
+        
+        <a href="/2017/06/13/程序访问文件的几种方式/" class="archive-article-date">
+  	<time datetime="2017-06-12T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-13</time>
+</a>
+        
+      </header>
+    
+
+    <!-- 目录内容 -->
+
+<!-- 目录内容结束 -->
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="IO"><a href="#IO" class="headerlink" title="IO"></a>IO</h2><h3 id="程序访问文件的几种方式"><a href="#程序访问文件的几种方式" class="headerlink" title="程序访问文件的几种方式"></a>程序访问文件的几种方式</h3><blockquote>
+<p>读取和写入文件 I/O 操作都调用操作系统提供的接口。因为磁盘设备是由操作系统管理的，应用程序要访问物理设备只能通过系统调用的方式来工作。读和写分别对应 read() 和 write() 两个系统调用。而只要是系统调用就可能存在内核空间地址和用户空间地址切换的问题，这也是为什么操作系统为了保护系统本身的运行安全而将内核程序运行使用的内存空间和用户程序运行的内存空间进行隔离造成的。虽然这样可以保证内核程序运行的安全性，但是也存在数据可能需要从内核空间向用户空间复制的问题。</p>
+<p>如果遇到非常耗时的操作，如磁盘 I/O， 数据从磁盘复制到内核空间，然后又从内核空间复制到用户空间，将会非常缓慢。这时操作系统为了加速 I/O 访问，在内核空间使用缓存机制，也就是将从磁盘读取的文件按照一定的组织方式进行缓存，如果用户程序访问的是同一段磁盘地址的空间数据，那么操作系统将从内核缓存中直接取出返回给用户程序，这样就可以减小 I/O 的响应时间。</p>
+</blockquote>
+        
+          <a class="article-more-a" href="/2017/06/13/程序访问文件的几种方式/#more">more >></a>
+        
+      
+
+      <!-- <div>
+  			<img src="/img/wx.jpg"  style="margin: 0 auto;" />
+  		</div> -->
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">IO</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/06/13/程序访问文件的几种方式/">展开全文 >></a>
         </p>
       
 
@@ -658,483 +1203,6 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-java-var" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/13/java-var/">从对象深入分析 Java 中实例变量和类变量的区别</a>
-    </h1>
-  
-
-        
-        <a href="/2017/06/13/java-var/" class="archive-article-date">
-  	<time datetime="2017-06-12T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-13</time>
-</a>
-        
-      </header>
-    
-
-    <!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="实例变量-和-类变量"><a href="#实例变量-和-类变量" class="headerlink" title="实例变量 和 类变量"></a>实例变量 和 类变量</h3><h4 id="局部变量"><a href="#局部变量" class="headerlink" title="局部变量"></a>局部变量</h4><p>特点：作用时间短，存储在方法的栈内存中</p>
-<p>种类：</p>
-<ul>
-<li>形参：方法签名中定义的局部变量，由方法调用者负责为其赋值，随方法结束而消亡</li>
-<li>方法内的局部变量：方法内定义的局部变量，必须在方法内对其进行显示初始化，从初始化后开始生效，随方法结束而消亡</li>
-<li>代码块内的局部变量：在代码块中定义的局部变量，必须在代码块中进行显示初始化，从初始化后开始生效，随代码块结束而消亡</li>
-</ul>
-        
-          <a class="article-more-a" href="/2017/06/13/java-var/#more">more >></a>
-        
-      
-
-      <!-- <div>
-  			<img src="/img/wx.jpg"  style="margin: 0 auto;" />
-  		</div> -->
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/13/java-var/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-feiji" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/13/feiji/">记录下自己第一次坐飞机的感受</a>
-    </h1>
-  
-
-        
-        <a href="/2017/06/13/feiji/" class="archive-article-date">
-  	<time datetime="2017-06-12T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-13</time>
-</a>
-        
-      </header>
-    
-
-    <!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h3><p>因为学校的原因，需要在大三的时候出去实训几个月，然后选择的是在昆山，公司规定要在 2017 年 4 月 19 号之前赶到，所以我提前订的机票是 17 号，之所以会订机票，其实很大一部分原因是由于自己之前没有坐过飞机，所以想体验一下坐飞机的感脚（嘿嘿），再加上这是机票的淡季，所以坐飞机的价钱比做高铁还便宜。整个行程：学校 ——&gt;  南昌机场 ——&gt;  上海虹桥机场 ——&gt;  公司</p>
-<h3 id="学校出发"><a href="#学校出发" class="headerlink" title="学校出发"></a>学校出发</h3><p>10 点左右去食堂吃了个早餐，然后打包好自己的行李，由于第一次坐飞机，所以打算提前时间去机场，然后在机场熟悉熟悉环境，不然的话错过飞机，那就 gg 了。大概 11：30 了，就拖着行李出门，在学校门口叫了辆 滴滴车 去机场（因为公交车要坐好久并且去机场的路好烂），叫的滴滴车他走的是高速，很快。<br>
-        
-          <a class="article-more-a" href="/2017/06/13/feiji/#more">more >></a>
-        
-      
-
-      <!-- <div>
-  			<img src="/img/wx.jpg"  style="margin: 0 auto;" />
-  		</div> -->
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/13/feiji/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-通过项目逐步深入了解Mybatis(二)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/13/通过项目逐步深入了解Mybatis(二)/">通过项目逐步深入了解Mybatis（二）</a>
-    </h1>
-  
-
-        
-        <a href="/2017/06/13/通过项目逐步深入了解Mybatis(二)/" class="archive-article-date">
-  	<time datetime="2017-06-12T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-13</time>
-</a>
-        
-      </header>
-    
-
-    <!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>转载请务必注明出处，原创不易！</p>
-<p> 相关文章：<a href="http://blog.csdn.net/tzs_1041218129/article/details/53404326" target="_blank" rel="noopener"><strong>通过项目逐步深入了解Mybatis&lt;一&gt;</strong></a><br>本项目全部代码地址：<a href="https://github.com/zhisheng17/mybatis" target="_blank" rel="noopener"><strong>Github-Mybatis</strong></a></p>
-<h3 id="Mybatis-解决-jdbc-编程的问题"><a href="#Mybatis-解决-jdbc-编程的问题" class="headerlink" title="Mybatis 解决 jdbc 编程的问题"></a>Mybatis 解决 jdbc 编程的问题</h3><p>1、  数据库链接创建、释放频繁造成系统资源浪费从而影响系统性能，如果使用数据库链接池可解决此问题。</p>
-<p>解决：在SqlMapConfig.xml中配置数据链接池，使用连接池管理数据库链接。</p>
-<p>2、  Sql语句写在代码中造成代码不易维护，实际应用sql变化的可能较大，sql变动需要改变java代码。</p>
-<p>解决：将Sql语句配置在XXXXmapper.xml文件中与java代码分离。</p>
-<p>3、  向sql语句传参数麻烦，因为sql语句的where条件不一定，可能多也可能少，占位符需要和参数一一对应。</p>
-<p>解决：Mybatis自动将java对象映射至sql语句，通过statement中的parameterType定义输入参数的类型。</p>
-<p>4、  对结果集解析麻烦，sql变化导致解析代码变化，且解析前需要遍历，如果能将数据库记录封装成pojo对象解析比较方便。</p>
-<p>解决：Mybatis自动将sql执行结果映射至java对象，通过statement中的resultType定义输出结果的类型。</p>
-        
-          <a class="article-more-a" href="/2017/06/13/通过项目逐步深入了解Mybatis(二)/#more">more >></a>
-        
-      
-
-      <!-- <div>
-  			<img src="/img/wx.jpg"  style="margin: 0 auto;" />
-  		</div> -->
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Mybatis</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">SpringMVC</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/13/通过项目逐步深入了解Mybatis(二)/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-String-new" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/13/String-new/">关于String s = new String(&#34;xyz&#34;); 创建几个对象的问题</a>
-    </h1>
-  
-
-        
-        <a href="/2017/06/13/String-new/" class="archive-article-date">
-  	<time datetime="2017-06-12T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-13</time>
-</a>
-        
-      </header>
-    
-
-    <!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>你知道在 <code>java</code> 中除了 8 种基本类型外，其他的都是类对象以及其引用。所以 <code>&quot;xyz &quot;</code>在 <code>java</code> 中它是一个<code>String</code> 对象.对于 <code>string</code> 类对象来说他的对象值是不能修改的，也就是具有不变性。</p>
-<p>看：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">String   s= &quot;hello &quot;; </span><br><span class="line">s= &quot;Java &quot;; </span><br><span class="line">String   s1= &quot;hello &quot;; </span><br><span class="line">String   s2=new   String( &quot;hello &quot;);</span><br></pre></td></tr></table></figure></p>
-<p>结果如下图：<br><img src="http://img.blog.csdn.net/20170405232029845?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdHpzXzEwNDEyMTgxMjk=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="string-new1"></p>
-<p>啊，s 所引用的 <code>string</code> 对象不是被修改了吗？之前所说的不变性，去那里了啊？<br>
-        
-          <a class="article-more-a" href="/2017/06/13/String-new/#more">more >></a>
-        
-      
-
-      <!-- <div>
-  			<img src="/img/wx.jpg"  style="margin: 0 auto;" />
-  		</div> -->
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">String</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/13/String-new/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-通过项目逐步深入了解Mybatis(一)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/12/通过项目逐步深入了解Mybatis(一)/">通过项目逐步深入了解Mybatis（一）</a>
-    </h1>
-  
-
-        
-        <a href="/2017/06/12/通过项目逐步深入了解Mybatis(一)/" class="archive-article-date">
-  	<time datetime="2017-06-11T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-12</time>
-</a>
-        
-      </header>
-    
-
-    <!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Mybatis 和 SpringMVC 通过订单商品案例驱动</p>
-<p>官方中文地址：<a href="http://www.mybatis.org/mybatis-3/zh/" target="_blank" rel="noopener">http://www.mybatis.org/mybatis-3/zh/</a></p>
-<p>官方托管地址：<a href="https://github.com/mybatis/mybatis-3" target="_blank" rel="noopener">https://github.com/mybatis/mybatis-3</a></p>
-<p>本项目全部代码地址：<a href="https://github.com/zhisheng17/mybatis" target="_blank" rel="noopener">https://github.com/zhisheng17/mybatis</a></p>
-<h3 id="如果觉得不错的话，欢迎给个-star-，-如果你想完善这个项目的话，你也可以-fork-后修改然后推送给我。"><a href="#如果觉得不错的话，欢迎给个-star-，-如果你想完善这个项目的话，你也可以-fork-后修改然后推送给我。" class="headerlink" title="如果觉得不错的话，欢迎给个 star ， 如果你想完善这个项目的话，你也可以 fork 后修改然后推送给我。"></a>如果觉得不错的话，欢迎给个 star ， 如果你想完善这个项目的话，你也可以 fork 后修改然后推送给我。</h3>
-        
-          <a class="article-more-a" href="/2017/06/12/通过项目逐步深入了解Mybatis(一)/#more">more >></a>
-        
-      
-
-      <!-- <div>
-  			<img src="/img/wx.jpg"  style="margin: 0 auto;" />
-  		</div> -->
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Mybatis</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">SpringMVC</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/12/通过项目逐步深入了解Mybatis(一)/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-poetry2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/02/poetry2/"> 六月 —— 愿你做最美好的自己！</a>
-    </h1>
-  
-
-        
-        <a href="/2017/06/02/poetry2/" class="archive-article-date">
-  	<time datetime="2017-06-01T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-02</time>
-</a>
-        
-      </header>
-    
-
-    <!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>美妙的六月已经到来，送你八封信，愿时光轻缓，愿微风正好，愿你做最美好的自己。</p>
-<p>第一封 —— 关于压力</p>
-<p>鸡蛋，从外打破是食物，从内打破是生命。人生亦是，从外打破是压力，从内打破是成长。<br>如果你等待别人打破你，那么你注定成为别人的食物；如果能让自己从内打破，那么你会发现自己的成长相当于一种重生。</p>
-<p>第二封 —— 关于读书</p>
-<p> 读书是一种充实人生的艺术，没有书的人生就像空心的竹子一样，空洞无物。犹太人让孩子们亲吻涂有蜂蜜的书本，是为了让他们记住：书本是甜的，要让甜蜜充满人生就要读书。读书是一本人生最难得的存折，一点一滴地积累，最后你会发现：自己是世界上最富有的人。<br>
-        
-          <a class="article-more-a" href="/2017/06/02/poetry2/#more">more >></a>
-        
-      
-
-      <!-- <div>
-  			<img src="/img/wx.jpg"  style="margin: 0 auto;" />
-  		</div> -->
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/02/poetry2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/9/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/11/">Next &raquo;</a>
@@ -1251,6 +1319,10 @@ var _hmt = _hmt || [];
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">AJAX</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
@@ -1259,27 +1331,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">AJAX</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Docker</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">数据库</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ElasticSearch</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LogStash</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Kibana</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1295,11 +1347,27 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color2">Docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ElasticSearch</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">LogStash</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Kibana</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Guava</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1319,6 +1387,10 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">面经</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JVM</a>
               </li>
              
@@ -1327,7 +1399,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">面经</a>
+                <a href="javascript:void(0)" class="js-tag color4">JMM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">NIO</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1339,23 +1419,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">NIO</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Kafka</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
+                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">投资理财</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1367,15 +1439,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JMM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1399,6 +1467,10 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">RocketMQ</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Spring</a>
               </li>
              
@@ -1408,10 +1480,6 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Hibernate JPA</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">RocketMQ</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1451,19 +1519,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">流式计算</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">流控</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">GO</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">lua</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">lombok</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1475,11 +1539,19 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">励志</a>
+                <a href="javascript:void(0)" class="js-tag color4">lua</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">lombok</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Mac</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">励志</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1495,11 +1567,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">实习圈</a>
+                <a href="javascript:void(0)" class="js-tag color4">微服务</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">微服务</a>
+                <a href="javascript:void(0)" class="js-tag color2">SpringCloud</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">实习圈</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1516,10 +1592,6 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">旋转词</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">SpringCloud</a>
               </li>
              
               <li class="article-tag-list-item">

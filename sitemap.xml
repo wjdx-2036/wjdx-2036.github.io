@@ -2,9 +2,51 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2018/10/31/flink-create-sink/</loc>
+    
+    <lastmod>2018-11-04T11:33:30.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/10/30/flink-create-source/</loc>
+    
+    <lastmod>2018-11-04T11:33:01.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/10/29/flink-sink/</loc>
+    
+    <lastmod>2018-11-04T11:32:30.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/10/28/flink-sources/</loc>
+    
+    <lastmod>2018-11-04T11:31:58.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/10/27/flink-config/</loc>
+    
+    <lastmod>2018-11-04T11:31:17.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2018/09/18/flink-install/</loc>
     
-    <lastmod>2018-10-01T04:16:46.000Z</lastmod>
+    <lastmod>2018-11-04T11:30:42.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/10/13/flink-introduction/</loc>
+    
+    <lastmod>2018-11-04T11:29:31.000Z</lastmod>
     
   </url>
   
