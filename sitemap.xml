@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2018/12/08/zhisheng-ads01/</loc>
+    
+    <lastmod>2018-11-07T14:26:32.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2018/10/31/flink-create-sink/</loc>
     
     <lastmod>2018-11-04T11:33:30.000Z</lastmod>
