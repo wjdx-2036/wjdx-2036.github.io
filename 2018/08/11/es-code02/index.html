@@ -17,13 +17,13 @@
 
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <link rel="dns-prefetch" href="http://yoursite.com">
+  <link rel="dns-prefetch" href="http://www.54tianzhisheng.cn">
   <title>渣渣菜鸡的 ElasticSearch 源码解析 —— 启动流程（上） | zhisheng的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="keywords" content="ElasticSearch">
 <meta property="og:type" content="article">
 <meta property="og:title" content="渣渣菜鸡的 ElasticSearch 源码解析 —— 启动流程（上）">
-<meta property="og:url" content="http://yoursite.com/2018/08/11/es-code02/index.html">
+<meta property="og:url" content="http://www.54tianzhisheng.cn/2018/08/11/es-code02/index.html">
 <meta property="og:site_name" content="zhisheng的博客">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwly1fu8gag9ycij31hc0w0awj.jpg">
@@ -262,8 +262,8 @@ var _hmt = _hmt || [];
         <p><img src="https://ws2.sinaimg.cn/large/006tNbRwly1fu8gag9ycij31hc0w0awj.jpg" alt="005"></p>
 <a id="more"></a>
 <h3 id="关注我"><a href="#关注我" class="headerlink" title="关注我"></a>关注我</h3><p><img src="http://ohfk1r827.bkt.clouddn.com/blog/180103/C6LG3mGa12.jpg" alt="zhisheng"></p>
-<p>转载请务必注明原创地址为：<a href="http://www.54tianzhisheng.cn/2018/08/11/es-code02/" target="_blank" rel="noopener">http://www.54tianzhisheng.cn/2018/08/11/es-code02/</a></p>
-<h3 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h3><p>上篇文章写了 <a href="http://www.54tianzhisheng.cn/2018/08/05/es-code01/" target="_blank" rel="noopener">ElasticSearch 源码解析 —— 环境搭建</a> ，其中里面说了启动 打开 server 模块下的 Elasticsearch 类：org.elasticsearch.bootstrap.Elasticsearch，运行里面的 main 函数就可以启动 ElasticSearch 了，这篇文章讲讲启动流程，因为篇幅会很多，所以分了两篇来写。</p>
+<p>转载请务必注明原创地址为：<a href="http://www.54tianzhisheng.cn/2018/08/11/es-code02/">http://www.54tianzhisheng.cn/2018/08/11/es-code02/</a></p>
+<h3 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h3><p>上篇文章写了 <a href="http://www.54tianzhisheng.cn/2018/08/05/es-code01/">ElasticSearch 源码解析 —— 环境搭建</a> ，其中里面说了启动 打开 server 模块下的 Elasticsearch 类：org.elasticsearch.bootstrap.Elasticsearch，运行里面的 main 函数就可以启动 ElasticSearch 了，这篇文章讲讲启动流程，因为篇幅会很多，所以分了两篇来写。</p>
 <h3 id="启动流程"><a href="#启动流程" class="headerlink" title="启动流程"></a>启动流程</h3><h4 id="main-方法入口"><a href="#main-方法入口" class="headerlink" title="main 方法入口"></a>main 方法入口</h4><p>可以看到入口其实是一个 main 方法，方法里面先是检查权限，然后是一个错误日志监听器（确保在日志配置之前状态日志没有出现 error），然后是 Elasticsearch 对象的创建，然后调用了静态方法 main 方法（18 行），并把创建的对象和参数以及 Terminal 默认值传进去。静态的 main 方法里面调用 elasticsearch.main 方法。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(<span class="keyword">final</span> String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;         <span class="comment">//1、入口</span></span><br><span class="line">    <span class="comment">// we want the JVM to think there is a security manager installed so that if internal policy decisions that would be based on the</span></span><br><span class="line">    <span class="comment">// presence of a security manager or lack thereof act as if there is a security manager present (e.g., DNS cache policy)</span></span><br><span class="line">    System.setSecurityManager(<span class="keyword">new</span> SecurityManager() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">checkPermission</span><span class="params">(Permission perm)</span> </span>&#123;</span><br><span class="line">            <span class="comment">// grant all permissions so that we can later set the security manager to the one that we want</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    LogConfigurator.registerErrorListener();                            <span class="comment">//</span></span><br><span class="line">    <span class="keyword">final</span> Elasticsearch elasticsearch = <span class="keyword">new</span> Elasticsearch();</span><br><span class="line">    <span class="keyword">int</span> status = main(args, elasticsearch, Terminal.DEFAULT); <span class="comment">//2、调用Elasticsearch.main方法</span></span><br><span class="line">    <span class="keyword">if</span> (status != ExitCodes.OK) &#123;</span><br><span class="line">        exit(status);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">final</span> String[] args, <span class="keyword">final</span> Elasticsearch elasticsearch, <span class="keyword">final</span> Terminal terminal)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> elasticsearch.main(args, terminal);  <span class="comment">//3、command main</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><img src="https://ws2.sinaimg.cn/large/006tNbRwly1fu77z6ktl2j315i0t2myl.jpg" alt="1es01"></p>
@@ -273,7 +273,7 @@ var _hmt = _hmt || [];
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*** Executes the command, but all errors are thrown. */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">mainWithoutErrorHandling</span><span class="params">(String[] args, Terminal terminal)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> OptionSet options = parser.parse(args);</span><br><span class="line">    <span class="keyword">if</span> (options.has(helpOption)) &#123;</span><br><span class="line">        printHelp(terminal);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (options.has(silentOption)) &#123;</span><br><span class="line">        terminal.setVerbosity(Terminal.Verbosity.SILENT);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (options.has(verboseOption)) &#123;</span><br><span class="line">        terminal.setVerbosity(Terminal.Verbosity.VERBOSE);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        terminal.setVerbosity(Terminal.Verbosity.NORMAL);</span><br><span class="line">    &#125;</span><br><span class="line">    execute(terminal, options);<span class="comment">//5、执行 EnvironmentAwareCommand 中的 execute()，（重写了command里面抽象的execute方法）</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>上面的代码从 3 ～ 14 行是解析传进来的参数并配置 terminal，重要的 execute() 方法，执行的是 EnvironmentAwareCommand 中的 execute() （重写了 Command 类里面的抽象 execute 方法），从上面那个继承图可以看到 EnvironmentAwareCommand 继承了 Command，重写的 execute 方法代码如下：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">(Terminal terminal, OptionSet options)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> Map&lt;String, String&gt; settings = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">final</span> KeyValuePair kvp : settingOption.values(options)) &#123;</span><br><span class="line">        <span class="keyword">if</span> (kvp.value.isEmpty()) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> UserException(ExitCodes.USAGE, <span class="string">"setting ["</span> + kvp.key + <span class="string">"] must not be empty"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (settings.containsKey(kvp.key)) &#123;</span><br><span class="line">            <span class="keyword">final</span> String message = String.format(</span><br><span class="line">                Locale.ROOT, <span class="string">"setting [%s] already set, saw [%s] and [%s]"</span>,</span><br><span class="line">                kvp.key, settings.get(kvp.key), kvp.value);</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> UserException(ExitCodes.USAGE, message);</span><br><span class="line">        &#125;</span><br><span class="line">        settings.put(kvp.key, kvp.value);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//6、根据我们ide配置的 vm options 进行设置path.data、path.home、path.logs</span></span><br><span class="line">    putSystemPropertyIfSettingIsMissing(settings, <span class="string">"path.data"</span>, <span class="string">"es.path.data"</span>);</span><br><span class="line">    putSystemPropertyIfSettingIsMissing(settings, <span class="string">"path.home"</span>, <span class="string">"es.path.home"</span>);</span><br><span class="line">    putSystemPropertyIfSettingIsMissing(settings, <span class="string">"path.logs"</span>, <span class="string">"es.path.logs"</span>);</span><br><span class="line"></span><br><span class="line">    execute(terminal, options, createEnv(terminal, settings));<span class="comment">//7、先调用 createEnv 创建环境</span></span><br><span class="line">    <span class="comment">//9、执行elasticsearch的execute方法，elasticsearch中重写了EnvironmentAwareCommand中的抽象execute方法</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>方法前面是根据传参去判断配置的，如果配置为空，就会直接跳到执行 putSystemPropertyIfSettingIsMissing 方法，这里会配置三个属性：path.data、path.home、path.logs 设置 es 的 data、home、logs 目录，它这里是根据我们 ide 配置的 vm options 进行设置的，这也是为什么我们<a href="http://www.54tianzhisheng.cn/2018/08/05/es-code01/#%E7%BC%96%E8%AF%91" target="_blank" rel="noopener">上篇文章</a>说的配置信息，如果不配置的话就会直接报错。下面看看 putSystemPropertyIfSettingIsMissing 方法代码里面怎么做到的：</p>
+<p>方法前面是根据传参去判断配置的，如果配置为空，就会直接跳到执行 putSystemPropertyIfSettingIsMissing 方法，这里会配置三个属性：path.data、path.home、path.logs 设置 es 的 data、home、logs 目录，它这里是根据我们 ide 配置的 vm options 进行设置的，这也是为什么我们<a href="http://www.54tianzhisheng.cn/2018/08/05/es-code01/#%E7%BC%96%E8%AF%91">上篇文章</a>说的配置信息，如果不配置的话就会直接报错。下面看看 putSystemPropertyIfSettingIsMissing 方法代码里面怎么做到的：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** Ensure the given setting exists, reading it from system properties if not already set. */</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">putSystemPropertyIfSettingIsMissing</span><span class="params">(<span class="keyword">final</span> Map&lt;String, String&gt; settings, <span class="keyword">final</span> String setting, <span class="keyword">final</span> String key)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> String value = System.getProperty(key);<span class="comment">//获取key（es.path.data）找系统设置</span></span><br><span class="line">    <span class="keyword">if</span> (value != <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (settings.containsKey(setting)) &#123;</span><br><span class="line">            <span class="keyword">final</span> String message =</span><br><span class="line">                String.format(</span><br><span class="line">                Locale.ROOT,</span><br><span class="line">                <span class="string">"duplicate setting [%s] found via command-line [%s] and system property [%s]"</span>,</span><br><span class="line">                setting, settings.get(setting), value);</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(message);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            settings.put(setting, value);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>执行这三个方法后：</p>
 <p><img src="https://ws2.sinaimg.cn/large/006tNbRwly1fu77z62vazj31kw0rwwty.jpg" alt="2es02"></p>
@@ -305,16 +305,16 @@ var _hmt = _hmt || [];
 <h4 id="setup-方法"><a href="#setup-方法" class="headerlink" title="setup 方法"></a>setup 方法</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">setup</span><span class="params">(<span class="keyword">boolean</span> addShutdownHook, Environment environment)</span> <span class="keyword">throws</span> BootstrapException </span>&#123;</span><br><span class="line">    Settings settings = environment.settings();<span class="comment">//根据环境得到配置</span></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        spawner.spawnNativeControllers(environment);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> BootstrapException(e);</span><br><span class="line">    &#125;</span><br><span class="line">    initializeNatives(</span><br><span class="line">        environment.tmpFile(),</span><br><span class="line">        BootstrapSettings.MEMORY_LOCK_SETTING.get(settings),</span><br><span class="line">        BootstrapSettings.SYSTEM_CALL_FILTER_SETTING.get(settings),</span><br><span class="line">        BootstrapSettings.CTRLHANDLER_SETTING.get(settings));</span><br><span class="line">    <span class="comment">// initialize probes before the security manager is installed</span></span><br><span class="line">    initializeProbes();</span><br><span class="line">    <span class="keyword">if</span> (addShutdownHook) &#123;</span><br><span class="line">        Runtime.getRuntime().addShutdownHook(<span class="keyword">new</span> Thread() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    IOUtils.close(node, spawner);</span><br><span class="line">                    LoggerContext context = (LoggerContext) LogManager.getContext(<span class="keyword">false</span>);</span><br><span class="line">                    Configurator.shutdown(context);</span><br><span class="line">                &#125; <span class="keyword">catch</span> (IOException ex) &#123;</span><br><span class="line">                    <span class="keyword">throw</span> <span class="keyword">new</span> ElasticsearchException(<span class="string">"failed to stop node"</span>, ex);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="comment">// look for jar hell</span></span><br><span class="line">        <span class="keyword">final</span> Logger logger = ESLoggerFactory.getLogger(JarHell.class);</span><br><span class="line">        JarHell.checkJarHell(logger::debug);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException | URISyntaxException e) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> BootstrapException(e);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// Log ifconfig output before SecurityManager is installed</span></span><br><span class="line">    IfConfig.logIfNecessary();</span><br><span class="line">    <span class="comment">// install SM after natives, shutdown hooks, etc.</span></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        Security.configure(environment, BootstrapSettings.SECURITY_FILTER_BAD_DEFAULTS_SETTING.get(settings));</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException | NoSuchAlgorithmException e) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> BootstrapException(e);</span><br><span class="line">    &#125;</span><br><span class="line">    node = <span class="keyword">new</span> Node(environment) &#123;              <span class="comment">//16、新建节点</span></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">validateNodeBeforeAcceptingRequests</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">            <span class="keyword">final</span> BootstrapContext context,</span></span></span><br><span class="line"><span class="function"><span class="params">            <span class="keyword">final</span> BoundTransportAddress boundTransportAddress, List&lt;BootstrapCheck&gt; checks)</span> <span class="keyword">throws</span> NodeValidationException </span>&#123;</span><br><span class="line">            BootstrapChecks.check(context, boundTransportAddress, checks);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>上面代码最后就是 Node 节点的创建，这篇文章就不讲 Node 的创建了，下篇文章会好好讲一下 Node 节点的创建和正式启动 ES 节点的。</p>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>这篇文章主要先把大概启动流程串通，因为篇幅较多所以拆开成两篇，先不扣细节了，后面流程启动文章写完后我们再单一的扣细节。</p>
-<h3 id="相关文章"><a href="#相关文章" class="headerlink" title="相关文章"></a>相关文章</h3><p>1、<a href="http://www.54tianzhisheng.cn/2018/08/04/why-see-es-code/" target="_blank" rel="noopener">渣渣菜鸡为什么要看 ElasticSearch 源码？</a></p>
-<p>2、<a href="http://www.54tianzhisheng.cn/2018/08/05/es-code01/" target="_blank" rel="noopener">渣渣菜鸡的 ElasticSearch 源码解析 —— 环境搭建</a></p>
-<p>3、<a href="http://www.54tianzhisheng.cn/2018/08/11/es-code02/" target="_blank" rel="noopener">渣渣菜鸡的 ElasticSearch 源码解析 —— 启动流程(上)</a></p>
-<p>4、<a href="http://www.54tianzhisheng.cn/2018/08/11/es-code03/" target="_blank" rel="noopener">渣渣菜鸡的 ElasticSearch 源码解析 —— 启动流程(下)</a></p>
-<p>5、<a href="http://www.54tianzhisheng.cn/2017/09/08/Elasticsearch-analyzers/" target="_blank" rel="noopener">Elasticsearch 系列文章（一）：Elasticsearch 默认分词器和中分分词器之间的比较及使用方法</a></p>
-<p>6、<a href="http://www.54tianzhisheng.cn/2017/09/09/Elasticsearch-install/" target="_blank" rel="noopener">Elasticsearch 系列文章（二）：全文搜索引擎 Elasticsearch 集群搭建入门教程</a></p>
-<p>7、<a href="http://www.54tianzhisheng.cn/2017/10/15/ElasticSearch-cluster-health-metrics/" target="_blank" rel="noopener">Elasticsearch 系列文章（三）：ElasticSearch 集群监控</a></p>
-<p>8、<a href="http://www.54tianzhisheng.cn/2017/10/18/ElasticSearch-nodes-metrics/" target="_blank" rel="noopener">Elasticsearch 系列文章（四）：ElasticSearch 单个节点监控</a></p>
-<p>9、<a href="http://www.54tianzhisheng.cn/2017/12/25/ELK/" target="_blank" rel="noopener">Elasticsearch 系列文章（五）：ELK 实时日志分析平台环境搭建</a></p>
-<p>10、<a href="http://www.54tianzhisheng.cn/2018/08/14/idea-remote-debug-elasticsearch/" target="_blank" rel="noopener">教你如何在 IDEA 远程 Debug ElasticSearch</a></p>
+<h3 id="相关文章"><a href="#相关文章" class="headerlink" title="相关文章"></a>相关文章</h3><p>1、<a href="http://www.54tianzhisheng.cn/2018/08/04/why-see-es-code/">渣渣菜鸡为什么要看 ElasticSearch 源码？</a></p>
+<p>2、<a href="http://www.54tianzhisheng.cn/2018/08/05/es-code01/">渣渣菜鸡的 ElasticSearch 源码解析 —— 环境搭建</a></p>
+<p>3、<a href="http://www.54tianzhisheng.cn/2018/08/11/es-code02/">渣渣菜鸡的 ElasticSearch 源码解析 —— 启动流程(上)</a></p>
+<p>4、<a href="http://www.54tianzhisheng.cn/2018/08/11/es-code03/">渣渣菜鸡的 ElasticSearch 源码解析 —— 启动流程(下)</a></p>
+<p>5、<a href="http://www.54tianzhisheng.cn/2017/09/08/Elasticsearch-analyzers/">Elasticsearch 系列文章（一）：Elasticsearch 默认分词器和中分分词器之间的比较及使用方法</a></p>
+<p>6、<a href="http://www.54tianzhisheng.cn/2017/09/09/Elasticsearch-install/">Elasticsearch 系列文章（二）：全文搜索引擎 Elasticsearch 集群搭建入门教程</a></p>
+<p>7、<a href="http://www.54tianzhisheng.cn/2017/10/15/ElasticSearch-cluster-health-metrics/">Elasticsearch 系列文章（三）：ElasticSearch 集群监控</a></p>
+<p>8、<a href="http://www.54tianzhisheng.cn/2017/10/18/ElasticSearch-nodes-metrics/">Elasticsearch 系列文章（四）：ElasticSearch 单个节点监控</a></p>
+<p>9、<a href="http://www.54tianzhisheng.cn/2017/12/25/ELK/">Elasticsearch 系列文章（五）：ELK 实时日志分析平台环境搭建</a></p>
+<p>10、<a href="http://www.54tianzhisheng.cn/2018/08/14/idea-remote-debug-elasticsearch/">教你如何在 IDEA 远程 Debug ElasticSearch</a></p>
 
       
 
@@ -419,7 +419,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2018/08/11/es-code02/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://www.54tianzhisheng.cn/2018/08/11/es-code02/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -462,22 +462,22 @@ var _hmt = _hmt || [];
 
 
   <section id="comments">
-<!--高速版，加载速度快，使用前需测试页面的兼容性-->
-<div id="SOHUCS" sid="渣渣菜鸡的 ElasticSearch 源码解析 —— 启动流程（上）"  style="padding: 0px 30px 0px 46px;"></div>
-<script>
-  (function(){
-    var appid = 'cysWCg9Ij',
-    conf = '7f51baf245f3217589bb3b4ba8d8c691';
-    var doc = document,
-    s = doc.createElement('script'),
-    h = doc.getElementsByTagName('head')[0] || doc.head || doc.documentElement;
-    s.type = 'text/javascript';
-    s.charset = 'utf-8';
-    s.src =  'http://assets.changyan.sohu.com/upload/changyan.js?conf='+ conf +'&appid=' + appid;
-    h.insertBefore(s,h.firstChild);
-    window.SCS_NO_IFRAME = true;
-  })()
-</script>
+    <!--高速版，加载速度快，使用前需测试页面的兼容性-->
+    <!-- <div id="SOHUCS" sid="渣渣菜鸡的 ElasticSearch 源码解析 —— 启动流程（上）"  style="padding: 0px 30px 0px 46px;"></div>
+    <script>
+      (function(){
+        var appid = 'cysWCg9Ij',
+        conf = '7f51baf245f3217589bb3b4ba8d8c691';
+        var doc = document,
+        s = doc.createElement('script'),
+        h = doc.getElementsByTagName('head')[0] || doc.head || doc.documentElement;
+        s.type = 'text/javascript';
+        s.charset = 'utf-8';
+        s.src =  'http://assets.changyan.sohu.com/upload/changyan.js?conf='+ conf +'&appid=' + appid;
+        h.insertBefore(s,h.firstChild);
+        window.SCS_NO_IFRAME = true;
+      })()
+    </script> -->
   </section>
   
 
@@ -590,15 +590,15 @@ var _hmt = _hmt || [];
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">AJAX</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Bootstrap</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">AJAX</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -650,14 +650,6 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Guava</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">HBase</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
@@ -666,7 +658,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">HBase</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Guava</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -682,15 +682,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">NIO</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JMM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -702,6 +702,10 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Kafka</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Maven</a>
               </li>
              
@@ -710,7 +714,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Kafka</a>
+                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -719,10 +723,6 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">foreach</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -750,11 +750,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">RocketMQ</a>
+                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+                <a href="javascript:void(0)" class="js-tag color4">RocketMQ</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -774,15 +774,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Velocity</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">线程池</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">博客合集</a>
+                <a href="javascript:void(0)" class="js-tag color4">Velocity</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -794,7 +790,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">流控</a>
+                <a href="javascript:void(0)" class="js-tag color5">博客合集</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -802,11 +798,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">流控</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">IO</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">lombok</a>
+                <a href="javascript:void(0)" class="js-tag color3">文件</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -814,7 +814,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">文件</a>
+                <a href="javascript:void(0)" class="js-tag color2">lombok</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -830,11 +830,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Servlet</a>
+                <a href="javascript:void(0)" class="js-tag color3">书籍</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">书籍</a>
+                <a href="javascript:void(0)" class="js-tag color3">Servlet</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -870,10 +870,6 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">循环队列</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Github Page</a>
               </li>
              
@@ -882,15 +878,19 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">循环队列</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">编码</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">邮件发送</a>
+                <a href="javascript:void(0)" class="js-tag color3">finally</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">finally</a>
+                <a href="javascript:void(0)" class="js-tag color5">邮件发送</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1047,10 +1047,6 @@ var _hmt = _hmt || [];
           
             <li class="search-li">
               <a href="http://dongkelun.com/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>伦少的博客</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://www.codesheep.cn/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>CodeSheep程序羊</a>
             </li>
           
             <li class="search-li">

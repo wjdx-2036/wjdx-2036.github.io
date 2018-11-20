@@ -17,13 +17,13 @@
 
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <link rel="dns-prefetch" href="http://yoursite.com">
+  <link rel="dns-prefetch" href="http://www.54tianzhisheng.cn">
   <title>Spring Boot 2.0系列文章(四)：Spring Boot 2.0 源码阅读环境搭建 | zhisheng的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="keywords" content="Java,SpringBoot">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Spring Boot 2.0系列文章(四)：Spring Boot 2.0 源码阅读环境搭建">
-<meta property="og:url" content="http://yoursite.com/2018/04/15/springboot2_code/index.html">
+<meta property="og:url" content="http://www.54tianzhisheng.cn/2018/04/15/springboot2_code/index.html">
 <meta property="og:site_name" content="zhisheng的博客">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79gy1fqdma0kpk1j31hc0zkqox.jpg">
@@ -270,7 +270,7 @@ var _hmt = _hmt || [];
 <h3 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h3><p>前几天面试的时候，被问过 Spring Boot 的自动配置源码怎么实现的，没看过源码的我只能投降👦了。</p>
 <p>这不，赶紧来补补了，所以才有了这篇文章的出现，Spring Boot 2. 0 源码阅读环境的搭建中还遇到点问题，被坑死了，还好解决了，感谢群里的小伙伴！</p>
 <h3 id="关注我"><a href="#关注我" class="headerlink" title="关注我"></a>关注我</h3><p><img src="http://ohfk1r827.bkt.clouddn.com/blog/180103/C6LG3mGa12.jpg" alt="mark"></p>
-<p>转载请务必注明原创地址为：<a href="http://www.54tianzhisheng.cn/2018/04/15/springboot2_code/" target="_blank" rel="noopener">http://www.54tianzhisheng.cn/2018/04/15/springboot2_code/</a></p>
+<p>转载请务必注明原创地址为：<a href="http://www.54tianzhisheng.cn/2018/04/15/springboot2_code/">http://www.54tianzhisheng.cn/2018/04/15/springboot2_code/</a></p>
 <h3 id="项目下载"><a href="#项目下载" class="headerlink" title="项目下载"></a>项目下载</h3><p>从 <a href="https://github.com/spring-projects/spring-boot/releases" target="_blank" rel="noopener">https://github.com/spring-projects/spring-boot/releases</a> 可以看到所有版本的下载地址，我这里选择的是 Spring Boot 2 中最新的  <a href="https://github.com/spring-projects/spring-boot/releases/tag/v2.0.1.RELEASE" target="_blank" rel="noopener">v2.0.1.RELEASE </a> 版本，下载后，然后解压。获取代码之前，请先确保你的 JDK 版本是 1.8 以上哦。</p>
 <h3 id="项目编译"><a href="#项目编译" class="headerlink" title="项目编译"></a>项目编译</h3><p>进入 spring-boot-2.0.1.RELEASE 的目录下，执行下面的命令。</p>
 <h4 id="跳过测试用例编译"><a href="#跳过测试用例编译" class="headerlink" title="跳过测试用例编译"></a>跳过测试用例编译</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mvn clean install -DskipTests -Pfast //跳过测试用例</span><br></pre></td></tr></table></figure>
@@ -303,13 +303,13 @@ var _hmt = _hmt || [];
 <p>一开始以为是公司配的 maven setting.xml 文件有问题（公司私服有问题），导致我这个  org.yaml.snakeyaml  1.19 的包一直下载不来。后来我叫群里的好友帮忙测试下能不能创建 Spring Boot 2 项目，结果他们都行的。我就换成了他们阿里云镜像的 setting 文件，结果在我这还是不行的。真是醉了，我干脆直接叫他把 maven 本地仓库中的 org.yaml.snakeyaml  1.19 整个包都发给我，结果再次创建 Spring Boot 2 项目就能成功了。美滋滋😄！</p>
 <p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fqdm9yr6s8j31kw0o3tkj.jpg" alt="springboot2-success"></p>
 <p>然后就蹭着现在环境 OK，开始搭建我的 Spring Boot 2 源码阅读环境！</p>
-<h3 id="相关文章"><a href="#相关文章" class="headerlink" title="相关文章"></a>相关文章</h3><p>1、<a href="http://www.54tianzhisheng.cn/2018/03/06/SpringBoot2-Migration-Guide/" target="_blank" rel="noopener">Spring Boot 2.0系列文章(一)：Spring Boot 2.0 迁移指南</a></p>
-<p>2、<a href="http://www.54tianzhisheng.cn/2018/03/06/SpringBoot2-new-features/" target="_blank" rel="noopener">Spring Boot 2.0系列文章(二)：Spring Boot 2.0 新特性详解</a></p>
-<p>3、<a href="http://www.54tianzhisheng.cn/2018/04/13/Spring_Boot_2.0_Configuration_Changelog/" target="_blank" rel="noopener">Spring Boot 2.0系列文章(三)：Spring Boot 2.0 配置改变</a></p>
-<p>4、<a href="http://www.54tianzhisheng.cn/2018/04/15/springboot2_code/" target="_blank" rel="noopener">Spring Boot 2.0系列文章(四)：Spring Boot 2.0 源码阅读环境搭建</a></p>
-<p>5、<a href="http://www.54tianzhisheng.cn/2018/04/18/spring_boot2_project/" target="_blank" rel="noopener">Spring Boot 2.0系列文章(五)：Spring Boot 2.0 项目源码结构预览</a></p>
-<p>6、<a href="http://www.54tianzhisheng.cn/2018/04/19/SpringBootApplication-annotation/" target="_blank" rel="noopener">Spring Boot 2.0系列文章(六)：Spring boot 2.0 中 SpringBootApplication 注解详解</a></p>
-<p>7、<a href="http://www.54tianzhisheng.cn/2018/04/30/springboot_SpringApplication/" target="_blank" rel="noopener">Spring Boot 2.0系列文章(七)：SpringApplication 深入探索</a></p>
+<h3 id="相关文章"><a href="#相关文章" class="headerlink" title="相关文章"></a>相关文章</h3><p>1、<a href="http://www.54tianzhisheng.cn/2018/03/06/SpringBoot2-Migration-Guide/">Spring Boot 2.0系列文章(一)：Spring Boot 2.0 迁移指南</a></p>
+<p>2、<a href="http://www.54tianzhisheng.cn/2018/03/06/SpringBoot2-new-features/">Spring Boot 2.0系列文章(二)：Spring Boot 2.0 新特性详解</a></p>
+<p>3、<a href="http://www.54tianzhisheng.cn/2018/04/13/Spring_Boot_2.0_Configuration_Changelog/">Spring Boot 2.0系列文章(三)：Spring Boot 2.0 配置改变</a></p>
+<p>4、<a href="http://www.54tianzhisheng.cn/2018/04/15/springboot2_code/">Spring Boot 2.0系列文章(四)：Spring Boot 2.0 源码阅读环境搭建</a></p>
+<p>5、<a href="http://www.54tianzhisheng.cn/2018/04/18/spring_boot2_project/">Spring Boot 2.0系列文章(五)：Spring Boot 2.0 项目源码结构预览</a></p>
+<p>6、<a href="http://www.54tianzhisheng.cn/2018/04/19/SpringBootApplication-annotation/">Spring Boot 2.0系列文章(六)：Spring boot 2.0 中 SpringBootApplication 注解详解</a></p>
+<p>7、<a href="http://www.54tianzhisheng.cn/2018/04/30/springboot_SpringApplication/">Spring Boot 2.0系列文章(七)：SpringApplication 深入探索</a></p>
 <h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>源码不骗人，多看看！</p>
 
       
@@ -419,7 +419,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2018/04/15/springboot2_code/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://www.54tianzhisheng.cn/2018/04/15/springboot2_code/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -462,22 +462,22 @@ var _hmt = _hmt || [];
 
 
   <section id="comments">
-<!--高速版，加载速度快，使用前需测试页面的兼容性-->
-<div id="SOHUCS" sid="Spring Boot 2.0系列文章(四)：Spring Boot 2.0 源码阅读环境搭建"  style="padding: 0px 30px 0px 46px;"></div>
-<script>
-  (function(){
-    var appid = 'cysWCg9Ij',
-    conf = '7f51baf245f3217589bb3b4ba8d8c691';
-    var doc = document,
-    s = doc.createElement('script'),
-    h = doc.getElementsByTagName('head')[0] || doc.head || doc.documentElement;
-    s.type = 'text/javascript';
-    s.charset = 'utf-8';
-    s.src =  'http://assets.changyan.sohu.com/upload/changyan.js?conf='+ conf +'&appid=' + appid;
-    h.insertBefore(s,h.firstChild);
-    window.SCS_NO_IFRAME = true;
-  })()
-</script>
+    <!--高速版，加载速度快，使用前需测试页面的兼容性-->
+    <!-- <div id="SOHUCS" sid="Spring Boot 2.0系列文章(四)：Spring Boot 2.0 源码阅读环境搭建"  style="padding: 0px 30px 0px 46px;"></div>
+    <script>
+      (function(){
+        var appid = 'cysWCg9Ij',
+        conf = '7f51baf245f3217589bb3b4ba8d8c691';
+        var doc = document,
+        s = doc.createElement('script'),
+        h = doc.getElementsByTagName('head')[0] || doc.head || doc.documentElement;
+        s.type = 'text/javascript';
+        s.charset = 'utf-8';
+        s.src =  'http://assets.changyan.sohu.com/upload/changyan.js?conf='+ conf +'&appid=' + appid;
+        h.insertBefore(s,h.firstChild);
+        window.SCS_NO_IFRAME = true;
+      })()
+    </script> -->
   </section>
   
 
@@ -590,15 +590,15 @@ var _hmt = _hmt || [];
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">AJAX</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Bootstrap</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">AJAX</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -650,14 +650,6 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Guava</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">HBase</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
@@ -666,7 +658,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">HBase</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Guava</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -682,15 +682,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">NIO</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JMM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -702,6 +702,10 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Kafka</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Maven</a>
               </li>
              
@@ -710,7 +714,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Kafka</a>
+                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -719,10 +723,6 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">foreach</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -750,11 +750,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">RocketMQ</a>
+                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+                <a href="javascript:void(0)" class="js-tag color4">RocketMQ</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -774,15 +774,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Velocity</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">线程池</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">博客合集</a>
+                <a href="javascript:void(0)" class="js-tag color4">Velocity</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -794,7 +790,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">流控</a>
+                <a href="javascript:void(0)" class="js-tag color5">博客合集</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -802,11 +798,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">流控</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">IO</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">lombok</a>
+                <a href="javascript:void(0)" class="js-tag color3">文件</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -814,7 +814,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">文件</a>
+                <a href="javascript:void(0)" class="js-tag color2">lombok</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -830,11 +830,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Servlet</a>
+                <a href="javascript:void(0)" class="js-tag color3">书籍</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">书籍</a>
+                <a href="javascript:void(0)" class="js-tag color3">Servlet</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -870,10 +870,6 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">循环队列</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Github Page</a>
               </li>
              
@@ -882,15 +878,19 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">循环队列</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">编码</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">邮件发送</a>
+                <a href="javascript:void(0)" class="js-tag color3">finally</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">finally</a>
+                <a href="javascript:void(0)" class="js-tag color5">邮件发送</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1047,10 +1047,6 @@ var _hmt = _hmt || [];
           
             <li class="search-li">
               <a href="http://dongkelun.com/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>伦少的博客</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://www.codesheep.cn/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>CodeSheep程序羊</a>
             </li>
           
             <li class="search-li">

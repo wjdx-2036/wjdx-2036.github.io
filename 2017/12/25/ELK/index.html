@@ -17,14 +17,14 @@
 
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <link rel="dns-prefetch" href="http://yoursite.com">
+  <link rel="dns-prefetch" href="http://www.54tianzhisheng.cn">
   <title>Elasticsearch 系列文章（五）：ELK 实时日志分析平台环境搭建 | zhisheng的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="简单介绍ELK（ElasticSearch, Logstash, Kibana），三者组合在一起搭建实时的日志分析平台，目前好多公司都是这套！">
 <meta name="keywords" content="ElasticSearch,LogStash,Kibana">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Elasticsearch 系列文章（五）：ELK 实时日志分析平台环境搭建">
-<meta property="og:url" content="http://yoursite.com/2017/12/25/ELK/index.html">
+<meta property="og:url" content="http://www.54tianzhisheng.cn/2017/12/25/ELK/index.html">
 <meta property="og:site_name" content="zhisheng的博客">
 <meta property="og:description" content="简单介绍ELK（ElasticSearch, Logstash, Kibana），三者组合在一起搭建实时的日志分析平台，目前好多公司都是这套！">
 <meta property="og:locale" content="zh-Hans">
@@ -267,7 +267,7 @@ var _hmt = _hmt || [];
 <li>Logstash 是一个完全开源的工具，他可以对你的日志进行收集、过滤，并将其存储供以后使用（如，搜索）。</li>
 <li>Kibana 也是一个开源和免费的工具，它 Kibana 可以为 Logstash 和 ElasticSearch 提供的日志分析友好的 Web 界面，可以帮助您汇总、分析和搜索重要数据日志。</li>
 </ul>
-<h3 id="安装-ES"><a href="#安装-ES" class="headerlink" title="安装 ES"></a>安装 ES</h3><p>。。。这个省略，不 bb 了，以前写过。。。传送门：<a href="http://www.54tianzhisheng.cn/2017/09/09/Elasticsearch-install/" target="_blank" rel="noopener">http://www.54tianzhisheng.cn/2017/09/09/Elasticsearch-install/</a></p>
+<h3 id="安装-ES"><a href="#安装-ES" class="headerlink" title="安装 ES"></a>安装 ES</h3><p>。。。这个省略，不 bb 了，以前写过。。。传送门：<a href="http://www.54tianzhisheng.cn/2017/09/09/Elasticsearch-install/">http://www.54tianzhisheng.cn/2017/09/09/Elasticsearch-install/</a></p>
 <h3 id="安装-Logstash"><a href="#安装-Logstash" class="headerlink" title="安装 Logstash"></a>安装 Logstash</h3><p>ELK 整套环境搭建版本很关键，最好全统一一个版本，否则出啥问题就不太好找了。这是我见过版本统一最严格的了。而已 ES 版本升了后，其他的都要都要升级，包括其插件。升级代价挺大的，最好一开始就定位好要安装哪个版本！</p>
 <p>在官网下好安装包后传到 Linux 上，这是速度最快的。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">在 /usr/local 目录下解压：</span><br><span class="line"></span><br><span class="line">tar -zxvf  logstash-5.5.2.tar.gz</span><br><span class="line"></span><br><span class="line">进入解压后的目录：</span><br><span class="line"></span><br><span class="line">cd /usr/local/logstash-5.5.2/bin</span><br><span class="line"></span><br><span class="line">新增配置文件：</span><br><span class="line"></span><br><span class="line">vim logstash.conf</span><br><span class="line"></span><br><span class="line">增加：</span><br><span class="line"></span><br><span class="line">input&#123;</span><br><span class="line">    file&#123;</span><br><span class="line">      path =&gt; [&quot;/var/log/*.log&quot;]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">output&#123;</span><br><span class="line">   elasticsearch&#123;</span><br><span class="line">       hosts =&gt; [&quot;192.168.153.135:9200&quot;]</span><br><span class="line">       index =&gt; &quot;logstash__log&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -294,13 +294,13 @@ var _hmt = _hmt || [];
 <p>上图右边是安装 X-Pack 后的，功能多了几个。</p>
 <h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>环境搭建很简单，后面如果有时间的话可以再讲讲在 Kibana 的 Dev Tools 上构建 ES 的 JSON 串来对 ES 进行操作。</p>
 <p>我还写过 ES 相关的文章：</p>
-<p>1、<a href="http://www.54tianzhisheng.cn/2017/09/07/Elasticsearch-analyzers/" target="_blank" rel="noopener">Elasticsearch 默认分词器和中分分词器之间的比较及使用方法</a></p>
-<p>2、<a href="http://www.54tianzhisheng.cn/2017/09/09/Elasticsearch-install/" target="_blank" rel="noopener">全文搜索引擎 Elasticsearch 集群搭建入门教程</a></p>
-<p>3、<a href="http://www.54tianzhisheng.cn/2017/10/15/ElasticSearch-cluster-health-metrics/" target="_blank" rel="noopener">ElasticSearch 集群监控</a></p>
-<p>4、<a href="http://www.54tianzhisheng.cn/2017/10/18/ElasticSearch-nodes-metrics/" target="_blank" rel="noopener">ElasticSearch 单个节点监控</a></p>
+<p>1、<a href="http://www.54tianzhisheng.cn/2017/09/07/Elasticsearch-analyzers/">Elasticsearch 默认分词器和中分分词器之间的比较及使用方法</a></p>
+<p>2、<a href="http://www.54tianzhisheng.cn/2017/09/09/Elasticsearch-install/">全文搜索引擎 Elasticsearch 集群搭建入门教程</a></p>
+<p>3、<a href="http://www.54tianzhisheng.cn/2017/10/15/ElasticSearch-cluster-health-metrics/">ElasticSearch 集群监控</a></p>
+<p>4、<a href="http://www.54tianzhisheng.cn/2017/10/18/ElasticSearch-nodes-metrics/">ElasticSearch 单个节点监控</a></p>
 <h3 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h3><blockquote>
-<p>本文首发于：<a href="http://www.54tianzhisheng.cn/" target="_blank" rel="noopener">zhisheng 的博客</a></p>
-<p>转载请注明地址：<a href="http://www.54tianzhisheng.cn/2017/12/25/ELK/" target="_blank" rel="noopener">http://www.54tianzhisheng.cn/2017/12/25/ELK/</a></p>
+<p>本文首发于：<a href="http://www.54tianzhisheng.cn/">zhisheng 的博客</a></p>
+<p>转载请注明地址：<a href="http://www.54tianzhisheng.cn/2017/12/25/ELK/">http://www.54tianzhisheng.cn/2017/12/25/ELK/</a></p>
 </blockquote>
 <p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fp3jkmizmpj30o00didgn.jpg" alt=""></p>
 
@@ -415,7 +415,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/12/25/ELK/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://www.54tianzhisheng.cn/2017/12/25/ELK/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -458,22 +458,22 @@ var _hmt = _hmt || [];
 
 
   <section id="comments">
-<!--高速版，加载速度快，使用前需测试页面的兼容性-->
-<div id="SOHUCS" sid="Elasticsearch 系列文章（五）：ELK 实时日志分析平台环境搭建"  style="padding: 0px 30px 0px 46px;"></div>
-<script>
-  (function(){
-    var appid = 'cysWCg9Ij',
-    conf = '7f51baf245f3217589bb3b4ba8d8c691';
-    var doc = document,
-    s = doc.createElement('script'),
-    h = doc.getElementsByTagName('head')[0] || doc.head || doc.documentElement;
-    s.type = 'text/javascript';
-    s.charset = 'utf-8';
-    s.src =  'http://assets.changyan.sohu.com/upload/changyan.js?conf='+ conf +'&appid=' + appid;
-    h.insertBefore(s,h.firstChild);
-    window.SCS_NO_IFRAME = true;
-  })()
-</script>
+    <!--高速版，加载速度快，使用前需测试页面的兼容性-->
+    <!-- <div id="SOHUCS" sid="Elasticsearch 系列文章（五）：ELK 实时日志分析平台环境搭建"  style="padding: 0px 30px 0px 46px;"></div>
+    <script>
+      (function(){
+        var appid = 'cysWCg9Ij',
+        conf = '7f51baf245f3217589bb3b4ba8d8c691';
+        var doc = document,
+        s = doc.createElement('script'),
+        h = doc.getElementsByTagName('head')[0] || doc.head || doc.documentElement;
+        s.type = 'text/javascript';
+        s.charset = 'utf-8';
+        s.src =  'http://assets.changyan.sohu.com/upload/changyan.js?conf='+ conf +'&appid=' + appid;
+        h.insertBefore(s,h.firstChild);
+        window.SCS_NO_IFRAME = true;
+      })()
+    </script> -->
   </section>
   
 
@@ -586,15 +586,15 @@ var _hmt = _hmt || [];
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">AJAX</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Bootstrap</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">AJAX</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -646,14 +646,6 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Guava</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">HBase</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
@@ -662,7 +654,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">HBase</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Guava</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -678,15 +678,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">NIO</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JMM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -698,6 +698,10 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Kafka</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Maven</a>
               </li>
              
@@ -706,7 +710,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Kafka</a>
+                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -715,10 +719,6 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">foreach</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -746,11 +746,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">RocketMQ</a>
+                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+                <a href="javascript:void(0)" class="js-tag color4">RocketMQ</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -770,15 +770,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Velocity</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">线程池</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">博客合集</a>
+                <a href="javascript:void(0)" class="js-tag color4">Velocity</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -790,7 +786,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">流控</a>
+                <a href="javascript:void(0)" class="js-tag color5">博客合集</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -798,11 +794,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">流控</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">IO</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">lombok</a>
+                <a href="javascript:void(0)" class="js-tag color3">文件</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -810,7 +810,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">文件</a>
+                <a href="javascript:void(0)" class="js-tag color2">lombok</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -826,11 +826,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Servlet</a>
+                <a href="javascript:void(0)" class="js-tag color3">书籍</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">书籍</a>
+                <a href="javascript:void(0)" class="js-tag color3">Servlet</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -866,10 +866,6 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">循环队列</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Github Page</a>
               </li>
              
@@ -878,15 +874,19 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">循环队列</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">编码</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">邮件发送</a>
+                <a href="javascript:void(0)" class="js-tag color3">finally</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">finally</a>
+                <a href="javascript:void(0)" class="js-tag color5">邮件发送</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1043,10 +1043,6 @@ var _hmt = _hmt || [];
           
             <li class="search-li">
               <a href="http://dongkelun.com/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>伦少的博客</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://www.codesheep.cn/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>CodeSheep程序羊</a>
             </li>
           
             <li class="search-li">

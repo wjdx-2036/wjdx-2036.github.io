@@ -17,14 +17,14 @@
 
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <link rel="dns-prefetch" href="http://yoursite.com">
+  <link rel="dns-prefetch" href="http://www.54tianzhisheng.cn">
   <title>Spring Boot系列文章（六）：SpringBoot RocketMQ 整合使用和监控 | zhisheng的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="前提通过前面两篇文章可以简单的了解 RocketMQ 和 安装 RocketMQ ，今天就将 SpringBoot 和 RocketMQ 整合起来使用。">
 <meta name="keywords" content="SpringBoot,RocketMQ">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Spring Boot系列文章（六）：SpringBoot RocketMQ 整合使用和监控">
-<meta property="og:url" content="http://yoursite.com/2018/02/07/SpringBoot-RocketMQ/index.html">
+<meta property="og:url" content="http://www.54tianzhisheng.cn/2018/02/07/SpringBoot-RocketMQ/index.html">
 <meta property="og:site_name" content="zhisheng的博客">
 <meta property="og:description" content="前提通过前面两篇文章可以简单的了解 RocketMQ 和 安装 RocketMQ ，今天就将 SpringBoot 和 RocketMQ 整合起来使用。">
 <meta property="og:locale" content="zh-Hans">
@@ -276,15 +276,15 @@ var _hmt = _hmt || [];
       
         <p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fo8vqfuapwj31hc0zhtro.jpg" alt="photoshop-2845779_1920"></p>
 <h3 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h3><p>通过前面两篇文章可以简单的了解 RocketMQ 和 安装 RocketMQ ，今天就将 SpringBoot 和 RocketMQ 整合起来使用。<br><a id="more"></a></p>
-<h3 id="相关文章"><a href="#相关文章" class="headerlink" title="相关文章"></a>相关文章</h3><p>1、<a href="http://www.54tianzhisheng.cn/2018/01/05/SpringBoot-Kafka/" target="_blank" rel="noopener">SpringBoot Kafka 整合使用</a></p>
-<p>2、<a href="http://www.54tianzhisheng.cn/2018/01/26/SpringBoot-RabbitMQ/" target="_blank" rel="noopener">SpringBoot RabbitMQ 整合使用</a></p>
-<p>3、<a href="http://www.54tianzhisheng.cn/2018/01/27/SpringBoot-ActiveMQ/" target="_blank" rel="noopener">SpringBoot ActiveMQ 整合使用</a></p>
-<p>4、<a href="http://www.54tianzhisheng.cn/2018/01/04/Kafka/" target="_blank" rel="noopener">Kafka 安装及快速入门</a></p>
-<p>5、<a href="http://www.54tianzhisheng.cn/2018/01/28/RabbitMQ/" target="_blank" rel="noopener">SpringBoot RabbitMQ 整合进阶版</a></p>
-<p>6、<a href="http://www.54tianzhisheng.cn/2018/02/05/RocketMQ/" target="_blank" rel="noopener">RocketMQ 初探</a></p>
-<p>7、<a href="http://www.54tianzhisheng.cn/2018/02/06/RocketMQ-install/" target="_blank" rel="noopener">RocketMQ 安装及快速入门</a></p>
+<h3 id="相关文章"><a href="#相关文章" class="headerlink" title="相关文章"></a>相关文章</h3><p>1、<a href="http://www.54tianzhisheng.cn/2018/01/05/SpringBoot-Kafka/">SpringBoot Kafka 整合使用</a></p>
+<p>2、<a href="http://www.54tianzhisheng.cn/2018/01/26/SpringBoot-RabbitMQ/">SpringBoot RabbitMQ 整合使用</a></p>
+<p>3、<a href="http://www.54tianzhisheng.cn/2018/01/27/SpringBoot-ActiveMQ/">SpringBoot ActiveMQ 整合使用</a></p>
+<p>4、<a href="http://www.54tianzhisheng.cn/2018/01/04/Kafka/">Kafka 安装及快速入门</a></p>
+<p>5、<a href="http://www.54tianzhisheng.cn/2018/01/28/RabbitMQ/">SpringBoot RabbitMQ 整合进阶版</a></p>
+<p>6、<a href="http://www.54tianzhisheng.cn/2018/02/05/RocketMQ/">RocketMQ 初探</a></p>
+<p>7、<a href="http://www.54tianzhisheng.cn/2018/02/06/RocketMQ-install/">RocketMQ 安装及快速入门</a></p>
 <h3 id="关注我"><a href="#关注我" class="headerlink" title="关注我"></a>关注我</h3><p><img src="http://ohfk1r827.bkt.clouddn.com/blog/180103/C6LG3mGa12.jpg" alt="mark"></p>
-<p>转载请务必注明原创地址为：<a href="http://www.54tianzhisheng.cn/2018/02/07/SpringBoot-RocketMQ/" target="_blank" rel="noopener">http://www.54tianzhisheng.cn/2018/02/07/SpringBoot-RocketMQ/</a></p>
+<p>转载请务必注明原创地址为：<a href="http://www.54tianzhisheng.cn/2018/02/07/SpringBoot-RocketMQ/">http://www.54tianzhisheng.cn/2018/02/07/SpringBoot-RocketMQ/</a></p>
 <h3 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h3><p>在 IDEA 创建一个 SpringBoot 项目，项目结构如下：</p>
 <p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fo8vq6ufg3j30pe0yoacc.jpg" alt="rocketmq01"></p>
 <h4 id="pom-文件"><a href="#pom-文件" class="headerlink" title="pom 文件"></a>pom 文件</h4><p>引入 RocketMQ 的一些相关依赖，最后的 pom 文件如下：</p>
@@ -295,7 +295,7 @@ var _hmt = _hmt || [];
 <h4 id="消费者"><a href="#消费者" class="headerlink" title="消费者"></a>消费者</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zhisheng.rocketmq.server;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.apache.rocketmq.client.consumer.DefaultMQPushConsumer;</span><br><span class="line"><span class="keyword">import</span> org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyStatus;</span><br><span class="line"><span class="keyword">import</span> org.apache.rocketmq.client.consumer.listener.MessageListenerConcurrently;</span><br><span class="line"><span class="keyword">import</span> org.apache.rocketmq.common.consumer.ConsumeFromWhere;</span><br><span class="line"><span class="keyword">import</span> org.apache.rocketmq.common.message.MessageExt;</span><br><span class="line"><span class="keyword">import</span> org.apache.rocketmq.remoting.common.RemotingHelper;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Value;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Component;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.annotation.PostConstruct;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by zhisheng_tian on 2018/2/6</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RocketMQServer</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 消费者的组名</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Value</span>(<span class="string">"$&#123;apache.rocketmq.consumer.PushConsumer&#125;"</span>)</span><br><span class="line">    <span class="keyword">private</span> String consumerGroup;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * NameServer 地址</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Value</span>(<span class="string">"$&#123;apache.rocketmq.namesrvAddr&#125;"</span>)</span><br><span class="line">    <span class="keyword">private</span> String namesrvAddr;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@PostConstruct</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">defaultMQPushConsumer</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//消费者的组名</span></span><br><span class="line">        DefaultMQPushConsumer consumer = <span class="keyword">new</span> DefaultMQPushConsumer(consumerGroup);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//指定NameServer地址，多个地址以 ; 隔开</span></span><br><span class="line">        consumer.setNamesrvAddr(namesrvAddr);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">//订阅PushTopic下Tag为push的消息</span></span><br><span class="line">            consumer.subscribe(<span class="string">"TopicTest"</span>, <span class="string">"push"</span>);</span><br><span class="line"></span><br><span class="line">            <span class="comment">//设置Consumer第一次启动是从队列头部开始消费还是队列尾部开始消费</span></span><br><span class="line">            <span class="comment">//如果非第一次启动，那么按照上次消费的位置继续消费</span></span><br><span class="line">            consumer.setConsumeFromWhere(ConsumeFromWhere.CONSUME_FROM_FIRST_OFFSET);</span><br><span class="line">            consumer.registerMessageListener((MessageListenerConcurrently) (list, context) -&gt; &#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    <span class="keyword">for</span> (MessageExt messageExt : list) &#123;</span><br><span class="line"></span><br><span class="line">                        System.out.println(<span class="string">"messageExt: "</span> + messageExt);<span class="comment">//输出消息内容</span></span><br><span class="line"></span><br><span class="line">                        String messageBody = <span class="keyword">new</span> String(messageExt.getBody(), RemotingHelper.DEFAULT_CHARSET);</span><br><span class="line"></span><br><span class="line">                        System.out.println(<span class="string">"消费响应：msgId : "</span> + messageExt.getMsgId() + <span class="string">",  msgBody : "</span> + messageBody);<span class="comment">//输出消息内容</span></span><br><span class="line">                    &#125;</span><br><span class="line">                &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                    <span class="keyword">return</span> ConsumeConcurrentlyStatus.RECONSUME_LATER; <span class="comment">//稍后再试</span></span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">return</span> ConsumeConcurrentlyStatus.CONSUME_SUCCESS; <span class="comment">//消费成功</span></span><br><span class="line">            &#125;);</span><br><span class="line">            consumer.start();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="启动类"><a href="#启动类" class="headerlink" title="启动类"></a>启动类</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zhisheng.rocketmq;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.SpringApplication;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.SpringBootApplication;</span><br><span class="line"></span><br><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RocketmqApplication</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		SpringApplication.run(RocketmqApplication.class, args);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="RocketMQ"><a href="#RocketMQ" class="headerlink" title="RocketMQ"></a>RocketMQ</h3><p>代码已经都写好了，接下来我们需要将与 RocketMQ 有关的启动起来。</p>
-<h4 id="启动-Name-Server"><a href="#启动-Name-Server" class="headerlink" title="启动 Name Server"></a>启动 Name Server</h4><p>在前面文章中已经写过怎么启动，<a href="http://www.54tianzhisheng.cn/2018/02/06/RocketMQ-install/#%E5%90%AF%E5%8A%A8-NameServer" target="_blank" rel="noopener">http://www.54tianzhisheng.cn/2018/02/06/RocketMQ-install/#%E5%90%AF%E5%8A%A8-NameServer</a></p>
+<h4 id="启动-Name-Server"><a href="#启动-Name-Server" class="headerlink" title="启动 Name Server"></a>启动 Name Server</h4><p>在前面文章中已经写过怎么启动，<a href="http://www.54tianzhisheng.cn/2018/02/06/RocketMQ-install/#%E5%90%AF%E5%8A%A8-NameServer">http://www.54tianzhisheng.cn/2018/02/06/RocketMQ-install/#%E5%90%AF%E5%8A%A8-NameServer</a></p>
 <p>进入到目录 ：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd distribution/target/apache-rocketmq</span><br></pre></td></tr></table></figure>
 <p>启动：</p>
@@ -463,7 +463,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2018/02/07/SpringBoot-RocketMQ/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://www.54tianzhisheng.cn/2018/02/07/SpringBoot-RocketMQ/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -506,22 +506,22 @@ var _hmt = _hmt || [];
 
 
   <section id="comments">
-<!--高速版，加载速度快，使用前需测试页面的兼容性-->
-<div id="SOHUCS" sid="Spring Boot系列文章（六）：SpringBoot RocketMQ 整合使用和监控"  style="padding: 0px 30px 0px 46px;"></div>
-<script>
-  (function(){
-    var appid = 'cysWCg9Ij',
-    conf = '7f51baf245f3217589bb3b4ba8d8c691';
-    var doc = document,
-    s = doc.createElement('script'),
-    h = doc.getElementsByTagName('head')[0] || doc.head || doc.documentElement;
-    s.type = 'text/javascript';
-    s.charset = 'utf-8';
-    s.src =  'http://assets.changyan.sohu.com/upload/changyan.js?conf='+ conf +'&appid=' + appid;
-    h.insertBefore(s,h.firstChild);
-    window.SCS_NO_IFRAME = true;
-  })()
-</script>
+    <!--高速版，加载速度快，使用前需测试页面的兼容性-->
+    <!-- <div id="SOHUCS" sid="Spring Boot系列文章（六）：SpringBoot RocketMQ 整合使用和监控"  style="padding: 0px 30px 0px 46px;"></div>
+    <script>
+      (function(){
+        var appid = 'cysWCg9Ij',
+        conf = '7f51baf245f3217589bb3b4ba8d8c691';
+        var doc = document,
+        s = doc.createElement('script'),
+        h = doc.getElementsByTagName('head')[0] || doc.head || doc.documentElement;
+        s.type = 'text/javascript';
+        s.charset = 'utf-8';
+        s.src =  'http://assets.changyan.sohu.com/upload/changyan.js?conf='+ conf +'&appid=' + appid;
+        h.insertBefore(s,h.firstChild);
+        window.SCS_NO_IFRAME = true;
+      })()
+    </script> -->
   </section>
   
 
@@ -634,15 +634,15 @@ var _hmt = _hmt || [];
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">AJAX</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Bootstrap</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">AJAX</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -694,14 +694,6 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Guava</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">HBase</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
@@ -710,7 +702,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">HBase</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Guava</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -726,15 +726,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">NIO</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JMM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -746,6 +746,10 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Kafka</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Maven</a>
               </li>
              
@@ -754,7 +758,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Kafka</a>
+                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -763,10 +767,6 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">foreach</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -794,11 +794,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">RocketMQ</a>
+                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+                <a href="javascript:void(0)" class="js-tag color4">RocketMQ</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -818,15 +818,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Velocity</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">线程池</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">博客合集</a>
+                <a href="javascript:void(0)" class="js-tag color4">Velocity</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -838,7 +834,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">流控</a>
+                <a href="javascript:void(0)" class="js-tag color5">博客合集</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -846,11 +842,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">流控</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">IO</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">lombok</a>
+                <a href="javascript:void(0)" class="js-tag color3">文件</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -858,7 +858,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">文件</a>
+                <a href="javascript:void(0)" class="js-tag color2">lombok</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -874,11 +874,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Servlet</a>
+                <a href="javascript:void(0)" class="js-tag color3">书籍</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">书籍</a>
+                <a href="javascript:void(0)" class="js-tag color3">Servlet</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -914,10 +914,6 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">循环队列</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Github Page</a>
               </li>
              
@@ -926,15 +922,19 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">循环队列</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">编码</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">邮件发送</a>
+                <a href="javascript:void(0)" class="js-tag color3">finally</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">finally</a>
+                <a href="javascript:void(0)" class="js-tag color5">邮件发送</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1091,10 +1091,6 @@ var _hmt = _hmt || [];
           
             <li class="search-li">
               <a href="http://dongkelun.com/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>伦少的博客</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://www.codesheep.cn/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>CodeSheep程序羊</a>
             </li>
           
             <li class="search-li">

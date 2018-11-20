@@ -17,13 +17,13 @@
 
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <link rel="dns-prefetch" href="http://yoursite.com">
+  <link rel="dns-prefetch" href="http://www.54tianzhisheng.cn">
   <title>渣渣菜鸡为什么要看 ElasticSearch 源码？ | zhisheng的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="keywords" content="ElasticSearch">
 <meta property="og:type" content="article">
 <meta property="og:title" content="渣渣菜鸡为什么要看 ElasticSearch 源码？">
-<meta property="og:url" content="http://yoursite.com/2018/08/04/why-see-es-code/index.html">
+<meta property="og:url" content="http://www.54tianzhisheng.cn/2018/08/04/why-see-es-code/index.html">
 <meta property="og:site_name" content="zhisheng的博客">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79ly1fty1lwmoa0j31hc0vjjyz.jpg">
@@ -262,11 +262,11 @@ var _hmt = _hmt || [];
 <p>在我的电脑本地写了几篇 ElasticSearch 的源码解析了，回过头来想想应该也写一篇为何我会去看它的源码？</p>
 <p>为什么呢？下面我讲讲自己从接触搜索到现在看源码的过程！</p>
 <h3 id="关注我"><a href="#关注我" class="headerlink" title="关注我"></a>关注我</h3><p><img src="http://ohfk1r827.bkt.clouddn.com/blog/180103/C6LG3mGa12.jpg" alt="zhisheng"></p>
-<p>转载请务必注明原创地址为：<a href="http://www.54tianzhisheng.cn/2018/08/04/why-see-es-code/" target="_blank" rel="noopener">http://www.54tianzhisheng.cn/2018/08/24/why-see-es-code/</a></p>
+<p>转载请务必注明原创地址为：<a href="http://www.54tianzhisheng.cn/2018/08/04/why-see-es-code/">http://www.54tianzhisheng.cn/2018/08/24/why-see-es-code/</a></p>
 <h3 id="第一次接触搜索"><a href="#第一次接触搜索" class="headerlink" title="第一次接触搜索"></a>第一次接触搜索</h3><p>搜索，我们首先想到的是搜索引擎：Google、百度，这个就算是接触的最早的了。</p>
 <p>我自己项目里面接触搜索是大二暑假那时练习的一个项目，里面用了 Solr，然后当时自己也稍微了解了下，并用在了项目里面。</p>
-<h3 id="第二次接触搜索"><a href="#第二次接触搜索" class="headerlink" title="第二次接触搜索"></a>第二次接触搜索</h3><p>从第一次项目里面用到了搜索，后面自己对这方面就比较感兴趣。再一次接触搜索是实习的时候进公司。第一件事情就是被老大叫的去学习搭建 Elasticsearch 集群，于是乎，电脑就装了三个虚拟机，Elasticsearch 就一个个的装了起来了。也记录了博客下来：<a href="http://www.54tianzhisheng.cn/2017/09/09/Elasticsearch-install/" target="_blank" rel="noopener">Elasticsearch 系列文章（二）：全文搜索引擎 Elasticsearch 集群搭建入门教程</a>，当时搭建的时候 ES 的版本才刚从 2.x 升级到 5.x 呢，截止本文时间 2018.08.04，现在 ES 版本已经是到 7.0 了，这版本升级是真的的快，这也说明了 ES 的活跃度很高，背后的开发工程师维护也快，侧面突出要去看它源码的重要性。</p>
-<p>当时自己在本地测试搭建集群后，给分配了另外一个任务就是去了解 ES 中的自带分词、英文分词、中文分词的相同与差异、以及自己建立分词需要注意的点。于是乎：当时在公司 wiki 贡献了这篇文章：<a href="http://www.54tianzhisheng.cn/2017/09/08/Elasticsearch-analyzers/" target="_blank" rel="noopener">Elasticsearch 系列文章（一）：Elasticsearch 默认分词器和中分分词器之间的比较及使用方法</a>。这篇文章几乎已经把市面上所有的分词都写进去了，包括他们的相同点、不同点、如何使用、如何自定义分词器。</p>
+<h3 id="第二次接触搜索"><a href="#第二次接触搜索" class="headerlink" title="第二次接触搜索"></a>第二次接触搜索</h3><p>从第一次项目里面用到了搜索，后面自己对这方面就比较感兴趣。再一次接触搜索是实习的时候进公司。第一件事情就是被老大叫的去学习搭建 Elasticsearch 集群，于是乎，电脑就装了三个虚拟机，Elasticsearch 就一个个的装了起来了。也记录了博客下来：<a href="http://www.54tianzhisheng.cn/2017/09/09/Elasticsearch-install/">Elasticsearch 系列文章（二）：全文搜索引擎 Elasticsearch 集群搭建入门教程</a>，当时搭建的时候 ES 的版本才刚从 2.x 升级到 5.x 呢，截止本文时间 2018.08.04，现在 ES 版本已经是到 7.0 了，这版本升级是真的的快，这也说明了 ES 的活跃度很高，背后的开发工程师维护也快，侧面突出要去看它源码的重要性。</p>
+<p>当时自己在本地测试搭建集群后，给分配了另外一个任务就是去了解 ES 中的自带分词、英文分词、中文分词的相同与差异、以及自己建立分词需要注意的点。于是乎：当时在公司 wiki 贡献了这篇文章：<a href="http://www.54tianzhisheng.cn/2017/09/08/Elasticsearch-analyzers/">Elasticsearch 系列文章（一）：Elasticsearch 默认分词器和中分分词器之间的比较及使用方法</a>。这篇文章几乎已经把市面上所有的分词都写进去了，包括他们的相同点、不同点、如何使用、如何自定义分词器。</p>
 <p>然后还有就是我同组的一个同学，她的任务就是 2.x 升级到 5.x 中 mapping 的大改变有哪些？后面我也看了她总结的文档，很详细！</p>
 <p>在这次接触了 ES 后，因为我自己本地已经有环境了，所以自己测试了一些功能，给 ES 安装插件（IK、x-pack、支持 sql 的、），后面自己也去测试 ES 的索引、文档、REST API。</p>
 <h3 id="第三次接触搜索"><a href="#第三次接触搜索" class="headerlink" title="第三次接触搜索"></a>第三次接触搜索</h3><p>由于是自己对其感兴趣，所以后面就去找了些相关的视频，比如：中华石衫的《Elasticsearch 顶尖高手系列-高手进阶篇》几个系列视频教程个人感觉还是不错的，看完这几个系列估计入门肯定是没有问题的。版权原因，不提供下载链接。</p>
@@ -275,11 +275,11 @@ var _hmt = _hmt || [];
 <p>学习新东西，要学会先看官方文档，何况 Elasticsearch 的官方文档这么详细呢！</p>
 <h3 id="第四次接触搜索"><a href="#第四次接触搜索" class="headerlink" title="第四次接触搜索"></a>第四次接触搜索</h3><p>后面实习的时候，又分配了公司中间件监控的两个模块：Elasticsearch 和 HBase 组件的监控。于是乎，再次有机会接触 Elasticsearch 了，这次主要还是利用 Elasticsearch 自带的 REST API ：<code>_cluster/health</code> 、<code>_cluster/stats</code>、<code>_nodes</code>、<code>_nodes/stats</code> 去获取到集群的健康信息、节点信息（内存、CPU、网络、JVM等信息）。为了做这个项目自己当时也去找了网上很多类似的文章参考常用的监控指标和他们是怎么做监控的。我当时的任务主要还是采集信息，然后存到公司大项目的 influxdb 中，最后用 grafana 展示出来，后面我组的运维大佬给我看了监控大盘，界面挺酷炫的，哈哈哈，牛逼！</p>
 <p>当时写的两篇博客：</p>
-<p>1、<a href="http://www.54tianzhisheng.cn/2017/10/15/ElasticSearch-cluster-health-metrics/" target="_blank" rel="noopener">Elasticsearch 系列文章（三）：ElasticSearch 集群监控</a></p>
-<p>2、<a href="http://www.54tianzhisheng.cn/2017/10/18/ElasticSearch-nodes-metrics/" target="_blank" rel="noopener">Elasticsearch 系列文章（四）：ElasticSearch 单个节点监控</a></p>
+<p>1、<a href="http://www.54tianzhisheng.cn/2017/10/15/ElasticSearch-cluster-health-metrics/">Elasticsearch 系列文章（三）：ElasticSearch 集群监控</a></p>
+<p>2、<a href="http://www.54tianzhisheng.cn/2017/10/18/ElasticSearch-nodes-metrics/">Elasticsearch 系列文章（四）：ElasticSearch 单个节点监控</a></p>
 <p>取之网络，还之网络，希望给后面做类似任务的小伙伴给点参考意见！</p>
 <p>再就是自己搭建 ELK（ElasticSearch, Logstash, Kibana）日志分析平台，然后玩了下！</p>
-<p>搭建环境博客：<a href="http://www.54tianzhisheng.cn/2017/12/25/ELK/" target="_blank" rel="noopener">Elasticsearch 系列文章（五）：ELK 实时日志分析平台环境搭建</a></p>
+<p>搭建环境博客：<a href="http://www.54tianzhisheng.cn/2017/12/25/ELK/">Elasticsearch 系列文章（五）：ELK 实时日志分析平台环境搭建</a></p>
 <h3 id="第五次接触搜索"><a href="#第五次接触搜索" class="headerlink" title="第五次接触搜索"></a>第五次接触搜索</h3><p>后面就没怎么接触 ElasticSearch 了，一直忙着其他的东西。</p>
 <p>实习辞职后，毕业出来找工作的那段日子，自己又花了一星期稍微过了一遍 《Elasticsearch 权威指南》 这本书，话说还帮我面试挺过不少关呢，哈哈哈！因为我项目里写了 Elasticsearch 的监控，如果你对 Elasticsearch 其他的不熟悉，面试官稍微问些其他关于这方面的，那就不知道就有点尴尬😅了，所以还是准备了下。看完之后应付面试没多大的问题。</p>
 <h3 id="第六次接触"><a href="#第六次接触" class="headerlink" title="第六次接触"></a>第六次接触</h3><p>看起来我接触了 Elasticsearch 很久了，其实真正项目里面是没有用到 Elasticsearch 做过项目的，没有用到 Elasticsearch 的搜索做什么项目，于是自己当时找工作其实也打算找到工作后看能不能自己做个项目或者公司项目里面用用 Elasticsearch 呢？</p>
@@ -395,7 +395,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2018/08/04/why-see-es-code/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://www.54tianzhisheng.cn/2018/08/04/why-see-es-code/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -438,22 +438,22 @@ var _hmt = _hmt || [];
 
 
   <section id="comments">
-<!--高速版，加载速度快，使用前需测试页面的兼容性-->
-<div id="SOHUCS" sid="渣渣菜鸡为什么要看 ElasticSearch 源码？"  style="padding: 0px 30px 0px 46px;"></div>
-<script>
-  (function(){
-    var appid = 'cysWCg9Ij',
-    conf = '7f51baf245f3217589bb3b4ba8d8c691';
-    var doc = document,
-    s = doc.createElement('script'),
-    h = doc.getElementsByTagName('head')[0] || doc.head || doc.documentElement;
-    s.type = 'text/javascript';
-    s.charset = 'utf-8';
-    s.src =  'http://assets.changyan.sohu.com/upload/changyan.js?conf='+ conf +'&appid=' + appid;
-    h.insertBefore(s,h.firstChild);
-    window.SCS_NO_IFRAME = true;
-  })()
-</script>
+    <!--高速版，加载速度快，使用前需测试页面的兼容性-->
+    <!-- <div id="SOHUCS" sid="渣渣菜鸡为什么要看 ElasticSearch 源码？"  style="padding: 0px 30px 0px 46px;"></div>
+    <script>
+      (function(){
+        var appid = 'cysWCg9Ij',
+        conf = '7f51baf245f3217589bb3b4ba8d8c691';
+        var doc = document,
+        s = doc.createElement('script'),
+        h = doc.getElementsByTagName('head')[0] || doc.head || doc.documentElement;
+        s.type = 'text/javascript';
+        s.charset = 'utf-8';
+        s.src =  'http://assets.changyan.sohu.com/upload/changyan.js?conf='+ conf +'&appid=' + appid;
+        h.insertBefore(s,h.firstChild);
+        window.SCS_NO_IFRAME = true;
+      })()
+    </script> -->
   </section>
   
 
@@ -566,15 +566,15 @@ var _hmt = _hmt || [];
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">AJAX</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Bootstrap</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">AJAX</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -626,14 +626,6 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Guava</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">HBase</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
@@ -642,7 +634,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">HBase</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Guava</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -658,15 +658,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">NIO</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JMM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -678,6 +678,10 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Kafka</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Maven</a>
               </li>
              
@@ -686,7 +690,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Kafka</a>
+                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -695,10 +699,6 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">foreach</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -726,11 +726,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">RocketMQ</a>
+                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+                <a href="javascript:void(0)" class="js-tag color4">RocketMQ</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -750,15 +750,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Velocity</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">线程池</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">博客合集</a>
+                <a href="javascript:void(0)" class="js-tag color4">Velocity</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -770,7 +766,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">流控</a>
+                <a href="javascript:void(0)" class="js-tag color5">博客合集</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -778,11 +774,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">流控</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">IO</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">lombok</a>
+                <a href="javascript:void(0)" class="js-tag color3">文件</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -790,7 +790,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">文件</a>
+                <a href="javascript:void(0)" class="js-tag color2">lombok</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -806,11 +806,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Servlet</a>
+                <a href="javascript:void(0)" class="js-tag color3">书籍</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">书籍</a>
+                <a href="javascript:void(0)" class="js-tag color3">Servlet</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -846,10 +846,6 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">循环队列</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Github Page</a>
               </li>
              
@@ -858,15 +854,19 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">循环队列</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">编码</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">邮件发送</a>
+                <a href="javascript:void(0)" class="js-tag color3">finally</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">finally</a>
+                <a href="javascript:void(0)" class="js-tag color5">邮件发送</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1023,10 +1023,6 @@ var _hmt = _hmt || [];
           
             <li class="search-li">
               <a href="http://dongkelun.com/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>伦少的博客</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://www.codesheep.cn/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>CodeSheep程序羊</a>
             </li>
           
             <li class="search-li">

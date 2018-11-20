@@ -17,13 +17,13 @@
 
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <link rel="dns-prefetch" href="http://yoursite.com">
+  <link rel="dns-prefetch" href="http://www.54tianzhisheng.cn">
   <title>20 个案例教你在 Java 8 中如何处理日期和时间? | zhisheng的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="keywords" content="Java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="20 个案例教你在 Java 8 中如何处理日期和时间?">
-<meta property="og:url" content="http://yoursite.com/2018/06/20/java-8-date/index.html">
+<meta property="og:url" content="http://www.54tianzhisheng.cn/2018/06/20/java-8-date/index.html">
 <meta property="og:site_name" content="zhisheng的博客">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1fsho6kitc6j31hc0zkdr7.jpg">
@@ -257,10 +257,10 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fsho6kitc6j31hc0zkdr7.jpg" alt="002"><br><a id="more"></a></p>
-<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>前面一篇文章写了<a href="http://www.54tianzhisheng.cn/2018/06/19/SimpleDateFormat/" target="_blank" rel="noopener">《SimpleDateFormat 如何安全的使用？》</a>, 里面介绍了 SimpleDateFormat 如何处理日期／时间，以及如何保证线程安全，及其介绍了在 Java 8 中的处理时间／日期默认就线程安全的 DateTimeFormatter 类。那么 Java 8 中该怎么样处理生活中常见的一些日期／时间呢？比如：计算一周后的日期；计算一年前或一年后的日期；检查闰年等。</p>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>前面一篇文章写了<a href="http://www.54tianzhisheng.cn/2018/06/19/SimpleDateFormat/">《SimpleDateFormat 如何安全的使用？》</a>, 里面介绍了 SimpleDateFormat 如何处理日期／时间，以及如何保证线程安全，及其介绍了在 Java 8 中的处理时间／日期默认就线程安全的 DateTimeFormatter 类。那么 Java 8 中该怎么样处理生活中常见的一些日期／时间呢？比如：计算一周后的日期；计算一年前或一年后的日期；检查闰年等。</p>
 <p>接下来创建了 20 个基于任务的实例来学习 Java 8 的新特性。从最简单创建当天的日期开始，然后创建时间及时区，接着模拟一个日期提醒应用中的任务——计算重要日期的到期天数，例如生日、纪念日、账单日、保费到期日、信用卡过期日等。</p>
 <h3 id="关注我"><a href="#关注我" class="headerlink" title="关注我"></a>关注我</h3><p><img src="http://ohfk1r827.bkt.clouddn.com/blog/180103/C6LG3mGa12.jpg" alt="zhisheng"></p>
-<p>转载请务必注明原创地址为：<a href="http://www.54tianzhisheng.cn/2018/06/20/java-8-date/" target="_blank" rel="noopener">http://www.54tianzhisheng.cn/2018/06/20/java-8-date/</a></p>
+<p>转载请务必注明原创地址为：<a href="http://www.54tianzhisheng.cn/2018/06/20/java-8-date/">http://www.54tianzhisheng.cn/2018/06/20/java-8-date/</a></p>
 <h3 id="示例-1、在-Java-8-中获取今天的日期"><a href="#示例-1、在-Java-8-中获取今天的日期" class="headerlink" title="示例 1、在 Java 8 中获取今天的日期"></a>示例 1、在 Java 8 中获取今天的日期</h3><p>Java 8 中的 LocalDate 用于表示当天日期。和 java.util.Date 不同，它只有日期，不包含时间。当你仅需要表示日期时就用这个类。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">LocalDate now = LocalDate.now();</span><br><span class="line">System.out.println(now);</span><br></pre></td></tr></table></figure>
 <p>结果是：</p>
@@ -324,9 +324,9 @@ var _hmt = _hmt || [];
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2018-06-20T06:35:24.881Z</span><br></pre></td></tr></table></figure>
 <p>时间戳信息里同时包含了日期和时间，这和 java.util.Date 很像。实际上 Instant 类确实等同于 Java 8 之前的 Date类，你可以使用 Date 类和 Instant 类各自的转换方法互相转换，例如：Date.from(Instant) 将 Instant 转换成java.util.Date，Date.toInstant() 则是将 Date 类转换成 Instant 类。</p>
 <h3 id="示例-18、在-Java-8-中如何使用预定义的格式化工具去解析或格式化日期"><a href="#示例-18、在-Java-8-中如何使用预定义的格式化工具去解析或格式化日期" class="headerlink" title="示例 18、在 Java 8 中如何使用预定义的格式化工具去解析或格式化日期"></a>示例 18、在 Java 8 中如何使用预定义的格式化工具去解析或格式化日期</h3><p>在 Java 8 以前的世界里，日期和时间的格式化非常诡异，唯一的帮助类 SimpleDateFormat 也是非线程安全的，而且用作局部变量解析和格式化日期时显得很笨重。幸好线程局部变量能使它在多线程环境中变得可用，不过这都是过去时了。Java 8 引入了全新的日期时间格式工具，线程安全而且使用方便。它自带了一些常用的内置格式化工具。</p>
-<p>参见我上一篇文章： <a href="http://www.54tianzhisheng.cn/2018/06/19/SimpleDateFormat/" target="_blank" rel="noopener">《SimpleDateFormat 如何安全的使用？》</a></p>
+<p>参见我上一篇文章： <a href="http://www.54tianzhisheng.cn/2018/06/19/SimpleDateFormat/">《SimpleDateFormat 如何安全的使用？》</a></p>
 <h3 id="示例-19、如何在-Java-中使用自定义格式化工具解析日期"><a href="#示例-19、如何在-Java-中使用自定义格式化工具解析日期" class="headerlink" title="示例 19、如何在 Java 中使用自定义格式化工具解析日期"></a>示例 19、如何在 Java 中使用自定义格式化工具解析日期</h3><p>尽管内置格式化工具很好用，有时还是需要定义特定的日期格式。可以调用 DateTimeFormatter 的 ofPattern() 静态方法并传入任意格式返回其实例，格式中的字符和以前代表的一样，M 代表月，m 代表分。如果格式不规范会抛出 DateTimeParseException 异常，不过如果只是把 M 写成 m 这种逻辑错误是不会抛异常的。</p>
-<p>参见我上一篇文章： <a href="http://www.54tianzhisheng.cn/2018/06/19/SimpleDateFormat/" target="_blank" rel="noopener">《SimpleDateFormat 如何安全的使用？》</a></p>
+<p>参见我上一篇文章： <a href="http://www.54tianzhisheng.cn/2018/06/19/SimpleDateFormat/">《SimpleDateFormat 如何安全的使用？》</a></p>
 <h3 id="示例-20、在-Java-8-中如何把日期转换成字符串"><a href="#示例-20、在-Java-8-中如何把日期转换成字符串" class="headerlink" title="示例 20、在 Java 8 中如何把日期转换成字符串"></a>示例 20、在 Java 8 中如何把日期转换成字符串</h3><p>上两个主要是从字符串解析日期。现在我们反过来，把 LocalDateTime 日期实例转换成特定格式的字符串。这是迄今为止 Java 日期转字符串最为简单的方式了。下面的例子将返回一个代表日期的格式化字符串。和前面类似，还是需要创建 DateTimeFormatter 实例并传入格式，但这回调用的是 format() 方法，而非 parse() 方法。这个方法会把传入的日期转化成指定格式的字符串。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">LocalDateTime arrivalDate  = LocalDateTime.now();</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    DateTimeFormatter format = DateTimeFormatter.ofPattern(<span class="string">"MMMdd yyyy  hh:mm a"</span>);</span><br><span class="line">    String landing = arrivalDate.format(format);</span><br><span class="line">    System.out.printf(<span class="string">"Arriving at :  %s %n"</span>, landing);</span><br><span class="line">&#125;<span class="keyword">catch</span> (DateTimeException ex) &#123;</span><br><span class="line">    System.out.printf(<span class="string">"%s can't be formatted!%n"</span>, arrivalDate);</span><br><span class="line">    ex.printStackTrace();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="Java-8-日期时间-API-的重点"><a href="#Java-8-日期时间-API-的重点" class="headerlink" title="Java 8 日期时间 API 的重点"></a>Java 8 日期时间 API 的重点</h3><p>通过这些例子，你肯定已经掌握了 Java 8 日期时间 API 的新知识点。现在来回顾一下这个优雅 API 的使用要点：</p>
@@ -338,7 +338,7 @@ var _hmt = _hmt || [];
 <p>6）OffsetDateTime 类实际上组合了 LocalDateTime 类和 ZoneOffset 类。用来表示包含和格林威治或 UTC 时差的完整日期（年、月、日）和时间（时、分、秒、纳秒）信息。</p>
 <p>7）DateTimeFormatter 类用来格式化和解析时间。与 SimpleDateFormat 不同，这个类不可变并且线程安全，需要时可以给静态常量赋值。 DateTimeFormatter 类提供了大量的内置格式化工具，同时也允许你自定义。在转换方面也提供了 parse() 将字符串解析成日期，如果解析出错会抛出 DateTimeParseException。DateTimeFormatter 类同时还有format() 用来格式化日期，如果出错会抛出 DateTimeException异常。</p>
 <p>8）再补充一点，日期格式“MMM d yyyy”和“MMM dd yyyy”有一些微妙的不同，第一个格式可以解析“Jan 2 2014”和“Jan 14 2014”，而第二个在解析“Jan 2 2014”就会抛异常，因为第二个格式里要求日必须是两位的。如果想修正，你必须在日期只有个位数时在前面补零，就是说“Jan 2 2014”应该写成 “Jan 02 2014”。</p>
-<h3 id="相关文章"><a href="#相关文章" class="headerlink" title="相关文章"></a>相关文章</h3><p><a href="http://www.54tianzhisheng.cn/2018/06/19/SimpleDateFormat/" target="_blank" rel="noopener">SimpleDateFormat 如何安全的使用？</a></p>
+<h3 id="相关文章"><a href="#相关文章" class="headerlink" title="相关文章"></a>相关文章</h3><p><a href="http://www.54tianzhisheng.cn/2018/06/19/SimpleDateFormat/">SimpleDateFormat 如何安全的使用？</a></p>
 
       
 
@@ -443,7 +443,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2018/06/20/java-8-date/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://www.54tianzhisheng.cn/2018/06/20/java-8-date/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -486,22 +486,22 @@ var _hmt = _hmt || [];
 
 
   <section id="comments">
-<!--高速版，加载速度快，使用前需测试页面的兼容性-->
-<div id="SOHUCS" sid="20 个案例教你在 Java 8 中如何处理日期和时间?"  style="padding: 0px 30px 0px 46px;"></div>
-<script>
-  (function(){
-    var appid = 'cysWCg9Ij',
-    conf = '7f51baf245f3217589bb3b4ba8d8c691';
-    var doc = document,
-    s = doc.createElement('script'),
-    h = doc.getElementsByTagName('head')[0] || doc.head || doc.documentElement;
-    s.type = 'text/javascript';
-    s.charset = 'utf-8';
-    s.src =  'http://assets.changyan.sohu.com/upload/changyan.js?conf='+ conf +'&appid=' + appid;
-    h.insertBefore(s,h.firstChild);
-    window.SCS_NO_IFRAME = true;
-  })()
-</script>
+    <!--高速版，加载速度快，使用前需测试页面的兼容性-->
+    <!-- <div id="SOHUCS" sid="20 个案例教你在 Java 8 中如何处理日期和时间?"  style="padding: 0px 30px 0px 46px;"></div>
+    <script>
+      (function(){
+        var appid = 'cysWCg9Ij',
+        conf = '7f51baf245f3217589bb3b4ba8d8c691';
+        var doc = document,
+        s = doc.createElement('script'),
+        h = doc.getElementsByTagName('head')[0] || doc.head || doc.documentElement;
+        s.type = 'text/javascript';
+        s.charset = 'utf-8';
+        s.src =  'http://assets.changyan.sohu.com/upload/changyan.js?conf='+ conf +'&appid=' + appid;
+        h.insertBefore(s,h.firstChild);
+        window.SCS_NO_IFRAME = true;
+      })()
+    </script> -->
   </section>
   
 
@@ -614,15 +614,15 @@ var _hmt = _hmt || [];
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">AJAX</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Bootstrap</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">AJAX</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -674,14 +674,6 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Guava</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">HBase</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
@@ -690,7 +682,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">HBase</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Guava</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -706,15 +706,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">NIO</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JMM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -726,6 +726,10 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Kafka</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Maven</a>
               </li>
              
@@ -734,7 +738,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Kafka</a>
+                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -743,10 +747,6 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">foreach</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -774,11 +774,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">RocketMQ</a>
+                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+                <a href="javascript:void(0)" class="js-tag color4">RocketMQ</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -798,15 +798,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Velocity</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">线程池</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">博客合集</a>
+                <a href="javascript:void(0)" class="js-tag color4">Velocity</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -818,7 +814,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">流控</a>
+                <a href="javascript:void(0)" class="js-tag color5">博客合集</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -826,11 +822,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">流控</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">IO</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">lombok</a>
+                <a href="javascript:void(0)" class="js-tag color3">文件</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -838,7 +838,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">文件</a>
+                <a href="javascript:void(0)" class="js-tag color2">lombok</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -854,11 +854,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Servlet</a>
+                <a href="javascript:void(0)" class="js-tag color3">书籍</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">书籍</a>
+                <a href="javascript:void(0)" class="js-tag color3">Servlet</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -894,10 +894,6 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">循环队列</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Github Page</a>
               </li>
              
@@ -906,15 +902,19 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">循环队列</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">编码</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">邮件发送</a>
+                <a href="javascript:void(0)" class="js-tag color3">finally</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">finally</a>
+                <a href="javascript:void(0)" class="js-tag color5">邮件发送</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1071,10 +1071,6 @@ var _hmt = _hmt || [];
           
             <li class="search-li">
               <a href="http://dongkelun.com/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>伦少的博客</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://www.codesheep.cn/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>CodeSheep程序羊</a>
             </li>
           
             <li class="search-li">

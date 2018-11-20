@@ -17,14 +17,14 @@
 
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <link rel="dns-prefetch" href="http://yoursite.com">
+  <link rel="dns-prefetch" href="http://www.54tianzhisheng.cn">
   <title>Spring Boot系列文章（三）：SpringBoot  RabbitMQ 整合使用 | zhisheng的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="前提上次写了篇文章，《SpringBoot Kafka 整合使用》，阅读量还挺高的，于是想想还是把其他几种 MQ 也和 SpringBoot 整合使用下。">
 <meta name="keywords" content="RabbitMQ,SpringBoot">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Spring Boot系列文章（三）：SpringBoot  RabbitMQ 整合使用">
-<meta property="og:url" content="http://yoursite.com/2018/01/26/SpringBoot-RabbitMQ/index.html">
+<meta property="og:url" content="http://www.54tianzhisheng.cn/2018/01/26/SpringBoot-RabbitMQ/index.html">
 <meta property="og:site_name" content="zhisheng的博客">
 <meta property="og:description" content="前提上次写了篇文章，《SpringBoot Kafka 整合使用》，阅读量还挺高的，于是想想还是把其他几种 MQ 也和 SpringBoot 整合使用下。">
 <meta property="og:locale" content="zh-Hans">
@@ -271,13 +271,13 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <p><img src="http://ohfk1r827.bkt.clouddn.com/blog/180107/6DFKcmCgC7.png-1" alt="mark"></p>
-<h3 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h3><p>上次写了篇文章，<a href="http://www.54tianzhisheng.cn/2018/01/05/SpringBoot-Kafka/" target="_blank" rel="noopener">《SpringBoot Kafka 整合使用》</a>，阅读量还挺高的，于是想想还是把其他几种 MQ 也和 SpringBoot 整合使用下。</p>
+<h3 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h3><p>上次写了篇文章，<a href="http://www.54tianzhisheng.cn/2018/01/05/SpringBoot-Kafka/">《SpringBoot Kafka 整合使用》</a>，阅读量还挺高的，于是想想还是把其他几种 MQ 也和 SpringBoot 整合使用下。</p>
 <a id="more"></a>
 <p>下面是四种比较流行的 MQ ：</p>
 <p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fnrqdwnlsej30fw07274m.jpg" alt="rabbitmq-1"></p>
 <p>后面都写写和 SpringBoot 整合的文章。</p>
 <h3 id="安装-RabbitMQ"><a href="#安装-RabbitMQ" class="headerlink" title="安装 RabbitMQ"></a>安装 RabbitMQ</h3><p>由于换 Mac 了，所以一些环境就直接在 Mac 搞，但是像安装 RabbitMQ 这些又会把自己电脑系统给搞的太乱，所以能在 Docker 里面安装就安装在 Docker，这次 RabbitMQ 我也直接在 Docker 里安装。</p>
-<p>启动 Docker for Mac，如果没安装过的请看我上一篇文章：<a href="http://www.54tianzhisheng.cn/2018/01/25/Docker-install/" target="_blank" rel="noopener">http://www.54tianzhisheng.cn/2018/01/25/Docker-install/</a></p>
+<p>启动 Docker for Mac，如果没安装过的请看我上一篇文章：<a href="http://www.54tianzhisheng.cn/2018/01/25/Docker-install/">http://www.54tianzhisheng.cn/2018/01/25/Docker-install/</a></p>
 <p>当然你也可以在自己的 Linux 服务器或者虚拟机里启动安装 RabbitMQ 。</p>
 <p>Docker 安装的话很简单，因为 RabbitMQ 官方已经提供了自己的 Docker 容器，只需要一行命令：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d  -p 15672:15672  -p  5672:5672  -e RABBITMQ_DEFAULT_USER=admin -e RABBITMQ_DEFAULT_PASS=admin --name rabbitmq rabbitmq:3-management</span><br></pre></td></tr></table></figure>
@@ -317,7 +317,7 @@ var _hmt = _hmt || [];
 <p>4、<strong>消息接收类</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zhisheng.rabbitmq.server;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.amqp.rabbit.annotation.RabbitListener;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Component;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by zhisheng_tian on 2018/1/23</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RabbitMQServer</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RabbitListener</span>(queues = <span class="string">"zhisheng"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">receive</span><span class="params">(String message)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"收到的 message 是："</span> + message);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>你看，这里就有个 <code>RabbitListener</code> 一直在监听着队列 <code>zhisheng</code> 。</p>
-<p>当然这个队列是必须要我们自己在应用程序中创建好，它不会像我之前写的文章 <a href="http://www.54tianzhisheng.cn/2018/01/05/SpringBoot-Kafka/" target="_blank" rel="noopener">《SpringBoot Kafka 整合使用》</a>  中的 Kafka 一样，Kafka 它会在用到队列的时候动态的创建，不需要我们提前创建好。</p>
+<p>当然这个队列是必须要我们自己在应用程序中创建好，它不会像我之前写的文章 <a href="http://www.54tianzhisheng.cn/2018/01/05/SpringBoot-Kafka/">《SpringBoot Kafka 整合使用》</a>  中的 Kafka 一样，Kafka 它会在用到队列的时候动态的创建，不需要我们提前创建好。</p>
 <p>那么在 RabbitMQ 中该如何创建队列呢？</p>
 <p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fnrqqcykkoj31kw0roajh.jpg" alt="Snip20180124_8"></p>
 <p>如上图所示：这样我们就创建好了一个 <code>zhisheng</code> 的队列，当程序开始运行时，消息接收类会持续监听队列 <code>zhisheng</code> 中即将到来的消息。</p>
@@ -343,7 +343,7 @@ var _hmt = _hmt || [];
 <p>8、<strong>注意</strong></p>
 <p>这里测试发送的消息直接是 String 类型的，你也可以测试下 Bean 类，这需要注意需要序列化。</p>
 <h3 id="关注我"><a href="#关注我" class="headerlink" title="关注我"></a>关注我</h3><p><img src="http://ohfk1r827.bkt.clouddn.com/blog/180103/C6LG3mGa12.jpg" alt="mark"></p>
-<h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>转载请务必注明原创地址为：<a href="http://www.54tianzhisheng.cn/2018/01/26/SpringBoot-RabbitMQ/" target="_blank" rel="noopener">http://www.54tianzhisheng.cn/2018/01/26/SpringBoot-RabbitMQ/</a></p>
+<h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>转载请务必注明原创地址为：<a href="http://www.54tianzhisheng.cn/2018/01/26/SpringBoot-RabbitMQ/">http://www.54tianzhisheng.cn/2018/01/26/SpringBoot-RabbitMQ/</a></p>
 <p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fp3jkmizmpj30o00didgn.jpg" alt=""></p>
 
       
@@ -453,7 +453,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2018/01/26/SpringBoot-RabbitMQ/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://www.54tianzhisheng.cn/2018/01/26/SpringBoot-RabbitMQ/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -496,22 +496,22 @@ var _hmt = _hmt || [];
 
 
   <section id="comments">
-<!--高速版，加载速度快，使用前需测试页面的兼容性-->
-<div id="SOHUCS" sid="Spring Boot系列文章（三）：SpringBoot  RabbitMQ 整合使用"  style="padding: 0px 30px 0px 46px;"></div>
-<script>
-  (function(){
-    var appid = 'cysWCg9Ij',
-    conf = '7f51baf245f3217589bb3b4ba8d8c691';
-    var doc = document,
-    s = doc.createElement('script'),
-    h = doc.getElementsByTagName('head')[0] || doc.head || doc.documentElement;
-    s.type = 'text/javascript';
-    s.charset = 'utf-8';
-    s.src =  'http://assets.changyan.sohu.com/upload/changyan.js?conf='+ conf +'&appid=' + appid;
-    h.insertBefore(s,h.firstChild);
-    window.SCS_NO_IFRAME = true;
-  })()
-</script>
+    <!--高速版，加载速度快，使用前需测试页面的兼容性-->
+    <!-- <div id="SOHUCS" sid="Spring Boot系列文章（三）：SpringBoot  RabbitMQ 整合使用"  style="padding: 0px 30px 0px 46px;"></div>
+    <script>
+      (function(){
+        var appid = 'cysWCg9Ij',
+        conf = '7f51baf245f3217589bb3b4ba8d8c691';
+        var doc = document,
+        s = doc.createElement('script'),
+        h = doc.getElementsByTagName('head')[0] || doc.head || doc.documentElement;
+        s.type = 'text/javascript';
+        s.charset = 'utf-8';
+        s.src =  'http://assets.changyan.sohu.com/upload/changyan.js?conf='+ conf +'&appid=' + appid;
+        h.insertBefore(s,h.firstChild);
+        window.SCS_NO_IFRAME = true;
+      })()
+    </script> -->
   </section>
   
 
@@ -624,15 +624,15 @@ var _hmt = _hmt || [];
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">AJAX</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Bootstrap</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">AJAX</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -684,14 +684,6 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Guava</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">HBase</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
@@ -700,7 +692,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">HBase</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Guava</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -716,15 +716,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">NIO</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JMM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">多线程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -736,6 +736,10 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Kafka</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Maven</a>
               </li>
              
@@ -744,7 +748,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Kafka</a>
+                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -753,10 +757,6 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">foreach</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -784,11 +784,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">RocketMQ</a>
+                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+                <a href="javascript:void(0)" class="js-tag color4">RocketMQ</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -808,15 +808,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Velocity</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">线程池</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">博客合集</a>
+                <a href="javascript:void(0)" class="js-tag color4">Velocity</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -828,7 +824,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">流控</a>
+                <a href="javascript:void(0)" class="js-tag color5">博客合集</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -836,11 +832,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">流控</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">IO</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">lombok</a>
+                <a href="javascript:void(0)" class="js-tag color3">文件</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -848,7 +848,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">文件</a>
+                <a href="javascript:void(0)" class="js-tag color2">lombok</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -864,11 +864,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Servlet</a>
+                <a href="javascript:void(0)" class="js-tag color3">书籍</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">书籍</a>
+                <a href="javascript:void(0)" class="js-tag color3">Servlet</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -904,10 +904,6 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">循环队列</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Github Page</a>
               </li>
              
@@ -916,15 +912,19 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">循环队列</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">编码</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">邮件发送</a>
+                <a href="javascript:void(0)" class="js-tag color3">finally</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">finally</a>
+                <a href="javascript:void(0)" class="js-tag color5">邮件发送</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1081,10 +1081,6 @@ var _hmt = _hmt || [];
           
             <li class="search-li">
               <a href="http://dongkelun.com/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>伦少的博客</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://www.codesheep.cn/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>CodeSheep程序羊</a>
             </li>
           
             <li class="search-li">
