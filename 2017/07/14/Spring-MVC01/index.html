@@ -28,17 +28,17 @@
 <meta property="og:site_name" content="zhisheng的博客">
 <meta property="og:description" content="网站架构及其演变过程基础结构网络传输分解方式：  标准的 OSI 参考模型 TCP/IP 参考模型">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://ohfk1r827.bkt.clouddn.com/OSI-TCPIP.jpg">
-<meta property="og:image" content="http://ohfk1r827.bkt.clouddn.com/read-write.jpg">
-<meta property="og:image" content="http://ohfk1r827.bkt.clouddn.com/sql-1.jpg">
-<meta property="og:image" content="http://ohfk1r827.bkt.clouddn.com/TCP.jpg">
-<meta property="og:image" content="http://ohfk1r827.bkt.clouddn.com/dns.jpg">
+<meta property="og:image" content="http://image.54tianzhisheng.cn/OSI-TCPIP.jpg">
+<meta property="og:image" content="http://image.54tianzhisheng.cn/read-write.jpg">
+<meta property="og:image" content="http://image.54tianzhisheng.cn/sql-1.jpg">
+<meta property="og:image" content="http://image.54tianzhisheng.cn/TCP.jpg">
+<meta property="og:image" content="http://image.54tianzhisheng.cn/dns.jpg">
 <meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79gy1fp3jkmizmpj30o00didgn.jpg">
-<meta property="og:updated_time" content="2018-03-24T02:28:33.000Z">
+<meta property="og:updated_time" content="2018-11-22T14:51:59.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spring MVC系列文章（三）：看透 Spring MVC 源代码分析与实践 ——  网站基础知识">
 <meta name="twitter:description" content="网站架构及其演变过程基础结构网络传输分解方式：  标准的 OSI 参考模型 TCP/IP 参考模型">
-<meta name="twitter:image" content="http://ohfk1r827.bkt.clouddn.com/OSI-TCPIP.jpg">
+<meta name="twitter:image" content="http://image.54tianzhisheng.cn/OSI-TCPIP.jpg">
   
     <link rel="alternative" href="/atom.xml" title="zhisheng的博客" type="application/atom+xml">
   
@@ -268,7 +268,7 @@ var _hmt = _hmt || [];
 <li>标准的 OSI 参考模型</li>
 <li>TCP/IP 参考模型</li>
 </ul>
-<p><img src="http://ohfk1r827.bkt.clouddn.com/OSI-TCPIP.jpg" alt="OSI-TCPIP"><br><a id="more"></a></p>
+<p><img src="http://image.54tianzhisheng.cn/OSI-TCPIP.jpg" alt="OSI-TCPIP"><br><a id="more"></a></p>
 <h4 id="海量数据的解决方案"><a href="#海量数据的解决方案" class="headerlink" title="海量数据的解决方案"></a>海量数据的解决方案</h4><ul>
 <li>缓存和页面静态化<ul>
 <li>缓存<ul>
@@ -294,10 +294,10 @@ var _hmt = _hmt || [];
 <li>分离活跃数据</li>
 <li>批量读取和延迟修改</li>
 <li><p>读写分离</p>
-<p><img src="http://ohfk1r827.bkt.clouddn.com/read-write.jpg" alt="read-write"></p>
+<p><img src="http://image.54tianzhisheng.cn/read-write.jpg" alt="read-write"></p>
 </li>
 <li><p>分布式数据库</p>
-<p><img src="http://ohfk1r827.bkt.clouddn.com/sql-1.jpg" alt="sql-1"></p>
+<p><img src="http://image.54tianzhisheng.cn/sql-1.jpg" alt="sql-1"></p>
 </li>
 <li><p>NoSQL 和 Hadoop</p>
 </li>
@@ -321,9 +321,9 @@ var _hmt = _hmt || [];
 <li>SYN：同步位，用于在建立连接时同步序号。刚开始建立连接时并没有历史接收的数据，所以 ack  也就没有办法设置，这是按照正常的机制就无法运行了，SYN 的作用就是解决这个问题的，当接收端接收到 SYN = 1 的报文时就会直接将 ack 设置为接收到的 seq + 1 的值，注意这里的值并不是检验后设置的，而是根据 SYN 直接设置的，这样正常的机制就可以运行了，所以 SYN 叫同步位。SYN 会在前两次握手时都为 1，这是因为通信的双方的 ack 都需要设置一个初始值。</li>
 <li>FIN：终止位，用来在数据传输完毕后释放连接。</li>
 </ul>
-<p><img src="http://ohfk1r827.bkt.clouddn.com/TCP.jpg" alt="TCP"></p>
+<p><img src="http://image.54tianzhisheng.cn/TCP.jpg" alt="TCP"></p>
 <h3 id="DNS-的设置"><a href="#DNS-的设置" class="headerlink" title="DNS 的设置"></a>DNS 的设置</h3><h4 id="DNS-解析"><a href="#DNS-解析" class="headerlink" title="DNS 解析"></a>DNS 解析</h4><p>参考域名设置，如下是我在腾讯云域名的设置</p>
-<p><img src="http://ohfk1r827.bkt.clouddn.com/dns.jpg" alt="dns"></p>
+<p><img src="http://image.54tianzhisheng.cn/dns.jpg" alt="dns"></p>
 <p>记录类型：</p>
 <p><strong>A记录：</strong> 将域名指向一个IPv4地址（例如：8.8.8.8）<br><strong>CNAME</strong>：将域名指向另一个域名（例如 www.54tianzhisheng.cn）<br><strong>MX</strong>： 将域名指向邮件服务器地址<br><strong>TXT</strong>： 可任意填写，长度限制255，通常做SPF记录（反垃圾邮件）<br><strong>NS</strong>： 域名服务器记录，将子域名指定其他DNS服务器解析<br><strong>AAAA</strong>：将域名指向一个iPv6地址（例如：ff06:0:0:0:0:0:0:c3）<br><strong>SRV</strong>：记录提供特定服务的服务器（例如_xmpp-server._tcp）<br><strong>显性URL</strong>：将域名301重定向到另一个地址<br><strong>隐性URL</strong>：类似显性URL，但是会隐藏真实目标地址</p>
 <p>主机记录：</p>
@@ -458,18 +458,18 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/2017/07/14/Spring-MVC02/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/07/21/Spring-MVC03/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Spring MVC系列文章（四）：看透 Spring MVC 源代码分析与实践 ——  俯视 Spring MVC
+          Spring MVC系列文章（五）：看透 Spring MVC 源代码分析与实践 ——  Spring MVC 组件分析
         
       </div>
     </a>
   
   
-    <a href="/2017/07/09/servlet/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">通过源码详解 Servlet</div>
+    <a href="/2017/07/14/Spring-MVC02/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Spring MVC系列文章（四）：看透 Spring MVC 源代码分析与实践 ——  俯视 Spring MVC</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -615,6 +615,14 @@ var _hmt = _hmt || [];
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">AJAX</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
@@ -623,27 +631,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">AJAX</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Docker</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">分布式锁</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Redis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Zookeeper</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -659,6 +647,22 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">分布式锁</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Zookeeper</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Flink</a>
               </li>
              
@@ -671,7 +675,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color1">Guava</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -691,11 +695,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Guava</a>
+                <a href="javascript:void(0)" class="js-tag color3">面经</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">面经</a>
+                <a href="javascript:void(0)" class="js-tag color4">NIO</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -707,11 +711,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">NIO</a>
+                <a href="javascript:void(0)" class="js-tag color4">JMM</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JMM</a>
+                <a href="javascript:void(0)" class="js-tag color1">Kafka</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -727,19 +731,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Kafka</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">投资理财</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -751,7 +743,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
+                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -767,6 +763,10 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
               </li>
              
@@ -775,11 +775,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+                <a href="javascript:void(0)" class="js-tag color4">RocketMQ</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">RocketMQ</a>
+                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -799,11 +799,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">线程池</a>
+                <a href="javascript:void(0)" class="js-tag color4">Velocity</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Velocity</a>
+                <a href="javascript:void(0)" class="js-tag color4">线程池</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -811,15 +811,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Consul</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">博客合集</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">GO</a>
+                <a href="javascript:void(0)" class="js-tag color2">Consul</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -827,11 +823,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">IO</a>
+                <a href="javascript:void(0)" class="js-tag color3">GO</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">文件</a>
+                <a href="javascript:void(0)" class="js-tag color3">IO</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -839,7 +835,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">文件</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">lombok</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Netty</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -851,19 +855,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Netty</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">书籍</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Servlet</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">微服务</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">书籍</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -895,19 +895,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">循环队列</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Github Page</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">博客网站</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">循环队列</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">编码</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -919,7 +915,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">类加载机制</a>
+                <a href="javascript:void(0)" class="js-tag color3">编码</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -927,7 +927,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
+                <a href="javascript:void(0)" class="js-tag color1">类加载机制</a>
               </li>
             
             <div class="clearfix"></div>

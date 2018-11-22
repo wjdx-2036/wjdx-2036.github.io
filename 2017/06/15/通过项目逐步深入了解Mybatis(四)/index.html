@@ -28,21 +28,21 @@
 <meta property="og:site_name" content="zhisheng的博客">
 <meta property="og:description" content="相关阅读： 1、通过项目逐步深入了解Mybatis&amp;lt;一&amp;gt; 2、通过项目逐步深入了解Mybatis&amp;lt;二&amp;gt; 3、通过项目逐步深入了解Mybatis&amp;lt;三&amp;gt; 本项目所有代码及文档都托管在 Github地址：https://github.com/zhisheng17/mybatis 延迟加载什么是延迟加载？resultMap可以实现高级映射（使用association、c">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://ohfk1r827.bkt.clouddn.com/Test14.jpg">
-<meta property="og:image" content="http://ohfk1r827.bkt.clouddn.com/cache.jpg">
-<meta property="og:image" content="http://ohfk1r827.bkt.clouddn.com/cache1.jpg">
-<meta property="og:image" content="http://ohfk1r827.bkt.clouddn.com/Test15.jpg">
-<meta property="og:image" content="http://ohfk1r827.bkt.clouddn.com/Test16.jpg">
-<meta property="og:image" content="http://ohfk1r827.bkt.clouddn.com/cache2.jpg">
-<meta property="og:image" content="http://ohfk1r827.bkt.clouddn.com/Test17.jpg">
-<meta property="og:image" content="http://ohfk1r827.bkt.clouddn.com/eheache.jpg">
-<meta property="og:image" content="http://ohfk1r827.bkt.clouddn.com/Test18.jpg">
+<meta property="og:image" content="http://image.54tianzhisheng.cn/Test14.jpg">
+<meta property="og:image" content="http://image.54tianzhisheng.cn/cache.jpg">
+<meta property="og:image" content="http://image.54tianzhisheng.cn/cache1.jpg">
+<meta property="og:image" content="http://image.54tianzhisheng.cn/Test15.jpg">
+<meta property="og:image" content="http://image.54tianzhisheng.cn/Test16.jpg">
+<meta property="og:image" content="http://image.54tianzhisheng.cn/cache2.jpg">
+<meta property="og:image" content="http://image.54tianzhisheng.cn/Test17.jpg">
+<meta property="og:image" content="http://image.54tianzhisheng.cn/eheache.jpg">
+<meta property="og:image" content="http://image.54tianzhisheng.cn/Test18.jpg">
 <meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79gy1fp3jkmizmpj30o00didgn.jpg">
-<meta property="og:updated_time" content="2018-03-06T16:06:36.000Z">
+<meta property="og:updated_time" content="2018-11-22T14:51:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="通过项目逐步深入了解Mybatis（四）">
 <meta name="twitter:description" content="相关阅读： 1、通过项目逐步深入了解Mybatis&amp;lt;一&amp;gt; 2、通过项目逐步深入了解Mybatis&amp;lt;二&amp;gt; 3、通过项目逐步深入了解Mybatis&amp;lt;三&amp;gt; 本项目所有代码及文档都托管在 Github地址：https://github.com/zhisheng17/mybatis 延迟加载什么是延迟加载？resultMap可以实现高级映射（使用association、c">
-<meta name="twitter:image" content="http://ohfk1r827.bkt.clouddn.com/Test14.jpg">
+<meta name="twitter:image" content="http://image.54tianzhisheng.cn/Test14.jpg">
   
     <link rel="alternative" href="/atom.xml" title="zhisheng的博客" type="application/atom+xml">
   
@@ -317,7 +317,7 @@ var _hmt = _hmt || [];
 <h3 id="延迟加载的-resultMap"><a href="#延迟加载的-resultMap" class="headerlink" title="延迟加载的 resultMap"></a>延迟加载的 resultMap</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--定义 关联用户信息（通过 association 延迟加载）的resultMap--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">resultMap</span> <span class="attr">id</span>=<span class="string">"OrdersUserLazyLoadingResultMap"</span> <span class="attr">type</span>=<span class="string">"cn.zhisheng.mybatis.po.Orders"</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--对订单信息映射--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">id</span> <span class="attr">column</span>=<span class="string">"id"</span> <span class="attr">property</span>=<span class="string">"id"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"user_id"</span> <span class="attr">property</span>=<span class="string">"userId"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"number"</span> <span class="attr">property</span>=<span class="string">"number"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"createtime"</span> <span class="attr">property</span>=<span class="string">"createtime"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"note"</span> <span class="attr">property</span>=<span class="string">"note"</span>/&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 实现对用户信息进行延迟加载</span></span><br><span class="line"><span class="comment">		select：指定延迟加载需要执行的statement的id（是根据user_id查询用户信息的statement）</span></span><br><span class="line"><span class="comment">		要使用userMapper.xml中findUserById完成根据用户id(user_id)用户信息的查询，如果findUserById不在本mapper中需要前边加namespace</span></span><br><span class="line"><span class="comment">		column：订单信息中关联用户信息查询的列，是user_id</span></span><br><span class="line"><span class="comment">		关联查询的sql理解为：</span></span><br><span class="line"><span class="comment">			SELECT orders.*,</span></span><br><span class="line"><span class="comment">	        (SELECT username FROM USER WHERE orders.user_id = user.id)username,</span></span><br><span class="line"><span class="comment">	        (SELECT sex FROM USER WHERE orders.user_id = user.id)sex</span></span><br><span class="line"><span class="comment">	        FROM orders--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">association</span> <span class="attr">property</span>=<span class="string">"user"</span> <span class="attr">javaType</span>=<span class="string">"cn.zhisheng.mybatis.po.User"</span> <span class="attr">select</span>=<span class="string">"cn.zhisheng.mybatis.mapper.UserMapper.findUserById"</span> <span class="attr">column</span>=<span class="string">"user_id"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">association</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">resultMap</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <h3 id="OrderMapperCustom-java"><a href="#OrderMapperCustom-java" class="headerlink" title="OrderMapperCustom.java"></a>OrderMapperCustom.java</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> List&lt;Orders&gt; <span class="title">findOrdersUserLazyLoading</span><span class="params">()</span> <span class="keyword">throws</span> Exception</span>;</span><br></pre></td></tr></table></figure>
 <h3 id="测试代码："><a href="#测试代码：" class="headerlink" title="测试代码："></a>测试代码：</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testFindOrdersUserLazyLoading</span><span class="params">()</span> <span class="keyword">throws</span> Exception</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        SqlSession sqlSession = sqlSessionFactory.openSession();</span><br><span class="line">        <span class="comment">//创建OrdersMapperCustom对象,mybatis自动生成代理对象</span></span><br><span class="line">        OrdersMapperCustom ordersMapperCustom = sqlSession.getMapper(OrdersMapperCustom.class);</span><br><span class="line">        <span class="comment">//查询订单信息</span></span><br><span class="line">        List&lt;Orders&gt; list = ordersMapperCustom.findOrdersUserLazyLoading();</span><br><span class="line">        <span class="comment">//遍历所查询的的订单信息</span></span><br><span class="line">        <span class="keyword">for</span> (Orders orders : list)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//查询用户信息</span></span><br><span class="line">            User user = orders.getUser();</span><br><span class="line">            System.out.println(user);</span><br><span class="line">        &#125;</span><br><span class="line">        sqlSession.close();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h3 id="测试结果："><a href="#测试结果：" class="headerlink" title="测试结果："></a>测试结果：</h3><p><img src="http://ohfk1r827.bkt.clouddn.com/Test14.jpg" alt=""></p>
+<h3 id="测试结果："><a href="#测试结果：" class="headerlink" title="测试结果："></a>测试结果：</h3><p><img src="http://image.54tianzhisheng.cn/Test14.jpg" alt=""></p>
 <p>整个延迟加载的思路：</p>
 <p>1、执行上边mapper方法（findOrdersUserLazyLoading），内部去调用cn.zhisheng.mybatis.mapper.OrdersMapperCustom 中的 findOrdersUserLazyLoading 只查询 orders 信息（单表）。</p>
 <p>2、在程序中去遍历上一步骤查询出的 List<orders>，当我们调用 Orders 中的 getUser 方法时，开始进行延迟加载。</orders></p>
@@ -345,7 +345,7 @@ var _hmt = _hmt || [];
 </blockquote>
 <h2 id="查询缓存"><a href="#查询缓存" class="headerlink" title="查询缓存"></a>查询缓存</h2><h3 id="什么是查询缓存？"><a href="#什么是查询缓存？" class="headerlink" title="什么是查询缓存？"></a>什么是查询缓存？</h3><p>mybatis提供查询缓存，用于减轻数据压力，提高数据库性能。</p>
 <p>mybaits提供一级缓存，和二级缓存。</p>
-<p><img src="http://ohfk1r827.bkt.clouddn.com/cache.jpg" alt=""></p>
+<p><img src="http://image.54tianzhisheng.cn/cache.jpg" alt=""></p>
 <ul>
 <li>一级缓存是SqlSession级别的缓存。在操作数据库时需要构造 sqlSession对象，在对象中有一个数据结构（HashMap）用于存储缓存数据。不同的sqlSession之间的缓存数据区域（HashMap）是互相不影响的。</li>
 <li><p>二级缓存是mapper级别的缓存，多个SqlSession去操作同一个Mapper的sql语句，多个SqlSession可以共用二级缓存，二级缓存是跨SqlSession的。</p>
@@ -354,7 +354,7 @@ var _hmt = _hmt || [];
 </ul>
 <p>如果缓存中有数据就不用从数据库中获取，大大提高系统性能。</p>
 <h3 id="一级缓存"><a href="#一级缓存" class="headerlink" title="一级缓存"></a>一级缓存</h3><p><strong>工作原理</strong>：</p>
-<p><img src="http://ohfk1r827.bkt.clouddn.com/cache1.jpg" alt=""></p>
+<p><img src="http://image.54tianzhisheng.cn/cache1.jpg" alt=""></p>
 <p>第一次发起查询用户id为1的用户信息，先去找缓存中是否有id为1的用户信息，如果没有，从数据库查询用户信息。</p>
 <p>得到用户信息，将用户信息存储到一级缓存中。</p>
 <p>如果sqlSession去执行commit操作（执行插入、更新、删除），清空SqlSession中的一级缓存，这样做的目的为了让缓存中存储的是最新的信息，避免脏读。</p>
@@ -363,12 +363,12 @@ var _hmt = _hmt || [];
 <p>Mybatis 默认支持一级缓存，不需要在配置文件中配置。</p>
 <p>所以我们直接按照上面的步骤进行测试：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//一级缓存测试</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span>  <span class="title">testCache1</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        SqlSession sqlSession = sqlSessionFactory.openSession();</span><br><span class="line">        <span class="comment">//创建UserMapper对象,mybatis自动生成代理对象</span></span><br><span class="line">        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);</span><br><span class="line">        <span class="comment">//查询使用的是同一个session</span></span><br><span class="line">        <span class="comment">//第一次发起请求，查询Id 为1的用户信息</span></span><br><span class="line">        User user1 = userMapper.findUserById(<span class="number">1</span>);</span><br><span class="line">        System.out.println(user1);</span><br><span class="line">        <span class="comment">//第二次发起请求，查询Id 为1的用户信息</span></span><br><span class="line">        User user2 = userMapper.findUserById(<span class="number">1</span>);</span><br><span class="line">        System.out.println(user2);</span><br><span class="line">        sqlSession.close();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p><img src="http://ohfk1r827.bkt.clouddn.com/Test15.jpg" alt=""></p>
+<p><img src="http://image.54tianzhisheng.cn/Test15.jpg" alt=""></p>
 <p>通过结果可以看出第二次没有发出sql查询请求，</p>
 <p>所以我们需要在中间执行 commit 操作</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//如果sqlSession去执行commit操作（执行插入、更新、删除），</span></span><br><span class="line"><span class="comment">// 清空SqlSession中的一级缓存，这样做的目的为了让缓存中存储的是最新的信息，避免脏读。</span></span><br><span class="line"><span class="comment">//更新user1的信息，</span></span><br><span class="line">user1.setUsername(<span class="string">"李飞"</span>);</span><br><span class="line"><span class="comment">//user1.setSex("男");</span></span><br><span class="line"><span class="comment">//user1.setAddress("北京");</span></span><br><span class="line">userMapper.updateUserById(user1);</span><br><span class="line"><span class="comment">//提交事务,才会去清空缓存</span></span><br><span class="line">sqlSession.commit();</span><br></pre></td></tr></table></figure>
 <p>测试</p>
-<p><img src="http://ohfk1r827.bkt.clouddn.com/Test16.jpg" alt=""></p>
+<p><img src="http://image.54tianzhisheng.cn/Test16.jpg" alt=""></p>
 <p><strong>一级缓存应用</strong></p>
 <p>正式开发，是将 mybatis 和 spring 进行整合开发，事务控制在 service 中。</p>
 <p>一个 service 方法中包括很多 mapper 方法调用。</p>
@@ -383,7 +383,7 @@ var _hmt = _hmt || [];
 </code></pre><p>}</p>
 <p>如果是执行两次service调用查询相同的用户信息，不走一级缓存，因为session方法结束，sqlSession就关闭，一级缓存就清空。</p>
 <h3 id="二级缓存"><a href="#二级缓存" class="headerlink" title="二级缓存"></a>二级缓存</h3><p>原理</p>
-<p><img src="http://ohfk1r827.bkt.clouddn.com/cache2.jpg" alt=""></p>
+<p><img src="http://image.54tianzhisheng.cn/cache2.jpg" alt=""></p>
 <p>首先开启mybatis的二级缓存。</p>
 <p> sqlSession1去查询用户id为1的用户信息，查询到用户信息会将查询数据存储到二级缓存中。</p>
 <p>如果SqlSession3去执行相同 mapper下sql，执行commit提交，清空该 mapper下的二级缓存区域的数据。</p>
@@ -402,7 +402,7 @@ var _hmt = _hmt || [];
 <p><strong>测试</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//二级缓存测试</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testCache2</span><span class="params">()</span> <span class="keyword">throws</span> Exception</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        SqlSession sqlSession1 = sqlSessionFactory.openSession();</span><br><span class="line">        SqlSession sqlSession2 = sqlSessionFactory.openSession();</span><br><span class="line">        SqlSession sqlSession3 = sqlSessionFactory.openSession();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">//创建UserMapper对象,mybatis自动生成代理对象</span></span><br><span class="line">        UserMapper userMapper1 = sqlSession1.getMapper(UserMapper.class);</span><br><span class="line">        <span class="comment">//sqlSession1 执行查询 写入缓存(第一次查询请求)</span></span><br><span class="line">        User user1 = userMapper1.findUserById(<span class="number">1</span>);</span><br><span class="line">        System.out.println(user1);</span><br><span class="line">        sqlSession1.close();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">//sqlSession3  执行提交  清空缓存</span></span><br><span class="line">        UserMapper userMapper3 = sqlSession3.getMapper(UserMapper.class);</span><br><span class="line">        User user3 = userMapper3.findUserById(<span class="number">1</span>);</span><br><span class="line">        user3.setSex(<span class="string">"女"</span>);</span><br><span class="line">        user3.setAddress(<span class="string">"山东济南"</span>);</span><br><span class="line">        user3.setUsername(<span class="string">"崔建"</span>);</span><br><span class="line">        userMapper3.updateUserById(user3);</span><br><span class="line">        <span class="comment">//提交事务，清空缓存</span></span><br><span class="line">        sqlSession3.commit();</span><br><span class="line">        sqlSession3.close();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//sqlSession2 执行查询(第二次查询请求)</span></span><br><span class="line">        UserMapper userMapper2 = sqlSession2.getMapper(UserMapper.class);</span><br><span class="line">        User user2 = userMapper2.findUserById(<span class="number">1</span>);</span><br><span class="line">        System.out.println(user2);</span><br><span class="line">        sqlSession2.close();</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
 <p><strong>结果</strong>：</p>
-<p><img src="http://ohfk1r827.bkt.clouddn.com/Test17.jpg" alt=""></p>
+<p><img src="http://image.54tianzhisheng.cn/Test17.jpg" alt=""></p>
 <p><strong>useCache 配置</strong></p>
 <p> 在 statement 中设置 useCache=false 可以禁用当前 select 语句的二级缓存，即每次查询都会发出sql去查询，默认情况是true，即该sql使用二级缓存。</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"findUserById"</span> <span class="attr">parameterType</span>=<span class="string">"int"</span> <span class="attr">resultType</span>=<span class="string">"user"</span> <span class="attr">useCache</span>=<span class="string">"false"</span>&gt;</span></span><br></pre></td></tr></table></figure>
@@ -432,7 +432,7 @@ var _hmt = _hmt || [];
 <h3 id="Mybatis-整合-ehcache"><a href="#Mybatis-整合-ehcache" class="headerlink" title="Mybatis 整合 ehcache"></a>Mybatis 整合 ehcache</h3><p>ehcache 是一个分布式缓存框架。</p>
 <p><strong>分布缓存</strong></p>
 <p>我们系统为了提高系统并发，性能、一般对系统进行分布式部署（集群部署方式）</p>
-<p><img src="http://ohfk1r827.bkt.clouddn.com/eheache.jpg" alt=""></p>
+<p><img src="http://image.54tianzhisheng.cn/eheache.jpg" alt=""></p>
 <p>不使用分布缓存，缓存的数据在各各服务单独存储，不方便系统 开发。所以要使用分布式缓存对缓存数据进行集中管理。</p>
 <p>mybatis无法实现分布式缓存，需要和其它分布式缓存框架进行整合。</p>
 <p><strong>整合方法</strong></p>
@@ -480,7 +480,7 @@ var _hmt = _hmt || [];
 </li>
 </ul>
 <p><strong>测试</strong> ：(这命中率就代表成功将ehcache 与 mybatis 整合了)</p>
-<p><img src="http://ohfk1r827.bkt.clouddn.com/Test18.jpg" alt=""></p>
+<p><img src="http://image.54tianzhisheng.cn/Test18.jpg" alt=""></p>
 <h3 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h3><p>对于访问多的查询请求且用户对查询结果实时性要求不高，此时可采用 mybatis 二级缓存技术降低数据库访问量，提高访问速度，业务场景比如：耗时较高的统计分析sql、电话账单查询sql等。</p>
 <p>实现方法如下：通过设置刷新间隔时间，由 mybatis 每隔一段时间自动清空缓存，根据数据变化频率设置缓存刷新间隔 flushInterval，比如设置为30分钟、60分钟、24小时等，根据需求而定。</p>
 <h3 id="局限性"><a href="#局限性" class="headerlink" title="局限性"></a>局限性</h3><p>mybatis 二级缓存对细粒度的数据级别的缓存实现不好，比如如下需求：对商品信息进行缓存，由于商品信息查询访问量大，但是要求用户每次都能查询最新的商品信息，此时如果使用 mybatis 的二级缓存就无法实现当一个商品变化时只刷新该商品的缓存信息而不刷新其它商品的信息，因为 mybaits 的二级缓存区域以 mapper 为单位划分，当一个商品信息变化会将所有商品信息的缓存数据全部清空。解决此类问题需要在业务层根据需求对数据有针对性缓存。</p>
@@ -764,6 +764,14 @@ var _hmt = _hmt || [];
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">AJAX</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
@@ -772,27 +780,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">AJAX</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Docker</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">分布式锁</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Redis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Zookeeper</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -808,6 +796,22 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">分布式锁</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Zookeeper</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Flink</a>
               </li>
              
@@ -820,7 +824,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color1">Guava</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -840,11 +844,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Guava</a>
+                <a href="javascript:void(0)" class="js-tag color3">面经</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">面经</a>
+                <a href="javascript:void(0)" class="js-tag color4">NIO</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -856,11 +860,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">NIO</a>
+                <a href="javascript:void(0)" class="js-tag color4">JMM</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JMM</a>
+                <a href="javascript:void(0)" class="js-tag color1">Kafka</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -876,19 +880,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Kafka</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">投资理财</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -900,7 +892,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
+                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -916,6 +912,10 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
               </li>
              
@@ -924,11 +924,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+                <a href="javascript:void(0)" class="js-tag color4">RocketMQ</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">RocketMQ</a>
+                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -948,11 +948,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">线程池</a>
+                <a href="javascript:void(0)" class="js-tag color4">Velocity</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Velocity</a>
+                <a href="javascript:void(0)" class="js-tag color4">线程池</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -960,15 +960,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Consul</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">博客合集</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">GO</a>
+                <a href="javascript:void(0)" class="js-tag color2">Consul</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -976,11 +972,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">IO</a>
+                <a href="javascript:void(0)" class="js-tag color3">GO</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">文件</a>
+                <a href="javascript:void(0)" class="js-tag color3">IO</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -988,7 +984,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">文件</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">lombok</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Netty</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1000,19 +1004,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Netty</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">书籍</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Servlet</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">微服务</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">书籍</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1044,19 +1044,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">循环队列</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Github Page</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">博客网站</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">循环队列</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">编码</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1068,7 +1064,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">类加载机制</a>
+                <a href="javascript:void(0)" class="js-tag color3">编码</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1076,7 +1076,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
+                <a href="javascript:void(0)" class="js-tag color1">类加载机制</a>
               </li>
             
             <div class="clearfix"></div>

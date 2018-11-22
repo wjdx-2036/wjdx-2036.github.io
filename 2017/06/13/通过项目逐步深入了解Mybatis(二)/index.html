@@ -28,22 +28,22 @@
 <meta property="og:site_name" content="zhisheng的博客">
 <meta property="og:description" content="转载请务必注明出处，原创不易！  相关文章：通过项目逐步深入了解Mybatis&amp;lt;一&amp;gt;本项目全部代码地址：Github-Mybatis Mybatis 解决 jdbc 编程的问题1、  数据库链接创建、释放频繁造成系统资源浪费从而影响系统性能，如果使用数据库链接池可解决此问题。 解决：在SqlMapConfig.xml中配置数据链接池，使用连接池管理数据库链接。 2、  Sql语句写在代">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://ohfk1r827.bkt.clouddn.com/dao%E5%BC%80%E5%8F%91.jpg">
-<meta property="og:image" content="http://ohfk1r827.bkt.clouddn.com/mapper%E5%BC%80%E5%8F%91.jpg">
-<meta property="og:image" content="http://ohfk1r827.bkt.clouddn.com/mapper%E5%BC%80%E5%8F%912.jpg">
-<meta property="og:image" content="http://ohfk1r827.bkt.clouddn.com/%E6%8A%A5%E9%94%99.jpg">
-<meta property="og:image" content="http://ohfk1r827.bkt.clouddn.com/setting.jpg">
-<meta property="og:image" content="http://ohfk1r827.bkt.clouddn.com/Test4.jpg">
-<meta property="og:image" content="http://ohfk1r827.bkt.clouddn.com/Test5.jpg">
-<meta property="og:image" content="http://ohfk1r827.bkt.clouddn.com/Test6.jpg">
-<meta property="og:image" content="http://ohfk1r827.bkt.clouddn.com/Test7.jpg">
-<meta property="og:image" content="http://ohfk1r827.bkt.clouddn.com/Test8.jpg">
+<meta property="og:image" content="http://image.54tianzhisheng.cn/dao%E5%BC%80%E5%8F%91.jpg">
+<meta property="og:image" content="http://image.54tianzhisheng.cn/mapper%E5%BC%80%E5%8F%91.jpg">
+<meta property="og:image" content="http://image.54tianzhisheng.cn/mapper%E5%BC%80%E5%8F%912.jpg">
+<meta property="og:image" content="http://image.54tianzhisheng.cn/%E6%8A%A5%E9%94%99.jpg">
+<meta property="og:image" content="http://image.54tianzhisheng.cn/setting.jpg">
+<meta property="og:image" content="http://image.54tianzhisheng.cn/Test4.jpg">
+<meta property="og:image" content="http://image.54tianzhisheng.cn/Test5.jpg">
+<meta property="og:image" content="http://image.54tianzhisheng.cn/Test6.jpg">
+<meta property="og:image" content="http://image.54tianzhisheng.cn/Test7.jpg">
+<meta property="og:image" content="http://image.54tianzhisheng.cn/Test8.jpg">
 <meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79gy1fp3jkmizmpj30o00didgn.jpg">
-<meta property="og:updated_time" content="2018-03-06T16:06:17.000Z">
+<meta property="og:updated_time" content="2018-11-22T14:51:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="通过项目逐步深入了解Mybatis（二）">
 <meta name="twitter:description" content="转载请务必注明出处，原创不易！  相关文章：通过项目逐步深入了解Mybatis&amp;lt;一&amp;gt;本项目全部代码地址：Github-Mybatis Mybatis 解决 jdbc 编程的问题1、  数据库链接创建、释放频繁造成系统资源浪费从而影响系统性能，如果使用数据库链接池可解决此问题。 解决：在SqlMapConfig.xml中配置数据链接池，使用连接池管理数据库链接。 2、  Sql语句写在代">
-<meta name="twitter:image" content="http://ohfk1r827.bkt.clouddn.com/dao%E5%BC%80%E5%8F%91.jpg">
+<meta name="twitter:image" content="http://image.54tianzhisheng.cn/dao%E5%BC%80%E5%8F%91.jpg">
   
     <link rel="alternative" href="/atom.xml" title="zhisheng的博客" type="application/atom+xml">
   
@@ -317,7 +317,7 @@ var _hmt = _hmt || [];
 <h3 id="Dao-实现类"><a href="#Dao-实现类" class="headerlink" title="Dao 实现类"></a>Dao 实现类</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserDaoImpl</span>  <span class="keyword">implements</span> <span class="title">UserDao</span>  //<span class="title">dao</span>接口实现类</span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="comment">//需要在 Dao 实现类中注入 SqlsessionFactory</span></span><br><span class="line">    <span class="comment">//这里通过构造方法注入</span></span><br><span class="line">    <span class="keyword">private</span> SqlSessionFactory sqlSessionFactory;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">UserDaoImpl</span><span class="params">(SqlSessionFactory sqlSessionFactory)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.sqlSessionFactory = sqlSessionFactory;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> User <span class="title">findUserById</span><span class="params">(<span class="keyword">int</span> id)</span> <span class="keyword">throws</span> Exception</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">//在方法体内通过 SqlsessionFactory 创建 Sqlsession</span></span><br><span class="line">        SqlSession sqlSession = sqlSessionFactory.openSession();</span><br><span class="line">        User user = sqlSession.selectOne(<span class="string">"test.findUserById"</span>, id);</span><br><span class="line">        sqlSession.close();</span><br><span class="line">        <span class="keyword">return</span> user;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insertUser</span><span class="params">(User user)</span> <span class="keyword">throws</span> Exception</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">//在方法体内通过 SqlsessionFactory 创建 Sqlsession</span></span><br><span class="line">        SqlSession sqlSession = sqlSessionFactory.openSession();</span><br><span class="line">        <span class="comment">//执行插入的操作</span></span><br><span class="line">        sqlSession.insert(<span class="string">"test.insetrUser"</span>, user);</span><br><span class="line">        <span class="comment">//提交事务</span></span><br><span class="line">        sqlSession.commit();</span><br><span class="line">        <span class="comment">//释放资源</span></span><br><span class="line">        sqlSession.close();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">deleteUser</span><span class="params">(<span class="keyword">int</span> id)</span> <span class="keyword">throws</span> Exception</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">//在方法体内通过 SqlsessionFactory 创建 Sqlsession</span></span><br><span class="line">        SqlSession sqlSession = sqlSessionFactory.openSession();</span><br><span class="line">        sqlSession.delete(<span class="string">"test.deleteUserById"</span>, id);</span><br><span class="line">        <span class="comment">//提交事务</span></span><br><span class="line">        sqlSession.commit();</span><br><span class="line">        sqlSession.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserDaoImplTest</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> SqlSessionFactory sqlSessionFactory;</span><br><span class="line">    <span class="comment">//此方法是在 testFindUserById 方法之前执行的</span></span><br><span class="line">    <span class="meta">@Before</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setup</span><span class="params">()</span> <span class="keyword">throws</span> Exception</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">//创建sqlSessionFactory</span></span><br><span class="line">        <span class="comment">//Mybatis 配置文件</span></span><br><span class="line">        String resource = <span class="string">"SqlMapConfig.xml"</span>;</span><br><span class="line">        <span class="comment">//得到配置文件流</span></span><br><span class="line">        InputStream inputStream = Resources.getResourceAsStream(resource);</span><br><span class="line">        <span class="comment">//创建会话工厂,传入Mybatis的配置文件信息</span></span><br><span class="line">        sqlSessionFactory = <span class="keyword">new</span> SqlSessionFactoryBuilder().build(inputStream);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testFindUserById</span><span class="params">()</span> <span class="keyword">throws</span> Exception</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">//创建UserDao的对象</span></span><br><span class="line">        UserDao userDao = <span class="keyword">new</span> UserDaoImpl(sqlSessionFactory);</span><br><span class="line">        <span class="comment">//调用UserDao方法</span></span><br><span class="line">        User user = userDao.findUserById(<span class="number">1</span>);</span><br><span class="line">        System.out.println(user);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>通过id查询用户信息测试结果如下：（其他的可以自己在写测试代码，原理类似）</p>
-<p><img src="http://ohfk1r827.bkt.clouddn.com/dao%E5%BC%80%E5%8F%91.jpg" alt=""></p>
+<p><img src="http://image.54tianzhisheng.cn/dao%E5%BC%80%E5%8F%91.jpg" alt=""></p>
 <h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>原始Dao开发中存在以下问题：</p>
 <ul>
 <li>Dao方法体存在重复代码：通过 SqlSessionFactory 创建 SqlSession，调用 SqlSession 的数据库操作方法</li>
@@ -349,9 +349,9 @@ var _hmt = _hmt || [];
 <p>测试代码：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserMapperTest</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> SqlSessionFactory sqlSessionFactory;</span><br><span class="line">    <span class="comment">//此方法是在 testFindUserById 方法之前执行的</span></span><br><span class="line">    <span class="meta">@Before</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setup</span><span class="params">()</span> <span class="keyword">throws</span> Exception</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">//创建sqlSessionFactory</span></span><br><span class="line">        <span class="comment">//Mybatis 配置文件</span></span><br><span class="line">        String resource = <span class="string">"SqlMapConfig.xml"</span>;</span><br><span class="line">        <span class="comment">//得到配置文件流</span></span><br><span class="line">        InputStream inputStream = Resources.getResourceAsStream(resource);</span><br><span class="line">        <span class="comment">//创建会话工厂,传入Mybatis的配置文件信息</span></span><br><span class="line">        sqlSessionFactory = <span class="keyword">new</span> SqlSessionFactoryBuilder().build(inputStream);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testFindUserById</span><span class="params">()</span> <span class="keyword">throws</span> Exception</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        SqlSession sqlSession = sqlSessionFactory.openSession();</span><br><span class="line">        <span class="comment">//创建usermapper对象,mybatis自动生成代理对象</span></span><br><span class="line">        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);</span><br><span class="line">        <span class="comment">//调用UserMapper的方法</span></span><br><span class="line">        User user = userMapper.findUserById(<span class="number">1</span>);</span><br><span class="line">        System.out.println(user);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>通过id查询用户信息测试结果如下：（其他的请自己根据上下文写测试代码，或者去看我 <a href="https://github.com/zhisheng17/mybatis" target="_blank" rel="noopener">Github-Mybatis学习笔记</a> 上看我这个项目的全部代码）</p>
-<p><img src="http://ohfk1r827.bkt.clouddn.com/mapper%E5%BC%80%E5%8F%91.jpg" alt=""></p>
+<p><img src="http://image.54tianzhisheng.cn/mapper%E5%BC%80%E5%8F%91.jpg" alt=""></p>
 <p>通过姓名查询用户信息：</p>
-<p><img src="http://ohfk1r827.bkt.clouddn.com/mapper%E5%BC%80%E5%8F%912.jpg" alt=""></p>
+<p><img src="http://image.54tianzhisheng.cn/mapper%E5%BC%80%E5%8F%912.jpg" alt=""></p>
 <h3 id="代理对象内部调用-selectOne-或者-selectList"><a href="#代理对象内部调用-selectOne-或者-selectList" class="headerlink" title="代理对象内部调用 selectOne 或者 selectList"></a>代理对象内部调用 selectOne 或者 selectList</h3><ul>
 <li>如果 mapper 方法返回单个 pojo 对象（非集合对象），代理对象内部通过 selectOne 查询数据库</li>
 <li>如果 mapper 方法返回集合对象，代理对象内部通过 selectList 查询数据库</li>
@@ -380,7 +380,7 @@ var _hmt = _hmt || [];
 <p>那么 SqlMapConfig.xml 中的配置变成如下：</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--加载配置文件--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">properties</span> <span class="attr">resource</span>=<span class="string">"db.properties"</span>&gt;</span><span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 和spring整合后 environments配置将废除--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">environments</span> <span class="attr">default</span>=<span class="string">"development"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">environment</span> <span class="attr">id</span>=<span class="string">"development"</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- 使用jdbc事务管理,事务由 Mybatis 控制--&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">transactionManager</span> <span class="attr">type</span>=<span class="string">"JDBC"</span> /&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- 数据库连接池--&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">dataSource</span> <span class="attr">type</span>=<span class="string">"POOLED"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"driver"</span> <span class="attr">value</span>=<span class="string">"$&#123;jdbc.driver&#125;"</span> /&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"url"</span> <span class="attr">value</span>=<span class="string">"$&#123;jdbc.url&#125;"</span> /&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"username"</span> <span class="attr">value</span>=<span class="string">"$&#123;jdbc.username&#125;"</span> /&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"password"</span> <span class="attr">value</span>=<span class="string">"$&#123;jdbc.password&#125;"</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">dataSource</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">environment</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">environments</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>配置完成后我们测试一下是否能够和刚才一样的能够成功呢？那么我就先在db.properties中把数据库密码故意改错，看是否是正确的？不出意外的话是会报错的。</p>
-<p><img src="http://ohfk1r827.bkt.clouddn.com/%E6%8A%A5%E9%94%99.jpg" alt=""></p>
+<p><img src="http://image.54tianzhisheng.cn/%E6%8A%A5%E9%94%99.jpg" alt=""></p>
 <p>注意： MyBatis 将按照下面的顺序来加载属性：</p>
 <ul>
 <li>在 properties 元素体内定义的属性首先被读取。</li>
@@ -400,7 +400,7 @@ var _hmt = _hmt || [];
 </ul>
 <h3 id="settings（全局配置参数）"><a href="#settings（全局配置参数）" class="headerlink" title="settings（全局配置参数）"></a>settings（全局配置参数）</h3><p>Mybatis 框架在运行时可以调整一些运行参数</p>
 <p>比如：开启二级缓存、开启延迟加载。。。</p>
-<p><img src="http://ohfk1r827.bkt.clouddn.com/setting.jpg" alt=""></p>
+<p><img src="http://image.54tianzhisheng.cn/setting.jpg" alt=""></p>
 <h3 id="typeAliases（类型别名）"><a href="#typeAliases（类型别名）" class="headerlink" title="typeAliases（类型别名）"></a>typeAliases（类型别名）</h3><p>需求：</p>
 <p>在mapper.xml中，定义很多的statement，statement需要parameterType指定输入参数的类型、需要resultType指定输出结果的映射类型。</p>
 <p>如果在指定类型时输入类型全路径，不方便进行开发，可以针对parameterType或resultType指定的类型定义一些别名，在mapper.xml中通过别名定义，方便开发。</p>
@@ -501,7 +501,7 @@ var _hmt = _hmt || [];
 <p>在 UserMapper.xml 中引用别名：( resultType 为 user )</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"findUserById"</span> <span class="attr">parameterType</span>=<span class="string">"int"</span> <span class="attr">resultType</span>=<span class="string">"user"</span>&gt;</span></span><br><span class="line">        select * from user where id = #&#123;id&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>测试结果：</p>
-<p><img src="http://ohfk1r827.bkt.clouddn.com/Test4.jpg" alt=""></p>
+<p><img src="http://image.54tianzhisheng.cn/Test4.jpg" alt=""></p>
 <h3 id="typeHandlers（类型处理器）"><a href="#typeHandlers（类型处理器）" class="headerlink" title="typeHandlers（类型处理器）"></a>typeHandlers（类型处理器）</h3><p>mybatis中通过typeHandlers完成jdbc类型和java类型的转换。</p>
 <p> 通常情况下，mybatis提供的类型处理器满足日常需要，不需要自定义.</p>
 <p>mybatis支持类型处理器：</p>
@@ -668,7 +668,7 @@ var _hmt = _hmt || [];
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//测试用户信息综合查询</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testFindUserList</span><span class="params">()</span> <span class="keyword">throws</span> Exception</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        SqlSession sqlSession = sqlSessionFactory.openSession();</span><br><span class="line">        <span class="comment">//创建usermapper对象,mybatis自动生成代理对象</span></span><br><span class="line">        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);</span><br><span class="line">        <span class="comment">//创建包装对象，设置查询条件</span></span><br><span class="line">        UserQueryVo userQueryVo = <span class="keyword">new</span> UserQueryVo();</span><br><span class="line">        UserCustom userCustom = <span class="keyword">new</span> UserCustom();</span><br><span class="line">        userCustom.setSex(<span class="string">"男"</span>);</span><br><span class="line">        userCustom.setUsername(<span class="string">"张小明"</span>);</span><br><span class="line">        userQueryVo.setUserCustom(userCustom);</span><br><span class="line">        <span class="comment">//调用UserMapper的方法</span></span><br><span class="line">        List&lt;UserCustom&gt; list = userMapper.findUserList(userQueryVo);</span><br><span class="line">        System.out.println(list);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>测试结果</p>
-<p><img src="http://ohfk1r827.bkt.clouddn.com/Test5.jpg" alt=""></p>
+<p><img src="http://image.54tianzhisheng.cn/Test5.jpg" alt=""></p>
 </li>
 </ul>
 <h3 id="输出映射"><a href="#输出映射" class="headerlink" title="输出映射"></a>输出映射</h3><ul>
@@ -686,7 +686,7 @@ var _hmt = _hmt || [];
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--用户信息综合查询总数</span></span><br><span class="line"><span class="comment">    parameterType:指定输入的类型和findUserList一样</span></span><br><span class="line"><span class="comment">    resultType:输出结果类型为 int</span></span><br><span class="line"><span class="comment">    --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"findUserCount"</span> <span class="attr">parameterType</span>=<span class="string">"cn.zhisheng.mybatis.po.UserQueryVo"</span> <span class="attr">resultType</span>=<span class="string">"int"</span>&gt;</span></span><br><span class="line">      select count(*) from user where user.sex = #&#123;userCustom.sex&#125; and user.username like  '%$&#123;userCustom.username&#125;%'</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//用户信息综合查询总数</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findUserCount</span><span class="params">(UserQueryVo userQueryVo)</span> <span class="keyword">throws</span> Exception</span>;</span><br></pre></td></tr></table></figure>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//测试用户信息综合查询总数</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testFindUserCount</span><span class="params">()</span> <span class="keyword">throws</span> Exception</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        SqlSession sqlSession = sqlSessionFactory.openSession();</span><br><span class="line">        <span class="comment">//创建usermapper对象,mybatis自动生成代理对象</span></span><br><span class="line">        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);</span><br><span class="line">        <span class="comment">//创建包装对象，设置查询条件</span></span><br><span class="line">        UserQueryVo userQueryVo = <span class="keyword">new</span> UserQueryVo();</span><br><span class="line">        UserCustom userCustom = <span class="keyword">new</span> UserCustom();</span><br><span class="line">        userCustom.setSex(<span class="string">"男"</span>);</span><br><span class="line">        userCustom.setUsername(<span class="string">"张小明"</span>);</span><br><span class="line">        userQueryVo.setUserCustom(userCustom);</span><br><span class="line">        <span class="comment">//调用UserMapper的方法</span></span><br><span class="line">        System.out.println(userMapper.findUserCount(userQueryVo));</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p><img src="http://ohfk1r827.bkt.clouddn.com/Test6.jpg" alt=""></p>
+<p><img src="http://image.54tianzhisheng.cn/Test6.jpg" alt=""></p>
 <p>注意：查询出来的结果集只有一行且一列，可以使用简单类型进行输出映射。</p>
 <p><strong>输出pojo对象和pojo列表</strong></p>
 <p>不管是输出的pojo单个对象还是一个列表（list中包括pojo），在mapper.xml中resultType指定的类型是一样的。</p>
@@ -721,7 +721,7 @@ var _hmt = _hmt || [];
 <p>4、测试</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//测试根据id查询用户信息，使用 resultMap 输出</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testFindUserByIdResultMap</span><span class="params">()</span> <span class="keyword">throws</span> Exception</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        SqlSession sqlSession = sqlSessionFactory.openSession();</span><br><span class="line">        <span class="comment">//创建usermapper对象,mybatis自动生成代理对象</span></span><br><span class="line">        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);</span><br><span class="line">        <span class="comment">//调用UserMapper的方法</span></span><br><span class="line">        User user = userMapper.findUserByIdResultMap(<span class="number">1</span>);</span><br><span class="line">        System.out.println(user);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 <p>5、测试结果</p>
-<p><img src="http://ohfk1r827.bkt.clouddn.com/Test7.jpg" alt=""></p>
+<p><img src="http://image.54tianzhisheng.cn/Test7.jpg" alt=""></p>
 <h2 id="动态-SQL"><a href="#动态-SQL" class="headerlink" title="动态 SQL"></a>动态 SQL</h2><p>通过mybatis提供的各种标签方法实现动态拼接sql。</p>
 <p>需求：</p>
 <p>用户信息综合查询列表和用户信息查询列表总数这两个 statement的定义使用动态sql。</p>
@@ -732,7 +732,7 @@ var _hmt = _hmt || [];
 <p>所以我们就注释掉设置username的语句</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//userCustom.setUsername("张小明");</span></span><br></pre></td></tr></table></figure>
 <p>测试结果：</p>
-<p><img src="http://ohfk1r827.bkt.clouddn.com/Test8.jpg" alt=""></p>
+<p><img src="http://image.54tianzhisheng.cn/Test8.jpg" alt=""></p>
 <h3 id="Sql-片段"><a href="#Sql-片段" class="headerlink" title="Sql 片段"></a>Sql 片段</h3><p>通过上面的其实看到在 where sql语句中有很多重复代码，我们可以将其抽取出来，组成一个sql片段，其他的statement就可以引用这个sql片段，利于系统的开发。</p>
 <p>这里我们就拿上边sql 中的where定义一个sq片段如下：</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--sql片段</span></span><br><span class="line"><span class="comment">   id:唯一标识</span></span><br><span class="line"><span class="comment">   经验：是基于单表来定义sql片段，这样的话sql片段的可重用性才高</span></span><br><span class="line"><span class="comment">   一般不包含where</span></span><br><span class="line"><span class="comment">   --&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">sql</span> <span class="attr">id</span>=<span class="string">"query_user_where"</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">"userCustom != null"</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">"userCustom.sex != null and userCustom.sex != ''"</span>&gt;</span></span><br><span class="line">               and user.sex = #&#123;userCustom.sex&#125;</span><br><span class="line">           <span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">"userCustom.username != null"</span>&gt;</span></span><br><span class="line">               and user.username like  '%$&#123;userCustom.username&#125;%'</span><br><span class="line">           <span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">sql</span>&gt;</span></span><br></pre></td></tr></table></figure>
@@ -876,18 +876,18 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/2017/06/13/java-var/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/06/13/Python爬虫实战之爬取百度贴吧帖子/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          从对象深入分析 Java 中实例变量和类变量的区别
+          Python爬虫实战之爬取百度贴吧帖子
         
       </div>
     </a>
   
   
-    <a href="/2017/06/13/java读取文件/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Java读取文件</div>
+    <a href="/2017/06/13/feiji/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">记录下自己第一次坐飞机的感受</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -1033,6 +1033,14 @@ var _hmt = _hmt || [];
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">AJAX</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
@@ -1041,27 +1049,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">AJAX</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Docker</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">分布式锁</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Redis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Zookeeper</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1077,6 +1065,22 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">分布式锁</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Zookeeper</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Flink</a>
               </li>
              
@@ -1089,7 +1093,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color1">Guava</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1109,11 +1113,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Guava</a>
+                <a href="javascript:void(0)" class="js-tag color3">面经</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">面经</a>
+                <a href="javascript:void(0)" class="js-tag color4">NIO</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1125,11 +1129,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">NIO</a>
+                <a href="javascript:void(0)" class="js-tag color4">JMM</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JMM</a>
+                <a href="javascript:void(0)" class="js-tag color1">Kafka</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1145,19 +1149,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Kafka</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">投资理财</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1169,7 +1161,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
+                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1185,6 +1181,10 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
               </li>
              
@@ -1193,11 +1193,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+                <a href="javascript:void(0)" class="js-tag color4">RocketMQ</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">RocketMQ</a>
+                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1217,11 +1217,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">线程池</a>
+                <a href="javascript:void(0)" class="js-tag color4">Velocity</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Velocity</a>
+                <a href="javascript:void(0)" class="js-tag color4">线程池</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1229,15 +1229,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Consul</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">博客合集</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">GO</a>
+                <a href="javascript:void(0)" class="js-tag color2">Consul</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1245,11 +1241,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">IO</a>
+                <a href="javascript:void(0)" class="js-tag color3">GO</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">文件</a>
+                <a href="javascript:void(0)" class="js-tag color3">IO</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1257,7 +1253,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">文件</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">lombok</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Netty</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1269,19 +1273,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Netty</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">书籍</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Servlet</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">微服务</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">书籍</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1313,19 +1313,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">循环队列</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Github Page</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">博客网站</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">循环队列</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">编码</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1337,7 +1333,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">类加载机制</a>
+                <a href="javascript:void(0)" class="js-tag color3">编码</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1345,7 +1345,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
+                <a href="javascript:void(0)" class="js-tag color1">类加载机制</a>
               </li>
             
             <div class="clearfix"></div>

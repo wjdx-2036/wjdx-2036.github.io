@@ -29,17 +29,17 @@
 <meta property="og:description" content="线程池Wiki 上是这样解释的：Thread Pool  作用：利用线程池可以大大减少在创建和销毁线程上所花的时间以及系统资源的开销！ 下面主要讲下线程池中最重要的一个类 ThreadPoolExecutor 。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Thread_pool.svg/400px-Thread_pool.svg.png">
-<meta property="og:image" content="http://ohfk1r827.bkt.clouddn.com/ThreadPoolExecutor1.jpg">
-<meta property="og:image" content="http://ohfk1r827.bkt.clouddn.com/constructor.jpg">
-<meta property="og:image" content="http://ohfk1r827.bkt.clouddn.com/Rejected-method-Thread-Pool.jpg">
-<meta property="og:image" content="http://ohfk1r827.bkt.clouddn.com/coreThreadPool.jpg">
-<meta property="og:image" content="http://ohfk1r827.bkt.clouddn.com/four-Thread-Pool.jpg">
-<meta property="og:image" content="http://ohfk1r827.bkt.clouddn.com/newFixedThreadPool.jpg">
-<meta property="og:image" content="http://ohfk1r827.bkt.clouddn.com/newSingleThreadExecutor.jpg">
-<meta property="og:image" content="http://ohfk1r827.bkt.clouddn.com/newCachedThreadPool.jpg">
-<meta property="og:image" content="http://ohfk1r827.bkt.clouddn.com/newScheduledThreadPool.jpg">
+<meta property="og:image" content="http://image.54tianzhisheng.cn/ThreadPoolExecutor1.jpg">
+<meta property="og:image" content="http://image.54tianzhisheng.cn/constructor.jpg">
+<meta property="og:image" content="http://image.54tianzhisheng.cn/Rejected-method-Thread-Pool.jpg">
+<meta property="og:image" content="http://image.54tianzhisheng.cn/coreThreadPool.jpg">
+<meta property="og:image" content="http://image.54tianzhisheng.cn/four-Thread-Pool.jpg">
+<meta property="og:image" content="http://image.54tianzhisheng.cn/newFixedThreadPool.jpg">
+<meta property="og:image" content="http://image.54tianzhisheng.cn/newSingleThreadExecutor.jpg">
+<meta property="og:image" content="http://image.54tianzhisheng.cn/newCachedThreadPool.jpg">
+<meta property="og:image" content="http://image.54tianzhisheng.cn/newScheduledThreadPool.jpg">
 <meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79gy1fp3jkmizmpj30o00didgn.jpg">
-<meta property="og:updated_time" content="2018-03-06T16:21:19.000Z">
+<meta property="og:updated_time" content="2018-11-22T14:51:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java 线程池艺术探索">
 <meta name="twitter:description" content="线程池Wiki 上是这样解释的：Thread Pool  作用：利用线程池可以大大减少在创建和销毁线程上所花的时间以及系统资源的开销！ 下面主要讲下线程池中最重要的一个类 ThreadPoolExecutor 。">
@@ -272,10 +272,10 @@ var _hmt = _hmt || [];
 <p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Thread_pool.svg/400px-Thread_pool.svg.png" alt=""></p>
 <p>作用：<strong>利用线程池可以大大减少在创建和销毁线程上所花的时间以及系统资源的开销！</strong></p>
 <p>下面主要讲下线程池中最重要的一个类 ThreadPoolExecutor 。<br><a id="more"></a></p>
-<h2 id="ThreadPoolExecutor"><a href="#ThreadPoolExecutor" class="headerlink" title="ThreadPoolExecutor"></a>ThreadPoolExecutor</h2><p><img src="http://ohfk1r827.bkt.clouddn.com/ThreadPoolExecutor1.jpg" alt="ThreadPoolExecutor1"></p>
+<h2 id="ThreadPoolExecutor"><a href="#ThreadPoolExecutor" class="headerlink" title="ThreadPoolExecutor"></a>ThreadPoolExecutor</h2><p><img src="http://image.54tianzhisheng.cn/ThreadPoolExecutor1.jpg" alt="ThreadPoolExecutor1"></p>
 <p><strong>ThreadPoolExecutor 构造器：</strong></p>
 <p>有四个构造器的，挑了参数最长的一个进行讲解。</p>
-<p><img src="http://ohfk1r827.bkt.clouddn.com/constructor.jpg" alt="constructor"></p>
+<p><img src="http://image.54tianzhisheng.cn/constructor.jpg" alt="constructor"></p>
 <p><strong>七个参数：</strong></p>
 <ul>
 <li>corePoolSize：核心池的大小，在创建了线程池后，默认情况下，线程池中并没有任何线程，而是等待有任务到来才创建线程去执行任务，当有任务来之后，就会创建一个线程去执行任务，当线程池中的线程数目达到corePoolSize后，就会把到达的任务放到缓存队列当中；</li>
@@ -296,7 +296,7 @@ var _hmt = _hmt || [];
 <li>DiscardOldestPolicy：丢弃队列最前面的任务，然后重新尝试执行任务（重复此过程）</li>
 <li>CallerRunsPolicy：由调用线程处理该任务</li>
 </ul>
-<p><img src="http://ohfk1r827.bkt.clouddn.com/Rejected-method-Thread-Pool.jpg" alt="Rejected-method-Thread-Pool"></p>
+<p><img src="http://image.54tianzhisheng.cn/Rejected-method-Thread-Pool.jpg" alt="Rejected-method-Thread-Pool"></p>
 </li>
 </ul>
 <p><strong>重要方法：</strong></p>
@@ -310,7 +310,7 @@ var _hmt = _hmt || [];
 <p>其中调用了 addWorker() 方法：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">addWorker</span><span class="params">(Runnable firstTask, <span class="keyword">boolean</span> core)</span> </span>&#123;<span class="comment">// firstTask: 新增一个线程并执行这个任务，可空，增加的线程从队列获取任务；core：是否使用 corePoolSize 作为上限，否则使用 maxmunPoolSize</span></span><br><span class="line">        retry:</span><br><span class="line">        <span class="keyword">for</span> (;;) &#123;</span><br><span class="line">            <span class="keyword">int</span> c = ctl.get();</span><br><span class="line">            <span class="keyword">int</span> rs = runStateOf(c);</span><br><span class="line">            <span class="comment">// Check if queue empty only if necessary.</span></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * rs!=Shutdown || fistTask！=null || workQueue.isEmpty</span></span><br><span class="line"><span class="comment">    * 如果当前的线程池的状态 &gt; SHUTDOWN 那么拒绝 Worker 的 add 如果 =SHUTDOWN</span></span><br><span class="line"><span class="comment">    * 那么此时不能新加入不为 null 的 Task，如果在 workQueue 为 empty 的时候不能加入任何类型的 Worker，</span></span><br><span class="line"><span class="comment">    * 如果不为 empty 可以加入 task 为 null 的 Worker, 增加消费的 Worker</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">            <span class="keyword">if</span> (rs &gt;= SHUTDOWN &amp;&amp; ! (rs == SHUTDOWN &amp;&amp; firstTask == <span class="keyword">null</span> &amp;&amp;! workQueue.isEmpty()))</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            <span class="keyword">for</span> (;;) &#123;</span><br><span class="line">                <span class="keyword">int</span> wc = workerCountOf(c);</span><br><span class="line">          <span class="comment">//如果当前的数量超过了 CAPACITY，或者超过了 corePoolSize 和 maximumPoolSize（试 core 而定）</span></span><br><span class="line">                <span class="keyword">if</span> (wc &gt;= CAPACITY || wc &gt;= (core ? corePoolSize : maximumPoolSize))</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">          <span class="comment">//CAS 尝试增加线程数，如果失败，证明有竞争，那么重新到 retry。</span></span><br><span class="line">                <span class="keyword">if</span> (compareAndIncrementWorkerCount(c))<span class="comment">// AtomicInteger 的 CAS 操作;</span></span><br><span class="line">                    <span class="keyword">break</span> retry;</span><br><span class="line">                c = ctl.get();  <span class="comment">// Re-read ctl</span></span><br><span class="line">               <span class="comment">//判断当前线程池的运行状态,状态发生改变，重试 retry;</span></span><br><span class="line">                <span class="keyword">if</span> (runStateOf(c) != rs)</span><br><span class="line">                    <span class="keyword">continue</span> retry;</span><br><span class="line">                <span class="comment">// else CAS failed due to workerCount change; retry inner loop</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">boolean</span> workerStarted = <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">boolean</span> workerAdded = <span class="keyword">false</span>;</span><br><span class="line">        Worker w = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            w = <span class="keyword">new</span> Worker(firstTask);<span class="comment">// Worker 为内部类，封装了线程和任务，通过 ThreadFactory 创建线程，可能失败抛异常或者返回 null</span></span><br><span class="line">            <span class="keyword">final</span> Thread t = w.thread;</span><br><span class="line">            <span class="keyword">if</span> (t != <span class="keyword">null</span>) &#123;</span><br><span class="line">                <span class="keyword">final</span> ReentrantLock mainLock = <span class="keyword">this</span>.mainLock;</span><br><span class="line">                mainLock.lock();</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    <span class="comment">// Recheck while holding lock.</span></span><br><span class="line">                    <span class="comment">// Back out on ThreadFactory failure or if</span></span><br><span class="line">                    <span class="comment">// shut down before lock acquired.</span></span><br><span class="line">                    <span class="keyword">int</span> rs = runStateOf(ctl.get());</span><br><span class="line">                    <span class="keyword">if</span> (rs &lt; SHUTDOWN ||</span><br><span class="line">                        (rs == SHUTDOWN &amp;&amp; firstTask == <span class="keyword">null</span>)) &#123;</span><br><span class="line">                        <span class="keyword">if</span> (t.isAlive()) <span class="comment">// precheck that t is startable</span></span><br><span class="line">                         <span class="comment">// SHUTDOWN 以后的状态和 SHUTDOWN 状态下 firstTask 为 null，不可新增线程</span></span><br><span class="line">                            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalThreadStateException();</span><br><span class="line">                        workers.add(w);</span><br><span class="line">                        <span class="keyword">int</span> s = workers.size();</span><br><span class="line">                        <span class="keyword">if</span> (s &gt; largestPoolSize)</span><br><span class="line">                            largestPoolSize = s;<span class="comment">//记录最大线程数</span></span><br><span class="line">                        workerAdded = <span class="keyword">true</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">                    mainLock.unlock();</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (workerAdded) &#123;</span><br><span class="line">                    t.start();</span><br><span class="line">                    workerStarted = <span class="keyword">true</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (! workerStarted)</span><br><span class="line">                addWorkerFailed(w);<span class="comment">//失败回退,从 wokers 移除 w, 线程数减一，尝试结束线程池(调用tryTerminate 方法)</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> workerStarted;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 <p>示意图：</p>
-<p><img src="http://ohfk1r827.bkt.clouddn.com/coreThreadPool.jpg" alt="coreThreadPool"></p>
+<p><img src="http://image.54tianzhisheng.cn/coreThreadPool.jpg" alt="coreThreadPool"></p>
 <p><strong>执行流程：</strong></p>
 <p>1、当有任务进入时，线程池创建线程去执行任务，直到核心线程数满为止</p>
 <p>2、核心线程数量满了之后，任务就会进入一个缓冲的任务队列中</p>
@@ -321,14 +321,14 @@ var _hmt = _hmt || [];
 <p><strong>shutdown() 方法：</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">shutdown</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">final</span> ReentrantLock mainLock = <span class="keyword">this</span>.mainLock;</span><br><span class="line">        mainLock.lock();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">//判断是否可以操作目标线程</span></span><br><span class="line">            checkShutdownAccess();</span><br><span class="line">            <span class="comment">//设置线程池状态为 SHUTDOWN, 此处之后，线程池中不会增加新 Task</span></span><br><span class="line">            advanceRunState(SHUTDOWN);</span><br><span class="line">            <span class="comment">//中断所有的空闲线程</span></span><br><span class="line">            interruptIdleWorkers();</span><br><span class="line">            onShutdown(); <span class="comment">// hook for ScheduledThreadPoolExecutor</span></span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            mainLock.unlock();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//转到 Terminate</span></span><br><span class="line">        tryTerminate();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 <p>参考资料：<a href="http://www.jianshu.com/p/ade771d2c9c0" target="_blank" rel="noopener">深入理解java线程池—ThreadPoolExecutor</a></p>
-<h2 id="JDK-自带四种线程池分析与比较"><a href="#JDK-自带四种线程池分析与比较" class="headerlink" title="JDK 自带四种线程池分析与比较"></a>JDK 自带四种线程池分析与比较</h2><p><img src="http://ohfk1r827.bkt.clouddn.com/four-Thread-Pool.jpg" alt="four-Thread-Pool"></p>
+<h2 id="JDK-自带四种线程池分析与比较"><a href="#JDK-自带四种线程池分析与比较" class="headerlink" title="JDK 自带四种线程池分析与比较"></a>JDK 自带四种线程池分析与比较</h2><p><img src="http://image.54tianzhisheng.cn/four-Thread-Pool.jpg" alt="four-Thread-Pool"></p>
 <h3 id="1、newFixedThreadPool"><a href="#1、newFixedThreadPool" class="headerlink" title="1、newFixedThreadPool"></a>1、newFixedThreadPool</h3><p>创建一个定长线程池，可控制线程最大并发数，超出的线程会在队列中等待。</p>
-<p><img src="http://ohfk1r827.bkt.clouddn.com/newFixedThreadPool.jpg" alt="newFixedThreadPool"></p>
-<h3 id="2、newSingleThreadExecutor"><a href="#2、newSingleThreadExecutor" class="headerlink" title="2、newSingleThreadExecutor"></a>2、newSingleThreadExecutor</h3><p>创建一个单线程化的线程池，它只会用唯一的工作线程来执行任务，保证所有任务按照指定顺序(FIFO, LIFO, 优先级)执行。<img src="http://ohfk1r827.bkt.clouddn.com/newSingleThreadExecutor.jpg" alt="newSingleThreadExecutor"></p>
+<p><img src="http://image.54tianzhisheng.cn/newFixedThreadPool.jpg" alt="newFixedThreadPool"></p>
+<h3 id="2、newSingleThreadExecutor"><a href="#2、newSingleThreadExecutor" class="headerlink" title="2、newSingleThreadExecutor"></a>2、newSingleThreadExecutor</h3><p>创建一个单线程化的线程池，它只会用唯一的工作线程来执行任务，保证所有任务按照指定顺序(FIFO, LIFO, 优先级)执行。<img src="http://image.54tianzhisheng.cn/newSingleThreadExecutor.jpg" alt="newSingleThreadExecutor"></p>
 <h3 id="3、newCachedThreadPool"><a href="#3、newCachedThreadPool" class="headerlink" title="3、newCachedThreadPool"></a>3、newCachedThreadPool</h3><p>创建一个可缓存线程池，如果线程池长度超过处理需要，可灵活回收空闲线程，若无可回收，则新建线程。</p>
-<p><img src="http://ohfk1r827.bkt.clouddn.com/newCachedThreadPool.jpg" alt="newCachedThreadPool"></p>
+<p><img src="http://image.54tianzhisheng.cn/newCachedThreadPool.jpg" alt="newCachedThreadPool"></p>
 <h3 id="4、newScheduledThreadPool"><a href="#4、newScheduledThreadPool" class="headerlink" title="4、newScheduledThreadPool"></a>4、newScheduledThreadPool</h3><p>创建一个定长线程池，支持定时及周期性任务执行。</p>
-<p><img src="http://ohfk1r827.bkt.clouddn.com/newScheduledThreadPool.jpg" alt="newScheduledThreadPool"></p>
+<p><img src="http://image.54tianzhisheng.cn/newScheduledThreadPool.jpg" alt="newScheduledThreadPool"></p>
 <p>四种线程池其实内部方法都是调用的 ThreadPoolExecutor 类，只不过利用了其不同的构造器方法而已（传入自己需要传入的参数），那么利用这个特性，我们自己也是可以实现自己定义的线程池的。</p>
 <h2 id="自定义线程池"><a href="#自定义线程池" class="headerlink" title="自定义线程池"></a>自定义线程池</h2><p>1、创建任务类</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zhisheng.thread.threadpool.demo;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by 10412 on 2017/7/24.</span></span><br><span class="line"><span class="comment"> * 任务</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyTask</span> <span class="keyword">implements</span> <span class="title">Runnable</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> taskId;     <span class="comment">//任务 id</span></span><br><span class="line">    <span class="keyword">private</span> String taskName;    <span class="comment">//任务名字</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getTaskId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> taskId;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setTaskId</span><span class="params">(<span class="keyword">int</span> taskId)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.taskId = taskId;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getTaskName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> taskName;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setTaskName</span><span class="params">(String taskName)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.taskName = taskName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyTask</span><span class="params">(<span class="keyword">int</span> taskId, String taskName)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.taskId = taskId;</span><br><span class="line">        <span class="keyword">this</span>.taskName = taskName;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"当前正在执行 ******   线程Id--&gt;"</span> + taskId + <span class="string">",任务名称--&gt;"</span> + taskName);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Thread.currentThread().sleep(<span class="number">5</span> * <span class="number">1000</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">"线程Id--&gt;"</span> + taskId + <span class="string">",任务名称--&gt;"</span> + taskName + <span class="string">"   -----------   执行完毕！"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -622,6 +622,14 @@ var _hmt = _hmt || [];
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">AJAX</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
@@ -630,27 +638,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">AJAX</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Docker</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">分布式锁</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Redis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Zookeeper</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -666,6 +654,22 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">分布式锁</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Zookeeper</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Flink</a>
               </li>
              
@@ -678,7 +682,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color1">Guava</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -698,11 +702,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Guava</a>
+                <a href="javascript:void(0)" class="js-tag color3">面经</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">面经</a>
+                <a href="javascript:void(0)" class="js-tag color4">NIO</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -714,11 +718,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">NIO</a>
+                <a href="javascript:void(0)" class="js-tag color4">JMM</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JMM</a>
+                <a href="javascript:void(0)" class="js-tag color1">Kafka</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -734,19 +738,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Kafka</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">投资理财</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -758,7 +750,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
+                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -774,6 +770,10 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
               </li>
              
@@ -782,11 +782,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+                <a href="javascript:void(0)" class="js-tag color4">RocketMQ</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">RocketMQ</a>
+                <a href="javascript:void(0)" class="js-tag color2">Spring</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -806,11 +806,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">线程池</a>
+                <a href="javascript:void(0)" class="js-tag color4">Velocity</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Velocity</a>
+                <a href="javascript:void(0)" class="js-tag color4">线程池</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -818,15 +818,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Consul</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">博客合集</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">GO</a>
+                <a href="javascript:void(0)" class="js-tag color2">Consul</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -834,11 +830,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">IO</a>
+                <a href="javascript:void(0)" class="js-tag color3">GO</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">文件</a>
+                <a href="javascript:void(0)" class="js-tag color3">IO</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -846,7 +842,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">文件</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">lombok</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Netty</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -858,19 +862,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Netty</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">书籍</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Servlet</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">微服务</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">书籍</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -902,19 +902,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">循环队列</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Github Page</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">博客网站</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">循环队列</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">编码</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -926,7 +922,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">类加载机制</a>
+                <a href="javascript:void(0)" class="js-tag color3">编码</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -934,7 +934,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">SpringMVC</a>
+                <a href="javascript:void(0)" class="js-tag color1">类加载机制</a>
               </li>
             
             <div class="clearfix"></div>
