@@ -257,10 +257,10 @@
 </nav>
       <div class="body-wrap">
   
-    <article id="post-程序访问文件的几种方式" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-深度探究Java 中 finally 语句块" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/06/13/程序访问文件的几种方式/" class="article-date">
+      <a href="/2017/06/13/深度探究Java 中 finally 语句块/" class="article-date">
       <time datetime="2017-06-12T16:00:00.000Z" itemprop="datePublished">2017-06-13</time>
 </a>
     </div>
@@ -274,7 +274,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/13/程序访问文件的几种方式/">程序访问文件的几种方式</a>
+      <a class="article-title" href="/2017/06/13/深度探究Java 中 finally 语句块/">深度探究Java 中 finally 语句块</a>
     </h1>
   
 
@@ -284,10 +284,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <h2 id="IO"><a href="#IO" class="headerlink" title="IO"></a>IO</h2><h3 id="程序访问文件的几种方式"><a href="#程序访问文件的几种方式" class="headerlink" title="程序访问文件的几种方式"></a>程序访问文件的几种方式</h3><blockquote>
-<p>读取和写入文件 I/O 操作都调用操作系统提供的接口。因为磁盘设备是由操作系统管理的，应用程序要访问物理设备只能通过系统调用的方式来工作。读和写分别对应 read() 和 write() 两个系统调用。而只要是系统调用就可能存在内核空间地址和用户空间地址切换的问题，这也是为什么操作系统为了保护系统本身的运行安全而将内核程序运行使用的内存空间和用户程序运行的内存空间进行隔离造成的。虽然这样可以保证内核程序运行的安全性，但是也存在数据可能需要从内核空间向用户空间复制的问题。</p>
-<p>如果遇到非常耗时的操作，如磁盘 I/O， 数据从磁盘复制到内核空间，然后又从内核空间复制到用户空间，将会非常缓慢。这时操作系统为了加速 I/O 访问，在内核空间使用缓存机制，也就是将从磁盘读取的文件按照一定的组织方式进行缓存，如果用户程序访问的是同一段磁盘地址的空间数据，那么操作系统将从内核缓存中直接取出返回给用户程序，这样就可以减小 I/O 的响应时间。</p>
-</blockquote>
+              <p>乍看这个题目，是不是有人会问，这个谁不知道啊，大凡熟悉 Java 编程的人都知道 finally 语句块的作用和用法。有什么可深度辨析的呢？事实并非如此，我发现即使写了很多年 Java 程序的人，也不一定能够透彻的理解 finally 语句块。本篇将以生动形象的案例来带您由浅入深的来分析一下这个小小的 finally，希望这篇文章能够让您真正的理解 finally 语句块的本质，至少阅读完本篇文章后，没有觉得浪费了时间。</p>
+<p>可不能小看这个简单的 finally，看似简单的问题背后，却隐藏了无数的玄机。接下来我就带您一步一步的揭开这个 finally 的神秘面纱。</p>
           
       
       
@@ -299,12 +297,12 @@
 
       
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IO/">IO</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/finally/">finally</a></li></ul>
     </div>
 
       
         <p class="article-more-link">
-          <a  href="/2017/06/13/程序访问文件的几种方式/#more">more >></a>
+          <a  href="/2017/06/13/深度探究Java 中 finally 语句块/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -389,10 +387,10 @@
 
 
   
-    <article id="post-通过项目逐步深入了解Mybatis(二)" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-feiji" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/06/13/通过项目逐步深入了解Mybatis(二)/" class="article-date">
+      <a href="/2017/06/13/feiji/" class="article-date">
       <time datetime="2017-06-12T16:00:00.000Z" itemprop="datePublished">2017-06-13</time>
 </a>
     </div>
@@ -406,7 +404,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/13/通过项目逐步深入了解Mybatis(二)/">通过项目逐步深入了解Mybatis（二）</a>
+      <a class="article-title" href="/2017/06/13/feiji/">记录下自己第一次坐飞机的感受</a>
     </h1>
   
 
@@ -416,16 +414,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <p>转载请务必注明出处，原创不易！</p>
-<p> 相关文章：<a href="http://blog.csdn.net/tzs_1041218129/article/details/53404326" target="_blank" rel="noopener"><strong>通过项目逐步深入了解Mybatis&lt;一&gt;</strong></a><br>本项目全部代码地址：<a href="https://github.com/zhisheng17/mybatis" target="_blank" rel="noopener"><strong>Github-Mybatis</strong></a></p>
-<h3 id="Mybatis-解决-jdbc-编程的问题"><a href="#Mybatis-解决-jdbc-编程的问题" class="headerlink" title="Mybatis 解决 jdbc 编程的问题"></a>Mybatis 解决 jdbc 编程的问题</h3><p>1、  数据库链接创建、释放频繁造成系统资源浪费从而影响系统性能，如果使用数据库链接池可解决此问题。</p>
-<p>解决：在SqlMapConfig.xml中配置数据链接池，使用连接池管理数据库链接。</p>
-<p>2、  Sql语句写在代码中造成代码不易维护，实际应用sql变化的可能较大，sql变动需要改变java代码。</p>
-<p>解决：将Sql语句配置在XXXXmapper.xml文件中与java代码分离。</p>
-<p>3、  向sql语句传参数麻烦，因为sql语句的where条件不一定，可能多也可能少，占位符需要和参数一一对应。</p>
-<p>解决：Mybatis自动将java对象映射至sql语句，通过statement中的parameterType定义输入参数的类型。</p>
-<p>4、  对结果集解析麻烦，sql变化导致解析代码变化，且解析前需要遍历，如果能将数据库记录封装成pojo对象解析比较方便。</p>
-<p>解决：Mybatis自动将sql执行结果映射至java对象，通过statement中的resultType定义输出结果的类型。</p>
+              <h3 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h3><p>因为学校的原因，需要在大三的时候出去实训几个月，然后选择的是在昆山，公司规定要在 2017 年 4 月 19 号之前赶到，所以我提前订的机票是 17 号，之所以会订机票，其实很大一部分原因是由于自己之前没有坐过飞机，所以想体验一下坐飞机的感脚（嘿嘿），再加上这是机票的淡季，所以坐飞机的价钱比做高铁还便宜。整个行程：学校 ——&gt;  南昌机场 ——&gt;  上海虹桥机场 ——&gt;  公司</p>
+<h3 id="学校出发"><a href="#学校出发" class="headerlink" title="学校出发"></a>学校出发</h3><p>10 点左右去食堂吃了个早餐，然后打包好自己的行李，由于第一次坐飞机，所以打算提前时间去机场，然后在机场熟悉熟悉环境，不然的话错过飞机，那就 gg 了。大概 11：30 了，就拖着行李出门，在学校门口叫了辆 滴滴车 去机场（因为公交车要坐好久并且去机场的路好烂），叫的滴滴车他走的是高速，很快。<br>
           
       
       
@@ -437,84 +427,12 @@
 
       
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mybatis/">Mybatis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SpringMVC/">SpringMVC</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
     </div>
 
       
         <p class="article-more-link">
-          <a  href="/2017/06/13/通过项目逐步深入了解Mybatis(二)/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Java NIO 系列教程" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/06/13/Java NIO 系列教程/" class="article-date">
-      <time datetime="2017-06-12T16:00:00.000Z" itemprop="datePublished">2017-06-13</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/13/Java NIO 系列教程/">Java NIO 系列教程</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>Java NIO（New IO）是从Java 1.4版本开始引入的一个新的IO API，可以替代标准的Java IO API。</p>
-<p>Java NIO提供了与标准IO不同的IO工作方式：</p>
-<ul>
-<li><p><strong>Channels and Buffers（通道和缓冲区）</strong>：标准的IO基于字节流和字符流进行操作的，而NIO是基于通道（Channel）和缓冲区（Buffer）进行操作，数据总是从通道读取到缓冲区中，或者从缓冲区写入到通道中。</p>
-</li>
-<li><p><strong>Asynchronous IO（异步IO）</strong>：Java NIO可以让你异步的使用IO，例如：当线程从通道读取数据到缓冲区时，线程还是可以进行其他事情。当数据被写入到缓冲区时，线程可以继续处理它。从缓冲区写入通道也类似。</p>
-</li>
-<li><p><strong>Selectors（选择器）</strong>：Java NIO引入了选择器的概念，选择器用于监听多个通道的事件（比如：连接打开，数据到达）。因此，单个的线程可以监听多个数据通道。</p>
-</li>
-</ul>
-          
-      
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NIO/">NIO</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2017/06/13/Java NIO 系列教程/#more">more >></a>
+          <a  href="/2017/06/13/feiji/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -578,6 +496,78 @@
       
         <p class="article-more-link">
           <a  href="/2017/06/13/HashMap-Hashtable/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-通过项目逐步深入了解Mybatis(二)" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/06/13/通过项目逐步深入了解Mybatis(二)/" class="article-date">
+      <time datetime="2017-06-12T16:00:00.000Z" itemprop="datePublished">2017-06-13</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/13/通过项目逐步深入了解Mybatis(二)/">通过项目逐步深入了解Mybatis（二）</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <p>转载请务必注明出处，原创不易！</p>
+<p> 相关文章：<a href="http://blog.csdn.net/tzs_1041218129/article/details/53404326" target="_blank" rel="noopener"><strong>通过项目逐步深入了解Mybatis&lt;一&gt;</strong></a><br>本项目全部代码地址：<a href="https://github.com/zhisheng17/mybatis" target="_blank" rel="noopener"><strong>Github-Mybatis</strong></a></p>
+<h3 id="Mybatis-解决-jdbc-编程的问题"><a href="#Mybatis-解决-jdbc-编程的问题" class="headerlink" title="Mybatis 解决 jdbc 编程的问题"></a>Mybatis 解决 jdbc 编程的问题</h3><p>1、  数据库链接创建、释放频繁造成系统资源浪费从而影响系统性能，如果使用数据库链接池可解决此问题。</p>
+<p>解决：在SqlMapConfig.xml中配置数据链接池，使用连接池管理数据库链接。</p>
+<p>2、  Sql语句写在代码中造成代码不易维护，实际应用sql变化的可能较大，sql变动需要改变java代码。</p>
+<p>解决：将Sql语句配置在XXXXmapper.xml文件中与java代码分离。</p>
+<p>3、  向sql语句传参数麻烦，因为sql语句的where条件不一定，可能多也可能少，占位符需要和参数一一对应。</p>
+<p>解决：Mybatis自动将java对象映射至sql语句，通过statement中的parameterType定义输入参数的类型。</p>
+<p>4、  对结果集解析麻烦，sql变化导致解析代码变化，且解析前需要遍历，如果能将数据库记录封装成pojo对象解析比较方便。</p>
+<p>解决：Mybatis自动将sql执行结果映射至java对象，通过statement中的resultType定义输出结果的类型。</p>
+          
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mybatis/">Mybatis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SpringMVC/">SpringMVC</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a  href="/2017/06/13/通过项目逐步深入了解Mybatis(二)/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>

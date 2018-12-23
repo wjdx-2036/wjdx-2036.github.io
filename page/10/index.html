@@ -456,10 +456,10 @@
 
 
   
-    <article id="post-feiji" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-JVM性能调优监控工具jps、jstack、jmap、jhat、jstat等使用详解" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/06/13/feiji/" class="article-date">
+      <a href="/2017/06/13/JVM性能调优监控工具jps、jstack、jmap、jhat、jstat等使用详解/" class="article-date">
       <time datetime="2017-06-12T16:00:00.000Z" itemprop="datePublished">2017-06-13</time>
 </a>
     </div>
@@ -473,7 +473,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/13/feiji/">记录下自己第一次坐飞机的感受</a>
+      <a class="article-title" href="/2017/06/13/JVM性能调优监控工具jps、jstack、jmap、jhat、jstat等使用详解/">JVM性能调优监控工具jps、jstack、jmap、jhat、jstat等使用详解</a>
     </h1>
   
 
@@ -483,8 +483,13 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <h3 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h3><p>因为学校的原因，需要在大三的时候出去实训几个月，然后选择的是在昆山，公司规定要在 2017 年 4 月 19 号之前赶到，所以我提前订的机票是 17 号，之所以会订机票，其实很大一部分原因是由于自己之前没有坐过飞机，所以想体验一下坐飞机的感脚（嘿嘿），再加上这是机票的淡季，所以坐飞机的价钱比做高铁还便宜。整个行程：学校 ——&gt;  南昌机场 ——&gt;  上海虹桥机场 ——&gt;  公司</p>
-<h3 id="学校出发"><a href="#学校出发" class="headerlink" title="学校出发"></a>学校出发</h3><p>10 点左右去食堂吃了个早餐，然后打包好自己的行李，由于第一次坐飞机，所以打算提前时间去机场，然后在机场熟悉熟悉环境，不然的话错过飞机，那就 gg 了。大概 11：30 了，就拖着行李出门，在学校门口叫了辆 滴滴车 去机场（因为公交车要坐好久并且去机场的路好烂），叫的滴滴车他走的是高速，很快。<br>
+              <h3 id="javap-和-javac"><a href="#javap-和-javac" class="headerlink" title="javap 和  javac"></a>javap 和  javac</h3><ul>
+<li>javac -verbose 类名.java</li>
+<li>java -verbose 类名</li>
+<li>javap -c 类名</li>
+<li>javap -verbose 类名</li>
+</ul>
+<hr>
           
       
       
@@ -496,12 +501,12 @@
 
       
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JVM/">JVM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/性能调优工具/">性能调优工具</a></li></ul>
     </div>
 
       
         <p class="article-more-link">
-          <a  href="/2017/06/13/feiji/#more">more >></a>
+          <a  href="/2017/06/13/JVM性能调优监控工具jps、jstack、jmap、jhat、jstat等使用详解/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -857,10 +862,10 @@
 
 
   
-    <article id="post-JVM性能调优监控工具jps、jstack、jmap、jhat、jstat等使用详解" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Java连接Oracle数据库的三种连接方式" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/06/13/JVM性能调优监控工具jps、jstack、jmap、jhat、jstat等使用详解/" class="article-date">
+      <a href="/2017/06/13/Java连接Oracle数据库的三种连接方式/" class="article-date">
       <time datetime="2017-06-12T16:00:00.000Z" itemprop="datePublished">2017-06-13</time>
 </a>
     </div>
@@ -874,7 +879,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/13/JVM性能调优监控工具jps、jstack、jmap、jhat、jstat等使用详解/">JVM性能调优监控工具jps、jstack、jmap、jhat、jstat等使用详解</a>
+      <a class="article-title" href="/2017/06/13/Java连接Oracle数据库的三种连接方式/">Java连接Oracle数据库的三种连接方式</a>
     </h1>
   
 
@@ -884,13 +889,9 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <h3 id="javap-和-javac"><a href="#javap-和-javac" class="headerlink" title="javap 和  javac"></a>javap 和  javac</h3><ul>
-<li>javac -verbose 类名.java</li>
-<li>java -verbose 类名</li>
-<li>javap -c 类名</li>
-<li>javap -verbose 类名</li>
-</ul>
-<hr>
+              <h3 id="背景："><a href="#背景：" class="headerlink" title="背景："></a>背景：</h3><p>这两天在学习Oracle数据库，这里就总结下自己上课所学的知识，同时记录下来，方便整理当天所学下的知识，也同时方便日后自己查询。</p>
+<p>SQL语句的话，这里我就不多讲了，感觉和其他的数据库（MySQL、SQL Server）都是类似，区别不大。</p>
+<p>今天在这里就写下 Java 连接 Oracle 数据库的三种连接方式。<br>
           
       
       
@@ -902,12 +903,12 @@
 
       
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JVM/">JVM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/性能调优工具/">性能调优工具</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Oracle/">Oracle</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
     </div>
 
       
         <p class="article-more-link">
-          <a  href="/2017/06/13/JVM性能调优监控工具jps、jstack、jmap、jhat、jstat等使用详解/#more">more >></a>
+          <a  href="/2017/06/13/Java连接Oracle数据库的三种连接方式/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -992,10 +993,10 @@
 
 
   
-    <article id="post-深度探究Java 中 finally 语句块" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-程序访问文件的几种方式" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/06/13/深度探究Java 中 finally 语句块/" class="article-date">
+      <a href="/2017/06/13/程序访问文件的几种方式/" class="article-date">
       <time datetime="2017-06-12T16:00:00.000Z" itemprop="datePublished">2017-06-13</time>
 </a>
     </div>
@@ -1009,7 +1010,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/13/深度探究Java 中 finally 语句块/">深度探究Java 中 finally 语句块</a>
+      <a class="article-title" href="/2017/06/13/程序访问文件的几种方式/">程序访问文件的几种方式</a>
     </h1>
   
 
@@ -1019,8 +1020,10 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <p>乍看这个题目，是不是有人会问，这个谁不知道啊，大凡熟悉 Java 编程的人都知道 finally 语句块的作用和用法。有什么可深度辨析的呢？事实并非如此，我发现即使写了很多年 Java 程序的人，也不一定能够透彻的理解 finally 语句块。本篇将以生动形象的案例来带您由浅入深的来分析一下这个小小的 finally，希望这篇文章能够让您真正的理解 finally 语句块的本质，至少阅读完本篇文章后，没有觉得浪费了时间。</p>
-<p>可不能小看这个简单的 finally，看似简单的问题背后，却隐藏了无数的玄机。接下来我就带您一步一步的揭开这个 finally 的神秘面纱。</p>
+              <h2 id="IO"><a href="#IO" class="headerlink" title="IO"></a>IO</h2><h3 id="程序访问文件的几种方式"><a href="#程序访问文件的几种方式" class="headerlink" title="程序访问文件的几种方式"></a>程序访问文件的几种方式</h3><blockquote>
+<p>读取和写入文件 I/O 操作都调用操作系统提供的接口。因为磁盘设备是由操作系统管理的，应用程序要访问物理设备只能通过系统调用的方式来工作。读和写分别对应 read() 和 write() 两个系统调用。而只要是系统调用就可能存在内核空间地址和用户空间地址切换的问题，这也是为什么操作系统为了保护系统本身的运行安全而将内核程序运行使用的内存空间和用户程序运行的内存空间进行隔离造成的。虽然这样可以保证内核程序运行的安全性，但是也存在数据可能需要从内核空间向用户空间复制的问题。</p>
+<p>如果遇到非常耗时的操作，如磁盘 I/O， 数据从磁盘复制到内核空间，然后又从内核空间复制到用户空间，将会非常缓慢。这时操作系统为了加速 I/O 访问，在内核空间使用缓存机制，也就是将从磁盘读取的文件按照一定的组织方式进行缓存，如果用户程序访问的是同一段磁盘地址的空间数据，那么操作系统将从内核缓存中直接取出返回给用户程序，这样就可以减小 I/O 的响应时间。</p>
+</blockquote>
           
       
       
@@ -1032,12 +1035,12 @@
 
       
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/finally/">finally</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IO/">IO</a></li></ul>
     </div>
 
       
         <p class="article-more-link">
-          <a  href="/2017/06/13/深度探究Java 中 finally 语句块/#more">more >></a>
+          <a  href="/2017/06/13/程序访问文件的几种方式/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
