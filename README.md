@@ -2,6 +2,24 @@
 
 测试站点：[www.54tianzhisheng.cn](http://www.54tianzhisheng.cn/)
 
+
+**更新于 2019-03-18**
+
+![](https://ws3.sinaimg.cn/large/006tKfTcly1g17as8ovhpj31hn0u04nf.jpg)
+
+换了个新版本的主题，基于 yilia 主题修改的！
+
+标签页面变成这样了：
+
+![](https://ws4.sinaimg.cn/large/006tKfTcly1g17atwjm0rj31gw0u0158.jpg)
+
+代码加入了简单的高亮：
+
+![](https://ws4.sinaimg.cn/large/006tKfTcly1g17avc794fj31g40u0qlf.jpg)
+
+
+---
+
 本博客使用 Github Page + Hexo 搭建的，主题采用的是 [**yilia**](https://github.com/litten/hexo-theme-yilia) ，在此感谢作者 [litten](https://github.com/litten) 。
 
 博客网页界面：
@@ -162,4 +180,4 @@ aboutme: 很惭愧<br><br>只做了一点微小的工作<br>谢谢大家
 
 ### 疑问
 
-如果搭建时遇到问题，请QQ加群：528776268 。
+如果搭建时遇到问题，请加微信：zhisheng_tian
