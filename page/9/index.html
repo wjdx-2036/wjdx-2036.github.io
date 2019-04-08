@@ -257,6 +257,71 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-Velocity-foreach" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/06/28/Velocity-foreach/" class="article-date">
+      <time datetime="2017-06-27T16:00:00.000Z" itemprop="datePublished">2017-06-28</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/28/Velocity-foreach/">Velocity 循环指令一种好的解决方法</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h3 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h3><p>前台的数据经常是由需要通过 foreach 循环获取。</p>
+<h3 id="好的解决方案：（拿我最近做的一个项目做例子）"><a href="#好的解决方案：（拿我最近做的一个项目做例子）" class="headerlink" title="好的解决方案：（拿我最近做的一个项目做例子）"></a>好的解决方案：（拿我最近做的一个项目做例子）</h3><p>购物商城左边的导航栏，商品大分类和小分类（Category）</p>
+<p><strong>1、在 model 包下创建一个 ViewObject 类</strong></p>
+          
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Velocity/">Velocity</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a  href="/2017/06/28/Velocity-foreach/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-AJAX" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -970,75 +1035,6 @@
       
         <p class="article-more-link">
           <a  href="/2017/06/16/通过项目逐步深入了解Spring MVC（一）/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-通过项目逐步深入了解Mybatis(四)" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/06/15/通过项目逐步深入了解Mybatis(四)/" class="article-date">
-      <time datetime="2017-06-14T16:00:00.000Z" itemprop="datePublished">2017-06-15</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/15/通过项目逐步深入了解Mybatis(四)/">通过项目逐步深入了解Mybatis（四）</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>相关阅读：</p>
-<p>1、<a href="http://blog.csdn.net/tzs_1041218129/article/details/53404326">通过项目逐步深入了解Mybatis&lt;一&gt;</a></p>
-<p>2、<a href="http://blog.csdn.net/tzs_1041218129/article/details/53449052">通过项目逐步深入了解Mybatis&lt;二&gt;</a></p>
-<p>3、<a href="http://blog.csdn.net/tzs_1041218129/article/details/53456677">通过项目逐步深入了解Mybatis&lt;三&gt;</a></p>
-<p>本项目所有代码及文档都托管在 Github地址：<a href="https://github.com/zhisheng17/mybatis">https://github.com/zhisheng17/mybatis</a></p>
-<h3 id="延迟加载"><a href="#延迟加载" class="headerlink" title="延迟加载"></a>延迟加载</h3><h3 id="什么是延迟加载？"><a href="#什么是延迟加载？" class="headerlink" title="什么是延迟加载？"></a>什么是延迟加载？</h3><p>resultMap可以实现高级映射（使用association、collection实现一对一及一对多映射），association、collection具备延迟加载功能。<br>需求：<br>如果查询订单并且关联查询用户信息。如果先查询订单信息即可满足要求，当我们需要查询用户信息时再查询用户信息。把对用户信息的按需去查询就是延迟加载。</p>
-<p>延迟加载：先从单表查询、需要时再从关联表去关联查询，大大提高 数据库性能，因为查询单表要比关联查询多张表速度要快。<br>
-          
-      
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mybatis/">Mybatis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SpringMVC/">SpringMVC</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2017/06/15/通过项目逐步深入了解Mybatis(四)/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
